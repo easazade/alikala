@@ -1,0 +1,43 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:alikala/core/constants.dart';
+import 'package:alikala/core/navigation.dart';
+
+class AppToolbar extends StatelessWidget {
+  final String title;
+
+  AppToolbar(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Column(
+        children: [
+          Row(
+            children: <Widget>[
+              GestureDetector(
+                onTap: () => sailor.pop(),
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 15),
+                  decoration: BoxDecoration(color: AppColors.THEME_ACCENT, shape: BoxShape.circle),
+                  child: Icon(CupertinoIcons.back, color: Colors.black),
+                ),
+              ),
+              if (title != null)
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: 200),
+                  child: Text(
+                    title,
+                    maxLines: 1,
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                  ),
+                )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
