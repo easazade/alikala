@@ -1,3 +1,4 @@
+import 'package:alikala/features/home/home_page.dart';
 import 'package:alikala/features/splash/splash_screen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:device_preview/device_preview.dart';
@@ -29,6 +30,8 @@ class _ApplicationState extends State<Application> {
         accentColor: AppColors.THEME_ACCENT,
         primaryColor: AppColors.THEME_ACCENT,
         primaryColorBrightness: Brightness.dark,
+        backgroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
         //changes appbar and status bar icon colors to light because it indicates that our
         //appbar color we are using is dark
         fontFamily: FontFamily.estedadFD,
@@ -52,7 +55,7 @@ class _ApplicationState extends State<Application> {
       debugShowCheckedModeBanner: false,
       //theme: hrTheme,
       title: 'AliKala',
-      home: SplashScreen(),
+      home: HomePage(),
       onGenerateRoute: sailor.generator(),
       navigatorKey: sailor.navigatorKey,
       navigatorObservers: [

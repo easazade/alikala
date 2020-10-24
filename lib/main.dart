@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:footprint/footprint.dart';
 import 'package:sailor/sailor.dart';
 
@@ -18,10 +19,10 @@ void main() async {
   //hiding statusbar and only showing navigation bar
   // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 // setting transparent statusbar
-//  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-//    statusBarColor: Colors.transparent, //then set brightness in AppBar widget to light to get dark icons
-//    statusBarIconBrightness: Brightness.light,
-//  ));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, //then set brightness in AppBar widget to light to get dark icons
+    statusBarIconBrightness: Brightness.light,
+  ));
 //  Crashlytics.instance.enableInDevMode = true;
 //  FlutterError.onError = Crashlytics.instance.recordFlutterError;
 //  analytics = FirebaseAnalytics();
