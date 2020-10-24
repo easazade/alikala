@@ -29,7 +29,7 @@ class _ApplicationState extends State<Application> {
       theme: ThemeData(
         accentColor: AppColors.THEME_ACCENT,
         primaryColor: AppColors.THEME_ACCENT,
-        primaryColorBrightness: Brightness.dark,
+        primaryColorBrightness: Brightness.light,
         backgroundColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
         //changes appbar and status bar icon colors to light because it indicates that our

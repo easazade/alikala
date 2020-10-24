@@ -40,11 +40,11 @@ class AppSliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(width: 12),
-                  Icon(FeatherIcons.search, size: 28, color: AppColors.TEXT_MED),
-                  SizedBox(width: 20),
-                  Text('جستجو در', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[500])),
+                  Icon(FeatherIcons.search, size: 22, color: AppColors.TEXT_MED),
+                  SizedBox(width: 12),
+                  Text('جستجو در', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey[500])),
                   SizedBox(width: 6),
-                  Text('علی‌کالا', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: AppColors.THEME_ACCENT)),
+                  Text('علی‌کالا', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.THEME_ACCENT)),
                 ],
               ),
             ],
@@ -55,10 +55,10 @@ class AppSliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => (MediaQuery.of(context).padding.top > 20) ? 120 : 90;
+  double get maxExtent => 90;
 
   @override
-  double get minExtent => (MediaQuery.of(context).padding.top > 20) ? 120 : 90;
+  double get minExtent => 90;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

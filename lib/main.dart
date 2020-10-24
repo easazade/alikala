@@ -21,7 +21,7 @@ void main() async {
 // setting transparent statusbar
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, //then set brightness in AppBar widget to light to get dark icons
-    statusBarIconBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.dark,
   ));
 //  Crashlytics.instance.enableInDevMode = true;
 //  FlutterError.onError = Crashlytics.instance.recordFlutterError;
@@ -39,7 +39,7 @@ void main() async {
 
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode,
+      enabled: kReleaseMode,
       availablesLocales: [NamedLocale('fa', '')],
       builder: (context) => Application(),
     ),
