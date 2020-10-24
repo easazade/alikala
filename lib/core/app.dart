@@ -1,5 +1,6 @@
 import 'package:alikala/features/splash/splash_screen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -37,7 +38,8 @@ class _ApplicationState extends State<Application> {
               fontFamily: FontFamily.estedadFD,
             ),
       ),
-      locale: Locale('fa', ''),
+      locale: DevicePreview.of(context).locale,
+      builder: DevicePreview.appBuilder,
       localizationsDelegates: [
         const TranslationBaseDelegate(),
         GlobalMaterialLocalizations.delegate,
