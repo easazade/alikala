@@ -8,6 +8,7 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  AssetGenImage get imagePlaceholder => const AssetGenImage('assets/images/image_placeholder.png');
   AssetGenImage get splashLogo => const AssetGenImage('assets/images/splash_logo.png');
 }
 
