@@ -1,5 +1,6 @@
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_sliver_amazing_deals.dart';
+import 'package:alikala/widgets/app_sliver_nine_tiles.dart';
 import 'package:alikala/widgets/app_sliver_sliders.dart';
 import 'package:alikala/widgets/app_sliver_search_bar.dart';
 import 'package:alikala/widgets/util/sliver_sized_box.dart';
@@ -19,12 +20,19 @@ class HomePage extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             AppSliverSearchBar(context, () {
-              showInfoToast('Information');
+              showInfoToast('search');
             }),
             AppSliverSliders(images: fakeSales),
-            SliverSizedBox(height:20),
+            SliverSizedBox(height: 20),
             AppSliverAmazingDeals(amazingDeals: fakeAmazingDeals),
-            SliverSizedBox(height:30),
+            AppSliverNineTiles(
+              products: fakeProducts,
+              title: 'محصولات مورد پسند مشتریان ما',
+              subtitle: 'بر اساس بازدید های شما',
+              linkLabel: 'مشاهده همه',
+            ),
+            SliverSizedBox(height: 30),
+
           ],
         ),
       ),
