@@ -1,14 +1,14 @@
 import 'dart:developer';
 import 'dart:math' as math;
 
+import 'package:alikala/core/lang/languages.dart';
+import 'package:alikala/core/navigation.dart';
+import 'package:alikala/utils/exception.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:alikala/core/lang/languages.dart';
-import 'package:alikala/core/navigation.dart';
-import 'package:alikala/utils/exception.dart';
 import 'package:sailor/sailor.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,6 +22,7 @@ extension slation on Widget {
 
 extension Contexts on BuildContext {
   Translations get strings => Translations.of(this);
+
   Translations get t => Translations.of(this);
 }
 
@@ -199,6 +200,9 @@ extension DateTimeExt on DateTime {
 
   Jalali toJalali() => Jalali.fromDateTime(this);
 
+  DateTime get tomorrow =>
+      DateTime(this.year, this.month, this.day + 1, this.hour, this.minute, this.second, this.millisecond, this.microsecond);
+
   ///
   /// jalali weekday starts from saturday which has the value 0 and ends with friday which has the value 6
   int get jalaliWeekday {
@@ -280,6 +284,13 @@ extension ListExt<T> on List<T> {
     List<T> cloneList = this.map((item) => item).toList();
     cloneList.retainWhere((x) => ids.remove(getUnicId(x)));
     return cloneList.toList();
+  }
+
+  T get firstOrNull {
+    if (this?.isNotEmpty == true) {
+      return this.first;
+    } else
+      return null;
   }
 
   void printItems([String print(T t)]) {

@@ -1,3 +1,6 @@
+import 'data/entities.dart';
+import 'utils/utils_functions.dart';
+
 const String fakeProduct1 =
     'https://dkstatics-public.digikala.com/digikala-products/181659703f20beae274e023159a359a56e26ecb5_1597229334.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15';
 
@@ -16,3 +19,51 @@ const String fakeSale4 = 'https://www.digikala.com/mag/wp-content/uploads/2016/1
 
 List<String> fakeSales = [fakeSale1, fakeSale2, fakeSale3, fakeSale4];
 List<String> fakeProducts = [fakeProduct1, fakeProduct2, fakeProduct3];
+
+List<AmazingDeal> fakeAmazingDeals = [
+  AmazingDeal(
+    1,
+    [
+      'https://nyazco.com/wp-content/uploads/2019/11/tabriz-men-sport-shoes-anfalos-model-a-600x600.jpg',
+      'https://nyazco.com/wp-content/uploads/2019/11/tabriz-men-sport-shoes-anfalos-model-b-600x600.jpg',
+      'https://nyazco.com/wp-content/uploads/2019/11/tabriz-men-sport-shoes-anfalos-model-d-600x600.jpg'
+    ],
+    'کفش کتانی تبریز',
+    250000,
+    162000,
+    35,
+    DateTime.now().tomorrow,
+  ),
+  AmazingDeal(
+    1,
+    [
+      'https://dkstatics-public.digikala.com/digikala-products/116717967.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_80'
+    ],
+    'تی شرت',
+    55000,
+    44000,
+    20,
+    DateTime.now().tomorrow,
+  ),
+  AmazingDeal(
+    1,
+    ['https://janebi.com/janebi/9fd2/files/236927.jpg'],
+    'شارژر هواووی',
+    120000,
+    90000,
+    25,
+    DateTime.now().tomorrow,
+  ),
+  AmazingDeal(
+    1,
+    [
+      'https://memorybazar.com/wp-content/uploads/2020/03/SSD-Samsung-860-Evo-500G.jpg',
+      'https://www.pardisstore.com/wp-content/uploads/2018/11/2543146.jpg'
+    ],
+    'ssd سامسونگ مدل evo 500 با رید صفر و سرعت بالا',
+    1690000,
+    1605500,
+    5,
+    DateTime.now().tomorrow,
+  ),
+];
