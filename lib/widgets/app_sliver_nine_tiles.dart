@@ -27,7 +27,7 @@ class AppSliverNineTiles extends StatelessWidget {
           children: <Widget>[
             Align(
               alignment: Alignment.centerRight,
-              child: Text(title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16)),
+              child: Text(title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
             ),
             Align(
               alignment: Alignment.centerRight,

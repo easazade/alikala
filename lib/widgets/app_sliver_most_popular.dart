@@ -26,15 +26,18 @@ class AppSliverMostPopulars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Container(
-          margin: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16)),
-              Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              margin: const EdgeInsets.all(16.0),
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   for (var tuple3 in _productTuples)
@@ -45,9 +48,9 @@ class AppSliverMostPopulars extends StatelessWidget {
                     ),
                 ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

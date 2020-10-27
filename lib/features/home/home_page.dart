@@ -1,6 +1,7 @@
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_sliver_amazing_deals.dart';
 import 'package:alikala/widgets/app_sliver_double_banner.dart';
+import 'package:alikala/widgets/app_sliver_horizontal_products_list.dart';
 import 'package:alikala/widgets/app_sliver_most_popular.dart';
 import 'package:alikala/widgets/app_sliver_nine_tiles.dart';
 import 'package:alikala/widgets/app_sliver_search_bar.dart';
@@ -36,11 +37,13 @@ class HomePage extends StatelessWidget {
             ),
             AppSliverSingleBanner(imageUrl: fakeSale2),
             SliverSizedBox(height: 30),
-            AppSliverMostPopulars(products: fakeProducts,title: 'پرفروش‌ترین کالاها'),
+            AppSliverMostPopulars(products: fakeProducts, title: 'پرفروش‌ترین کالاها'),
             AppSliverDoubleBanner(imageUrls: fakeSales),
+            AppSliverHorizontalProductsList(products: fakeProducts, title: 'کالاهای جدید', linkLabel: 'مشاهده همه'),
           ],
         ),
       ),
     );
   }
 }
+
