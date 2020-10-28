@@ -37,13 +37,14 @@ void main() async {
   // runApp(Application());
   // }, onError: report);
 
-  runApp(
-    DevicePreview(
-      enabled: kReleaseMode,
-      availablesLocales: [NamedLocale('fa', '')],
-      builder: (context) => Application(),
-    ),
-  );
+  // runApp(
+  //   DevicePreview(
+  //     enabled: kReleaseMode,
+  //     availablesLocales: [NamedLocale('fa', '')],
+  //     builder: (context) => Application(),
+  //   ),
+  // );
+  runApp(Application());
 }
 
 Future setUpFootprint() async {

@@ -1,4 +1,5 @@
 import 'package:alikala/utils/utils_functions.dart';
+import 'package:alikala/widgets/app_bottom_navigation_bar.dart';
 import 'package:alikala/widgets/app_sliver_amazing_deals.dart';
 import 'package:alikala/widgets/app_sliver_double_banner.dart';
 import 'package:alikala/widgets/app_sliver_horizontal_products_list.dart';
@@ -43,7 +44,8 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+
+      bottomNavigationBar: AppBottomNavigationBar(),
     );
   }
 }
-

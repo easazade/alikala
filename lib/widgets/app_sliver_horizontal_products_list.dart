@@ -34,7 +34,8 @@ class AppSliverHorizontalProductsList extends StatelessWidget {
                   Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
                   Row(
                     children: [
-                      Text(linkLabel, style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500)),
+                      Text(linkLabel,
+                          style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500)),
                       Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
                     ],
                   ),
@@ -42,7 +43,13 @@ class AppSliverHorizontalProductsList extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView.builder(
+              child: ListView.separated(
+                separatorBuilder: (context, position) {
+                  return Container(
+                    color: Colors.grey[100],
+                    width: 1,
+                  );
+                },
                 shrinkWrap: true,
                 itemBuilder: (context, position) {
                   return _createProductItem(products[position]);
