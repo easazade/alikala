@@ -21,44 +21,49 @@ class AppSliverHorizontalProductsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Container(
-        height: 280,
-        margin: const EdgeInsets.symmetric(vertical: 20),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
-                  Row(
-                    children: [
-                      Text(linkLabel,
-                          style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500)),
-                      Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
-                    ],
-                  ),
-                ],
+      child: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: (overScroll) {
+          return true;
+        },
+        child: Container(
+          height: 280,
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                    Row(
+                      children: [
+                        Text(linkLabel,
+                            style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500)),
+                        Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: ListView.separated(
-                separatorBuilder: (context, position) {
-                  return Container(
-                    color: Colors.grey[100],
-                    width: 1,
-                  );
-                },
-                shrinkWrap: true,
-                itemBuilder: (context, position) {
-                  return _createProductItem(products[position]);
-                },
-                itemCount: products.length,
-                scrollDirection: Axis.horizontal,
+              Expanded(
+                child: ListView.separated(
+                  separatorBuilder: (context, position) {
+                    return Container(
+                      color: Colors.grey[100],
+                      width: 1,
+                    );
+                  },
+                  shrinkWrap: true,
+                  itemBuilder: (context, position) {
+                    return _createProductItem(products[position]);
+                  },
+                  itemCount: products.length,
+                  scrollDirection: Axis.horizontal,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
