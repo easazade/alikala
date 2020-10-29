@@ -8,9 +8,12 @@ class AppColors {
   static const TEXT_DARK = Color(0xFF1D1D1D);
   static const TEXT_MED = Color(0xFF404040);
 
-  static const  THEME_ACCENT_2 = Color(0xFF0FAAC6);
+  static const THEME_ACCENT_2 = Color(0xFF0FAAC6);
 }
 
 class Routes {
   static const String HOME = '/home';
+  static const String CATEGORIES = '/categories';
+  static const String CART = '/cart';
+  static const String PROFILE = '/profile';
 }

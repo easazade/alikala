@@ -44,8 +44,6 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-
-      bottomNavigationBar: AppBottomNavigationBar(),
     );
   }
 }

@@ -50,7 +50,9 @@ abstract class ThirdPartiesProd {
   @Singleton(env: [Env.prod])
   Sailor get sailor => Sailor(
         options: SailorOptions(
-          isLoggingEnabled: kReleaseMode,
+          isLoggingEnabled: !kReleaseMode,
+          defaultTransitions: [],
+          defaultTransitionDuration: const Duration(seconds: 0),
         ),
       ); //defining custom initializer
 

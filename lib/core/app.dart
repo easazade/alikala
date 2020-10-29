@@ -1,5 +1,7 @@
-import 'package:alikala/features/home/home_page.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:alikala/main_screen.dart';
+import 'package:alikala/utils/cupertino_theme_overrides.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -25,6 +27,7 @@ class _ApplicationState extends State<Application> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        cupertinoOverrideTheme: MaterialAppCupertinoThemeDataOverrides(FontFamily.estedadFD),
         accentColor: AppColors.THEME_ACCENT,
         primaryColor: AppColors.THEME_ACCENT,
         primaryColorBrightness: Brightness.light,
@@ -46,6 +49,7 @@ class _ApplicationState extends State<Application> {
         const TranslationBaseDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
         const Locale('fa', ''), // Persian
@@ -54,7 +58,7 @@ class _ApplicationState extends State<Application> {
       debugShowCheckedModeBanner: false,
       //theme: hrTheme,
       title: 'AliKala',
-      home: HomePage(),
+      home: MainScreen(),
       onGenerateRoute: sailor.generator(),
       navigatorKey: sailor.navigatorKey,
       navigatorObservers: [
