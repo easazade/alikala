@@ -33,6 +33,7 @@ class _ApplicationState extends State<Application> {
         primaryColorBrightness: Brightness.light,
         backgroundColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
+        dialogBackgroundColor: Colors.white,
         //changes appbar and status bar icon colors to light because it indicates that our
         //appbar color we are using is dark
         fontFamily: FontFamily.estedadFD,

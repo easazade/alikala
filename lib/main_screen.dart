@@ -16,6 +16,7 @@ class MainScreen extends StatelessWidget {
           activeColor: AppColors.TEXT_DARK,
           inactiveColor: AppColors.TEXT_LIGHT,
           iconSize: 20,
+          border: Border.all(color: Colors.grey[100]),
           items: [
             BottomNavigationBarItem(
               icon: Icon(FeatherIcons.home),
