@@ -190,3 +190,19 @@ List<Product> fakeProducts = [
     DateTime.now().tomorrow,
   ),
 ];
+
+List<Category> fakeRootCategories = [
+  Category(1, 0, 'کالای دیجیتال', fakeProduct1,200),
+  Category(2, 0, 'خودرو، ابزار و تجهیزات صنعتی', fakeProduct1,3000),
+  Category(3, 0, 'زیبایی و سلامتی', fakeProduct1,500000),
+  Category(4, 0, 'خانه و آشپزخانه', fakeProduct1,900),
+  Category(5, 0, 'کتب، لوازم تحریر و هنر', fakeProduct1,100),
+];
+
+List<Category> fakeSubCategories = [
+  Category(6, 2, 'زیر دسته 1', fakeSale3,250),
+  Category(7, 3, 'زیر دسته 2', fakeProduct3,1500),
+  Category(8, 3, 'زیر دسته 3', fakeProduct1,500000),
+  Category(9, 2, 'زیر دسته 4', fakeSale2,16000),
+  Category(10, 2, 'زیر دسته 5', fakeSale4,900),
+];

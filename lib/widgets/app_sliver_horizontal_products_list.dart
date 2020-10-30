@@ -22,9 +22,7 @@ class AppSliverHorizontalProductsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (overScroll) {
-          return true;
-        },
+        onNotification: (overScroll) => true,
         child: Container(
           height: 280,
           margin: const EdgeInsets.symmetric(vertical: 20),
@@ -48,16 +46,12 @@ class AppSliverHorizontalProductsList extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.separated(
-                  separatorBuilder: (context, position) {
-                    return Container(
+                  separatorBuilder: (context, position) => Container(
                       color: Colors.grey[100],
                       width: 1,
-                    );
-                  },
+                    ),
                   shrinkWrap: true,
-                  itemBuilder: (context, position) {
-                    return _createProductItem(products[position]);
-                  },
+                  itemBuilder: (context, position) => _createProductItem(products[position]),
                   itemCount: products.length,
                   scrollDirection: Axis.horizontal,
                 ),
