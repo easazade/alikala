@@ -41,7 +41,15 @@ class MustLoginPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 32),
-                  Text('AliKala', style: TextStyle(color: AppColors.THEME_ACCENT, fontSize: 26, fontWeight: FontWeight.w900)),
+                  Text(
+                    'AliKala',
+                    style: TextStyle(
+                      fontFamily: FontFamily.exo2,
+                      color: AppColors.THEME_ACCENT,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
                   FractionallySizedBox(
                     widthFactor: 0.08,
                     child: Image.asset(Assets.images.splashLogoAccentColor.assetName),

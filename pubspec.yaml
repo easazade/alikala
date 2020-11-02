@@ -129,3 +129,9 @@ flutter:
           weight: 700
         - asset: assets/fonts/Estedad-FD-Black.ttf
           weight: 900
+    - family: Canilari
+      fonts:
+        - asset: assets/fonts/Canilari-ProBold.ttf
+    - family: Exo2
+      fonts:
+        - asset: assets/fonts/Exo2-Bold.ttf
