@@ -1,4 +1,3 @@
-import 'package:alikala/utils/utils_functions.dart';
 import 'package:flutter/material.dart';
 
 class UnFocusCurrentFocusWidget extends StatelessWidget {
@@ -14,5 +13,12 @@ class UnFocusCurrentFocusWidget extends StatelessWidget {
       onPanDown: (_)=> unFocusCurrentFocus(context),
       child: child,
     );
+  }
+
+  void unFocusCurrentFocus(BuildContext context){
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.requestFocus(FocusNode());
+    }
   }
 }

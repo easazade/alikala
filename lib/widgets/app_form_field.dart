@@ -19,7 +19,7 @@ class AppFormField extends StatelessWidget {
       ),
       child: Center(
         child: TextField(
-          textInputAction: TextInputAction.search,
+          textInputAction: TextInputAction.done,
           maxLines: 1,
           style: TextStyle(fontSize: 14),
           onChanged: (input) {

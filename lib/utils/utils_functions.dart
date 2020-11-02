@@ -366,7 +366,7 @@ void report(e, stacktrace) {
   }
 }
 
-showAppToastWithAction(BuildContext context, String msg, {BoolCallback action, double length: 3.5}) {
+showAppToastWithAction(BuildContext context, String msg, {BoolCallback action, double length: 2.5}) {
   Flushbar<bool> flush;
   flush = Flushbar<bool>(
     messageText: SizedBox(
