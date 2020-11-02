@@ -3,6 +3,7 @@ import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
 import 'package:alikala/features/enter/pass/enter_password_page.dart';
 import 'package:alikala/features/home/home_page.dart';
+import 'package:alikala/features/settings/settings_page.dart';
 import 'package:alikala/features/veridy/code/verify_code_page.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,7 +50,7 @@ class MainScreen extends StatelessWidget {
             return CartPage();
             break;
           case 3:
-            return EnterPasswordPage();
+            return SettingsPage();
             break;
         }
         throw Exception('there is no page for this index in tabBuilder in main_screen.dart');
