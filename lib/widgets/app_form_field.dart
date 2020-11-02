@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 class AppFormField extends StatelessWidget {
   final String hint;
   final StringCallback onChange;
+  final TextInputType keyboardType;
+  final String fontFamily;
 
-  AppFormField(this.hint, this.onChange);
+  AppFormField(this.hint, this.onChange, {this.keyboardType, this.fontFamily});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +21,17 @@ class AppFormField extends StatelessWidget {
       ),
       child: Center(
         child: TextField(
+          keyboardType: keyboardType,
           textInputAction: TextInputAction.done,
           maxLines: 1,
-          style: TextStyle(fontSize: 14),
+          style: TextStyle(fontSize: 14, fontFamily: fontFamily),
           onChanged: (input) {
             if (!input.isNullOrBlank) {
               onChange(input);
             }
           },
+          obscureText: (keyboardType == TextInputType.visiblePassword),
+
           decoration: InputDecoration(
             isDense: true,
             contentPadding: const EdgeInsets.symmetric(vertical: 3, horizontal: 12),

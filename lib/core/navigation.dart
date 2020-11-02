@@ -2,7 +2,7 @@ import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
 import 'package:alikala/features/home/home_page.dart';
 import 'package:alikala/features/profile/profile_page.dart';
-import 'package:alikala/features/veridy/code/veridy_code_page.dart';
+import 'package:alikala/features/veridy/code/verify_code_page.dart';
 import 'package:mockito/mockito.dart' as mockito;
 import 'package:mockito/mockito.dart';
 import 'package:sailor/sailor.dart';

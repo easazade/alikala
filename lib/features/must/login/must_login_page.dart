@@ -1,5 +1,4 @@
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/utils/utils_functions.dart';
@@ -27,7 +26,7 @@ class MustLoginPage extends StatelessWidget {
           notification.disallowGlow();
           return false;
         },
-        child: UnFocusCurrentFocusWidget(
+        child: RemoveFocusOnTouchOutsideFocusedWidget(
           child: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
@@ -68,9 +67,7 @@ class MustLoginPage extends StatelessWidget {
                   SizedBox(height: 20),
                   AppFormField('شماره موبایل یا ایمیل', (input) {}),
                   SizedBox(height: 20),
-                  AppFormLongButton('ورود به علی‌کالا', () {
-                    sailor.navigate(Routes.HOME);
-                  }),
+                  AppFormLongButton('ورود به علی‌کالا', () {}),
                   SizedBox(height: 10),
                   Divider(),
                   SizedBox(height: 15),

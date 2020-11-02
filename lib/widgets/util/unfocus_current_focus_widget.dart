@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class UnFocusCurrentFocusWidget extends StatelessWidget {
+class RemoveFocusOnTouchOutsideFocusedWidget extends StatelessWidget {
   final Widget child;
 
-  UnFocusCurrentFocusWidget({@required this.child});
+  RemoveFocusOnTouchOutsideFocusedWidget({@required this.child});
 
   @override
   Widget build(BuildContext context) {

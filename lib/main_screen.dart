@@ -1,8 +1,9 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
+import 'package:alikala/features/enter/pass/enter_password_page.dart';
 import 'package:alikala/features/home/home_page.dart';
-import 'package:alikala/features/must/login/must_login_page.dart';
+import 'package:alikala/features/veridy/code/verify_code_page.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,29 +13,30 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
-          backgroundColor: Colors.white,
-          activeColor: AppColors.TEXT_DARK,
-          inactiveColor: AppColors.TEXT_LIGHT,
-          iconSize: 20,
-          border: Border.all(color: Colors.grey[100]),
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(FeatherIcons.home),
-              label: 'خانه',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(FeatherIcons.menu),
-              label: 'دسته‌بندی‌ها',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(FeatherIcons.shoppingCart),
-              label: 'سبد خرید',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(FeatherIcons.user),
-              label: 'پروفایل',
-            ),
-          ]),
+        backgroundColor: Colors.white,
+        activeColor: AppColors.TEXT_DARK,
+        inactiveColor: AppColors.TEXT_LIGHT,
+        iconSize: 20,
+        border: Border.all(color: Colors.grey[100]),
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(FeatherIcons.home),
+            label: 'خانه',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FeatherIcons.menu),
+            label: 'دسته‌بندی‌ها',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FeatherIcons.shoppingCart),
+            label: 'سبد خرید',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FeatherIcons.user),
+            label: 'پروفایل',
+          ),
+        ],
+      ),
       tabBuilder: (context, index) {
         switch (index) {
           case 0:
@@ -47,10 +49,10 @@ class MainScreen extends StatelessWidget {
             return CartPage();
             break;
           case 3:
-            return MustLoginPage();
+            return EnterPasswordPage();
             break;
         }
-        throw Exception('there is no page for this index');
+        throw Exception('there is no page for this index in tabBuilder in main_screen.dart');
       },
     );
   }

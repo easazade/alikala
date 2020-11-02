@@ -4,23 +4,26 @@ import 'package:flutter/material.dart';
 class AppFormLongButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
+  final bool disabled;
 
-  AppFormLongButton(this.label, this.onTap);
+  AppFormLongButton(this.label, this.onTap, {this.disabled = false});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
-      child: Container(
+      splashColor: disabled ? AppColors.TRANSPARENT : Colors.white.withOpacity(0.3),
+      child: Ink(
         height: 54,
         decoration: BoxDecoration(
-          color: AppColors.THEME_ACCENT,
+          color: disabled ? Colors.white : AppColors.THEME_ACCENT,
           borderRadius: BorderRadius.circular(8),
+          border: disabled ? Border.all(color: Colors.grey[100]) : null,
         ),
         child: Center(
           child: Text(
             label,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
+            style: TextStyle(color: disabled ? AppColors.TEXT_LIGHT : Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
           ),
         ),
       ),
