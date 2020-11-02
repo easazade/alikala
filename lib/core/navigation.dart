@@ -2,6 +2,7 @@ import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
 import 'package:alikala/features/home/home_page.dart';
 import 'package:alikala/features/profile/profile_page.dart';
+import 'package:alikala/features/veridy/code/veridy_code_page.dart';
 import 'package:mockito/mockito.dart' as mockito;
 import 'package:mockito/mockito.dart';
 import 'package:sailor/sailor.dart';
@@ -48,6 +49,7 @@ class NavigationConfig {
         SailorRoute(name: Routes.CATEGORIES, builder: (context, arg, params) => CategoriesPage()),
         SailorRoute(name: Routes.CART, builder: (context, arg, params) => CartPage()),
         SailorRoute(name: Routes.PROFILE, builder: (context, arg, params) => ProfilePage()),
+        SailorRoute(name: Routes.VERIFY_CODE, builder: (context, arg, params) => VerifyCodePage()),
 //        SailorRoute(
 //          name: Routes.HOME,
 //          builder: (context, arg, params) => BlocProvider<HomeBloc>(
@@ -59,3 +61,4 @@ class NavigationConfig {
     );
   }
 }
+

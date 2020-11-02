@@ -8,11 +8,15 @@ class AppColors {
 
   static const TEXT_LIGHT = Color(0xFFADB0C8);
   static const TEXT_LIGHT_2 = Color(0xFF6F7279);
+  static const TEXT_LIGHT_3 = Color(0xFF81848A);
   static const TEXT_MED = Color(0xFF404040);
   static const TEXT_DARK = Color(0xFF1D1D1D);
 
   static const THEME_ACCENT_2 = Color(0xFF0FAAC6);
+  static const HYPER_LINK = Color(0xFF0FAAC6);
+
   static const GREY_BG = Color(0xFFECEDEF);
+
 }
 
 class Routes {
@@ -20,4 +24,5 @@ class Routes {
   static const String CATEGORIES = '/categories';
   static const String CART = '/cart';
   static const String PROFILE = '/profile';
+  static const String VERIFY_CODE = '/verify_code';
 }

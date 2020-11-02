@@ -31,6 +31,7 @@ dependencies:
   carousel_slider: ^2.3.1
   flutter_custom_clippers: ^1.1.2
   cached_network_image: ^2.3.3
+  flushbar: ^1.10.4
 
   explode_view: ^1.0.4
   #  permission_handler: ^5.0.1+1
@@ -38,6 +39,7 @@ dependencies:
   #  sqlite3_flutter_libs: ^0.2.0
   confetti: ^0.5.4+1
   flutter_group_sliver: ^0.0.2
+  flutter_verification_code: ^0.2.1
   device_preview: ^0.4.8
   path_provider:
   path:
@@ -98,6 +100,7 @@ flutter:
 
   assets:
     - assets/images/splash_logo.png
+    - assets/images/splash_logo_accent_color.png
     - assets/images/empty_cart.png
     - assets/images/image_placeholder.png
 

@@ -11,6 +11,7 @@ class $AssetsImagesGen {
   AssetGenImage get emptyCart => const AssetGenImage('assets/images/empty_cart.png');
   AssetGenImage get imagePlaceholder => const AssetGenImage('assets/images/image_placeholder.png');
   AssetGenImage get splashLogo => const AssetGenImage('assets/images/splash_logo.png');
+  AssetGenImage get splashLogoAccentColor => const AssetGenImage('assets/images/splash_logo_accent_color.png');
 }
 
 class Assets {

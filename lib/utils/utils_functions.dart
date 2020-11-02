@@ -1,20 +1,44 @@
 import 'dart:developer';
 import 'dart:math' as math;
 
+import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/lang/languages.dart';
 import 'package:alikala/core/navigation.dart';
 import 'package:alikala/utils/exception.dart';
+import 'package:alikala/utils/typedefs.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:footprint/footprint.dart';
 import 'package:sailor/sailor.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 //##################################### extension functions #####################################
 //##################################### extension functions #####################################
+
+extension AlignmentExt on Alignment {
+  static Alignment centerStart(BuildContext context) =>
+      (Directionality.of(context) == TextDirection.rtl) ? Alignment.centerRight : Alignment.centerLeft;
+
+  static Alignment topStart(BuildContext context) =>
+      (Directionality.of(context) == TextDirection.rtl) ? Alignment.topRight : Alignment.topLeft;
+
+  static Alignment bottomStart(BuildContext context) =>
+      (Directionality.of(context) == TextDirection.rtl) ? Alignment.bottomRight : Alignment.bottomLeft;
+
+  static Alignment centerEnd(BuildContext context) =>
+      (Directionality.of(context) == TextDirection.rtl) ? Alignment.centerLeft : Alignment.centerRight;
+
+  static Alignment topEnd(BuildContext context) =>
+      (Directionality.of(context) == TextDirection.rtl) ? Alignment.topLeft : Alignment.topRight;
+
+  static Alignment bottomEnd(BuildContext context) =>
+      (Directionality.of(context) == TextDirection.rtl) ? Alignment.bottomLeft : Alignment.bottomRight;
+}
 
 extension slation on Widget {
   Translations t(BuildContext context) => Translations.of(context);
@@ -339,6 +363,44 @@ void report(e, stacktrace) {
   if (!kReleaseMode) {
     print(e);
     print(stacktrace);
+  }
+}
+
+showAppToastWithAction(BuildContext context, String msg, {BoolCallback action, double length: 3.5}) {
+  Flushbar<bool> flush;
+  flush = Flushbar<bool>(
+    messageText: SizedBox(
+      height: 60,
+      child: Text(msg, style: TextStyle(color: Colors.white)),
+    ),
+    animationDuration: 0.2.seconds(),
+    margin: const EdgeInsets.only(bottom: 64, right: 20, left: 20, top: 10),
+    borderRadius: 8,
+    mainButton: GestureDetector(
+      onTap: () => flush.dismiss(true),
+      behavior: HitTestBehavior.opaque,
+      child: Column(
+        children: [
+          SizedBox(height: 40),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Text('باشه', style: TextStyle(color: AppColors.THEME_ACCENT_2)),
+          ),
+        ],
+      ),
+    ),
+    backgroundColor: Colors.black,
+    duration: length.seconds(),
+  )..show(context).then((value) {
+      action?.call(value ?? false);
+    });
+}
+
+void unFocusCurrentFocus(BuildContext context){
+  FocusScopeNode currentFocus = FocusScope.of(context);
+  if (!currentFocus.hasPrimaryFocus) {
+    Footprint.log('has primary focus and now unfocusing');
+    currentFocus.requestFocus(FocusNode());
   }
 }
 

@@ -2,7 +2,7 @@ import 'package:alikala/core/constants.dart';
 import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
 import 'package:alikala/features/home/home_page.dart';
-import 'package:alikala/features/profile/profile_page.dart';
+import 'package:alikala/features/must/login/must_login_page.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,6 @@ class MainScreen extends StatelessWidget {
               label: 'پروفایل',
             ),
           ]),
-      resizeToAvoidBottomInset: false,
       tabBuilder: (context, index) {
         switch (index) {
           case 0:
@@ -48,7 +47,7 @@ class MainScreen extends StatelessWidget {
             return CartPage();
             break;
           case 3:
-            return ProfilePage();
+            return MustLoginPage();
             break;
         }
         throw Exception('there is no page for this index');
