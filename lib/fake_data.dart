@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'data/entities.dart';
 import 'utils/utils_functions.dart';
 
@@ -81,6 +83,8 @@ List<Product> fakeProducts = [
     162000,
     35,
     DateTime.now().tomorrow,
+    Color(0xFFF152c5),
+    'صورتی',
   ),
   Product(
     2,
@@ -92,6 +96,8 @@ List<Product> fakeProducts = [
     44000,
     20,
     DateTime.now().tomorrow,
+    null,
+    null,
   ),
   Product(
     3,
@@ -101,6 +107,8 @@ List<Product> fakeProducts = [
     90000,
     25,
     DateTime.now().tomorrow,
+    null,
+    null,
   ),
   Product(
     4,
@@ -113,6 +121,8 @@ List<Product> fakeProducts = [
     1605500,
     5,
     DateTime.now().tomorrow,
+    Color(0xFFF152c5),
+    'صورتی',
   ),
   Product(
     5,
@@ -126,6 +136,8 @@ List<Product> fakeProducts = [
     162000,
     35,
     DateTime.now().tomorrow,
+    Color(0xFFF152c5),
+    'صورتی',
   ),
   Product(
     6,
@@ -137,6 +149,8 @@ List<Product> fakeProducts = [
     44000,
     20,
     DateTime.now().tomorrow,
+    Color(0xFFF152c5),
+    'صورتی',
   ),
   Product(
     7,
@@ -146,6 +160,8 @@ List<Product> fakeProducts = [
     90000,
     25,
     DateTime.now().tomorrow,
+    Color(0xFFF152c5),
+    'صورتی',
   ),
   Product(
     8,
@@ -158,6 +174,8 @@ List<Product> fakeProducts = [
     1605500,
     5,
     DateTime.now().tomorrow,
+    Color(0xFFF152c5),
+    'صورتی',
   ),
   Product(
     9,
@@ -167,6 +185,8 @@ List<Product> fakeProducts = [
     90000,
     25,
     DateTime.now().tomorrow,
+    Color(0xFFF152c5),
+    'صورتی',
   ),
   Product(
     10,
@@ -179,6 +199,8 @@ List<Product> fakeProducts = [
     1605500,
     5,
     DateTime.now().tomorrow,
+    Color(0xFFF152c5),
+    'صورتی',
   ),
   Product(
     11,
@@ -188,21 +210,23 @@ List<Product> fakeProducts = [
     90000,
     25,
     DateTime.now().tomorrow,
+    Color(0xFFF152c5),
+    'صورتی',
   ),
 ];
 
 List<Category> fakeRootCategories = [
-  Category(1, 0, 'کالای دیجیتال', fakeProduct1,200),
-  Category(2, 0, 'خودرو، ابزار و تجهیزات صنعتی', fakeProduct1,3000),
-  Category(3, 0, 'زیبایی و سلامتی', fakeProduct1,500000),
-  Category(4, 0, 'خانه و آشپزخانه', fakeProduct1,900),
-  Category(5, 0, 'کتب، لوازم تحریر و هنر', fakeProduct1,100),
+  Category(1, 0, 'کالای دیجیتال', fakeProduct1, 200),
+  Category(2, 0, 'خودرو، ابزار و تجهیزات صنعتی', fakeProduct1, 3000),
+  Category(3, 0, 'زیبایی و سلامتی', fakeProduct1, 500000),
+  Category(4, 0, 'خانه و آشپزخانه', fakeProduct1, 900),
+  Category(5, 0, 'کتب، لوازم تحریر و هنر', fakeProduct1, 100),
 ];
 
 List<Category> fakeSubCategories = [
-  Category(6, 2, 'زیر دسته 1', fakeSale3,250),
-  Category(7, 3, 'زیر دسته 2', fakeProduct3,1500),
-  Category(8, 3, 'زیر دسته 3', fakeProduct1,500000),
-  Category(9, 2, 'زیر دسته 4', fakeSale2,16000),
-  Category(10, 2, 'زیر دسته 5', fakeSale4,900),
+  Category(6, 2, 'زیر دسته 1', fakeSale3, 250),
+  Category(7, 3, 'زیر دسته 2', fakeProduct3, 1500),
+  Category(8, 3, 'زیر دسته 3', fakeProduct1, 500000),
+  Category(9, 2, 'زیر دسته 4', fakeSale2, 16000),
+  Category(10, 2, 'زیر دسته 5', fakeSale4, 900),
 ];

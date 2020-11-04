@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 class AmazingDeal {
   final int id;
   final List<String> images;
@@ -16,10 +18,22 @@ class Product {
   final String title;
   final int price;
   final int offPrice;
+  final Color color;
+  final String colorName;
   final double offPercentage;
   final DateTime dueDate;
 
-  Product(this.id, this.images, this.title, this.price, this.offPrice, this.offPercentage, this.dueDate);
+  Product(
+    this.id,
+    this.images,
+    this.title,
+    this.price,
+    this.offPrice,
+    this.offPercentage,
+    this.dueDate,
+    this.color,
+    this.colorName,
+  );
 }
 
 class Category {

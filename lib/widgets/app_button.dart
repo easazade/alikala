@@ -1,12 +1,12 @@
 import 'package:alikala/core/constants.dart';
 import 'package:flutter/material.dart';
 
-class AppFormLongButton extends StatelessWidget {
+class AppButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final bool disabled;
 
-  AppFormLongButton(this.label, this.onTap, {this.disabled = false});
+  AppButton(this.label, this.onTap, {this.disabled = false});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,11 @@ class AppFormLongButton extends StatelessWidget {
           child: Center(
             child: Text(
               label,
-              style: TextStyle(color: disabled ? AppColors.TEXT_LIGHT : Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
+              style: TextStyle(
+                color: disabled ? AppColors.TEXT_LIGHT : Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
             ),
           ),
         ),

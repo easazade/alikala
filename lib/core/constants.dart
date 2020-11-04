@@ -17,6 +17,8 @@ class AppColors {
 
   static const GREY_BG = Color(0xFFECEDEF);
 
+  static const THEME_ACCENT_3= Color(0xFF00B241);
+
 }
 
 class Routes {
