@@ -20,26 +20,6 @@ import 'package:url_launcher/url_launcher.dart';
 //##################################### extension functions #####################################
 //##################################### extension functions #####################################
 
-extension AlignmentExt on Alignment {
-  static Alignment centerStart(BuildContext context) =>
-      (Directionality.of(context) == TextDirection.rtl) ? Alignment.centerRight : Alignment.centerLeft;
-
-  static Alignment topStart(BuildContext context) =>
-      (Directionality.of(context) == TextDirection.rtl) ? Alignment.topRight : Alignment.topLeft;
-
-  static Alignment bottomStart(BuildContext context) =>
-      (Directionality.of(context) == TextDirection.rtl) ? Alignment.bottomRight : Alignment.bottomLeft;
-
-  static Alignment centerEnd(BuildContext context) =>
-      (Directionality.of(context) == TextDirection.rtl) ? Alignment.centerLeft : Alignment.centerRight;
-
-  static Alignment topEnd(BuildContext context) =>
-      (Directionality.of(context) == TextDirection.rtl) ? Alignment.topLeft : Alignment.topRight;
-
-  static Alignment bottomEnd(BuildContext context) =>
-      (Directionality.of(context) == TextDirection.rtl) ? Alignment.bottomLeft : Alignment.bottomRight;
-}
-
 extension slation on Widget {
   Translations t(BuildContext context) => Translations.of(context);
 }

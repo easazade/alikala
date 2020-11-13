@@ -36,12 +36,12 @@ class EnterPasswordPage extends StatelessWidget {
     return Column(
       children: [
         Align(
-          alignment: AlignmentExt.centerStart(context),
+          alignment: AlignmentDirectional.centerStart,
           child: Text('رمز عبور', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
         ),
         SizedBox(height: 6),
         Align(
-          alignment: AlignmentExt.centerStart(context),
+          alignment: AlignmentDirectional.centerStart,
           child: Text(
             'رمز عبور مربوط به حساب کابری خود را وارد کنید. '
             'easazade@gmail.com',
@@ -55,7 +55,7 @@ class EnterPasswordPage extends StatelessWidget {
         ),
         SizedBox(height: 20),
         Align(
-          alignment: AlignmentExt.centerStart(context),
+          alignment: AlignmentDirectional.centerStart,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Row(

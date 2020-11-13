@@ -41,12 +41,12 @@ class VerifyCodePage extends StatelessWidget {
     return Column(
       children: [
         Align(
-          alignment: AlignmentExt.centerStart(context),
+          alignment: AlignmentDirectional.centerStart,
           child: Text('کد تایید را وارد نمایید', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
         ),
         SizedBox(height: 6),
         Align(
-          alignment: AlignmentExt.centerStart(context),
+          alignment: AlignmentDirectional.centerStart,
           child: Text(
             'کد تایید برای شماره موبایل 989117158746 ارسال گردید',
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),

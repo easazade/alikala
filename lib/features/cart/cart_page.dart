@@ -9,6 +9,7 @@ import 'package:alikala/widgets/app_button.dart';
 import 'package:alikala/widgets/app_network_image.dart';
 import 'package:alikala/widgets/app_price_tag.dart';
 import 'package:alikala/widgets/app_product_color.dart';
+import 'package:alikala/widgets/app_secion_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,13 +40,21 @@ class CartPage extends StatelessWidget {
             _createLoginNeededCard(),
             SizedBox(height: 30),
             _createCartIsEmptyMessage(),
+            AppSectionSeparator(height: 5),
             _createCartItem(fakeProducts[0]),
+            AppSectionSeparator(height: 5),
             _createCartItem(fakeProducts[1]),
+            AppSectionSeparator(height: 5),
             _createCartItem(fakeProducts[2]),
+            AppSectionSeparator(height: 5),
             _createCartItem(fakeProducts[3]),
+            AppSectionSeparator(height: 5),
             _createCartItem(fakeProducts[4]),
+            AppSectionSeparator(height: 5),
             _createCartItem(fakeProducts[5]),
+            AppSectionSeparator(),
             _createCartSummary(),
+            AppSectionSeparator(),
             _createContinueButton(),
           ],
         ),
@@ -57,12 +66,7 @@ class CartPage extends StatelessWidget {
     return Material(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border(
-            top: BorderSide(color: Colors.grey[100], width: 4),
-          ),
-        ),
+        color: Colors.white,
         child: Column(
           children: [
             SizedBox(height: 20),
@@ -165,13 +169,7 @@ class CartPage extends StatelessWidget {
     return Material(
       child: Container(
         padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border(
-            top: BorderSide(color: Colors.grey[100], width: 16),
-            bottom: BorderSide(color: Colors.grey[100], width: 16),
-          ),
-        ),
+        color: Colors.white,
         child: Column(
           children: [
             Row(

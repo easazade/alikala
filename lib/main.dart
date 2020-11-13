@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:alikala/utils/utils_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +10,6 @@ import 'core/app.dart';
 import 'core/injectable.dart';
 import 'core/navigation.dart';
 import 'utils/footprint_configs.dart';
-import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
