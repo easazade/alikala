@@ -35,12 +35,12 @@ class AppProgress extends StatelessWidget {
       );
     else if (isLarge)
       return SizedBox(
-        height: 70,
-        width: 70,
+        height: 55,
+        width: 55,
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(8),
           child: CircularProgressIndicator(
-            strokeWidth: 3,
+            strokeWidth: 1,
             valueColor: (color != null) ? AlwaysStoppedAnimation(color) : null,
           ),
         ),

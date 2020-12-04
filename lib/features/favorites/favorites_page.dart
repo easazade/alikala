@@ -27,7 +27,8 @@ class FavoritesPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15),
-            ...fakeProducts.map((item) => AppFavoriteProductItem(item)).toList()
+            ...fakeProducts.map((item) => AppFavoriteProductItem(item)).toList(),
+            SizedBox(height: 30),
           ],
         ),
       ),

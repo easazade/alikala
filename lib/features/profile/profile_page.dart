@@ -1,4 +1,5 @@
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/core/navigation.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/widgets/app_icon_button.dart';
@@ -29,7 +30,7 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       AppIconButton(
                         icon: Icon(FeatherIcons.settings),
-                        onTap: () {},
+                        onTap: () => sailor.navigate(Routes.settings),
                       ),
                       AppIconButton(
                         icon: Icon(FeatherIcons.bell),
@@ -54,9 +55,15 @@ class ProfilePage extends StatelessWidget {
                 SizedBox(height: 15),
                 AppSectionSeparator(),
                 SizedBox(height: 15),
-                _createMenuButton(icon: FeatherIcons.heart, label: 'لیست مورد علاقه‌ها', onTap: () {}),
+                _createMenuButton(
+                  icon: FeatherIcons.heart,
+                  label: 'لیست مورد علاقه‌ها',
+                  onTap: () => sailor.navigate(Routes.favorites_page),
+                ),
                 _createMenuButton(icon: Icons.comment_outlined, label: 'نقد و نظرات', onTap: () {}),
-                _createMenuButton(icon: Icons.directions_outlined, label: 'آدرس ها', onTap: () {}),
+                _createMenuButton(icon: Icons.directions_outlined, label: 'آدرس ها', onTap: () {
+                  sailor.navigate(Routes.address);
+                }),
                 _createMenuButton(icon: Icons.person_outline_outlined, label: 'اطلاعات حساب کاربری', onTap: () {}),
               ],
             ),

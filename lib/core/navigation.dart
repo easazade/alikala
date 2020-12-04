@@ -1,9 +1,12 @@
+import 'package:alikala/features/address/address_page.dart';
 import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
 import 'package:alikala/features/enter/pass/enter_password_page.dart';
+import 'package:alikala/features/favorites/favorites_page.dart';
 import 'package:alikala/features/home/home_page.dart';
 import 'package:alikala/features/must/login/must_login_page.dart';
 import 'package:alikala/features/profile/profile_page.dart';
+import 'package:alikala/features/search/search_page.dart';
 import 'package:alikala/features/settings/settings_page.dart';
 import 'package:alikala/features/splash/splash_screen.dart';
 import 'package:alikala/features/veridy/code/verify_code_page.dart';
@@ -60,6 +63,9 @@ class NavigationConfig {
         SailorRoute(name: Routes.must_login, builder: (context, arg, params) => MustLoginPage()),
         SailorRoute(name: Routes.settings, builder: (context, arg, params) => SettingsPage()),
         SailorRoute(name: Routes.splash, builder: (context, arg, params) => SplashScreen()),
+        SailorRoute(name: Routes.search, builder: (context, arg, params) => SearchPage()),
+        SailorRoute(name: Routes.address, builder: (context, arg, params) => AddressPage()),
+        SailorRoute(name: Routes.favorites_page, builder: (context, arg, params) => FavoritesPage()),
       ],
     );
   }

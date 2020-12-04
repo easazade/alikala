@@ -1,3 +1,5 @@
+import 'package:alikala/core/constants.dart';
+import 'package:alikala/core/navigation.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_bottom_navigation_bar.dart';
 import 'package:alikala/widgets/app_sliver_amazing_deals.dart';
@@ -8,6 +10,7 @@ import 'package:alikala/widgets/app_sliver_nine_tiles.dart';
 import 'package:alikala/widgets/app_sliver_search_bar.dart';
 import 'package:alikala/widgets/app_sliver_single_banner.dart';
 import 'package:alikala/widgets/app_sliver_sliders.dart';
+import 'package:alikala/widgets/util/no_scroll_glow.dart';
 import 'package:alikala/widgets/util/sliver_sized_box.dart';
 import 'package:flutter/material.dart';
 
@@ -17,15 +20,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (overScroll) {
-          overScroll.disallowGlow();
-          return false;
-        },
+      body: NoScrollGlow(
         child: CustomScrollView(
           slivers: [
             AppSliverSearchBar(context, () {
-              showInfoToast('search');
+              sailor.navigate(Routes.search);
             }),
             AppSliverSliders(images: fakeSales),
             SliverSizedBox(height: 20),

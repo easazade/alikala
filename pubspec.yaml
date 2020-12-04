@@ -105,6 +105,7 @@ flutter:
     - assets/images/empty_cart.png
     - assets/images/image_placeholder.png
     - assets/images/coin_dash.png
+    - assets/images/retry.png
 
   fonts:
     - family: Estedad

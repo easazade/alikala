@@ -16,6 +16,7 @@ class AppColors {
   static const HYPER_LINK = Color(0xFF0FAAC6);
 
   static const GREY_BG = Color(0xFFECEDEF);
+  static const GREY_DARK = Color(0xFF6A6E7C);
 
   static const THEME_ACCENT_3 = Color(0xFF00B241);
 }
@@ -31,6 +32,9 @@ class Routes {
   static const String must_login = '/must_login';
   static const String settings = '/settings';
   static const String splash = '/splash';
+  static const String favorites_page = '/favorites_page';
+  static const String search = '/search';
+  static const String address = '/address';
 }
 
 class TextStyles {

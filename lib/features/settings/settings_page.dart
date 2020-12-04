@@ -24,10 +24,10 @@ class SettingsPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               children: [
-                _createSettingItem(label: 'پرسش‌های متداول', icon: Icons.question_answer, onTap: () => showInfoToast('QA')),
-                _createSettingItem(label: 'تماس با ما', icon: Icons.call, onTap: () => showInfoToast('Call Us')),
-                _createSettingItem(label: 'امتیاز به اپلیکیشن علی‌کالا', icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),
-                _createSettingItem(
+                createSettingItem(label: 'پرسش‌های متداول', icon: Icons.question_answer, onTap: () => showInfoToast('QA')),
+                createSettingItem(label: 'تماس با ما', icon: Icons.call, onTap: () => showInfoToast('Call Us')),
+                createSettingItem(label: 'امتیاز به اپلیکیشن علی‌کالا', icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),
+                createSettingItem(
                   label: 'خروج از حساب کاربری',
                   labelColor: AppColors.THEME_ACCENT,
                   hasDivider: false,
@@ -46,7 +46,7 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Widget _createSettingItem({
+  static Widget createSettingItem({
     @required IconData icon,
     @required String label,
     @required Null Function() onTap,

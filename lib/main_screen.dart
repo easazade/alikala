@@ -52,7 +52,7 @@ class MainScreen extends StatelessWidget {
             return CartPage();
             break;
           case 3:
-            return FavoritesPage();
+            return ProfilePage();
             break;
         }
         throw Exception('there is no page for this index in tabBuilder in main_screen.dart');
