@@ -2,7 +2,7 @@ import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/widgets/app_icon_button.dart';
-import 'package:alikala/widgets/app_secion_separator.dart';
+import 'package:alikala/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

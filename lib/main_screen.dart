@@ -2,6 +2,7 @@ import 'package:alikala/core/constants.dart';
 import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
 import 'package:alikala/features/enter/pass/enter_password_page.dart';
+import 'package:alikala/features/favorites/favorites_page.dart';
 import 'package:alikala/features/home/home_page.dart';
 import 'package:alikala/features/profile/profile_page.dart';
 import 'package:alikala/features/settings/settings_page.dart';
@@ -51,7 +52,7 @@ class MainScreen extends StatelessWidget {
             return CartPage();
             break;
           case 3:
-            return ProfilePage();
+            return FavoritesPage();
             break;
         }
         throw Exception('there is no page for this index in tabBuilder in main_screen.dart');

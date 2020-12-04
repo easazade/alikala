@@ -9,7 +9,7 @@ import 'package:alikala/widgets/app_button.dart';
 import 'package:alikala/widgets/app_network_image.dart';
 import 'package:alikala/widgets/app_price_tag.dart';
 import 'package:alikala/widgets/app_product_color.dart';
-import 'package:alikala/widgets/app_secion_separator.dart';
+import 'package:alikala/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +91,7 @@ class CartPage extends StatelessWidget {
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: AppAddToCart(product: product, count: 1),
+              child: AppAddToCart(product: product),
             ),
           ],
         ),

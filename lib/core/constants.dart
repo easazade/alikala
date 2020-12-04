@@ -17,18 +17,21 @@ class AppColors {
 
   static const GREY_BG = Color(0xFFECEDEF);
 
-  static const THEME_ACCENT_3= Color(0xFF00B241);
-
+  static const THEME_ACCENT_3 = Color(0xFF00B241);
 }
 
 class Routes {
-  static const String HOME = '/home';
-  static const String CATEGORIES = '/categories';
-  static const String CART = '/cart';
-  static const String PROFILE = '/profile';
-  static const String VERIFY_CODE = '/verify_code';
+  static const String main_screen = '/main_screen';
+  static const String home = '/home';
+  static const String categories = '/categories';
+  static const String cart = '/cart';
+  static const String profile = '/profile';
+  static const String verify_code = '/verify_code';
+  static const String enter_pass = '/enter_pass';
+  static const String must_login = '/must_login';
+  static const String settings = '/settings';
+  static const String splash = '/splash';
 }
-
 
 class TextStyles {
   static const dark_10 = const TextStyle(fontSize: 10, color: AppColors.TEXT_DARK);

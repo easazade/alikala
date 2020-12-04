@@ -1,3 +1,4 @@
+import 'package:alikala/features/splash/splash_screen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/main_screen.dart';
 import 'package:alikala/utils/cupertino_theme_overrides.dart';
@@ -68,4 +69,14 @@ class _ApplicationState extends State<Application> {
       ],
     );
   }
+
+
+  Widget startingPage (BuildContext context){
+    if(kReleaseMode){
+      return SplashScreen();
+    }else{
+      return MainScreen();
+    }
+  }
+
 }

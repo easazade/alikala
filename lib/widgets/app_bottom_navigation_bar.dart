@@ -32,16 +32,16 @@ class AppBottomNavigationBar extends StatelessWidget {
         onTap: (itemIndex) {
           switch (itemIndex) {
             case 0:
-              sailor.navigate(Routes.HOME);
+              sailor.navigate(Routes.home);
               break;
             case 1:
-              sailor.navigate(Routes.CATEGORIES);
+              sailor.navigate(Routes.categories);
               break;
             case 2:
-              sailor.navigate(Routes.CART);
+              sailor.navigate(Routes.cart);
               break;
             case 3:
-              sailor.navigate(Routes.PROFILE);
+              sailor.navigate(Routes.profile);
               break;
           }
         },

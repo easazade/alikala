@@ -1,8 +1,13 @@
 import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
+import 'package:alikala/features/enter/pass/enter_password_page.dart';
 import 'package:alikala/features/home/home_page.dart';
+import 'package:alikala/features/must/login/must_login_page.dart';
 import 'package:alikala/features/profile/profile_page.dart';
+import 'package:alikala/features/settings/settings_page.dart';
+import 'package:alikala/features/splash/splash_screen.dart';
 import 'package:alikala/features/veridy/code/verify_code_page.dart';
+import 'package:alikala/main_screen.dart';
 import 'package:mockito/mockito.dart' as mockito;
 import 'package:mockito/mockito.dart';
 import 'package:sailor/sailor.dart';
@@ -45,20 +50,17 @@ class NavigationConfig {
   static void createRoutes() {
     sailor.addRoutes(
       <SailorRoute>[
-        SailorRoute(name: Routes.HOME, builder: (context, arg, params) => HomePage()),
-        SailorRoute(name: Routes.CATEGORIES, builder: (context, arg, params) => CategoriesPage()),
-        SailorRoute(name: Routes.CART, builder: (context, arg, params) => CartPage()),
-        SailorRoute(name: Routes.PROFILE, builder: (context, arg, params) => ProfilePage()),
-        SailorRoute(name: Routes.VERIFY_CODE, builder: (context, arg, params) => VerifyCodePage()),
-//        SailorRoute(
-//          name: Routes.HOME,
-//          builder: (context, arg, params) => BlocProvider<HomeBloc>(
-//            create: (context) => getIt.newHomeBloc(),
-//            child: HomePage(),
-//          ),
-//        ),
+        SailorRoute(name: Routes.home, builder: (context, arg, params) => HomePage()),
+        SailorRoute(name: Routes.categories, builder: (context, arg, params) => CategoriesPage()),
+        SailorRoute(name: Routes.cart, builder: (context, arg, params) => CartPage()),
+        SailorRoute(name: Routes.profile, builder: (context, arg, params) => ProfilePage()),
+        SailorRoute(name: Routes.verify_code, builder: (context, arg, params) => VerifyCodePage()),
+        SailorRoute(name: Routes.main_screen, builder: (context, arg, params) => MainScreen()),
+        SailorRoute(name: Routes.enter_pass, builder: (context, arg, params) => EnterPasswordPage()),
+        SailorRoute(name: Routes.must_login, builder: (context, arg, params) => MustLoginPage()),
+        SailorRoute(name: Routes.settings, builder: (context, arg, params) => SettingsPage()),
+        SailorRoute(name: Routes.splash, builder: (context, arg, params) => SplashScreen()),
       ],
     );
   }
 }
-

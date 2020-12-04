@@ -1,7 +1,10 @@
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/core/navigation.dart';
 import 'package:alikala/gen/assets.gen.dart';
+import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/util/app_progress.dart';
 import 'package:flutter/material.dart';
+import 'package:sailor/sailor.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key}) : super(key: key);
@@ -11,6 +14,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(3.seconds(), () {
+      sailor.navigate(Routes.main_screen, navigationType: NavigationType.pushReplace);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
