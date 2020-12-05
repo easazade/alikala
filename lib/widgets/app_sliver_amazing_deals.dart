@@ -1,4 +1,5 @@
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/core/navigation.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_network_image.dart';

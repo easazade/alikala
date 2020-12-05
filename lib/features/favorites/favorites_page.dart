@@ -10,7 +10,7 @@ class FavoritesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('علاقه‌مندی‌ها', style: TextStyles.dark_18),
+        title: Text('علاقه‌مندی‌ها', style: TextStyles.dark_18_w700),
         elevation: 1,
       ),
       body: NoScrollGlow(

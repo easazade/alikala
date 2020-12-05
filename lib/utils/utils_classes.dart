@@ -1,7 +1,5 @@
 import 'dart:collection';
 
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
-import 'package:flutter/material.dart';
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/injectable.dart';
 import 'package:alikala/core/navigation.dart';
@@ -9,6 +7,8 @@ import 'package:alikala/utils/typedefs.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/util/action_error_widget.dart';
 import 'package:alikala/widgets/util/app_progress.dart';
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mockito/mockito.dart' as mockito;
 
@@ -277,7 +277,7 @@ class DialogMsg {
       showDialog(
         context: context,
         child: AlertDialog(
-          title: Text(title),
+          title: Text(title, style: TextStyles.dark_18_w700),
           content: Text(holder),
           actions: <Widget>[
             Padding(

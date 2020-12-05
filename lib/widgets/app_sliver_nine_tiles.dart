@@ -1,5 +1,7 @@
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/core/navigation.dart';
 import 'package:alikala/data/entities.dart';
+import 'package:alikala/features/product/product_page.dart';
 import 'package:alikala/widgets/app_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +33,7 @@ class AppSliverNineTiles extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerRight,
-              child: Text(subtitle, style: TextStyle(color: AppColors.TEXT_LIGHT,fontSize: 13)),
+              child: Text(subtitle, style: TextStyle(color: AppColors.TEXT_LIGHT, fontSize: 13)),
             ),
             GridView.count(
               shrinkWrap: true,
@@ -40,12 +42,15 @@ class AppSliverNineTiles extends StatelessWidget {
               children: [
                 for (var product in products.take(9))
                   GridTile(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey[100],width: 0.5),
+                    child: GestureDetector(
+                      onTap: () => sailor.navigate(Routes.product, args: ProductPageArgs(product)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey[100], width: 0.5),
+                        ),
+                        padding: const EdgeInsets.all(12.0),
+                        child: AppNetworkImage(imageUrl: product.images.first, width: 80),
                       ),
-                      padding: const EdgeInsets.all(12.0),
-                      child: AppNetworkImage(imageUrl: product.images.first, width: 80),
                     ),
                   ),
               ],

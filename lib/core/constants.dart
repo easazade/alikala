@@ -35,6 +35,7 @@ class Routes {
   static const String favorites_page = '/favorites_page';
   static const String search = '/search';
   static const String address = '/address';
+  static const String product = '/product';
 }
 
 class TextStyles {

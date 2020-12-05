@@ -13,7 +13,7 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('تنظیمات', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+        title: Text('تنظیمات', style: TextStyles.dark_18_w700),
         actions: [
           IconButton(icon: Icon(FeatherIcons.x), onPressed: sailor.pop),
         ],

@@ -5,6 +5,7 @@ import 'package:alikala/features/enter/pass/enter_password_page.dart';
 import 'package:alikala/features/favorites/favorites_page.dart';
 import 'package:alikala/features/home/home_page.dart';
 import 'package:alikala/features/must/login/must_login_page.dart';
+import 'package:alikala/features/product/product_page.dart';
 import 'package:alikala/features/profile/profile_page.dart';
 import 'package:alikala/features/search/search_page.dart';
 import 'package:alikala/features/settings/settings_page.dart';
@@ -65,6 +66,7 @@ class NavigationConfig {
         SailorRoute(name: Routes.splash, builder: (context, arg, params) => SplashScreen()),
         SailorRoute(name: Routes.search, builder: (context, arg, params) => SearchPage()),
         SailorRoute(name: Routes.address, builder: (context, arg, params) => AddressPage()),
+        SailorRoute(name: Routes.product, builder: (context, arg, params) => ProductPage(arg)),
         SailorRoute(name: Routes.favorites_page, builder: (context, arg, params) => FavoritesPage()),
       ],
     );
