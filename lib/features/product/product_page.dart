@@ -1,6 +1,12 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.dart';
 import 'package:alikala/data/entities.dart';
+import 'package:alikala/fake_data.dart';
+import 'package:alikala/widgets/app_add_to_cart.dart';
+import 'package:alikala/widgets/app_network_image.dart';
+import 'package:alikala/widgets/app_price_tag.dart';
+import 'package:alikala/widgets/app_rating.dart';
+import 'package:alikala/widgets/slider/app_image_slider.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:sailor/sailor.dart';
@@ -24,27 +30,51 @@ class ProductPage extends StatelessWidget {
         elevation: 1,
         actions: [
           _createCartActionItem(5),
-          GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Icon(FeatherIcons.heart),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Icon(FeatherIcons.moreVertical),
-            ),
-          ),
+          _createAddToFavoriteItem(),
+          _createMoreItem(),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-
+            AppImageCarousel(
+              fakeProductsImages.length,
+              height: MediaQuery.of(context).size.height * 0.3,
+              viewport: 1,
+              builder: (context, position) => AppNetworkImage(
+                imageUrl: fakeProductsImages[position],
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(args.product.title, style: TextStyles.dark_18_w700),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: AppRating(points: 450, votes: 100),
+              ),
+            ),
           ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 60,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AppAddToCart(product: args.product, showSum: false),
+              AppPriceTag(args.product.price),
+            ],
+          ),
         ),
       ),
     );
@@ -57,7 +87,7 @@ class ProductPage extends StatelessWidget {
       child: Stack(
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () => sailor.navigate(Routes.cart),
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Icon(FeatherIcons.shoppingCart),
@@ -85,6 +115,26 @@ class ProductPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _createAddToFavoriteItem() {
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Icon(FeatherIcons.heart),
+      ),
+    );
+  }
+
+  Widget _createMoreItem() {
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Icon(FeatherIcons.moreVertical),
       ),
     );
   }

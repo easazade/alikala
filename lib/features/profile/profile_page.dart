@@ -61,9 +61,8 @@ class ProfilePage extends StatelessWidget {
                   onTap: () => sailor.navigate(Routes.favorites_page),
                 ),
                 _createMenuButton(icon: Icons.comment_outlined, label: 'نقد و نظرات', onTap: () {}),
-                _createMenuButton(icon: Icons.directions_outlined, label: 'آدرس ها', onTap: () {
-                  sailor.navigate(Routes.address);
-                }),
+                _createMenuButton(
+                    icon: Icons.directions_outlined, label: 'آدرس ها', onTap: () => sailor.navigate(Routes.address)),
                 _createMenuButton(icon: Icons.person_outline_outlined, label: 'اطلاعات حساب کاربری', onTap: () {}),
               ],
             ),

@@ -7,9 +7,17 @@ class AppImageCarousel<T> extends StatefulWidget {
   final int itemCount;
   final Widget Function(BuildContext context, int index) builder;
   final double height;
+  final double viewport;
+  final double aspectRatio;
   List<int> _indexes;
 
-  AppImageCarousel(this.itemCount, {@required this.height, @required this.builder}) {
+  AppImageCarousel(
+    this.itemCount, {
+    @required this.height,
+    @required this.builder,
+    this.viewport = 1.2,
+    this.aspectRatio = 2,
+  }) {
     _indexes = List<int>();
     for (int i = 0; i < itemCount; i++) {
       _indexes.add(i);
@@ -37,9 +45,9 @@ class _AppImageCarouselState extends State<AppImageCarousel> {
               autoPlay: (widget.itemCount > 1) ? true : false,
               autoPlayInterval: const Duration(seconds: 6),
               pauseAutoPlayOnTouch: true,
-              aspectRatio: 2.0,
-              enlargeCenterPage: true,
-              viewportFraction: 1.2,
+              aspectRatio: widget.aspectRatio,
+              enlargeCenterPage: false,
+              viewportFraction: widget.viewport,
               onPageChanged: (index, reason) {
                 setState(() {
                   _selectedIndex = index;

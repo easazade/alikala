@@ -5,6 +5,7 @@ class AppColors {
   static const TRANSPARENT = Color(0x00000000);
 
   static const THEME_ORANGE = Color(0xFFF9A825);
+  static const YELLOW_STAR = Color(0xFFF9BC01);
 
   static const TEXT_LIGHT = Color(0xFFADB0C8);
   static const TEXT_LIGHT_2 = Color(0xFF6F7279);

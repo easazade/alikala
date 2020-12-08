@@ -1,3 +1,5 @@
+import 'package:alikala/fake_data.dart';
+import 'package:alikala/features/product/product_page.dart';
 import 'package:alikala/features/splash/splash_screen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/main_screen.dart';
@@ -60,7 +62,7 @@ class _ApplicationState extends State<Application> {
       debugShowCheckedModeBanner: false,
       //theme: hrTheme,
       title: 'AliKala',
-      home: MainScreen(),
+      home: startingPage(context),
       onGenerateRoute: sailor.generator(),
       navigatorKey: sailor.navigatorKey,
       navigatorObservers: [
@@ -75,7 +77,7 @@ class _ApplicationState extends State<Application> {
     if(kReleaseMode){
       return SplashScreen();
     }else{
-      return MainScreen();
+      return ProductPage(ProductPageArgs(fakeProducts[0]));
     }
   }
 

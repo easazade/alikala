@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 
 class AppAddToCart extends StatefulWidget {
   final Product product;
+  final bool showSum;
 
-  AppAddToCart({@required this.product});
+  AppAddToCart({@required this.product, this.showSum = true});
 
   @override
   State<StatefulWidget> createState() => _State();
@@ -39,9 +40,9 @@ class _State extends State<AppAddToCart> {
             ),
             child: (_count == 0)
                 ? Align(
-                  alignment: Alignment.center,
-                  child: Text('خرید', style: TextStyles.white_16_w500, textAlign: TextAlign.center),
-                )
+                    alignment: Alignment.center,
+                    child: Text('خرید', style: TextStyles.white_16_w500, textAlign: TextAlign.center),
+                  )
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -73,9 +74,11 @@ class _State extends State<AppAddToCart> {
                   ),
           ),
         ),
-        SizedBox(width: 10),
-        Text('${(widget.product.price * _count).commaSeparated()}', style: TextStyle(fontWeight: FontWeight.w500)),
-        Text('  تومان', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w500))
+        if (widget.showSum) ...[
+          SizedBox(width: 10),
+          Text('${(widget.product.price * _count).commaSeparated()}', style: TextStyle(fontWeight: FontWeight.w500)),
+          Text('  تومان', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w500))
+        ],
       ],
     );
   }
