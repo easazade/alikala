@@ -340,7 +340,7 @@ class ActionError {
   String toString() => 'actionError: $msg';
 }
 
-class Stack<T> {
+class StackCollection<T> {
   final _stack = Queue<T>();
 
   int get length => _stack.length;
@@ -364,4 +364,15 @@ class Stack<T> {
   }
 
   T peak() => _stack.last;
+}
+
+Widget divider(BuildContext context, {EdgeInsetsGeometry padding}) {
+  return Padding(
+    padding: padding ?? const EdgeInsets.all(0),
+    child: Container(
+      width: MediaQuery.of(context).size.width,
+      height: 1.3,
+      color: Colors.grey[200],
+    ),
+  );
 }

@@ -12,7 +12,7 @@ class AppSliverMostPopulars extends StatelessWidget {
   List<List<Product>> _productTuples = [];
 
   AppSliverMostPopulars({@required this.products, @required this.title}) {
-    var stack = utils.Stack<Product>();
+    var stack = utils.StackCollection<Product>();
     products.reversed.forEach((element) => stack.push(element));
     while (stack.canPop()) {
       List<Product> items = [];

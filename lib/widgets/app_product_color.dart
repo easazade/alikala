@@ -2,9 +2,9 @@ import 'package:alikala/data/entities.dart';
 import 'package:flutter/material.dart';
 
 class AppProductColor extends StatelessWidget {
-  final Product _product;
+  final Product product;
 
-  AppProductColor(this._product);
+  AppProductColor(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,12 @@ class AppProductColor extends StatelessWidget {
           height: 6,
           width: 6,
           decoration: BoxDecoration(
-            color: _product.color,
+            color: product.color,
             borderRadius: BorderRadius.circular(50),
           ),
         ),
         SizedBox(width: 6),
-        Text(_product.colorName, style: TextStyle(fontSize: 11)),
+        Text(product.colorName, style: TextStyle(fontSize: 11)),
       ],
     );
   }

@@ -2,9 +2,12 @@ import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/fake_data.dart';
+import 'package:alikala/utils/utils_classes.dart';
+import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_add_to_cart.dart';
 import 'package:alikala/widgets/app_network_image.dart';
 import 'package:alikala/widgets/app_price_tag.dart';
+import 'package:alikala/widgets/app_product_color_selector.dart';
 import 'package:alikala/widgets/app_rating.dart';
 import 'package:alikala/widgets/slider/app_image_slider.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -15,6 +18,8 @@ class ProductPage extends StatelessWidget {
   final ProductPageArgs args;
 
   const ProductPage(this.args);
+
+  final pagePadding = const EdgeInsets.symmetric(horizontal: 15, vertical: 10);
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +60,22 @@ class ProductPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: pagePadding,
               child: Align(
                 alignment: AlignmentDirectional.centerEnd,
                 child: AppRating(points: 450, votes: 100),
+              ),
+            ),
+            divider(context, padding: pagePadding),
+            Padding(
+              padding: pagePadding,
+              child: AppProductColorSelector(
+                namesToColors: {
+                  'مشکی': Colors.black,
+                  'آبی': Colors.blue,
+                  'قرمز': Colors.red,
+                },
+                onChange: (colorName, color) => showSuccessToast(colorName),
               ),
             ),
           ],
