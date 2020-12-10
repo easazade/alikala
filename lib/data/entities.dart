@@ -45,3 +45,13 @@ class Category {
 
   Category(this.id, this.parentId, this.name, this.image, this.productsEstimate);
 }
+
+class Comment {
+  final int id;
+  final String title;
+  final String content;
+  final DateTime dateTime;
+  final String username;
+
+  Comment(this.id, this.title, this.content, this.dateTime, this.username);
+}

@@ -1,7 +1,5 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.dart';
-import 'package:alikala/utils/utils_functions.dart';
-import 'package:alikala/widgets/app_bottom_navigation_bar.dart';
 import 'package:alikala/widgets/app_sliver_amazing_deals.dart';
 import 'package:alikala/widgets/app_sliver_double_banner.dart';
 import 'package:alikala/widgets/app_sliver_horizontal_products_list.dart';
@@ -39,7 +37,12 @@ class HomePage extends StatelessWidget {
             SliverSizedBox(height: 30),
             AppSliverMostPopulars(products: fakeProducts, title: 'پرفروش‌ترین کالاها'),
             AppSliverDoubleBanner(imageUrls: fakeSales),
-            AppSliverHorizontalProductsList(products: fakeProducts, title: 'کالاهای جدید', linkLabel: 'مشاهده همه'),
+            AppSliverHorizontalProductsList(
+              products: fakeProducts,
+              title: 'کالاهای جدید',
+              linkLabel: 'مشاهده همه',
+              onLinkClicked: () {},
+            ),
           ],
         ),
       ),

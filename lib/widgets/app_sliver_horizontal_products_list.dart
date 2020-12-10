@@ -10,54 +10,86 @@ class AppSliverHorizontalProductsList extends StatelessWidget {
   final List<Product> products;
   final String title;
   final String linkLabel;
+  final VoidCallback onLinkClicked;
 
   const AppSliverHorizontalProductsList({
     Key key,
     @required this.products,
     @required this.title,
     @required this.linkLabel,
+    @required this.onLinkClicked,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (overScroll) => true,
-        child: Container(
-          height: 280,
-          margin: const EdgeInsets.symmetric(vertical: 20),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
-                    Row(
-                      children: [
-                        Text(linkLabel,
-                            style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500)),
-                        Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
-                      ],
-                    ),
-                  ],
-                ),
+      child: AppHorizontalProductsList(
+        products: products,
+        title: title,
+        linkLabel: linkLabel,
+        onLinkClicked: onLinkClicked,
+      ),
+    );
+  }
+}
+
+class AppHorizontalProductsList extends StatelessWidget {
+  final List<Product> products;
+  final String title;
+  final String linkLabel;
+  final VoidCallback onLinkClicked;
+
+  const AppHorizontalProductsList({
+    Key key,
+    @required this.products,
+    @required this.title,
+    @required this.linkLabel,
+    @required this.onLinkClicked,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return NotificationListener<OverscrollIndicatorNotification>(
+      onNotification: (overScroll) => true,
+      child: Container(
+        height: 280,
+        margin: const EdgeInsets.symmetric(vertical: 20),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                  Row(
+                    children: [
+                      TextButton(
+                        child: Text(
+                          linkLabel,
+                          style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500),
+                        ),
+                        onPressed: onLinkClicked,
+                      ),
+                      Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
+                    ],
+                  ),
+                ],
               ),
-              Expanded(
-                child: ListView.separated(
-                  separatorBuilder: (context, position) => Container(
-                      color: Colors.grey[100],
-                      width: 1,
-                    ),
-                  shrinkWrap: true,
-                  itemBuilder: (context, position) => _createProductItem(products[position]),
-                  itemCount: products.length,
-                  scrollDirection: Axis.horizontal,
+            ),
+            Expanded(
+              child: ListView.separated(
+                separatorBuilder: (context, position) => Container(
+                  color: Colors.grey[100],
+                  width: 1,
                 ),
+                shrinkWrap: true,
+                itemBuilder: (context, position) => _createProductItem(products[position]),
+                itemCount: products.length,
+                scrollDirection: Axis.horizontal,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

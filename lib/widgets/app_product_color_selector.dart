@@ -1,13 +1,12 @@
 import 'package:alikala/core/constants.dart';
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppProductColorSelector extends StatefulWidget {
   final Map<String, Color> namesToColors;
-  final void Function(String name,Color color) onChange;
+  final void Function(String name, Color color) onChange;
 
-  const AppProductColorSelector({Key key, @required this.namesToColors,@required this.onChange}) : super(key: key);
+  const AppProductColorSelector({Key key, @required this.namesToColors, @required this.onChange}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _State(namesToColors);
@@ -38,25 +37,27 @@ class _State extends State<AppProductColorSelector> {
               var color = widget.namesToColors.values.toList()[index];
               return GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: (){
+                onTap: () {
                   setState(() {
                     _selectedColorName = name;
                   });
-                  widget.onChange(name,color);
+                  widget.onChange(name, color);
                 },
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 6),
                   padding: const EdgeInsets.all(3),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: Colors.white,
-                      border: Border.all(color: (_selectedColorName == name) ? Colors.blue.shade300 : Colors.grey.shade300),
-                      boxShadow: [
-                        BoxShadow(
-                            color: (_selectedColorName == name) ? Colors.blue.shade300 : Colors.grey.shade300,
-                            blurRadius: 1,
-                            spreadRadius: 0.6)
-                      ]),
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.white,
+                    border: Border.all(color: (_selectedColorName == name) ? Colors.blue.shade200 : Colors.grey.shade200),
+                    boxShadow: [
+                      BoxShadow(
+                        color: (_selectedColorName == name) ? Colors.blue.shade200 : Colors.grey.shade200,
+                        blurRadius: 0.6,
+                        spreadRadius: 0.6,
+                      ),
+                    ],
+                  ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 import 'data/entities.dart';
@@ -230,3 +231,16 @@ List<Category> fakeSubCategories = [
   Category(9, 2, 'زیر دسته 4', fakeSale2, 16000),
   Category(10, 2, 'زیر دسته 5', fakeSale4, 900),
 ];
+
+var fakerFa = Faker(FakerDataProviderFa());
+
+List<Comment> fakeComments = List.generate(
+  12,
+  (index) => Comment(
+    index,
+    fakerFa.lorem.words(3).join(' '),
+    fakerFa.lorem.sentences(2).join(' '),
+    DateTime.now(),
+    faker.person.name(),
+  ),
+);

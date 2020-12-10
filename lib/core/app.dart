@@ -1,4 +1,5 @@
 import 'package:alikala/fake_data.dart';
+import 'package:alikala/features/home/home_page.dart';
 import 'package:alikala/features/product/product_page.dart';
 import 'package:alikala/features/splash/splash_screen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
@@ -78,6 +79,7 @@ class _ApplicationState extends State<Application> {
       return SplashScreen();
     }else{
       return ProductPage(ProductPageArgs(fakeProducts[0]));
+      // return HomePage();
     }
   }
 

@@ -5,12 +5,16 @@ import 'package:alikala/fake_data.dart';
 import 'package:alikala/utils/utils_classes.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_add_to_cart.dart';
+import 'package:alikala/widgets/app_horizontal_comments_list.dart';
 import 'package:alikala/widgets/app_network_image.dart';
 import 'package:alikala/widgets/app_price_tag.dart';
 import 'package:alikala/widgets/app_product_color_selector.dart';
 import 'package:alikala/widgets/app_rating.dart';
+import 'package:alikala/widgets/app_section_separator.dart';
+import 'package:alikala/widgets/app_sliver_horizontal_products_list.dart';
 import 'package:alikala/widgets/slider/app_image_slider.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sailor/sailor.dart';
 
@@ -78,6 +82,28 @@ class ProductPage extends StatelessWidget {
                 onChange: (colorName, color) => showSuccessToast(colorName),
               ),
             ),
+            SizedBox(height: 20),
+            AppSectionSeparator(),
+            SizedBox(height: 10),
+            _createProductFeatures(context),
+            SizedBox(height: 10),
+            AppSectionSeparator(),
+            SizedBox(height: 10),
+            AppHorizontalProductsList(
+              products: fakeProducts,
+              title: 'کالاهای مشابه',
+              linkLabel: 'مشاهده همه',
+              onLinkClicked: () {},
+            ),
+            SizedBox(height: 10),
+            AppSectionSeparator(),
+            SizedBox(height: 10),
+            AppHorizontalCommentsList(
+              comments: fakeComments,
+              title: 'نظرات کاربران',
+              linkLabel: 'مشاهده همه',
+              onLinkClicked: () {},
+            )
           ],
         ),
       ),
@@ -152,6 +178,31 @@ class ProductPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Icon(FeatherIcons.moreVertical),
+      ),
+    );
+  }
+
+  Widget _createProductFeatures(BuildContext context) {
+    return Container(
+      child: Padding(
+        padding: pagePadding,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('ویژگی های محصول', style: TextStyles.dark_16_w500),
+            SizedBox(height: 15),
+            divider(context),
+            SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('مشخصات فنی', style: TextStyles.dark_16_w500),
+                Icon(CupertinoIcons.forward, size: 20, color: Colors.grey),
+              ],
+            ),
+            SizedBox(height: 30),
+          ],
+        ),
       ),
     );
   }
