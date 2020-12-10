@@ -51,7 +51,7 @@ class AppHorizontalCommentsList extends StatelessWidget {
       onNotification: (overScroll) => true,
       child: Container(
         height: 230,
-        margin: const EdgeInsets.symmetric(vertical: 20),
+        margin: const EdgeInsets.only(top: 20, bottom: 40),
         child: Column(
           children: [
             Padding(
@@ -60,17 +60,17 @@ class AppHorizontalCommentsList extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
-                  Row(
-                    children: [
-                      TextButton(
-                        child: Text(
+                  TextButton(
+                    child: Row(
+                      children: [
+                        Text(
                           linkLabel,
                           style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500),
                         ),
-                        onPressed: onLinkClicked,
-                      ),
-                      Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
-                    ],
+                        Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
+                      ],
+                    ),
+                    onPressed: onLinkClicked,
                   ),
                 ],
               ),

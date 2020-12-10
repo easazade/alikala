@@ -78,8 +78,7 @@ class _ApplicationState extends State<Application> {
     if(kReleaseMode){
       return SplashScreen();
     }else{
-      return ProductPage(ProductPageArgs(fakeProducts[0]));
-      // return HomePage();
+      return MainScreen();
     }
   }
 

@@ -52,8 +52,8 @@ class AppHorizontalProductsList extends StatelessWidget {
     return NotificationListener<OverscrollIndicatorNotification>(
       onNotification: (overScroll) => true,
       child: Container(
-        height: 280,
-        margin: const EdgeInsets.symmetric(vertical: 20),
+        height: 300,
+        margin: const EdgeInsets.symmetric(vertical: 10),
         child: Column(
           children: [
             Padding(
@@ -62,17 +62,17 @@ class AppHorizontalProductsList extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
-                  Row(
-                    children: [
-                      TextButton(
-                        child: Text(
+                  TextButton(
+                    child: Row(
+                      children: [
+                        Text(
                           linkLabel,
                           style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500),
                         ),
-                        onPressed: onLinkClicked,
-                      ),
-                      Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
-                    ],
+                        Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
+                      ],
+                    ),
+                    onPressed: onLinkClicked,
                   ),
                 ],
               ),
