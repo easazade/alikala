@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
 
-import 'package:footprint/footprint.dart';
-
 class SliverGridDelegateHorizontalScroll extends SliverGridDelegate {
   /// Creates a delegate that makes grid layouts with a fixed number of tiles in
   /// the cross axis.
@@ -12,15 +10,14 @@ class SliverGridDelegateHorizontalScroll extends SliverGridDelegate {
   /// `crossAxisSpacing` arguments must not be negative. The `crossAxisCount`
   /// and `childAspectRatio` arguments must be greater than zero.
   const SliverGridDelegateHorizontalScroll({
-    @required this.crossAxisCount,
+    required this.crossAxisCount,
     this.mainAxisSpacing = 0.0,
     this.crossAxisSpacing = 0.0,
     this.childAspectRatio = 1.0,
-  })
-    : assert(crossAxisCount != null && crossAxisCount > 0),
-      assert(mainAxisSpacing != null && mainAxisSpacing >= 0),
-      assert(crossAxisSpacing != null && crossAxisSpacing >= 0),
-      assert(childAspectRatio != null && childAspectRatio > 0);
+  })  : assert(crossAxisCount > 0),
+        assert(mainAxisSpacing >= 0),
+        assert(crossAxisSpacing >= 0),
+        assert(childAspectRatio > 0);
 
   /// The number of children in the cross axis.
   final int crossAxisCount;
@@ -45,13 +42,11 @@ class SliverGridDelegateHorizontalScroll extends SliverGridDelegate {
   @override
   SliverGridLayout getLayout(SliverConstraints constraints) {
     assert(_debugAssertIsValid());
-    final double usableCrossAxisExtent = math.max(0.0,
-      constraints.crossAxisExtent - crossAxisSpacing * (crossAxisCount - 1));
+    final double usableCrossAxisExtent =
+        math.max(0.0, constraints.crossAxisExtent - crossAxisSpacing * (crossAxisCount - 1));
     final double childCrossAxisExtent = usableCrossAxisExtent / crossAxisCount;
     final double childMainAxisExtent = childCrossAxisExtent / childAspectRatio;
 
-    Footprint.log('childCrossAxisExtent : $childCrossAxisExtent');
-    Footprint.log('crossAxisStride : ${childCrossAxisExtent + crossAxisSpacing}');
     return SliverGridRegularTileLayout(
       crossAxisCount: crossAxisCount,
       mainAxisStride: childMainAxisExtent + mainAxisSpacing,
@@ -64,9 +59,9 @@ class SliverGridDelegateHorizontalScroll extends SliverGridDelegate {
 
   @override
   bool shouldRelayout(SliverGridDelegateWithFixedCrossAxisCount oldDelegate) {
-    return oldDelegate.crossAxisCount != crossAxisCount
-      || oldDelegate.mainAxisSpacing != mainAxisSpacing
-      || oldDelegate.crossAxisSpacing != crossAxisSpacing
-      || oldDelegate.childAspectRatio != childAspectRatio;
+    return oldDelegate.crossAxisCount != crossAxisCount ||
+        oldDelegate.mainAxisSpacing != mainAxisSpacing ||
+        oldDelegate.crossAxisSpacing != crossAxisSpacing ||
+        oldDelegate.childAspectRatio != childAspectRatio;
   }
 }

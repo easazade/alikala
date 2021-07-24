@@ -1,10 +1,8 @@
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_form_long_btn.dart';
 import 'package:alikala/widgets/util/unfocus_current_focus_widget.dart';
+import 'package:alikala/widgets/util/verification_code_input.dart';
 import 'package:flutter/material.dart';
-
-import 'file:///C:/workspace/flutter/projects/alikala/lib/widgets/util/verification_code_input.dart';
 
 class VerifyCodePage extends StatelessWidget {
   @override

@@ -4,43 +4,42 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.9.0 <3.0.0"
+  sdk: ">=2.13.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  footprint: ^1.1.3
-  intl:
-  intl_translation:
-  flutter_bloc: ^6.0.5
-  connectivity: ^0.4.9+3
-  shared_preferences: ^0.5.12
-  sailor: ^0.7.1
-  freezed_annotation: ^0.11.0+1
-  json_annotation: ^3.0.1
-  fluttertoast: ^7.1.1
-  injectable: ^1.0.4
-  get_it: ^4.0.4
-  url_launcher: ^5.7.2
-  shamsi_date: ^0.9.1
-  tuple: ^1.0.3
-  dio: ^3.0.10
-  auto_size_text: ^2.1.0
-  carousel_slider: ^2.3.1
-  flutter_custom_clippers: ^1.1.2
-  cached_network_image: ^2.3.3
-  flushbar: ^1.10.4
-
-  explode_view: ^1.0.4
+  # footprint: ^1.1.3
+  intl: ^0.17.0
+  flutter_bloc: ^7.0.1
+  connectivity: ^3.0.6
+  shared_preferences: ^2.0.6
+  # sailor: ^0.7.1
+  # freezed_annotation: ^0.14.3
+  # json_annotation: ^4.1.0
+  fluttertoast: ^8.0.7
+  injectable: ^1.4.1
+  get_it: ^7.2.0
+  url_launcher: ^6.0.9
+  shamsi_date: ^0.15.0
+  tuple: ^2.0.0
+  dio: ^4.0.0
+  auto_size_text: ^3.0.0-nullsafety.0 # remove this bullshit and use FittedBox instead
+  carousel_slider: ^4.0.0
+  flutter_custom_clippers: ^2.0.0
+  cached_network_image: ^3.1.0
+  flushbar: ^1.10.4 # use flash package insread if you have the time
+  auto_route: ^2.2.0
+  # explode_view: ^1.0.4
   #  permission_handler: ^5.0.1+1
   #  moor: ^3.3.1
   #  sqlite3_flutter_libs: ^0.2.0
-  confetti: ^0.5.4+1
-  flutter_group_sliver: ^0.0.2
-  flutter_verification_code: ^0.2.1
-  device_preview: ^0.4.8
+  # confetti: ^0.6.0-nullsafety
+  # flutter_group_sliver: ^0.0.2
+  # flutter_verification_code: ^0.2.1
+  # device_preview: ^0.4.8
   faker:
     git: https://github.com/easazade/faker.git
 #  adaptive_dialog: ^0.9.0+1
@@ -48,8 +47,9 @@ dependencies:
   path:
 
   ################################# icons ##########################################
-  cupertino_icons: ^1.0.0
-  feather_icons_flutter: ^4.7.4 # https://feathericons.com/
+  cupertino_icons: ^1.0.3
+  feather_icons_flutter: 
+    git: git@github.com:easazade/feather_icons_flutter.git
 #  ionicons: ^0.0.3 #https://ionicons.com/
 #  community_material_icon: ^5.4.55 #https://materialdesignicons.com/
 #  font_awesome_flutter: ^8.5.0 # https://fontawesome.com/icons
@@ -59,19 +59,18 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  injectable_generator: ^1.0.4
+  # injectable_generator: ^1.0.4
   #  moor_generator: ^3.3.1
-  build_runner: ^1.10.1
-  mockito: ^4.1.1
-  freezed: ^0.11.5
+  build_runner: ^2.0.6
+  auto_route_generator: ^2.1.0
+  # mockito: ^4.1.1
+  # freezed: ^0.14.3
   # preview: ^0.0.8
-  json_serializable: ^3.4.1
-  flutter_launcher_icons: ^0.7.2
-  test: ^1.15.2
-  bloc_test: ^7.0.0
+  flutter_launcher_icons: ^0.9.0
+  # test: ^1.17.10
+  # bloc_test: ^8.0.2
 
-dependency_overrides:
-  freezed_annotation: ^0.11.0+1
+  
 
 #dependency_overrides:
 #  analyzer: '0.39.14'

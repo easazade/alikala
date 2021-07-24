@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
 
 class AppToolbar extends StatelessWidget {
-  final String title;
+  final String? title;
 
   AppToolbar(this.title);
 
@@ -16,7 +15,7 @@ class AppToolbar extends StatelessWidget {
           Row(
             children: <Widget>[
               GestureDetector(
-                onTap: () => sailor.pop(),
+                onTap: () => Navigator.pop(context),
                 child: Container(
                   width: 40,
                   height: 40,
@@ -29,7 +28,7 @@ class AppToolbar extends StatelessWidget {
                 ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: 200),
                   child: Text(
-                    title,
+                    title!,
                     maxLines: 1,
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
                   ),

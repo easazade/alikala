@@ -78,13 +78,15 @@ class MustLoginPage extends StatelessWidget {
                         TextSpan(
                           text: 'شرایط و قوانین',
                           style: linkTextSpanStyle,
-                          recognizer: TapGestureRecognizer()..onTap = () => showAppToastWithAction(context, 'قوانین و مقررات'),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => showAppToastWithAction(context, 'قوانین و مقررات', action: (v) {}),
                         ),
                         TextSpan(text: ' استفاده از سرویس علی کالا و ', style: textSpanStyle),
                         TextSpan(
                           text: 'قوانین حریم خصوصی',
                           style: linkTextSpanStyle,
-                          recognizer: TapGestureRecognizer()..onTap = () => showAppToastWithAction(context, 'قوانین و مقررات'),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => showAppToastWithAction(context, 'قوانین و مقررات', action: (v) {}),
                         ),
                         TextSpan(text: ' آن را می‌پذیرید.', style: textSpanStyle),
                       ],

@@ -1,19 +1,19 @@
 import 'package:alikala/core/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 
 class VerificationCodeInput extends StatefulWidget {
   final ValueChanged<String> onCompleted;
   final TextInputType keyboardType;
   final int length;
   final double itemSize;
-  final BoxDecoration itemDecoration;
+  final BoxDecoration? itemDecoration;
   final TextStyle textStyle;
   final bool autofocus;
 
   VerificationCodeInput(
-      {Key key,
-      this.onCompleted,
+      {required this.onCompleted,
       this.keyboardType = TextInputType.number,
       this.length = 4,
       this.itemDecoration,
@@ -22,7 +22,7 @@ class VerificationCodeInput extends StatefulWidget {
       this.autofocus = true})
       : assert(length > 0),
         assert(itemSize > 0),
-        super(key: key);
+        super();
 
   @override
   _VerificationCodeInputState createState() => new _VerificationCodeInputState();
@@ -31,7 +31,7 @@ class VerificationCodeInput extends StatefulWidget {
 class _VerificationCodeInputState extends State<VerificationCodeInput> {
   final List<FocusNode> _listFocusNode = <FocusNode>[];
   final List<TextEditingController> _listControllerText = <TextEditingController>[];
-  List<String> _code = List();
+  List<String> _code = [];
   int _currentIndex = 0;
 
   @override
@@ -104,7 +104,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
         }
       },
       controller: _listControllerText[index],
-      maxLengthEnforced: true,
+      maxLengthEnforcement: MaxLengthEnforcement.enforced,
       autocorrect: false,
       textAlign: TextAlign.center,
       autofocus: widget.autofocus,
@@ -117,7 +117,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
       setState(() {
         _currentIndex = index + 1;
       });
-      SchedulerBinding.instance.addPostFrameCallback((_) {
+      SchedulerBinding.instance!.addPostFrameCallback((_) {
         FocusScope.of(context).requestFocus(_listFocusNode[index + 1]);
       });
     }
@@ -131,14 +131,14 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
         }
         _currentIndex = index - 1;
       });
-      SchedulerBinding.instance.addPostFrameCallback((_) {
+      SchedulerBinding.instance!.addPostFrameCallback((_) {
         FocusScope.of(context).requestFocus(_listFocusNode[index - 1]);
       });
     }
   }
 
   List<Widget> _buildListWidget() {
-    List<Widget> listWidget = List();
+    List<Widget> listWidget = [];
     for (int index = 0; index < widget.length; index++) {
       double left = (index == 0) ? 0.0 : (widget.itemSize / 10);
       listWidget.addAll([

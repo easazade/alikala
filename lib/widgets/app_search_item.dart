@@ -6,7 +6,7 @@ class AppSearchItem extends StatelessWidget {
   final String resultTitle;
   final String resultLocation;
 
-  const AppSearchItem({@required this.resultTitle, @required this.resultLocation});
+  const AppSearchItem({required this.resultTitle, required this.resultLocation});
 
   @override
   Widget build(BuildContext context) {

@@ -11,12 +11,11 @@ class AppSliverHorizontalCommentsList extends StatelessWidget {
   final VoidCallback onLinkClicked;
 
   const AppSliverHorizontalCommentsList({
-    Key key,
-    @required this.comments,
-    @required this.title,
-    @required this.linkLabel,
-    @required this.onLinkClicked,
-  }) : super(key: key);
+    required this.comments,
+    required this.title,
+    required this.linkLabel,
+    required this.onLinkClicked,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +37,11 @@ class AppHorizontalCommentsList extends StatelessWidget {
   final VoidCallback onLinkClicked;
 
   const AppHorizontalCommentsList({
-    Key key,
-    @required this.comments,
-    @required this.title,
-    @required this.linkLabel,
-    @required this.onLinkClicked,
-  }) : super(key: key);
+    required this.comments,
+    required this.title,
+    required this.linkLabel,
+    required this.onLinkClicked,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +95,7 @@ class AppHorizontalCommentsList extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        boxShadow: [BoxShadow(color: Colors.grey[300], spreadRadius: 0.5, blurRadius: 0.5)],
+        boxShadow: [BoxShadow(color: Colors.grey[300]!, spreadRadius: 0.5, blurRadius: 0.5)],
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),

@@ -36,7 +36,7 @@ class AppFavoriteProductItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(product.title, maxLines: 2,style: TextStyles.dark_14_w500),
+                      Text(product.title, maxLines: 2, style: TextStyles.dark_14_w500),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [

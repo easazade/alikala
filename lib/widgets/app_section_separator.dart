@@ -10,7 +10,7 @@ class AppSectionSeparator extends StatelessWidget {
   Widget build(BuildContext context) {
     return InnerShadow(
       blur: 1,
-      color: Colors.grey[300].withOpacity(0.6),
+      color: Colors.grey[300]!.withOpacity(0.6),
       offset: const Offset(1, 1),
       child: Container(
         decoration: BoxDecoration(

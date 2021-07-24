@@ -8,7 +8,7 @@ class AppAddToCart extends StatefulWidget {
   final Product product;
   final bool showSum;
 
-  AppAddToCart({@required this.product, this.showSum = true});
+  AppAddToCart({required this.product, this.showSum = true});
 
   @override
   State<StatefulWidget> createState() => _State();
@@ -35,7 +35,7 @@ class _State extends State<AppAddToCart> {
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
             decoration: BoxDecoration(
               color: (_count == 0) ? AppColors.THEME_ACCENT : Colors.white,
-              border: Border.all(color: (_count == 0) ? AppColors.THEME_ACCENT : Colors.grey[200]),
+              border: Border.all(color: (_count == 0) ? AppColors.THEME_ACCENT : Colors.grey[200]!),
               borderRadius: BorderRadius.circular(8),
             ),
             child: (_count == 0)
@@ -55,7 +55,8 @@ class _State extends State<AppAddToCart> {
                         },
                         child: Icon(Icons.add, size: 22, color: AppColors.THEME_ACCENT),
                       ),
-                      Text('$_count', style: TextStyle(color: AppColors.THEME_ACCENT, fontSize: 16, fontWeight: FontWeight.w700)),
+                      Text('$_count',
+                          style: TextStyle(color: AppColors.THEME_ACCENT, fontSize: 16, fontWeight: FontWeight.w700)),
                       GestureDetector(
                         onTap: () {
                           if (_count > 0)

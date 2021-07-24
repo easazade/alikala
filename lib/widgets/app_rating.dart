@@ -5,7 +5,7 @@ class AppRating extends StatelessWidget {
   final int votes;
   final int points;
 
-  const AppRating({Key key, @required this.points, @required this.votes}) : super(key: key);
+  const AppRating({required this.points, required this.votes}) : super();
 
   @override
   Widget build(BuildContext context) {

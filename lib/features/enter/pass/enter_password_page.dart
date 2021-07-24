@@ -1,6 +1,5 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/fonts.gen.dart';
-import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_form_field.dart';
 import 'package:alikala/widgets/app_form_long_btn.dart';
 import 'package:alikala/widgets/util/unfocus_current_focus_widget.dart';
@@ -51,7 +50,8 @@ class EnterPasswordPage extends StatelessWidget {
         SizedBox(height: 20),
         Directionality(
           textDirection: TextDirection.ltr,
-          child: AppFormField('رمز عبور', (pass) {}, keyboardType: TextInputType.visiblePassword, fontFamily: FontFamily.estedad),
+          child: AppFormField('رمز عبور', (pass) {},
+              keyboardType: TextInputType.visiblePassword, fontFamily: FontFamily.estedad),
         ),
         SizedBox(height: 20),
         Align(

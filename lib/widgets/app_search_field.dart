@@ -9,7 +9,7 @@ class AppSearchField extends StatefulWidget {
   final StringCallback onSearchBtnClicked;
   final VoidCallback onSearchFieldCleared;
 
-  AppSearchField({@required this.hint, @required this.onSearchBtnClicked, @required this.onSearchFieldCleared});
+  AppSearchField({required this.hint, required this.onSearchBtnClicked, required this.onSearchFieldCleared});
 
   @override
   State<StatefulWidget> createState() => _State();

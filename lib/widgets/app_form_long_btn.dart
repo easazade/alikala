@@ -19,12 +19,13 @@ class AppFormLongButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: disabled ? Colors.white : AppColors.THEME_ACCENT,
             borderRadius: BorderRadius.circular(8),
-            border: disabled ? Border.all(color: Colors.grey[100]) : null,
+            border: disabled ? Border.all(color: Colors.grey[100]!) : null,
           ),
           child: Center(
             child: Text(
               label,
-              style: TextStyle(color: disabled ? AppColors.TEXT_LIGHT : Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
+              style: TextStyle(
+                  color: disabled ? AppColors.TEXT_LIGHT : Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
             ),
           ),
         ),

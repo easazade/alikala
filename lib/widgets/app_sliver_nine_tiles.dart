@@ -1,7 +1,7 @@
+import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
+import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/data/entities.dart';
-import 'package:alikala/features/product/product_page.dart';
 import 'package:alikala/widgets/app_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +13,11 @@ class AppSliverNineTiles extends StatelessWidget {
   final String linkLabel;
 
   const AppSliverNineTiles({
-    Key key,
-    @required this.products,
-    @required this.title,
-    @required this.subtitle,
-    @required this.linkLabel,
-  }) : super(key: key);
+    required this.products,
+    required this.title,
+    required this.subtitle,
+    required this.linkLabel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +42,13 @@ class AppSliverNineTiles extends StatelessWidget {
                 for (var product in products.take(9))
                   GridTile(
                     child: GestureDetector(
-                      onTap: () => sailor.navigate(Routes.product, args: ProductPageArgs(product)),
+                      onTap: () {
+                        //  sailor.navigate(Routes.product, args: ProductPageArgs(product));
+                        appRouter.navigate(ProductRoute(product: product));
+                      },
                       child: Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey[100], width: 0.5),
+                          border: Border.all(color: Colors.grey[100]!, width: 0.5),
                         ),
                         padding: const EdgeInsets.all(12.0),
                         child: AppNetworkImage(imageUrl: product.images.first, width: 80),

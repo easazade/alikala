@@ -1,24 +1,24 @@
+import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
+import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/util/app_progress.dart';
 import 'package:flutter/material.dart';
-import 'package:sailor/sailor.dart';
 
-class SplashScreen extends StatefulWidget {
-  SplashScreen({Key key}) : super(key: key);
+class SplashPage extends StatefulWidget {
+  SplashPage();
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
     Future.delayed(3.seconds(), () {
-      sailor.navigate(Routes.main_screen, navigationType: NavigationType.pushReplace);
+      appRouter.replace(MainRoute());
     });
   }
 

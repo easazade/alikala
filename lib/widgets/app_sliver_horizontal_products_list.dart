@@ -13,12 +13,11 @@ class AppSliverHorizontalProductsList extends StatelessWidget {
   final VoidCallback onLinkClicked;
 
   const AppSliverHorizontalProductsList({
-    Key key,
-    @required this.products,
-    @required this.title,
-    @required this.linkLabel,
-    @required this.onLinkClicked,
-  }) : super(key: key);
+    required this.products,
+    required this.title,
+    required this.linkLabel,
+    required this.onLinkClicked,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +39,11 @@ class AppHorizontalProductsList extends StatelessWidget {
   final VoidCallback onLinkClicked;
 
   const AppHorizontalProductsList({
-    Key key,
-    @required this.products,
-    @required this.title,
-    @required this.linkLabel,
-    @required this.onLinkClicked,
-  }) : super(key: key);
+    required this.products,
+    required this.title,
+    required this.linkLabel,
+    required this.onLinkClicked,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +141,8 @@ class AppHorizontalProductsList extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text('${product.offPrice.commaSeparated()}', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+                      Text('${product.offPrice.commaSeparated()}',
+                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                       SizedBox(width: 2),
                       Text('تومان', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
                     ],

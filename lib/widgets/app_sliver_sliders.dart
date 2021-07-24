@@ -8,7 +8,7 @@ import 'slider/app_slider_dot_indicator.dart';
 class AppSliverSliders extends StatefulWidget {
   final List<String> images;
 
-  AppSliverSliders({Key key, @required this.images}) : super(key: key);
+  AppSliverSliders({required this.images});
 
   @override
   State<StatefulWidget> createState() => _State();

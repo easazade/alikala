@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 class AppFormField extends StatelessWidget {
   final String hint;
   final StringCallback onChange;
-  final TextInputType keyboardType;
-  final String fontFamily;
+  final TextInputType? keyboardType;
+  final String? fontFamily;
 
   AppFormField(this.hint, this.onChange, {this.keyboardType, this.fontFamily});
 
@@ -31,7 +31,6 @@ class AppFormField extends StatelessWidget {
             }
           },
           obscureText: (keyboardType == TextInputType.visiblePassword),
-
           decoration: InputDecoration(
             isDense: true,
             contentPadding: const EdgeInsets.symmetric(vertical: 3, horizontal: 12),

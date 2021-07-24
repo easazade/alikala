@@ -6,14 +6,14 @@ class AppProductColorSelector extends StatefulWidget {
   final Map<String, Color> namesToColors;
   final void Function(String name, Color color) onChange;
 
-  const AppProductColorSelector({Key key, @required this.namesToColors, @required this.onChange}) : super(key: key);
+  const AppProductColorSelector({required this.namesToColors, required this.onChange}) : super();
 
   @override
   State<StatefulWidget> createState() => _State(namesToColors);
 }
 
 class _State extends State<AppProductColorSelector> {
-  String _selectedColorName;
+  late String _selectedColorName;
 
   _State(Map<String, Color> namesToColors) {
     if (namesToColors.isNotEmpty) {
@@ -49,7 +49,8 @@ class _State extends State<AppProductColorSelector> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                     color: Colors.white,
-                    border: Border.all(color: (_selectedColorName == name) ? Colors.blue.shade200 : Colors.grey.shade200),
+                    border:
+                        Border.all(color: (_selectedColorName == name) ? Colors.blue.shade200 : Colors.grey.shade200),
                     boxShadow: [
                       BoxShadow(
                         color: (_selectedColorName == name) ? Colors.blue.shade200 : Colors.grey.shade200,

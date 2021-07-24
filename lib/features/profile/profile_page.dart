@@ -1,5 +1,6 @@
+import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
+import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/widgets/app_icon_button.dart';
@@ -30,7 +31,9 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       AppIconButton(
                         icon: Icon(FeatherIcons.settings),
-                        onTap: () => sailor.navigate(Routes.settings),
+                        onTap: () {
+                          appRouter.navigate(SettingsRoute());
+                        },
                       ),
                       AppIconButton(
                         icon: Icon(FeatherIcons.bell),
@@ -40,7 +43,8 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 40),
-                Text('علیرضا عیسی‌زاده', textAlign: TextAlign.center, style: TextStyles.dark_20_w700.copyWith(height: 1)),
+                Text('علیرضا عیسی‌زاده',
+                    textAlign: TextAlign.center, style: TextStyles.dark_20_w700.copyWith(height: 1)),
                 Text('09117158746', textAlign: TextAlign.center, style: TextStyles.light_14),
                 SizedBox(height: 15),
                 Image.asset(Assets.images.coinDash.assetName, width: 80),
@@ -58,11 +62,17 @@ class ProfilePage extends StatelessWidget {
                 _createMenuButton(
                   icon: FeatherIcons.heart,
                   label: 'لیست مورد علاقه‌ها',
-                  onTap: () => sailor.navigate(Routes.favorites_page),
+                  onTap: () {
+                    appRouter.navigate(FavoritesRoute());
+                  },
                 ),
                 _createMenuButton(icon: Icons.comment_outlined, label: 'نقد و نظرات', onTap: () {}),
                 _createMenuButton(
-                    icon: Icons.directions_outlined, label: 'آدرس ها', onTap: () => sailor.navigate(Routes.address)),
+                    icon: Icons.directions_outlined,
+                    label: 'آدرس ها',
+                    onTap: () {
+                      appRouter.navigate(AddressRoute());
+                    }),
                 _createMenuButton(icon: Icons.person_outline_outlined, label: 'اطلاعات حساب کاربری', onTap: () {}),
               ],
             ),
@@ -73,10 +83,10 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget _createMenuButton({
-    @required IconData icon,
-    @required String label,
-    @required Null Function() onTap,
-    Color labelColor,
+    required IconData icon,
+    required String label,
+    required Null Function() onTap,
+    Color? labelColor,
     bool hasDivider = true,
   }) {
     var color = labelColor ?? AppColors.TEXT_MED;

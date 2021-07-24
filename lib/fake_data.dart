@@ -232,7 +232,7 @@ List<Category> fakeSubCategories = [
   Category(10, 2, 'زیر دسته 5', fakeSale4, 900),
 ];
 
-var fakerFa = Faker(FakerDataProviderFa());
+var fakerFa = Faker(provider: FakerDataProviderFa());
 
 List<Comment> fakeComments = List.generate(
   12,

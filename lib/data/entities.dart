@@ -18,8 +18,8 @@ class Product {
   final String title;
   final int price;
   final int offPrice;
-  final Color color;
-  final String colorName;
+  final Color? color;
+  final String? colorName;
   final double offPercentage;
   final DateTime dueDate;
 

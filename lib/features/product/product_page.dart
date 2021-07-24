@@ -1,5 +1,6 @@
+import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
+import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/fake_data.dart';
 import 'package:alikala/utils/utils_classes.dart';
@@ -16,12 +17,10 @@ import 'package:alikala/widgets/slider/app_image_slider.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sailor/sailor.dart';
 
 class ProductPage extends StatelessWidget {
-  final ProductPageArgs args;
-
-  const ProductPage(this.args);
+  final Product product;
+  const ProductPage(this.product);
 
   final pagePadding = const EdgeInsets.symmetric(horizontal: 15, vertical: 10);
 
@@ -29,10 +28,10 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(args.product.title, style: TextStyles.dark_16_w500),
+        title: Text(product.title, style: TextStyles.dark_16_w500),
         titleSpacing: 0,
         leading: GestureDetector(
-          onTap: sailor.pop,
+          onTap: Navigator.of(context).pop,
           child: Icon(FeatherIcons.x),
         ),
         backgroundColor: Colors.white,
@@ -60,7 +59,7 @@ class ProductPage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               child: Align(
                 alignment: AlignmentDirectional.centerStart,
-                child: Text(args.product.title, style: TextStyles.dark_18_w700),
+                child: Text(product.title, style: TextStyles.dark_18_w700),
               ),
             ),
             Padding(
@@ -114,8 +113,8 @@ class ProductPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              AppAddToCart(product: args.product, showSum: false),
-              AppPriceTag(args.product.price),
+              AppAddToCart(product: product, showSum: false),
+              AppPriceTag(product.price),
             ],
           ),
         ),
@@ -130,7 +129,9 @@ class ProductPage extends StatelessWidget {
       child: Stack(
         children: [
           GestureDetector(
-            onTap: () => sailor.navigate(Routes.cart),
+            onTap: () {
+              appRouter.navigate(CartRoute());
+            },
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Icon(FeatherIcons.shoppingCart),
@@ -206,10 +207,4 @@ class ProductPage extends StatelessWidget {
       ),
     );
   }
-}
-
-class ProductPageArgs extends BaseArguments {
-  final Product product;
-
-  ProductPageArgs(this.product);
 }

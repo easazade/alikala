@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class AppSliverDoubleBanner extends StatelessWidget {
   final List<String> imageUrls;
 
-  const AppSliverDoubleBanner({Key key, @required this.imageUrls}) : super(key: key);
+  const AppSliverDoubleBanner({required this.imageUrls});
 
   @override
   Widget build(BuildContext context) {
     var calculatedWidth = (MediaQuery.of(context).size.width) / 2 * 0.9;
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical:30),
+        padding: const EdgeInsets.symmetric(vertical: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -21,7 +21,7 @@ class AppSliverDoubleBanner extends StatelessWidget {
                 width: calculatedWidth,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child: AppNetworkImage(imageUrl: image ?? ''),
+                  child: AppNetworkImage(imageUrl: image),
                 ),
               ),
           ],

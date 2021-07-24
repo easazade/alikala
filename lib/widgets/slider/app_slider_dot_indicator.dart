@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppCarouselDotIndicator extends StatelessWidget {
-  List<int> _indexes;
+  final List<int> _indexes;
   final int _selectedIndex;
 
-  AppCarouselDotIndicator(this._selectedIndex, int itemCount) {
-    _indexes = List<int>();
+  AppCarouselDotIndicator(this._selectedIndex, int itemCount) : _indexes = <int>[] {
     for (int i = 0; i < itemCount; i++) {
       _indexes.add(i);
     }

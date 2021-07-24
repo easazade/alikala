@@ -1,7 +1,5 @@
+import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
-import 'package:alikala/gen/fonts.gen.dart';
-import 'package:alikala/gen/fonts.gen.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -32,16 +30,16 @@ class AppBottomNavigationBar extends StatelessWidget {
         onTap: (itemIndex) {
           switch (itemIndex) {
             case 0:
-              sailor.navigate(Routes.home);
+              appRouter.pushNamed(Routes.home);
               break;
             case 1:
-              sailor.navigate(Routes.categories);
+              appRouter.pushNamed(Routes.categories);
               break;
             case 2:
-              sailor.navigate(Routes.cart);
+              appRouter.pushNamed(Routes.cart);
               break;
             case 3:
-              sailor.navigate(Routes.profile);
+              appRouter.pushNamed(Routes.profile);
               break;
           }
         },

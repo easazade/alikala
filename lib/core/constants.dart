@@ -68,19 +68,31 @@ class TextStyles {
   static const light_18 = const TextStyle(fontSize: 18, color: AppColors.TEXT_LIGHT_2);
   static const light_20 = const TextStyle(fontSize: 20, color: AppColors.TEXT_LIGHT_2);
 
-  static const light_10_w500 = const TextStyle(fontSize: 10, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
-  static const light_12_w500 = const TextStyle(fontSize: 12, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
-  static const light_14_w500 = const TextStyle(fontSize: 14, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
-  static const light_16_w500 = const TextStyle(fontSize: 16, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
-  static const light_18_w500 = const TextStyle(fontSize: 18, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
-  static const light_20_w500 = const TextStyle(fontSize: 20, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
+  static const light_10_w500 =
+      const TextStyle(fontSize: 10, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
+  static const light_12_w500 =
+      const TextStyle(fontSize: 12, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
+  static const light_14_w500 =
+      const TextStyle(fontSize: 14, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
+  static const light_16_w500 =
+      const TextStyle(fontSize: 16, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
+  static const light_18_w500 =
+      const TextStyle(fontSize: 18, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
+  static const light_20_w500 =
+      const TextStyle(fontSize: 20, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500);
 
-  static const light_10_w700 = const TextStyle(fontSize: 10, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
-  static const light_12_w700 = const TextStyle(fontSize: 12, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
-  static const light_14_w700 = const TextStyle(fontSize: 14, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
-  static const light_16_w700 = const TextStyle(fontSize: 16, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
-  static const light_18_w700 = const TextStyle(fontSize: 18, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
-  static const light_20_w700 = const TextStyle(fontSize: 20, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
+  static const light_10_w700 =
+      const TextStyle(fontSize: 10, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
+  static const light_12_w700 =
+      const TextStyle(fontSize: 12, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
+  static const light_14_w700 =
+      const TextStyle(fontSize: 14, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
+  static const light_16_w700 =
+      const TextStyle(fontSize: 16, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
+  static const light_18_w700 =
+      const TextStyle(fontSize: 18, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
+  static const light_20_w700 =
+      const TextStyle(fontSize: 20, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w700);
 
   static const darkgrey_10 = const TextStyle(fontSize: 10, color: AppColors.TEXT_MED);
   static const darkgrey_12 = const TextStyle(fontSize: 12, color: AppColors.TEXT_MED);

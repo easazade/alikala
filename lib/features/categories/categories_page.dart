@@ -1,5 +1,5 @@
-import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
+import 'package:alikala/core/app.dart';
+import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/fake_data.dart';
 import 'package:alikala/widgets/app_sliver_category_list.dart';
 import 'package:alikala/widgets/app_sliver_search_bar.dart';
@@ -13,8 +13,11 @@ class CategoriesPage extends StatelessWidget {
       body: NoScrollGlow(
         child: CustomScrollView(
           slivers: [
-            AppSliverSearchBar(context, () => sailor.navigate(Routes.search)),
-            for (var category in fakeRootCategories) AppSliverCategoryList(subCategories: fakeSubCategories, category: category),
+            AppSliverSearchBar(context, () {
+              appRouter.navigate(SearchRoute());
+            }),
+            for (var category in fakeRootCategories)
+              AppSliverCategoryList(subCategories: fakeSubCategories, category: category),
           ],
         ),
       ),

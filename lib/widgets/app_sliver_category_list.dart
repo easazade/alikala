@@ -10,10 +10,9 @@ class AppSliverCategoryList extends StatelessWidget {
   final List<Category> subCategories;
 
   const AppSliverCategoryList({
-    Key key,
-    @required this.category,
-    @required this.subCategories,
-  }) : super(key: key);
+    required this.category,
+    required this.subCategories,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,8 @@ class AppSliverCategoryList extends StatelessWidget {
                     Row(
                       children: [
                         Text('مشاهده همه',
-                            style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500)),
+                            style:
+                                TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500)),
                         Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
                       ],
                     ),

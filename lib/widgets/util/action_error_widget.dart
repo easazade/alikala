@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class ActionErrorWidget extends StatelessWidget {
   final String msg;
-  final String actionText;
+  final String? actionText;
   final VoidCallback action;
-  final IconData icon;
+  final IconData? icon;
 
   ActionErrorWidget(this.msg, this.action, {this.actionText, this.icon});
 
@@ -31,6 +31,7 @@ class ActionErrorWidget extends StatelessWidget {
             Text(msg, style: TextStyle(color: AppColors.TEXT_DARK, fontWeight: FontWeight.bold, fontSize: 20)),
             SizedBox(height: 10),
 //            AppButton(text: actionText ?? 'دوباره تلاش کنید', onClick: action, color: AppColors.ACCENT_GREEN),
+            // ignore: deprecated_member_use
             FlatButton(
               onPressed: action,
               child: Text(actionText ?? 'دوباره تلاش کنید'),

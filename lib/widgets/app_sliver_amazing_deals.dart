@@ -1,5 +1,4 @@
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_network_image.dart';
@@ -9,7 +8,7 @@ import 'package:flutter/material.dart';
 class AppSliverAmazingDeals extends StatefulWidget {
   final List<AmazingDeal> amazingDeals;
 
-  AppSliverAmazingDeals({@required this.amazingDeals});
+  AppSliverAmazingDeals({required this.amazingDeals});
 
   @override
   State<StatefulWidget> createState() => _State();
@@ -133,7 +132,8 @@ class _State extends State<AppSliverAmazingDeals> {
                     children: [
                       Row(
                         children: [
-                          Text('${deal.offPrice.commaSeparated()}', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+                          Text('${deal.offPrice.commaSeparated()}',
+                              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                           SizedBox(width: 2),
                           Text('تومان', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
                         ],

@@ -2,10 +2,9 @@ import 'package:alikala/widgets/app_network_image.dart';
 import 'package:flutter/material.dart';
 
 class AppSliverSingleBanner extends StatelessWidget {
+  final String? imageUrl;
 
-  final String imageUrl;
-
-  const AppSliverSingleBanner({Key key,@required this.imageUrl}) : super(key: key);
+  const AppSliverSingleBanner({required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {

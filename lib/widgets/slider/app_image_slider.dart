@@ -9,16 +9,15 @@ class AppImageCarousel<T> extends StatefulWidget {
   final double height;
   final double viewport;
   final double aspectRatio;
-  List<int> _indexes;
+  final List<int> _indexes;
 
   AppImageCarousel(
     this.itemCount, {
-    @required this.height,
-    @required this.builder,
+    required this.height,
+    required this.builder,
     this.viewport = 1.2,
     this.aspectRatio = 2,
-  }) {
-    _indexes = List<int>();
+  }) : _indexes = <int>[] {
     for (int i = 0; i < itemCount; i++) {
       _indexes.add(i);
     }
@@ -40,7 +39,7 @@ class _AppImageCarouselState extends State<AppImageCarousel> {
           child: CarouselSlider(
             items: widget._indexes.map((i) => widget.builder(context, i)).toList(),
             options: CarouselOptions(
-              height: widget.height ?? 200,
+              height: widget.height,
               enableInfiniteScroll: true,
               autoPlay: (widget.itemCount > 1) ? true : false,
               autoPlayInterval: const Duration(seconds: 6),

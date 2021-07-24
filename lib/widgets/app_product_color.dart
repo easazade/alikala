@@ -19,7 +19,7 @@ class AppProductColor extends StatelessWidget {
           ),
         ),
         SizedBox(width: 6),
-        Text(product.colorName, style: TextStyle(fontSize: 11)),
+        Text(product.colorName ?? '', style: TextStyle(fontSize: 11)),
       ],
     );
   }

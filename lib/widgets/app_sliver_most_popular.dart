@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 class AppSliverMostPopulars extends StatelessWidget {
   final List<Product> products;
   final String title;
-  List<List<Product>> _productTuples = [];
+  final List<List<Product>> _productTuples = [];
 
-  AppSliverMostPopulars({@required this.products, @required this.title}) {
+  AppSliverMostPopulars({required this.products, required this.title}) {
     var stack = utils.StackCollection<Product>();
     products.reversed.forEach((element) => stack.push(element));
     while (stack.canPop()) {

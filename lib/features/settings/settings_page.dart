@@ -1,5 +1,4 @@
 import 'package:alikala/core/constants.dart';
-import 'package:alikala/core/navigation.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -15,7 +14,7 @@ class SettingsPage extends StatelessWidget {
         elevation: 0,
         title: Text('تنظیمات', style: TextStyles.dark_18_w700),
         actions: [
-          IconButton(icon: Icon(FeatherIcons.x), onPressed: sailor.pop),
+          IconButton(icon: Icon(FeatherIcons.x), onPressed: Navigator.of(context).pop),
         ],
       ),
       body: Stack(
@@ -24,9 +23,11 @@ class SettingsPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               children: [
-                createSettingItem(label: 'پرسش‌های متداول', icon: Icons.question_answer, onTap: () => showInfoToast('QA')),
+                createSettingItem(
+                    label: 'پرسش‌های متداول', icon: Icons.question_answer, onTap: () => showInfoToast('QA')),
                 createSettingItem(label: 'تماس با ما', icon: Icons.call, onTap: () => showInfoToast('Call Us')),
-                createSettingItem(label: 'امتیاز به اپلیکیشن علی‌کالا', icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),
+                createSettingItem(
+                    label: 'امتیاز به اپلیکیشن علی‌کالا', icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),
                 createSettingItem(
                   label: 'خروج از حساب کاربری',
                   labelColor: AppColors.THEME_ACCENT,
@@ -47,10 +48,10 @@ class SettingsPage extends StatelessWidget {
   }
 
   static Widget createSettingItem({
-    @required IconData icon,
-    @required String label,
-    @required Null Function() onTap,
-    Color labelColor,
+    required IconData icon,
+    required String label,
+    required void Function() onTap,
+    Color? labelColor,
     bool hasDivider = true,
   }) {
     var color = labelColor ?? AppColors.TEXT_MED;
