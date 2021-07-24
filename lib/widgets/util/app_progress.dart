@@ -33,7 +33,7 @@ class AppProgress extends StatelessWidget {
           padding: const EdgeInsets.all(2),
           child: CircularProgressIndicator(
             strokeWidth: 2,
-            valueColor:  AlwaysStoppedAnimation(color) ,
+            valueColor: AlwaysStoppedAnimation(color),
           ),
         ),
       );

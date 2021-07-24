@@ -14,7 +14,6 @@ import 'package:alikala/features/veridy/code/verify_code_page.dart';
 import 'package:alikala/main_screen.dart';
 import 'package:auto_route/annotations.dart';
 
-
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
