@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashPage> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(bottom: 40),
                 child: AppProgress.small(color: Colors.white),
               ),
             ),

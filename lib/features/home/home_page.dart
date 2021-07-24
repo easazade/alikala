@@ -1,3 +1,5 @@
+import 'package:alikala/core/app.dart';
+import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/widgets/app_sliver_amazing_deals.dart';
 import 'package:alikala/widgets/app_sliver_double_banner.dart';
 import 'package:alikala/widgets/app_sliver_horizontal_products_list.dart';
@@ -20,7 +22,7 @@ class HomePage extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             AppSliverSearchBar(context, () {
-              //TODO - nav too Routes.search
+              appRouter.navigate(SearchRoute());
             }),
             AppSliverSliders(images: fakeSales),
             SliverSizedBox(height: 20),
