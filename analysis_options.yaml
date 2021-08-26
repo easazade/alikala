@@ -1,0 +1,21 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  enable-experiment:
+    - non-nullable
+  exclude:
+    # Ignore generated files
+    - lib/**/*.g.dart
+    - lib/**/*.sealed.dart
+    - lib/**/*.freezed.dart
+    - lib/generated/**
+
+  errors:
+    unused_import: error
+    dead_code: error
+    use_key_in_widget_constructors: ignore
+    invalid_annotation_target: ignore
+    
+linter:
+  rules:
+    - avoid_void_async

@@ -2,6 +2,7 @@ import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/generated/l10n.dart';
 
 class AppSliverSearchBar extends SliverPersistentHeader {
   AppSliverSearchBar(BuildContext context, VoidCallback onTap)
@@ -51,7 +52,7 @@ class AppSliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
                     Text('جستجو در',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey[500])),
                     SizedBox(width: 6),
-                    Text('علی‌کالا',
+                    Text(S.current.app_name,
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.THEME_ACCENT)),
                   ],
                 ),

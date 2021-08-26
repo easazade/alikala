@@ -4,9 +4,9 @@ import 'package:alikala/utils/cupertino_theme_overrides.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:alikala/generated/l10n.dart';
 
 import 'constants.dart';
-import 'lang/languages.dart';
 
 ///HafezApp is the application Widget defined for this application
 ///which is added to the very top of the widget tree providing info about the app
@@ -16,8 +16,6 @@ import 'lang/languages.dart';
 final appRouter = AppRouter();
 
 class Application extends StatefulWidget {
-  Application();
-
   @override
   State<StatefulWidget> createState() => _ApplicationState();
 }
@@ -43,32 +41,24 @@ class _ApplicationState extends State<Application> {
               fontFamily: FontFamily.estedadFD,
             ),
       ),
-      locale: Locale('fa', ''),
       // locale: DevicePreview.of(context).locale,
       // builder: DevicePreview.appBuilder,
-      localizationsDelegates: [
-        const TranslationBaseDelegate(),
+      localizationsDelegates: const [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('fa', ''), // Persian
-        const Locale('en', ''), // English
-      ],
+      supportedLocales: S.delegate.supportedLocales,
+      locale: const Locale('fa', 'IR'),
+      // locale: const Locale('en', 'US'),
       debugShowCheckedModeBanner: false,
       //theme: hrTheme,
       title: 'AliKala',
-      routerDelegate: appRouter.delegate(initialRoutes: [SplashRoute()]),
+      routerDelegate: appRouter.delegate(initialRoutes: [
+        const SplashRoute(),
+      ]),
       routeInformationParser: appRouter.defaultRouteParser(),
     );
   }
-
-  // Widget startingPage(BuildContext context) {
-  //   // if (kReleaseMode) {
-  //   return SplashPage();
-  //   // } else {
-  //   // return MainScreen();
-  //   // }
-  // }
 }
