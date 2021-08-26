@@ -52,8 +52,6 @@ class _ApplicationState extends State<Application> {
       supportedLocales: S.delegate.supportedLocales,
       locale: const Locale('fa', 'IR'),
       // locale: const Locale('en', 'US'),
-      debugShowCheckedModeBanner: false,
-      //theme: hrTheme,
       title: 'AliKala',
       routerDelegate: appRouter.delegate(initialRoutes: [
         const SplashRoute(),

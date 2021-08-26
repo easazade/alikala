@@ -8,7 +8,7 @@ class AppAddToCart extends StatefulWidget {
   final Product product;
   final bool showSum;
 
-  AppAddToCart({required this.product, this.showSum = true});
+  const AppAddToCart({required this.product, this.showSum = true});
 
   @override
   State<StatefulWidget> createState() => _State();
@@ -23,10 +23,11 @@ class _State extends State<AppAddToCart> {
       children: [
         GestureDetector(
           onTap: () {
-            if (_count == 0)
+            if (_count == 0) {
               setState(() {
                 _count++;
               });
+            }
           },
           child: AnimatedContainer(
             width: 100,
@@ -50,7 +51,6 @@ class _State extends State<AppAddToCart> {
                         onTap: () {
                           setState(() {
                             _count++;
-                            print(_count);
                           });
                         },
                         child: Icon(Icons.add, size: 22, color: AppColors.THEME_ACCENT),
@@ -59,11 +59,11 @@ class _State extends State<AppAddToCart> {
                           style: TextStyle(color: AppColors.THEME_ACCENT, fontSize: 16, fontWeight: FontWeight.w700)),
                       GestureDetector(
                         onTap: () {
-                          if (_count > 0)
+                          if (_count > 0) {
                             setState(() {
                               _count--;
-                              print(_count);
                             });
+                          }
                         },
                         child: Icon(
                           (_count == 1) ? FeatherIcons.trash2 : Icons.remove,
@@ -77,7 +77,7 @@ class _State extends State<AppAddToCart> {
         ),
         if (widget.showSum) ...[
           SizedBox(width: 10),
-          Text('${(widget.product.price * _count).commaSeparated()}', style: TextStyle(fontWeight: FontWeight.w500)),
+          Text((widget.product.price * _count).commaSeparated(), style: const TextStyle(fontWeight: FontWeight.w500)),
           Text('  تومان', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w500))
         ],
       ],

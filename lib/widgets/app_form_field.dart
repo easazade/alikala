@@ -9,7 +9,7 @@ class AppFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? fontFamily;
 
-  AppFormField(this.hint, this.onChange, {this.keyboardType, this.fontFamily});
+  const AppFormField(this.hint, this.onChange, {this.keyboardType, this.fontFamily});
 
   @override
   Widget build(BuildContext context) {

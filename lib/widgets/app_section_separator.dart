@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AppSectionSeparator extends StatelessWidget {
   final double height;
 
-  AppSectionSeparator({this.height = 12});
+  const AppSectionSeparator({this.height = 12});
 
   @override
   Widget build(BuildContext context) {

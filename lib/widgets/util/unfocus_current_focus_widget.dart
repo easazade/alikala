@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RemoveFocusOnTouchOutsideFocusedWidget extends StatelessWidget {
   final Widget child;
 
-  RemoveFocusOnTouchOutsideFocusedWidget({required this.child});
+  const RemoveFocusOnTouchOutsideFocusedWidget({required this.child});
 
   @override
   Widget build(BuildContext context) {

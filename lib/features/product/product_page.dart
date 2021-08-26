@@ -184,26 +184,24 @@ class ProductPage extends StatelessWidget {
   }
 
   Widget _createProductFeatures(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: pagePadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('ویژگی های محصول', style: TextStyles.dark_16_w500),
-            SizedBox(height: 15),
-            divider(context),
-            SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('مشخصات فنی', style: TextStyles.dark_16_w500),
-                Icon(CupertinoIcons.forward, size: 20, color: Colors.grey),
-              ],
-            ),
-            SizedBox(height: 30),
-          ],
-        ),
+    return Padding(
+      padding: pagePadding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('ویژگی های محصول', style: TextStyles.dark_16_w500),
+          SizedBox(height: 15),
+          divider(context),
+          SizedBox(height: 15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('مشخصات فنی', style: TextStyles.dark_16_w500),
+              Icon(CupertinoIcons.forward, size: 20, color: Colors.grey),
+            ],
+          ),
+          SizedBox(height: 30),
+        ],
       ),
     );
   }

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class RetryWidget extends StatelessWidget {
   final VoidCallback action;
 
-  RetryWidget(this.action);
+  const RetryWidget(this.action);
 
   @override
   Widget build(BuildContext context) {

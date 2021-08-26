@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class StatusBarBackground extends StatelessWidget {
   final Color? color;
 
-  StatusBarBackground({this.color});
+  const StatusBarBackground({this.color});
 
   @override
   Widget build(BuildContext context) => Container(

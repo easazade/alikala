@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class AppSliverAmazingDeals extends StatefulWidget {
   final List<AmazingDeal> amazingDeals;
 
-  AppSliverAmazingDeals({required this.amazingDeals});
+  const AppSliverAmazingDeals({required this.amazingDeals});
 
   @override
   State<StatefulWidget> createState() => _State();
@@ -56,7 +56,7 @@ class _State extends State<AppSliverAmazingDeals> {
   }
 
   Widget _createSeeAllAmazingDealsWidget() {
-    return Container(
+    return SizedBox(
       width: 130,
       height: 260,
       child: Column(
@@ -132,14 +132,14 @@ class _State extends State<AppSliverAmazingDeals> {
                     children: [
                       Row(
                         children: [
-                          Text('${deal.offPrice.commaSeparated()}',
+                          Text(deal.offPrice.commaSeparated(),
                               style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                           SizedBox(width: 2),
                           Text('تومان', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
                         ],
                       ),
                       Text(
-                        '${deal.price.commaSeparated()}',
+                        deal.price.commaSeparated(),
                         style: TextStyle(
                           color: AppColors.TEXT_LIGHT,
                           fontSize: 11,

@@ -16,7 +16,7 @@ class AppSliverDoubleBanner extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             for (var image in imageUrls.take(2))
-              Container(
+              SizedBox(
                 height: 120,
                 width: calculatedWidth,
                 child: ClipRRect(

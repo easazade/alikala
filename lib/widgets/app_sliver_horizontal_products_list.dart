@@ -141,14 +141,14 @@ class AppHorizontalProductsList extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text('${product.offPrice.commaSeparated()}',
+                      Text(product.offPrice.commaSeparated(),
                           style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                       SizedBox(width: 2),
                       Text('تومان', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
                     ],
                   ),
                   Text(
-                    '${product.price.commaSeparated()}',
+                    product.price.commaSeparated(),
                     style: TextStyle(
                       color: AppColors.TEXT_LIGHT,
                       fontSize: 11,

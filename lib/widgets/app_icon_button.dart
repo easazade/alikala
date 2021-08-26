@@ -5,7 +5,7 @@ class AppIconButton extends StatelessWidget {
   final VoidCallback onTap;
   final EdgeInsets? padding;
 
-  AppIconButton({
+  const AppIconButton({
     required this.icon,
     required this.onTap,
     this.padding,

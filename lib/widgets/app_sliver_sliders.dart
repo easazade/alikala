@@ -8,7 +8,7 @@ import 'slider/app_slider_dot_indicator.dart';
 class AppSliverSliders extends StatefulWidget {
   final List<String> images;
 
-  AppSliverSliders({required this.images});
+  const AppSliverSliders({required this.images});
 
   @override
   State<StatefulWidget> createState() => _State();
@@ -39,6 +39,7 @@ class _State extends State<AppSliverSliders> {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
+      // ignore: avoid_unnecessary_containers
       child: Container(
           child: Column(
         children: <Widget>[

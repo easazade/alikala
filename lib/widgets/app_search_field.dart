@@ -9,7 +9,7 @@ class AppSearchField extends StatefulWidget {
   final StringCallback onSearchBtnClicked;
   final VoidCallback onSearchFieldCleared;
 
-  AppSearchField({required this.hint, required this.onSearchBtnClicked, required this.onSearchFieldCleared});
+  const AppSearchField({required this.hint, required this.onSearchBtnClicked, required this.onSearchFieldCleared});
 
   @override
   State<StatefulWidget> createState() => _State();
@@ -61,7 +61,7 @@ class _State extends State<AppSearchField> {
             widget.onSearchBtnClicked(_controller.text);
             FocusScope.of(context).unfocus();
           },
-          child: Container(
+          child: SizedBox(
             height: 35,
             width: 35,
             child: Container(

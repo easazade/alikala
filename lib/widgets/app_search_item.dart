@@ -12,7 +12,7 @@ class AppSearchItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Container(
+      child: SizedBox(
         height: 46,
         child: Row(
           children: [

@@ -4,17 +4,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
 extension DoubleExt on double {
-  Future<Duration> secondsDelay() async => Future.delayed(this.seconds());
+  Future<Duration> secondsDelay() async => Future.delayed(seconds());
 
   Duration seconds() => Duration(milliseconds: (this * 1000).toInt());
 }
 
 extension IntegersExt on int {
-  Future<Duration> secondsDelay() async => Future.delayed(this.seconds());
+  Future<Duration> secondsDelay() async => Future.delayed(seconds());
 
   Duration seconds() => Duration(seconds: this);
 
-  String commaSeparated() => this.toString().commaSeparated();
+  String commaSeparated() => toString().commaSeparated();
 
   bool get isOdd => this % 2 == 1;
 
@@ -35,8 +35,9 @@ extension IntegersExt on int {
       return 'زنگ چهارم';
     } else if (this == 5) {
       return 'زنگ پنجم';
-    } else
-      return this.toString();
+    } else {
+      return toString();
+    }
   }
 }
 
@@ -96,7 +97,8 @@ extension StringExt on String {
 //   bool get isValidUrl => Uri.parse(this).isAbsolute;
 
   String commaSeparated() {
-    RegExp reg = new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
+    RegExp reg = RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
+    // ignore: prefer_function_declarations_over_variables
     String Function(Match) mathFunc = (Match match) => '${match[1]},';
     String result = replaceAllMapped(reg, mathFunc);
     return result;
@@ -112,7 +114,7 @@ extension StringExt on String {
 //     return null;
 //   }
 
-  bool get isNullOrBlank => this.trim().isEmpty;
+  bool get isNullOrBlank => trim().isEmpty;
 
 //   String swapFaNumericToEn() {
 //     var result = this;
@@ -176,106 +178,125 @@ extension StringExt on String {
 
 extension DateTimeExt on DateTime {
   bool isSameDate(DateTime other) {
-    return this.year == other.year && this.month == other.month && this.day == other.day;
+    return year == other.year && month == other.month && day == other.day;
   }
 
   Jalali toJalali() => Jalali.fromDateTime(this);
 
-  DateTime get tomorrow => DateTime(
-      this.year, this.month, this.day + 1, this.hour, this.minute, this.second, this.millisecond, this.microsecond);
+  DateTime get tomorrow => DateTime(year, month, day + 1, hour, minute, second, millisecond, microsecond);
 
   ///
   /// jalali weekday starts from saturday which has the value 0 and ends with friday which has the value 6
   int get jalaliWeekday {
-    if (this.weekday == 1) //monday
+    if (weekday == 1) {
       return 2;
-    if (this.weekday == 2) //tuesday
+    }
+    if (weekday == 2) {
       return 3;
-    if (this.weekday == 3) //wednesday
+    }
+    if (weekday == 3) {
       return 4;
-    if (this.weekday == 4) //thursday
+    }
+    if (weekday == 4) {
       return 5;
-    if (this.weekday == 5) //friday
+    }
+    if (weekday == 5) {
       return 6;
-    if (this.weekday == 6) //saturday
+    }
+    if (weekday == 6) {
       return 0;
-    if (this.weekday == 7) //sunday
+    }
+    if (weekday == 7) {
       return 1;
-    else
+    } else {
       throw Exception('unknown jalaliweekday');
+    }
   }
 
   String get jalaliWeekdayName {
-    if (this.jalaliWeekday == 0) //saturday
+    if (jalaliWeekday == 0) {
       return 'شنبه';
-    if (this.jalaliWeekday == 1) //sunday
+    }
+    if (jalaliWeekday == 1) {
       return 'یکشنبه';
-    if (this.jalaliWeekday == 2) //monday
+    }
+    if (jalaliWeekday == 2) {
       return 'دوشنبه';
-    if (this.jalaliWeekday == 3) //tuesday
+    }
+    if (jalaliWeekday == 3) {
       return 'سه‌شنبه';
-    if (this.jalaliWeekday == 4) //wednesday
+    }
+    if (jalaliWeekday == 4) {
       return 'چهارشنبه';
-    if (this.jalaliWeekday == 5) //thursday
+    }
+    if (jalaliWeekday == 5) {
       return 'پنجشنبه';
-    if (this.jalaliWeekday == 6) //friday
+    }
+    if (jalaliWeekday == 6) {
       return 'جمعه';
-    else
+    } else {
       throw Exception('unknown jalaliweekday name');
+    }
   }
 
   String get jalaliWeekDayRelative {
     var now = DateTime.now();
-    var diff = this.difference(now);
-    if (diff.inMinutes > 48 * 60) return this.jalaliWeekdayName;
+    var diff = difference(now);
+    if (diff.inMinutes > 48 * 60) return jalaliWeekdayName;
     if (now == this) return 'امروز';
-    if (this.isBefore(now)) {
+    if (isBefore(now)) {
       diff = now.difference(this);
       if (diff < Duration(hours: 24)) {
-        if (now.day != this.day)
+        if (now.day != day) {
           return 'دیروز';
-        else
+        } else {
           return 'امروز';
+        }
       } else {
-        if (now.day == this.add(Duration(days: 1)).day)
+        if (now.day == add(Duration(days: 1)).day) {
           return 'دیروز';
-        else if (now.day == this.add(Duration(days: 2)).day)
+        } else if (now.day == add(Duration(days: 2)).day) {
           return 'پریروز';
-        else
-          return this.jalaliWeekdayName;
+        } else {
+          return jalaliWeekdayName;
+        }
       }
-    } else if (this.isAfter(now)) {
+    } else if (isAfter(now)) {
       if (diff < Duration(hours: 24)) {
-        if (now.day != this.day)
+        if (now.day != day) {
           return 'فردا';
-        else
+        } else {
           return 'امروز';
+        }
       } else {
-        if (now.day == this.subtract(Duration(days: 1)).day)
+        if (now.day == subtract(Duration(days: 1)).day) {
           return 'فردا';
-        else if (now.day == this.subtract(Duration(days: 2)).day)
+        } else if (now.day == subtract(Duration(days: 2)).day) {
           return 'پس‌فردا';
-        else
-          return this.jalaliWeekdayName;
+        } else {
+          return jalaliWeekdayName;
+        }
       }
-    } else
-      return this.jalaliWeekdayName;
+    } else {
+      return jalaliWeekdayName;
+    }
   }
 }
 
 extension ListExt<T> on List<T> {
-  List<T> removeDuplicates(int getUnicId(T a)) {
-    final Set<int> ids = this.map((item) => getUnicId(item)).toSet();
-    List<T> cloneList = this.map((item) => item).toList();
+  List<T> removeDuplicates(int Function(T a) getUnicId) {
+    final Set<int> ids = map((item) => getUnicId(item)).toSet();
+    List<T> cloneList = map((item) => item).toList();
     cloneList.retainWhere((x) => ids.remove(getUnicId(x)));
     return cloneList.toList();
   }
 
   T? get firstOrNull {
-    if (this.isNotEmpty == true) {
-      return this.first;
-    } else
+    if (isNotEmpty == true) {
+      return first;
+    } else {
       return null;
+    }
   }
 
   // void printItems([String print(T t)]) {
@@ -327,7 +348,7 @@ extension ListExt<T> on List<T> {
 //   }
 // }
 
-showAppToastWithAction(BuildContext context, String msg, {required BoolCallback action, double length: 2.5}) {
+showAppToastWithAction(BuildContext context, String msg, {required BoolCallback action, double length = 2.5}) {
   //TODO add flash library here
   // Flushbar<bool> flush;
   // flush = Flushbar<bool>(

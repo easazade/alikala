@@ -12,7 +12,7 @@ class VerificationCodeInput extends StatefulWidget {
   final TextStyle textStyle;
   final bool autofocus;
 
-  VerificationCodeInput(
+  const VerificationCodeInput(
       {required this.onCompleted,
       this.keyboardType = TextInputType.number,
       this.length = 4,
@@ -25,21 +25,21 @@ class VerificationCodeInput extends StatefulWidget {
         super();
 
   @override
-  _VerificationCodeInputState createState() => new _VerificationCodeInputState();
+  _VerificationCodeInputState createState() => _VerificationCodeInputState();
 }
 
 class _VerificationCodeInputState extends State<VerificationCodeInput> {
   final List<FocusNode> _listFocusNode = <FocusNode>[];
   final List<TextEditingController> _listControllerText = <TextEditingController>[];
-  List<String> _code = [];
+  final List<String> _code = [];
   int _currentIndex = 0;
 
   @override
   void initState() {
     if (_listFocusNode.isEmpty) {
       for (var i = 0; i < widget.length; i++) {
-        _listFocusNode.add(new FocusNode());
-        _listControllerText.add(new TextEditingController());
+        _listFocusNode.add(FocusNode());
+        _listControllerText.add(TextEditingController());
         _code.add(' ');
       }
     }
@@ -79,7 +79,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
             return;
           }
           if (_listControllerText[index + 1].value.text.isEmpty) {
-            _listControllerText[index + 1].value = new TextEditingValue(text: " ");
+            _listControllerText[index + 1].value = TextEditingValue(text: " ");
           }
           if (value.length == 2) {
             if (value[0] != _code[index]) {
@@ -98,7 +98,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
         }
         if (value.isEmpty && index >= 0) {
           if (_listControllerText[index - 1].value.text.isEmpty) {
-            _listControllerText[index - 1].value = new TextEditingValue(text: " ");
+            _listControllerText[index - 1].value = TextEditingValue(text: " ");
           }
           _prev(index);
         }

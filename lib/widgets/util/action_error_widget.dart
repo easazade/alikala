@@ -7,7 +7,7 @@ class ActionErrorWidget extends StatelessWidget {
   final VoidCallback action;
   final IconData? icon;
 
-  ActionErrorWidget(this.msg, this.action, {this.actionText, this.icon});
+  const ActionErrorWidget(this.msg, this.action, {this.actionText, this.icon});
 
   @override
   Widget build(BuildContext context) {

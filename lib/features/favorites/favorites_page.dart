@@ -22,6 +22,7 @@ class FavoritesPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('کالا های مورد علاقه شما', style: TextStyles.light_14_w500),
+                  // ignore: prefer_adjacent_string_concatenation
                   Text('${fakeProducts.length}' + ' کالا', style: TextStyles.light_14_w500),
                 ],
               ),

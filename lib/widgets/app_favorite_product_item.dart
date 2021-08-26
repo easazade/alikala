@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class AppFavoriteProductItem extends StatelessWidget {
   final Product product;
 
-  AppFavoriteProductItem(this.product);
+  const AppFavoriteProductItem(this.product);
 
   @override
   Widget build(BuildContext context) {

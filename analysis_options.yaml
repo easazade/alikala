@@ -15,6 +15,11 @@ analyzer:
     dead_code: error
     use_key_in_widget_constructors: ignore
     invalid_annotation_target: ignore
+    constant_identifier_names: ignore
+    prefer_const_constructors: ignore
+    prefer_const_literals_to_create_immutables: ignore
+    no_logic_in_create_state: ignore
+    todo: ignore
     
 linter:
   rules:

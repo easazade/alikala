@@ -13,7 +13,7 @@ class AppBottomNavigationBarIndex {
 class AppBottomNavigationBar extends StatelessWidget {
   final int _selectedIndex;
 
-  AppBottomNavigationBar(this._selectedIndex);
+  const AppBottomNavigationBar(this._selectedIndex);
 
   @override
   Widget build(BuildContext context) {

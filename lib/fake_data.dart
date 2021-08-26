@@ -84,7 +84,7 @@ List<Product> fakeProducts = [
     162000,
     35,
     DateTime.now().tomorrow,
-    Color(0xFFF152c5),
+    const Color(0xFFF152c5),
     'صورتی',
   ),
   Product(

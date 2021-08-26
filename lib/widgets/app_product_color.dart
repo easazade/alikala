@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AppProductColor extends StatelessWidget {
   final Product product;
 
-  AppProductColor(this.product);
+  const AppProductColor(this.product);
 
   @override
   Widget build(BuildContext context) {

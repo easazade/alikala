@@ -6,7 +6,7 @@ class AppFormLongButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool disabled;
 
-  AppFormLongButton(this.label, this.onTap, {this.disabled = false});
+  const AppFormLongButton(this.label, this.onTap, {this.disabled = false});
 
   @override
   Widget build(BuildContext context) {

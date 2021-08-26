@@ -25,7 +25,7 @@ class AppProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isSmall)
+    if (isSmall) {
       return SizedBox(
         height: 20,
         width: 20,
@@ -37,7 +37,7 @@ class AppProgress extends StatelessWidget {
           ),
         ),
       );
-    else if (isLarge)
+    } else if (isLarge) {
       return SizedBox(
         height: 55,
         width: 55,
@@ -49,7 +49,7 @@ class AppProgress extends StatelessWidget {
           ),
         ),
       );
-    else
+    } else {
       return SizedBox(
         height: size,
         width: size,
@@ -61,5 +61,6 @@ class AppProgress extends StatelessWidget {
           ),
         ),
       );
+    }
   }
 }

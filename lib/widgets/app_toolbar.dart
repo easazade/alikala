@@ -5,7 +5,7 @@ import 'package:alikala/core/constants.dart';
 class AppToolbar extends StatelessWidget {
   final String? title;
 
-  AppToolbar(this.title);
+  const AppToolbar(this.title);
 
   @override
   Widget build(BuildContext context) {

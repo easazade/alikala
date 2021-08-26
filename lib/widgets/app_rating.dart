@@ -16,9 +16,6 @@ class AppRating extends StatelessWidget {
     var hasThirdStar = percentage >= 0.55;
     var hasFourthStar = percentage >= 0.70;
     var hasFifthStar = percentage >= 0.90;
-    print(points);
-    print(maxPoints);
-    print(percentage);
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Row(

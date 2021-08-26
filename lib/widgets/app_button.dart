@@ -6,7 +6,7 @@ class AppButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool disabled;
 
-  AppButton(this.label, this.onTap, {this.disabled = false});
+  const AppButton(this.label, this.onTap, {this.disabled = false});
 
   @override
   Widget build(BuildContext context) {
