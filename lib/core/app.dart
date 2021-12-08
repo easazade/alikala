@@ -15,18 +15,17 @@ import 'constants.dart';
 
 final appRouter = AppRouter();
 
-class Application extends StatefulWidget {
+class AliKalaApp extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _ApplicationState();
+  State<StatefulWidget> createState() => _AliKalaAppState();
 }
 
-class _ApplicationState extends State<Application> {
+class _AliKalaAppState extends State<AliKalaApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
         cupertinoOverrideTheme: MaterialAppCupertinoThemeDataOverrides(FontFamily.estedadFD),
-        accentColor: AppColors.THEME_ACCENT,
         primaryColor: AppColors.THEME_ACCENT,
         primaryColorBrightness: Brightness.light,
         backgroundColor: Colors.white,

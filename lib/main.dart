@@ -9,5 +9,5 @@ Future main() async {
     statusBarColor: Colors.transparent, //then set brightness in AppBar widget to light to get dark icons
     statusBarIconBrightness: Brightness.dark,
   ));
-  runApp(Application());
+  runApp(AliKalaApp());
 }
