@@ -1,7 +1,10 @@
 import 'dart:math' as math;
 
+import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/data/entities.dart';
+import 'package:alikala/fake_data.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_add_to_cart.dart';
@@ -13,8 +16,6 @@ import 'package:alikala/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../fake_data.dart';
 
 class CartPage extends StatelessWidget {
   @override
@@ -100,33 +101,38 @@ class CartPage extends StatelessWidget {
   }
 
   Widget _createLoginNeededCard() {
-    return Card(
-      margin: const EdgeInsets.all(20),
-      elevation: 2.3,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Transform.rotate(
-              angle: math.pi,
-              child: Icon(FeatherIcons.logIn, color: AppColors.THEME_ORANGE),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('ورود یا ثبت نام', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                    Text('برای تجربه بهتر خرید و بررسی روش ارسال کالاها لطفا وارد شوید.'),
-                  ],
+    return GestureDetector(
+      onTap: () {
+        appRouter.push(LoginRoute());
+      },
+      child: Card(
+        margin: const EdgeInsets.all(20),
+        elevation: 2.3,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Transform.rotate(
+                angle: math.pi,
+                child: Icon(FeatherIcons.logIn, color: AppColors.THEME_ORANGE),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('ورود یا ثبت نام', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                      Text('برای تجربه بهتر خرید و بررسی روش ارسال کالاها لطفا وارد شوید.'),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Icon(CupertinoIcons.forward, size: 16),
-          ],
+              Icon(CupertinoIcons.forward, size: 16),
+            ],
+          ),
         ),
       ),
     );

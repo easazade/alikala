@@ -9,7 +9,7 @@ import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class MustLoginPage extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   final textSpanStyle = TextStyle(color: AppColors.TEXT_DARK, fontSize: 11, fontFamily: FontFamily.estedadFD);
   final linkTextSpanStyle = TextStyle(
     color: AppColors.HYPER_LINK,

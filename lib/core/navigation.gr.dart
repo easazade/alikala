@@ -14,17 +14,18 @@ import '../features/categories/categories_page.dart' as _i4;
 import '../features/enter/pass/enter_password_page.dart' as _i9;
 import '../features/favorites/favorites_page.dart' as _i16;
 import '../features/home/home_page.dart' as _i3;
-import '../features/must/login/must_login_page.dart' as _i10;
+import '../features/login/login_page.dart' as _i10;
 import '../features/product/product_page.dart' as _i15;
 import '../features/profile/profile_page.dart' as _i6;
 import '../features/search/search_page.dart' as _i13;
 import '../features/settings/settings_page.dart' as _i11;
 import '../features/splash/splash_screen.dart' as _i12;
-import '../features/veridy/code/verify_code_page.dart' as _i7;
+import '../features/verify/code/verify_code_page.dart' as _i7;
 import '../main_screen.dart' as _i8;
 
 class AppRouter extends _i1.RootStackRouter {
-  AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey]) : super(navigatorKey);
+  AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
+      : super(navigatorKey);
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
@@ -63,10 +64,10 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i9.EnterPasswordPage();
         }),
-    MustLoginRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+    LoginRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i10.MustLoginPage();
+          return _i10.LoginPage();
         }),
     SettingsRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -110,7 +111,7 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(VerifyCodeRoute.name, path: '/verify-code-page'),
         _i1.RouteConfig(MainRoute.name, path: '/main-page'),
         _i1.RouteConfig(EnterPasswordRoute.name, path: '/enter-password-page'),
-        _i1.RouteConfig(MustLoginRoute.name, path: '/must-login-page'),
+        _i1.RouteConfig(LoginRoute.name, path: '/login-page'),
         _i1.RouteConfig(SettingsRoute.name, path: '/settings-page'),
         _i1.RouteConfig(SplashRoute.name, path: '/splash-page'),
         _i1.RouteConfig(SearchRoute.name, path: '/search-page'),
@@ -162,10 +163,10 @@ class EnterPasswordRoute extends _i1.PageRouteInfo {
   static const String name = 'EnterPasswordRoute';
 }
 
-class MustLoginRoute extends _i1.PageRouteInfo {
-  const MustLoginRoute() : super(name, path: '/must-login-page');
+class LoginRoute extends _i1.PageRouteInfo {
+  const LoginRoute() : super(name, path: '/login-page');
 
-  static const String name = 'MustLoginRoute';
+  static const String name = 'LoginRoute';
 }
 
 class SettingsRoute extends _i1.PageRouteInfo {
@@ -194,7 +195,8 @@ class AddressRoute extends _i1.PageRouteInfo {
 
 class ProductRoute extends _i1.PageRouteInfo<ProductRouteArgs> {
   ProductRoute({required _i17.Product product})
-      : super(name, path: '/product-page', args: ProductRouteArgs(product: product));
+      : super(name,
+            path: '/product-page', args: ProductRouteArgs(product: product));
 
   static const String name = 'ProductRoute';
 }

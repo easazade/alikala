@@ -27,7 +27,6 @@ dependencies:
   shamsi_date: ^0.15.0
   tuple: ^2.0.0
   dio: ^4.0.0
-  auto_size_text: ^3.0.0-nullsafety.0 # remove this bullshit and use FittedBox instead
   carousel_slider: ^4.0.0
   flutter_custom_clippers: ^2.0.0
   cached_network_image: ^3.1.0
