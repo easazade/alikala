@@ -1,8 +1,12 @@
+import 'package:alikala/arcitecture/data/data_builder.dart';
+import 'package:alikala/arcitecture/store/store_consumer.dart';
 import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.gr.dart';
+import 'package:alikala/di/di.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:alikala/stores/shop_store.dart';
 import 'package:alikala/widgets/app_icon_button.dart';
 import 'package:alikala/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -10,6 +14,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
+  final ShopStore shopStore = inject();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +51,18 @@ class ProfilePage extends StatelessWidget {
                 SizedBox(height: 40),
                 Text('علیرضا عیسی‌زاده',
                     textAlign: TextAlign.center, style: TextStyles.dark_20_w700.copyWith(height: 1)),
+                //TODO: remove this later
+                StoreConsumer<ShopStore>.value(
+                  value: shopStore,
+                  builder: (context, store) {
+                    return WhenDataBuilder<String>(
+                      data: shopStore.shopName,
+                      onAvailable: (context, data) => Text('${data.value} &&'),
+                      onLoading: (context, data) => CircularProgressIndicator(color: Colors.red),
+                    );
+                  },
+                ),
+                
                 Text('09117158746', textAlign: TextAlign.center, style: TextStyles.light_14),
                 SizedBox(height: 15),
                 Image.asset(Assets.images.coinDash.assetName, width: 80),

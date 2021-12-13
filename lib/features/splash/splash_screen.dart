@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(3.seconds(), () {
+    Future.delayed(.5.seconds(), () {
       appRouter.replace(MainRoute());
     });
   }

@@ -1,4 +1,4 @@
-import 'package:alikala/stores/store.dart';
+import 'package:alikala/arcitecture/store/store.dart';
 import 'package:flutter/material.dart';
 
 class StoreConsumer<T extends Store> extends StatefulWidget {
@@ -26,7 +26,7 @@ class StoreConsumer<T extends Store> extends StatefulWidget {
         super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _State<T>();
+  State<StoreConsumer<T>> createState() => _State<T>();
 }
 
 class _State<T extends Store> extends State<StoreConsumer<T>> {
