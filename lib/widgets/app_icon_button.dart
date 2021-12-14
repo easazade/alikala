@@ -16,6 +16,7 @@ class AppIconButton extends StatelessWidget {
     var icon = this.icon;
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.opaque,
       child: (padding == null) ? icon : Padding(padding: padding!, child: icon),
     );
   }

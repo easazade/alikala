@@ -63,7 +63,8 @@ class ProfilePage extends StatelessWidget {
                     );
                   },
                   onLoading: (_, __) => Text('loading'),
-                  orElse: (_,__) => Text('else clause'),
+                  onError: (_, store) => Text(store.error.message),
+                  orElse: (_, __) => Text('else clause'),
                 ),
                 profileStore.build((context, store) {
                   if (store.isFetching) {

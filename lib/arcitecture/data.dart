@@ -6,6 +6,8 @@ import 'package:flutter/widgets.dart';
 
 enum Operation { loading, update, delete, fetch, create, none }
 
+abstract class ReadOnlyData<T> implements ReadableData<T>, BuildableData<T> {}
+
 abstract class ReadableData<T> {
   T get value;
 
@@ -69,7 +71,7 @@ class DataError {
   }
 }
 
-class Data<T> with EquatableMixin implements ReadableData<T>, EditableData<T>, BuildableData<T> {
+class Data<T> with EquatableMixin implements ReadOnlyData<T>, EditableData<T> {
   T? _value;
   DataError? _error;
   Operation _operation = Operation.none;
@@ -294,4 +296,5 @@ abstract class Store<T extends BaseStore> extends BaseStore with EquatableMixin 
 
 class BaseStore extends ChangeNotifier {
   void updateStore() => notifyListeners();
+  void updateStoreeeeeeeeeeeeeeeeeeeeeeeee() => notifyListeners();
 }

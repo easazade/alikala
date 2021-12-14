@@ -1,22 +1,29 @@
 import 'package:alikala/arcitecture/data.dart';
 
 class ProfileStore extends Store<ProfileStore> {
-  final Data<String> username = Data();
-  final Data<int> age = Data();
+  final Data<String> _username = Data();
+  final Data<int> _age = Data();
+
+  ReadOnlyData<String> get username => _username;
+  ReadOnlyData<int> get age => _age;
 
   Future init() async {
     setStoreOperation(Operation.fetch);
-    updateStore();
+    setStoreError(null);
+    updateStoreeeeeeeeeeeeeeeeeeeeeeeee();
     await Future.delayed(const Duration(seconds: 2));
-    username.setValue('easazade');
-    age.setValue(27);
+    _username.setValue('easazade');
+    _age.setValue(27);
     setStoreOperation(Operation.none);
-    updateStore();
+    updateStoreeeeeeeeeeeeeeeeeeeeeeeee();
+    await Future.delayed(const Duration(seconds: 1));
+    setStoreError(DataError('oops!', Exception()));
+    updateStoreeeeeeeeeeeeeeeeeeeeeeeee();
   }
 
   @override
-  bool get isAvailable => age.isAvailable && username.isAvailable;
+  bool get isAvailable => _age.isAvailable && _username.isAvailable;
 
   @override
-  List<Object?> get props => [username, age];
+  List<Object?> get props => [_username, _age];
 }
