@@ -1,11 +1,12 @@
-import 'package:alikala/arcitecture/data/data_builder.dart';
-import 'package:alikala/arcitecture/store/store_consumer.dart';
+import 'package:alikala/arcitecture/builders.dart';
+import 'package:alikala/arcitecture/store_consumer.dart';
 import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/di/di.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:alikala/stores/profile_store.dart';
 import 'package:alikala/stores/shop_store.dart';
 import 'package:alikala/widgets/app_icon_button.dart';
 import 'package:alikala/widgets/app_section_separator.dart';
@@ -15,6 +16,7 @@ import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
   final ShopStore shopStore = inject();
+  final ProfileStore profileStore = inject();
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +45,41 @@ class ProfilePage extends StatelessWidget {
                       ),
                       AppIconButton(
                         icon: Icon(FeatherIcons.bell),
-                        onTap: () {},
+                        onTap: () {
+                          //TODO: remove this later
+                          profileStore.init();
+                        },
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 40),
-                Text('علیرضا عیسی‌زاده',
-                    textAlign: TextAlign.center, style: TextStyles.dark_20_w700.copyWith(height: 1)),
+                profileStore.buildWhen(
+                  onAvailable: (context, store) {
+                    return Text(
+                      store.username.value,
+                      textAlign: TextAlign.center,
+                      style: TextStyles.dark_20_w700.copyWith(height: 1),
+                    );
+                  },
+                  onLoading: (_, __) => Text('loading'),
+                  orElse: (_,__) => Text('else clause'),
+                ),
+                profileStore.build((context, store) {
+                  if (store.isFetching) {
+                    return Text('fetching');
+                  } else if (store.isLoading) {
+                    return Text('loading');
+                  } else if (store.isAvailable) {
+                    return Text(
+                      store.username.value,
+                      textAlign: TextAlign.center,
+                      style: TextStyles.dark_20_w700.copyWith(height: 1),
+                    );
+                  } else {
+                    return Text('what username :(');
+                  }
+                }),
                 //TODO: remove this later
                 StoreConsumer<ShopStore>.value(
                   value: shopStore,
@@ -62,7 +91,7 @@ class ProfilePage extends StatelessWidget {
                     );
                   },
                 ),
-                
+
                 Text('09117158746', textAlign: TextAlign.center, style: TextStyles.light_14),
                 SizedBox(height: 15),
                 Image.asset(Assets.images.coinDash.assetName, width: 80),

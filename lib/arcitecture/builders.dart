@@ -1,9 +1,8 @@
-import 'package:alikala/arcitecture/data/data.dart';
-import 'package:alikala/arcitecture/store/store.dart';
-import 'package:alikala/arcitecture/store/store_consumer.dart';
+import 'package:alikala/arcitecture/data.dart';
 import 'package:flutter/material.dart';
 
 typedef DataWidgetBuilder<T> = Widget Function(BuildContext context, ReadableData<T> data);
+typedef StoreWidgetBuilder<T> = Widget Function(BuildContext context, T store);
 
 class DataBuilder<T> extends StatelessWidget {
   const DataBuilder({
@@ -15,7 +14,6 @@ class DataBuilder<T> extends StatelessWidget {
   final ReadableData<T> data;
 
   final Widget Function(BuildContext context, ReadableData<T> data) builder;
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,6 @@ class WhenDataBuilder<T> extends StatelessWidget {
   }) : super(key: key);
 
   final ReadableData<T> data;
-
 
   final DataWidgetBuilder<T> onAvailable;
   final DataWidgetBuilder<T>? onNotAvailable;
@@ -80,5 +77,66 @@ class WhenDataBuilder<T> extends StatelessWidget {
       return onNotAvailable!(context, data);
     }
     return (orElse != null) ? orElse!(context, data) : Container();
+  }
+}
+
+class WhenStoreBuilder<T> extends StatelessWidget {
+  const WhenStoreBuilder({
+    Key? key,
+    required this.readableData,
+    required this.value,
+    required this.onAvailable,
+    this.onNotAvailable,
+    this.onLoading,
+    this.onUpdate,
+    this.onCreate,
+    this.onDelete,
+    this.onFetch,
+    this.onError,
+    this.orElse,
+  }) : super(key: key);
+
+  final T value;
+  final ReadableData<T> readableData;
+
+  final StoreWidgetBuilder<T> onAvailable;
+  final StoreWidgetBuilder<T>? onNotAvailable;
+
+  final StoreWidgetBuilder<T>? onLoading;
+  final StoreWidgetBuilder<T>? onCreate;
+  final StoreWidgetBuilder<T>? onDelete;
+  final StoreWidgetBuilder<T>? onFetch;
+  final StoreWidgetBuilder<T>? onUpdate;
+
+  final StoreWidgetBuilder<T>? onError;
+  final StoreWidgetBuilder<T>? orElse;
+
+  @override
+  Widget build(BuildContext context) {
+    if (readableData.isCreating && onCreate != null) {
+      return onCreate!(context, value);
+    }
+    if (readableData.isDeleting && onDelete != null) {
+      return onDelete!(context, value);
+    }
+    if (readableData.isFetching && onFetch != null) {
+      return onFetch!(context, value);
+    }
+    if (readableData.isUpdating && onUpdate != null) {
+      return onUpdate!(context, value);
+    }
+    if (readableData.isLoading && onLoading != null) {
+      return onLoading!(context, value);
+    }
+    if (readableData.hasError && onError != null) {
+      return onError!(context, value);
+    }
+    if (readableData.isAvailable) {
+      return onAvailable(context, value);
+    }
+    if (readableData.isNotAvailable && onNotAvailable != null) {
+      return onNotAvailable!(context, value);
+    }
+    return (orElse != null) ? orElse!(context, value) : Container();
   }
 }

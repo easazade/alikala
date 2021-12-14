@@ -1,3 +1,4 @@
+import 'package:alikala/stores/profile_store.dart';
 import 'package:alikala/stores/shop_store.dart';
 import 'package:get_it/get_it.dart';
 
@@ -7,4 +8,5 @@ T inject<T extends Object>() => _getIt.get<T>();
 
 Future setupDependencies() async {
   _getIt.registerLazySingleton(() => ShopStore());
+  _getIt.registerLazySingleton(() => ProfileStore());
 }

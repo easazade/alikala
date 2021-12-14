@@ -32,6 +32,7 @@ dependencies:
   cached_network_image: ^3.1.0
   flushbar: ^1.10.4 # use flash package insread if you have the time
   auto_route: ^2.2.0
+  equatable: ^2.0.3
   # explode_view: ^1.0.4
   #  permission_handler: ^5.0.1+1
   #  moor: ^3.3.1

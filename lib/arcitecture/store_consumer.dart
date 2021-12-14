@@ -1,7 +1,7 @@
-import 'package:alikala/arcitecture/store/store.dart';
+import 'package:alikala/arcitecture/data.dart';
 import 'package:flutter/material.dart';
 
-class StoreConsumer<T extends Store> extends StatefulWidget {
+class StoreConsumer<T extends BaseStore> extends StatefulWidget {
   final T? store;
   final T Function(BuildContext context)? lazyStore;
   final void Function(BuildContext context, T store)? listener;
@@ -29,7 +29,7 @@ class StoreConsumer<T extends Store> extends StatefulWidget {
   State<StoreConsumer<T>> createState() => _State<T>();
 }
 
-class _State<T extends Store> extends State<StoreConsumer<T>> {
+class _State<T extends BaseStore> extends State<StoreConsumer<T>> {
   late void Function() _listener;
 
   late T _store;

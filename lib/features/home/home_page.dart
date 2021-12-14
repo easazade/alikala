@@ -2,7 +2,7 @@ import 'package:alikala/core/app.dart';
 import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/di/di.dart';
 import 'package:alikala/stores/shop_store.dart';
-import 'package:alikala/arcitecture/store/store_consumer.dart';
+import 'package:alikala/arcitecture/store_consumer.dart';
 import 'package:alikala/widgets/app_sliver_amazing_deals.dart';
 import 'package:alikala/widgets/app_sliver_double_banner.dart';
 import 'package:alikala/widgets/app_sliver_horizontal_products_list.dart';
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
             appBar: AppBar(
               title: StoreConsumer<ShopStore>.value(
                   value: store,
-                  builder: (context, snapshot) {
+                  builder: (context, store) {
                     if (store.shopName.isLoading) {
                       return CircularProgressIndicator(color: Colors.black);
                     }
