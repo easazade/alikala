@@ -20,22 +20,17 @@ import '../../fake_data.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StoreConsumer<ShopStore>.value(
-        value: inject(),
+    return StoreConsumer<ShopStore>(
+        store: inject(),
         builder: (context, store) {
           return Scaffold(
             appBar: AppBar(
-              title: StoreConsumer<ShopStore>.value(
-                  value: store,
-                  builder: (context, store) {
-                    if (store.shopName.isLoading) {
-                      return CircularProgressIndicator(color: Colors.black);
-                    }
-                    return GestureDetector(
+              title: (store.shopName.isLoading)
+                  ? CircularProgressIndicator(color: Colors.black)
+                  : GestureDetector(
                       onTap: () => store.setShopName('WHAT'),
                       child: (store.shopName.isAvailable) ? Text(store.shopName.value) : Text('NONE'),
-                    );
-                  }),
+                    ),
             ),
             body: NoScrollGlow(
               child: CustomScrollView(

@@ -2,28 +2,17 @@ import 'package:alikala/arcitecture/data.dart';
 import 'package:flutter/material.dart';
 
 class StoreConsumer<T extends BaseStore> extends StatefulWidget {
-  final T? store;
-  final T Function(BuildContext context)? lazyStore;
+  final T store;
+  // final T Function(BuildContext context)? lazyStore;
   final void Function(BuildContext context, T store)? listener;
   final Widget Function(BuildContext context, T store) builder;
 
-  const StoreConsumer.create({
+  const StoreConsumer({
     Key? key,
-    required T Function(BuildContext context) create,
+    required this.store,
     required this.builder,
     this.listener,
-  })  : store = null,
-        lazyStore = create,
-        super(key: key);
-
-  const StoreConsumer.value({
-    Key? key,
-    required T value,
-    required this.builder,
-    this.listener,
-  })  : store = value,
-        lazyStore = null,
-        super(key: key);
+  }) : super(key: key);
 
   @override
   State<StoreConsumer<T>> createState() => _State<T>();
@@ -36,10 +25,18 @@ class _State<T extends BaseStore> extends State<StoreConsumer<T>> {
 
   @override
   void initState() {
-    _store = widget.store ?? widget.lazyStore!.call(context);
+    _store = widget.store;
     _listener = () => setState(() {});
     _store.addListener(_listener);
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant StoreConsumer<T> oldWidget) {
+    if (oldWidget.store.storeId != widget.store.storeId) {
+      _store = widget.store;
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override

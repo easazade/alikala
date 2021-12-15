@@ -54,6 +54,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 40),
+                // building profile store with buildWhen
                 profileStore.buildWhen(
                   onAvailable: (context, store) {
                     return Text(
@@ -66,6 +67,7 @@ class ProfilePage extends StatelessWidget {
                   onError: (_, store) => Text(store.error.message),
                   orElse: (_, __) => Text('else clause'),
                 ),
+                /// building profileStore using build
                 profileStore.build((context, store) {
                   if (store.isFetching) {
                     return Text('fetching');
@@ -81,9 +83,9 @@ class ProfilePage extends StatelessWidget {
                     return Text('what username :(');
                   }
                 }),
-                //TODO: remove this later
-                StoreConsumer<ShopStore>.value(
-                  value: shopStore,
+                //directly using StoreConsumer to build the shopStore
+                StoreConsumer<ShopStore>(
+                  store: shopStore,
                   builder: (context, store) {
                     return WhenDataBuilder<String>(
                       data: shopStore.shopName,

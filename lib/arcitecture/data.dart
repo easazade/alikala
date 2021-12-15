@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:alikala/arcitecture/builders.dart';
 import 'package:alikala/arcitecture/exceptions.dart';
 import 'package:alikala/arcitecture/store_consumer.dart';
@@ -257,7 +259,7 @@ abstract class Store<T extends BaseStore> extends BaseStore with EquatableMixin 
     _operation = operation;
   }
 
-  Widget build(final StoreWidgetBuilder<T> builder) => StoreConsumer.value(value: this as T, builder: builder);
+  Widget build(final StoreWidgetBuilder<T> builder) => StoreConsumer(store: this as T, builder: builder);
 
   Widget buildWhen({
     required StoreWidgetBuilder<T> onAvailable,
@@ -270,8 +272,8 @@ abstract class Store<T extends BaseStore> extends BaseStore with EquatableMixin 
     StoreWidgetBuilder<T>? onError,
     StoreWidgetBuilder<T>? orElse,
   }) {
-    return StoreConsumer.value(
-      value: this,
+    return StoreConsumer(
+      store: this,
       builder: (context, store) {
         return WhenStoreBuilder<T>(
           readableData: this,
@@ -295,6 +297,17 @@ abstract class Store<T extends BaseStore> extends BaseStore with EquatableMixin 
 }
 
 class BaseStore extends ChangeNotifier {
+  final storeId = StoreId();
   void updateStore() => notifyListeners();
   void updateStoreeeeeeeeeeeeeeeeeeeeeeeee() => notifyListeners();
+}
+
+/// an object that only equals to itslef just like Flutter UniqueKey()
+class StoreId {
+  @override
+  String toString() => '[#${shortHash(this)}]';
+}
+
+String shortHash(Object? object) {
+  return object.hashCode.toUnsigned(20).toRadixString(16).padLeft(5, '0');
 }
