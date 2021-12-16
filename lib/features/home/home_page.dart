@@ -35,9 +35,7 @@ class HomePage extends StatelessWidget {
             body: NoScrollGlow(
               child: CustomScrollView(
                 slivers: [
-                  AppSliverSearchBar(context, () {
-                    appRouter.navigate(SearchRoute());
-                  }),
+                  AppSliverSearchBar(context, () => appRouter.navigate(SearchRoute())),
                   SliverToBoxAdapter(
                     child: store.shopName.buildWhen(
                       onAvailable: (context, data) => Text('${data.value} &&'),

@@ -10,15 +10,17 @@ class ProfileStore extends Store<ProfileStore> {
   Future init() async {
     setStoreOperation(Operation.fetch);
     setStoreError(null);
-    updateStoreeeeeeeeeeeeeeeeeeeeeeeee();
+    updateStore();
+    // -------------------------
     await Future.delayed(const Duration(seconds: 2));
     _username.setValue('easazade');
     _age.setValue(27);
     setStoreOperation(Operation.none);
-    updateStoreeeeeeeeeeeeeeeeeeeeeeeee();
+    updateStore();
+    // -------------------------
     await Future.delayed(const Duration(seconds: 1));
     setStoreError(DataError('oops!', Exception()));
-    updateStoreeeeeeeeeeeeeeeeeeeeeeeee();
+    updateStore();
   }
 
   @override

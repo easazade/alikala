@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:alikala/arcitecture/builders.dart';
 import 'package:alikala/arcitecture/exceptions.dart';
 import 'package:alikala/arcitecture/store_consumer.dart';
@@ -155,9 +153,7 @@ class Data<T> with EquatableMixin implements ReadOnlyData<T>, EditableData<T> {
   }
 
   @override
-  Widget build(
-    final DataWidgetBuilder<T> builder,
-  ) {
+  Widget build(final DataWidgetBuilder<T> builder) {
     return DataBuilder<T>(data: this, builder: builder);
   }
 
@@ -259,10 +255,16 @@ abstract class Store<T extends BaseStore> extends BaseStore with EquatableMixin 
     _operation = operation;
   }
 
-  Widget build(final StoreWidgetBuilder<T> builder) => StoreConsumer(store: this as T, builder: builder);
+  Widget consume({
+    required StoreWidgetBuilder<T> builder,
+    final void Function(BuildContext context, T store)? listener,
+  }) {
+    return StoreConsumer(listener: listener, store: this as T, builder: builder);
+  }
 
-  Widget buildWhen({
+  Widget consumeWhen({
     required StoreWidgetBuilder<T> onAvailable,
+    void Function(BuildContext context, T store)? listener,
     StoreWidgetBuilder<T>? onNotAvailable,
     StoreWidgetBuilder<T>? onLoading,
     StoreWidgetBuilder<T>? onCreate,
@@ -273,7 +275,8 @@ abstract class Store<T extends BaseStore> extends BaseStore with EquatableMixin 
     StoreWidgetBuilder<T>? orElse,
   }) {
     return StoreConsumer(
-      store: this,
+      store: this as T,
+      listener: listener,
       builder: (context, store) {
         return WhenStoreBuilder<T>(
           readableData: this,
@@ -299,15 +302,14 @@ abstract class Store<T extends BaseStore> extends BaseStore with EquatableMixin 
 class BaseStore extends ChangeNotifier {
   final storeId = StoreId();
   void updateStore() => notifyListeners();
-  void updateStoreeeeeeeeeeeeeeeeeeeeeeeee() => notifyListeners();
 }
 
 /// an object that only equals to itslef just like Flutter UniqueKey()
 class StoreId {
   @override
-  String toString() => '[#${shortHash(this)}]';
+  String toString() => '[#${_shortHash(this)}]';
 }
 
-String shortHash(Object? object) {
+String _shortHash(Object? object) {
   return object.hashCode.toUnsigned(20).toRadixString(16).padLeft(5, '0');
 }

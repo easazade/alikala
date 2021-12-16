@@ -55,34 +55,35 @@ class ProfilePage extends StatelessWidget {
                 ),
                 SizedBox(height: 40),
                 // building profile store with buildWhen
-                profileStore.buildWhen(
-                  onAvailable: (context, store) {
-                    return Text(
+                profileStore.consumeWhen(
+                  onAvailable: (context, store) => Text(
                       store.username.value,
                       textAlign: TextAlign.center,
                       style: TextStyles.dark_20_w700.copyWith(height: 1),
-                    );
-                  },
+                    ),
                   onLoading: (_, __) => Text('loading'),
                   onError: (_, store) => Text(store.error.message),
                   orElse: (_, __) => Text('else clause'),
                 ),
+
                 /// building profileStore using build
-                profileStore.build((context, store) {
-                  if (store.isFetching) {
-                    return Text('fetching');
-                  } else if (store.isLoading) {
-                    return Text('loading');
-                  } else if (store.isAvailable) {
-                    return Text(
-                      store.username.value,
-                      textAlign: TextAlign.center,
-                      style: TextStyles.dark_20_w700.copyWith(height: 1),
-                    );
-                  } else {
-                    return Text('what username :(');
-                  }
-                }),
+                profileStore.consume(
+                  builder: (context, store) {
+                    if (store.isFetching) {
+                      return Text('fetching');
+                    } else if (store.isLoading) {
+                      return Text('loading');
+                    } else if (store.isAvailable) {
+                      return Text(
+                        store.username.value,
+                        textAlign: TextAlign.center,
+                        style: TextStyles.dark_20_w700.copyWith(height: 1),
+                      );
+                    } else {
+                      return Text('what username :(');
+                    } 
+                  },
+                ),
                 //directly using StoreConsumer to build the shopStore
                 StoreConsumer<ShopStore>(
                   store: shopStore,
