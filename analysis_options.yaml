@@ -1,8 +1,6 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
-  enable-experiment:
-    - non-nullable
   exclude:
     # Ignore generated files
     - lib/**/*.g.dart

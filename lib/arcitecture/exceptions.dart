@@ -1,4 +1,3 @@
-
 class ValueNotAvailableException implements Exception {
   const ValueNotAvailableException();
 

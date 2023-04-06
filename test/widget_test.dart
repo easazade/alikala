@@ -5,7 +5,6 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-
 // import 'package:alikala/main.dart';
 // import 'package:test/test.dart';
 // import 'package:alikala/utils/utils_functions.dart';
@@ -32,6 +31,4 @@ void main() {
 
 //   var name = names.firstOrNull;
 // });
-
 }
-

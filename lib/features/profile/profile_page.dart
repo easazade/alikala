@@ -57,10 +57,10 @@ class ProfilePage extends StatelessWidget {
                 // building profile store with buildWhen
                 profileStore.consumeWhen(
                   onAvailable: (context, store) => Text(
-                      store.username.value,
-                      textAlign: TextAlign.center,
-                      style: TextStyles.dark_20_w700.copyWith(height: 1),
-                    ),
+                    store.username.value,
+                    textAlign: TextAlign.center,
+                    style: TextStyles.dark_20_w700.copyWith(height: 1),
+                  ),
                   onLoading: (_, __) => Text('loading'),
                   onError: (_, store) => Text(store.error.message),
                   orElse: (_, __) => Text('else clause'),
@@ -81,7 +81,7 @@ class ProfilePage extends StatelessWidget {
                       );
                     } else {
                       return Text('what username :(');
-                    } 
+                    }
                   },
                 ),
                 //directly using StoreConsumer to build the shopStore

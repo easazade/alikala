@@ -1,7 +1,6 @@
 import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/utils/cupertino_theme_overrides.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:alikala/generated/l10n.dart';
