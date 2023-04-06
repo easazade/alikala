@@ -1,6 +1,9 @@
 # alikala
 
-this is an online store application like Digikala.com.
+this a full stack online shopping application like Digikala.com.
 
-created this app because i wanted to learn django. needed a nice project to create the api for.
 
+- Play around, learn, test & find contribution ideas with following libraries
+[crystalline](https://pub.dev/packages/crystalline)
+[dart_frog](https://pub.dev/packages/dart_frog)
+[jaspr](https://pub.dev/packages/jaspr)

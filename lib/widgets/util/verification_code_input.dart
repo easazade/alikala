@@ -25,7 +25,7 @@ class VerificationCodeInput extends StatefulWidget {
         super();
 
   @override
-  _VerificationCodeInputState createState() => _VerificationCodeInputState();
+  State<VerificationCodeInput> createState() => _VerificationCodeInputState();
 }
 
 class _VerificationCodeInputState extends State<VerificationCodeInput> {
@@ -117,7 +117,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
       setState(() {
         _currentIndex = index + 1;
       });
-      SchedulerBinding.instance!.addPostFrameCallback((_) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
         FocusScope.of(context).requestFocus(_listFocusNode[index + 1]);
       });
     }
@@ -131,7 +131,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
         }
         _currentIndex = index - 1;
       });
-      SchedulerBinding.instance!.addPostFrameCallback((_) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
         FocusScope.of(context).requestFocus(_listFocusNode[index - 1]);
       });
     }
