@@ -7,10 +7,6 @@ import 'package:alikala/generated/l10n.dart';
 
 import 'constants.dart';
 
-///HafezApp is the application Widget defined for this application
-///which is added to the very top of the widget tree providing info about the app
-///configurations, theme, fonts, localizations, app name, starting page, navigation etc.
-///
 
 final appRouter = AppRouter();
 
@@ -24,10 +20,12 @@ class _AliKalaAppState extends State<AliKalaApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
+        //TODO: UPDATE flutter THEME
         cupertinoOverrideTheme: MaterialAppCupertinoThemeDataOverrides(FontFamily.estedadFD),
         primaryColor: AppColors.THEME_ACCENT,
-        primaryColorBrightness: Brightness.light,
-        backgroundColor: Colors.white,
+        primaryColorDark: AppColors.THEME_ACCENT,
+        primaryColorLight: AppColors.THEME_ACCENT,
+
         scaffoldBackgroundColor: Colors.white,
         dialogBackgroundColor: Colors.white,
         //changes appbar and status bar icon colors to light because it indicates that our
