@@ -1,5 +1,3 @@
-import 'package:alikala/arcitecture/builders.dart';
-import 'package:alikala/arcitecture/store_consumer.dart';
 import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.gr.dart';
@@ -13,6 +11,7 @@ import 'package:alikala/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
 
 class ProfilePage extends StatelessWidget {
   final ShopStore shopStore = inject();

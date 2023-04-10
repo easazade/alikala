@@ -1,4 +1,4 @@
-import 'package:alikala/arcitecture/data.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
 
 class ShopStore extends BaseStore {
   late final Data<String> shopName = Data<String>();

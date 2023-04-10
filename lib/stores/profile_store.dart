@@ -1,4 +1,4 @@
-import 'package:alikala/arcitecture/data.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
 
 class ProfileStore extends Store<ProfileStore> {
   final Data<String> _username = Data();
