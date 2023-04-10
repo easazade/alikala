@@ -266,12 +266,11 @@ packages:
     source: hosted
     version: "3.0.2"
   crystalline:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: crystalline
-      sha256: "284544e9fde14bdf5bbe60b5a817e525c0905eae6f851b7f8bb331ac64ef503f"
-      url: "https://pub.dev"
-    source: hosted
+      path: "../crystalline/packages/crystalline"
+      relative: true
+    source: path
     version: "0.0.1"
   cupertino_icons:
     dependency: "direct main"
