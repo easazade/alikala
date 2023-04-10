@@ -1,19 +1,19 @@
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 
 class ShopStore extends BaseStore {
-  late final Data<String> shopName = Data<String>();
+  late final BuildableData<String> shopName = BuildableData<String>();
 
   Future setShopName(String name) async {
     const String what = 'WHATT ??';
-    shopName.setOperation(Operation.loading);
+    shopName.operation = Operation.loading;
     updateStore();
     await Future.delayed(const Duration(seconds: 4));
     if (shopName.valueEqualsTo(what)) {
-      shopName.setValue('AHA !!');
+      shopName.value = 'AHA !!';
     } else {
-      shopName.setValue(what);
+      shopName.value = what;
     }
-    shopName.setOperation(Operation.none);
+    shopName.operation = Operation.none;
     updateStore();
   }
 }

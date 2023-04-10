@@ -4,8 +4,8 @@ class ProfileStore extends Store<ProfileStore> {
   final Data<String> _username = Data();
   final Data<int> _age = Data();
 
-  ReadOnlyData<String> get username => _username;
-  ReadOnlyData<int> get age => _age;
+  Data<String> get username => _username;
+  Data<int> get age => _age;
 
   Future init() async {
     setStoreOperation(Operation.fetch);
@@ -13,8 +13,8 @@ class ProfileStore extends Store<ProfileStore> {
     updateStore();
     // -------------------------
     await Future.delayed(const Duration(seconds: 2));
-    _username.setValue('easazade');
-    _age.setValue(27);
+    _username.value = 'easazade';
+    _age.value = 27;
     setStoreOperation(Operation.none);
     updateStore();
     // -------------------------
