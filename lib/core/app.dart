@@ -7,7 +7,6 @@ import 'package:alikala/generated/l10n.dart';
 
 import 'constants.dart';
 
-
 final appRouter = AppRouter();
 
 class AliKalaApp extends StatefulWidget {
