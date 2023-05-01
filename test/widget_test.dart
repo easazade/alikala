@@ -6,10 +6,15 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 // import 'package:alikala/main.dart';
-// import 'package:test/test.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 // import 'package:alikala/utils/utils_functions.dart';
 
 void main() {
+  testWidgets('test some widgets', (widgetTester) async {
+    // find.byType(ListView);
+  });
+
 //   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
 //     // Build our app and trigger a frame.
 //     await tester.pumpWidget(MyApp());
@@ -26,9 +31,4 @@ void main() {
 //     expect(find.text('0'), findsNothing);
 //     expect(find.text('1'), findsOneWidget);
 //   });
-// test('first or null', (){
-//   List<String> names;
-
-//   var name = names.firstOrNull;
-// });
 }

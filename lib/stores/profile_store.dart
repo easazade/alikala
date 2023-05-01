@@ -1,6 +1,7 @@
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 
-class ProfileStore extends Store<ProfileStore> {
+// class ProfileStore extends Store<ProfileStore> {
+class ProfileStore extends ChangeNotifierData {
   final Data<String> _username = Data();
   final Data<int> _age = Data();
 
@@ -8,24 +9,24 @@ class ProfileStore extends Store<ProfileStore> {
   Data<int> get age => _age;
 
   Future init() async {
-    setStoreOperation(Operation.fetch);
-    setStoreError(null);
-    updateStore();
+    operation = Operation.fetch;
+    error = null;
+    notifyListeners();
     // -------------------------
     await Future.delayed(const Duration(seconds: 2));
     _username.value = 'easazade';
     _age.value = 27;
-    setStoreOperation(Operation.none);
-    updateStore();
+    operation = Operation.none;
+    notifyListeners();
     // -------------------------
     await Future.delayed(const Duration(seconds: 1));
-    setStoreError(DataError('oops!', Exception()));
-    updateStore();
+    error = DataError('oops!', Exception());
+    notifyListeners();
   }
 
   @override
   bool get isAvailable => _age.isAvailable && _username.isAvailable;
 
   @override
-  List<Object?> get props => [_username, _age];
+  List<Data<Object?>> get items => [_username, _age];
 }

@@ -20,16 +20,17 @@ import '../../fake_data.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StoreConsumer<ShopStore>(
-        store: inject(),
-        builder: (context, store) {
+    return DataBuilder(
+        data: shopStore,
+        listen: true,
+        builder: (context, _) {
           return Scaffold(
             appBar: AppBar(
-              title: (store.shopName.isLoading)
+              title: (shopStore.shopName.isLoading)
                   ? CircularProgressIndicator(color: Colors.black)
                   : GestureDetector(
-                      onTap: () => store.setShopName('WHAT'),
-                      child: (store.shopName.isAvailable) ? Text(store.shopName.value) : Text('NONE'),
+                      onTap: () => shopStore.setShopName('WHAT'),
+                      child: (shopStore.shopName.isAvailable) ? Text(shopStore.shopName.value) : Text('NONE'),
                     ),
             ),
             body: NoScrollGlow(
@@ -37,7 +38,8 @@ class HomePage extends StatelessWidget {
                 slivers: [
                   AppSliverSearchBar(context, () => appRouter.navigate(SearchRoute())),
                   SliverToBoxAdapter(
-                    child: store.shopName.buildWhen(
+                    child: WhenDataBuilder(
+                      data: shopStore.shopName,
                       onAvailable: (context, data) => Text('${data.value} &&'),
                       onLoading: (context, data) => CircularProgressIndicator(color: Colors.red),
                     ),

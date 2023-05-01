@@ -14,15 +14,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 
 class ProfilePage extends StatelessWidget {
-  final ShopStore shopStore = inject();
-  final ProfileStore profileStore = inject();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overScroll) {
-          overScroll.disallowGlow();
+          overScroll.disallowIndicator();
           return false;
         },
         child: SingleChildScrollView(
@@ -54,9 +51,11 @@ class ProfilePage extends StatelessWidget {
                 ),
                 SizedBox(height: 40),
                 // building profile store with buildWhen
-                profileStore.consumeWhen(
-                  onAvailable: (context, store) => Text(
-                    store.username.value,
+                WhenDataBuilder(
+                  data: profileStore,
+                  listen: true,
+                  onAvailable: (context, _) => Text(
+                    profileStore.username.value,
                     textAlign: TextAlign.center,
                     style: TextStyles.dark_20_w700.copyWith(height: 1),
                   ),
@@ -66,15 +65,17 @@ class ProfilePage extends StatelessWidget {
                 ),
 
                 /// building profileStore using build
-                profileStore.consume(
-                  builder: (context, store) {
-                    if (store.isFetching) {
+                DataBuilder(
+                  data: profileStore,
+                  listen: true,
+                  builder: (context, _) {
+                    if (profileStore.isFetching) {
                       return Text('fetching');
-                    } else if (store.isLoading) {
+                    } else if (profileStore.isLoading) {
                       return Text('loading');
-                    } else if (store.isAvailable) {
+                    } else if (profileStore.isAvailable) {
                       return Text(
-                        store.username.value,
+                        profileStore.username.value,
                         textAlign: TextAlign.center,
                         style: TextStyles.dark_20_w700.copyWith(height: 1),
                       );
@@ -84,8 +85,9 @@ class ProfilePage extends StatelessWidget {
                   },
                 ),
                 //directly using StoreConsumer to build the shopStore
-                StoreConsumer<ShopStore>(
-                  store: shopStore,
+                DataBuilder(
+                  data: shopStore,
+                  listen: true,
                   builder: (context, store) {
                     return WhenDataBuilder<String>(
                       data: shopStore.shopName,
