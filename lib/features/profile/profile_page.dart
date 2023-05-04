@@ -52,13 +52,13 @@ class ProfilePage extends StatelessWidget {
                 WhenDataBuilder(
                   data: profileStore,
                   observe: true,
-                  onAvailable: (context, _) => Text(
-                    profileStore.username.value,
+                  onAvailable: (context, store) => Text(
+                    store.username.value,
                     textAlign: TextAlign.center,
                     style: TextStyles.dark_20_w700.copyWith(height: 1),
                   ),
                   onLoading: (_, __) => Text('loading'),
-                  onError: (_, __) => Text(profileStore.error.message),
+                  onError: (_, store) => Text(store.error.message),
                   orElse: (_, __) => Text('else clause'),
                 ),
 
@@ -66,14 +66,14 @@ class ProfilePage extends StatelessWidget {
                 DataBuilder(
                   data: profileStore,
                   observe: true,
-                  builder: (context, _) {
-                    if (profileStore.isFetching) {
+                  builder: (context, store) {
+                    if (store.isFetching) {
                       return Text('fetching');
-                    } else if (profileStore.isLoading) {
+                    } else if (store.isLoading) {
                       return Text('loading');
-                    } else if (profileStore.isAvailable) {
+                    } else if (store.isAvailable) {
                       return Text(
-                        profileStore.username.value,
+                        store.username.value,
                         textAlign: TextAlign.center,
                         style: TextStyles.dark_20_w700.copyWith(height: 1),
                       );
@@ -87,7 +87,7 @@ class ProfilePage extends StatelessWidget {
                   data: shopStore,
                   observe: true,
                   builder: (context, store) {
-                    return WhenDataBuilder<String>(
+                    return WhenDataBuilder(
                       data: shopStore.shopName,
                       onAvailable: (context, data) => Text('${data.value} &&'),
                       onLoading: (context, data) => CircularProgressIndicator(color: Colors.red),

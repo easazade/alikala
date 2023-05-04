@@ -4,7 +4,7 @@ import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/data/entities.dart';
-import 'package:alikala/fake_data.dart';
+import 'package:alikala/di/di.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/stores/cart_store.dart';
 import 'package:alikala/utils/utils_functions.dart';
@@ -18,10 +18,13 @@ import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cartStore = ref.watch(cartStoreProvider);
+
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(
@@ -41,13 +44,13 @@ class CartPage extends StatelessWidget {
         child: DataBuilder(
           data: cartStore,
           observe: true,
-          builder: (context, __) {
+          builder: (context, store) {
             return ListView(
               children: [
                 _createLoginNeededCard(),
                 SizedBox(height: 30),
-                _createCartIsEmptyMessage(),
-                for (var product in cartStore.products) ...[
+                _createCartIsEmptyMessage(cartStore),
+                for (var product in store.products) ...[
                   AppSectionSeparator(height: 5),
                   _createCartItem(product.value),
                 ],
@@ -138,7 +141,7 @@ class CartPage extends StatelessWidget {
     );
   }
 
-  Widget _createCartIsEmptyMessage() {
+  Widget _createCartIsEmptyMessage(CartStore cartStore) {
     return Material(
       color: Colors.white,
       child: Column(
