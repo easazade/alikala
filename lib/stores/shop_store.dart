@@ -7,16 +7,21 @@ class ShopStore extends ChangeNotifierData {
     const String what = 'WHATT ??';
     shopName.operation = Operation.loading;
     notifyListeners();
+
     await Future.delayed(const Duration(seconds: 4));
     if (shopName.valueEqualsTo(what)) {
       shopName.value = 'AHA !!';
     } else {
       shopName.value = what;
     }
+
     shopName.operation = Operation.none;
     notifyListeners();
   }
 
   @override
   List<Data<Object?>> get items => [shopName];
+
+  @override
+  List<Data<Object?>> get requiredItems => [shopName];
 }

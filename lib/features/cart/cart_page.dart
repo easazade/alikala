@@ -6,6 +6,7 @@ import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/fake_data.dart';
 import 'package:alikala/gen/assets.gen.dart';
+import 'package:alikala/stores/cart_store.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_add_to_cart.dart';
 import 'package:alikala/widgets/app_button.dart';
@@ -16,6 +17,7 @@ import 'package:alikala/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
 
 class CartPage extends StatelessWidget {
   @override
@@ -33,31 +35,29 @@ class CartPage extends StatelessWidget {
       ),
       child: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overScroll) {
-          overScroll.disallowGlow();
+          overScroll.disallowIndicator();
           return false;
         },
-        child: ListView(
-          children: [
-            _createLoginNeededCard(),
-            SizedBox(height: 30),
-            _createCartIsEmptyMessage(),
-            AppSectionSeparator(height: 5),
-            _createCartItem(fakeProducts[0]),
-            AppSectionSeparator(height: 5),
-            _createCartItem(fakeProducts[1]),
-            AppSectionSeparator(height: 5),
-            _createCartItem(fakeProducts[2]),
-            AppSectionSeparator(height: 5),
-            _createCartItem(fakeProducts[3]),
-            AppSectionSeparator(height: 5),
-            _createCartItem(fakeProducts[4]),
-            AppSectionSeparator(height: 5),
-            _createCartItem(fakeProducts[5]),
-            AppSectionSeparator(),
-            _createCartSummary(),
-            AppSectionSeparator(),
-            _createContinueButton(),
-          ],
+        child: DataBuilder(
+          data: cartStore,
+          observe: true,
+          builder: (context, __) {
+            return ListView(
+              children: [
+                _createLoginNeededCard(),
+                SizedBox(height: 30),
+                _createCartIsEmptyMessage(),
+                for (var product in cartStore.products) ...[
+                  AppSectionSeparator(height: 5),
+                  _createCartItem(product.value),
+                ],
+                AppSectionSeparator(),
+                _createCartSummary(),
+                AppSectionSeparator(),
+                _createContinueButton(),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -143,9 +143,19 @@ class CartPage extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          Image.asset(
-            Assets.images.emptyCart.assetName,
-            width: 150,
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              if (cartStore.products.isNotEmpty) {
+                cartStore.removeProduct();
+              } else {
+                cartStore.addProduct();
+              }
+            },
+            child: Image.asset(
+              Assets.images.emptyCart.assetName,
+              width: 150,
+            ),
           ),
           Text('سبد خرید شما خالی است.'),
           SizedBox(height: 20),
@@ -155,7 +165,7 @@ class CartPage extends StatelessWidget {
   }
 
   Widget _createCartSummary() {
-    Widget _createPriceItem(String label, int value) {
+    Widget createPriceItem(String label, int value) {
       return Column(
         children: [
           SizedBox(height: 4),
@@ -186,8 +196,8 @@ class CartPage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            _createPriceItem('مبلغ کل کالا ها', 623000),
-            _createPriceItem('جمع', 623000),
+            createPriceItem('مبلغ کل کالا ها', 623000),
+            createPriceItem('جمع', 623000),
           ],
         ),
       ),

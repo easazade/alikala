@@ -4,8 +4,6 @@ import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/di/di.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
-import 'package:alikala/stores/profile_store.dart';
-import 'package:alikala/stores/shop_store.dart';
 import 'package:alikala/widgets/app_icon_button.dart';
 import 'package:alikala/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -53,21 +51,21 @@ class ProfilePage extends StatelessWidget {
                 // building profile store with buildWhen
                 WhenDataBuilder(
                   data: profileStore,
-                  listen: true,
+                  observe: true,
                   onAvailable: (context, _) => Text(
                     profileStore.username.value,
                     textAlign: TextAlign.center,
                     style: TextStyles.dark_20_w700.copyWith(height: 1),
                   ),
                   onLoading: (_, __) => Text('loading'),
-                  onError: (_, store) => Text(store.error.message),
+                  onError: (_, __) => Text(profileStore.error.message),
                   orElse: (_, __) => Text('else clause'),
                 ),
 
                 /// building profileStore using build
                 DataBuilder(
                   data: profileStore,
-                  listen: true,
+                  observe: true,
                   builder: (context, _) {
                     if (profileStore.isFetching) {
                       return Text('fetching');
@@ -87,7 +85,7 @@ class ProfilePage extends StatelessWidget {
                 //directly using StoreConsumer to build the shopStore
                 DataBuilder(
                   data: shopStore,
-                  listen: true,
+                  observe: true,
                   builder: (context, store) {
                     return WhenDataBuilder<String>(
                       data: shopStore.shopName,
