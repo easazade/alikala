@@ -52,7 +52,7 @@ class CartPage extends ConsumerWidget {
                 _createCartIsEmptyMessage(cartStore),
                 for (var product in store.products) ...[
                   AppSectionSeparator(height: 5),
-                  _createCartItem(product.value),
+                  _createCartItem(product),
                 ],
                 AppSectionSeparator(),
                 _createCartSummary(),
@@ -66,7 +66,7 @@ class CartPage extends ConsumerWidget {
     );
   }
 
-  Widget _createCartItem(Product product) {
+  Widget _createCartItem(Data<Product> product) {
     return Material(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -74,18 +74,19 @@ class CartPage extends ConsumerWidget {
         child: Column(
           children: [
             SizedBox(height: 20),
+            if (product.isDeleting) Text('Deleting'),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(width: 30),
-                AppNetworkImage(imageUrl: product.images.firstOrNull, width: 100),
+                AppNetworkImage(imageUrl: product.value.images.firstOrNull, width: 100),
                 SizedBox(width: 30),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(product.title),
-                      if (product.color != null) AppProductColor(product),
+                      Text(product.value.title),
+                      if (product.value.color != null) AppProductColor(product.value),
                     ],
                   ),
                 ),
@@ -95,7 +96,7 @@ class CartPage extends ConsumerWidget {
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: AppAddToCart(product: product),
+              child: AppAddToCart(product: product.value),
             ),
           ],
         ),

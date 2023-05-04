@@ -10,7 +10,11 @@ class CartStore extends Store {
     notifyListeners();
   }
 
-  void removeProduct() {
+  Future removeProduct() async {
+    products[0].operation = Operation.delete;
+    notifyListeners();
+
+    await Future.delayed(const Duration(seconds: 1));
     products.removeAt(0);
     notifyListeners();
   }
