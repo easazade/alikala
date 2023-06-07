@@ -52,7 +52,7 @@ class ProfilePage extends StatelessWidget {
                 WhenDataBuilder(
                   data: profileStore,
                   observe: true,
-                  onAvailable: (context, store) => Text(
+                  onValue: (context, store) => Text(
                     store.username.value,
                     textAlign: TextAlign.center,
                     style: TextStyles.dark_20_w700.copyWith(height: 1),
@@ -71,7 +71,7 @@ class ProfilePage extends StatelessWidget {
                       return Text('fetching');
                     } else if (store.isLoading) {
                       return Text('loading');
-                    } else if (store.isAvailable) {
+                    } else if (store.hasValue) {
                       return Text(
                         store.username.value,
                         textAlign: TextAlign.center,
@@ -89,7 +89,7 @@ class ProfilePage extends StatelessWidget {
                   builder: (context, store) {
                     return WhenDataBuilder(
                       data: shopStore.shopName,
-                      onAvailable: (context, data) => Text('${data.value} &&'),
+                      onValue: (context, data) => Text('${data.value} &&'),
                       onLoading: (context, data) => CircularProgressIndicator(color: Colors.red),
                     );
                   },

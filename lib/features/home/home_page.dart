@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                   ? CircularProgressIndicator(color: Colors.black)
                   : GestureDetector(
                       onTap: () => shopStore.setShopName('WHAT'),
-                      child: (shopStore.shopName.isAvailable) ? Text(shopStore.shopName.value) : Text('NONE'),
+                      child: (shopStore.shopName.hasValue) ? Text(shopStore.shopName.value) : Text('NONE'),
                     ),
             ),
             body: NoScrollGlow(
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                   SliverToBoxAdapter(
                     child: WhenDataBuilder(
                       data: shopStore.shopName,
-                      onAvailable: (context, data) => Text('${data.value} &&'),
+                      onValue: (context, data) => Text('${data.value} &&'),
                       onLoading: (context, data) => CircularProgressIndicator(color: Colors.red),
                     ),
                   ),

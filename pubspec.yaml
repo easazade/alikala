@@ -12,7 +12,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_lints: ^2.0.1
-  intl: ^0.17.0
+  intl: ^0.18.0
   connectivity: ^3.0.6
   shared_preferences: ^2.0.16
   fluttertoast: ^8.1.2
@@ -25,7 +25,6 @@ dependencies:
   carousel_slider: ^4.0.0
   flutter_custom_clippers: ^2.0.0
   cached_network_image: ^3.2.3
-  flushbar: ^1.10.4 # use flash package instead if you have the time
   auto_route: ^5.0.4
   equatable: ^2.0.3
   flutter_riverpod: ^2.3.4

@@ -22,11 +22,8 @@ class ProfileStore extends ChangeNotifierData {
   }
 
   @override
-  bool get isAvailable => age.isAvailable && username.isAvailable;
+  bool get hasValue => age.hasValue && username.hasValue;
 
   @override
   List<Data<Object?>> get items => [username, age];
-
-  @override
-  List<Data<Object?>> get requiredItems => [username, age];
 }
