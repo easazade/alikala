@@ -8,7 +8,10 @@ class ShopStore extends ChangeNotifierData {
     shopName.operation = Operation.loading;
     notifyListeners();
 
-    await Future.delayed(const Duration(seconds: 4));
+    await Future.delayed(const Duration(seconds: 2));
+    shopName.operation = Operation('meow');
+    notifyListeners();
+    await Future.delayed(const Duration(seconds: 2));
     if (shopName.valueEqualsTo(what)) {
       shopName.value = 'AHA !!';
     } else {
@@ -21,7 +24,4 @@ class ShopStore extends ChangeNotifierData {
 
   @override
   List<Data<Object?>> get items => [shopName];
-
-  @override
-  List<Data<Object?>> get requiredItems => [shopName];
 }

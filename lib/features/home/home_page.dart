@@ -14,7 +14,7 @@ import 'package:alikala/widgets/util/sliver_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 
-import '../../fake_data.dart'; 
+import '../../fake_data.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -40,6 +40,7 @@ class HomePage extends StatelessWidget {
                     child: WhenDataBuilder(
                       data: shopStore.shopName,
                       onValue: (context, data) => Text('${data.value} &&'),
+                      onCustomOperation: (context, data) => Text('CUSTOM OPERATION RUNNING = ${data.operation.name}'),
                       onLoading: (context, data) => CircularProgressIndicator(color: Colors.red),
                     ),
                   ),
