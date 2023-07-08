@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
         builder: (context, _) {
           return Scaffold(
             appBar: AppBar(
-              title: (shopStore.shopName.isLoading)
+              title: (shopStore.shopName.isOperating)
                   ? CircularProgressIndicator(color: Colors.black)
                   : GestureDetector(
                       onTap: () => shopStore.setShopName('WHAT'),
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                       data: shopStore.shopName,
                       onValue: (context, data) => Text('${data.value} &&'),
                       onCustomOperation: (context, data) => Text('CUSTOM OPERATION RUNNING = ${data.operation.name}'),
-                      onLoading: (context, data) => CircularProgressIndicator(color: Colors.red),
+                      onOperate: (context, data) => CircularProgressIndicator(color: Colors.red),
                     ),
                   ),
                   AppSliverSliders(images: fakeSales),

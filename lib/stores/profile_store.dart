@@ -17,7 +17,7 @@ class ProfileStore extends ChangeNotifierData {
     notifyListeners();
 
     await Future.delayed(const Duration(seconds: 1));
-    error = DataError('oops!', Exception());
+    error = Failure('oops!');
     notifyListeners();
   }
 

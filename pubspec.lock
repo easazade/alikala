@@ -263,7 +263,7 @@ packages:
       path: "../crystalline/packages/crystalline"
       relative: true
     source: path
-    version: "0.2.3"
+    version: "0.3.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -373,7 +373,7 @@ packages:
       path: "../crystalline/packages/flutter_crystalline"
       relative: true
     source: path
-    version: "0.2.4"
+    version: "0.3.0"
   flutter_custom_clippers:
     dependency: "direct main"
     description:

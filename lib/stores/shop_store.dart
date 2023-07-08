@@ -5,7 +5,7 @@ class ShopStore extends ChangeNotifierData {
 
   Future setShopName(String name) async {
     const String what = 'AliShop';
-    shopName.operation = Operation.loading;
+    shopName.operation = Operation.operating;
     notifyListeners();
 
     await Future.delayed(const Duration(seconds: 2));

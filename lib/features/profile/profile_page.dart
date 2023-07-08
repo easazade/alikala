@@ -57,7 +57,7 @@ class ProfilePage extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyles.dark_20_w700.copyWith(height: 1),
                   ),
-                  onLoading: (_, __) => Text('loading'),
+                  onOperate: (_, __) => Text('loading'),
                   onError: (_, store) => Text(store.error.message),
                   orElse: (_, __) => Text('else clause'),
                 ),
@@ -69,7 +69,7 @@ class ProfilePage extends StatelessWidget {
                   builder: (context, store) {
                     if (store.isFetching) {
                       return Text('fetching');
-                    } else if (store.isLoading) {
+                    } else if (store.isOperating) {
                       return Text('loading');
                     } else if (store.hasValue) {
                       return Text(
@@ -90,7 +90,7 @@ class ProfilePage extends StatelessWidget {
                     return WhenDataBuilder(
                       data: shopStore.shopName,
                       onValue: (context, data) => Text('${data.value} &&'),
-                      onLoading: (context, data) => CircularProgressIndicator(color: Colors.red),
+                      onOperate: (context, data) => CircularProgressIndicator(color: Colors.red),
                     );
                   },
                 ),
