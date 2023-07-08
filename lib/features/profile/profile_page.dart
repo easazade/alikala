@@ -67,10 +67,8 @@ class ProfilePage extends StatelessWidget {
                   data: profileStore,
                   observe: true,
                   builder: (context, store) {
-                    if (store.isFetching) {
-                      return Text('fetching');
-                    } else if (store.isOperating) {
-                      return Text('loading');
+                    if (store.isOperating) {
+                      return Text(store.operation.name);
                     } else if (store.hasValue) {
                       return Text(
                         store.username.value,
@@ -118,11 +116,12 @@ class ProfilePage extends StatelessWidget {
                 ),
                 _createMenuButton(icon: Icons.comment_outlined, label: 'نقد و نظرات', onTap: () {}),
                 _createMenuButton(
-                    icon: Icons.directions_outlined,
-                    label: 'آدرس ها',
-                    onTap: () {
-                      appRouter.navigate(AddressRoute());
-                    }),
+                  icon: Icons.directions_outlined,
+                  label: 'آدرس ها',
+                  onTap: () {
+                    appRouter.navigate(AddressRoute());
+                  },
+                ),
                 _createMenuButton(icon: Icons.person_outline_outlined, label: 'اطلاعات حساب کاربری', onTap: () {}),
               ],
             ),
