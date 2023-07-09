@@ -28,7 +28,7 @@ class CartPage extends ConsumerWidget {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(
-          'سبد خرید',
+          'Shopping Cart',
           style: TextStyle(
             color: AppColors.THEME_ACCENT,
             fontSize: 16,
@@ -128,8 +128,8 @@ class CartPage extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('ورود یا ثبت نام', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                      Text('برای تجربه بهتر خرید و بررسی روش ارسال کالاها لطفا وارد شوید.'),
+                      Text('Login or Sign up', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                      Text('For a better experience in Our Shop please Login'),
                     ],
                   ),
                 ),
@@ -161,7 +161,7 @@ class CartPage extends ConsumerWidget {
               width: 150,
             ),
           ),
-          Text('سبد خرید شما خالی است.'),
+          Text('You\'re shopping cart is empty'),
           SizedBox(height: 20),
         ],
       ),
@@ -195,13 +195,13 @@ class CartPage extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('خلاصه سبد', style: TextStyle(fontSize: 16)),
-                Text('1 کالا', style: TextStyle(fontSize: 12, color: AppColors.TEXT_LIGHT_2)),
+                Text('Summary', style: TextStyle(fontSize: 16)),
+                Text('1 item', style: TextStyle(fontSize: 12, color: AppColors.TEXT_LIGHT_2)),
               ],
             ),
             SizedBox(height: 20),
-            createPriceItem('مبلغ کل کالا ها', 623000),
-            createPriceItem('جمع', 623000),
+            createPriceItem('Total Amount', 623000),
+            createPriceItem('Sum', 623000),
           ],
         ),
       ),
@@ -218,7 +218,7 @@ class CartPage extends ConsumerWidget {
         padding: const EdgeInsets.all(8),
         child: Row(
           children: [
-            Expanded(child: AppButton('ادامه خرید', () {})),
+            Expanded(child: AppButton('Continue Browsing', () {})),
             SizedBox(width: 60),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -226,7 +226,7 @@ class CartPage extends ConsumerWidget {
                 Row(
                   children: [
                     Icon(Icons.keyboard_arrow_down_rounded, size: 16, color: AppColors.TEXT_LIGHT),
-                    Text('مجموع', style: TextStyle(color: AppColors.TEXT_LIGHT, fontWeight: FontWeight.w500)),
+                    Text('Total', style: TextStyle(color: AppColors.TEXT_LIGHT, fontWeight: FontWeight.w500)),
                   ],
                 ),
                 AppPriceTag(615000, sizeFactor: 1.2, color: AppColors.THEME_ACCENT_3),

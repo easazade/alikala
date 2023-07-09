@@ -21,12 +21,12 @@ class _AliKalaAppState extends State<AliKalaApp> {
     return ProviderScope(
       child: MaterialApp.router(
         theme: ThemeData(
-          //TODO: UPDATE flutter THEME
+          //TODO: UPDATE flutter THEME and make it compatible for dark and light
           cupertinoOverrideTheme: MaterialAppCupertinoThemeDataOverrides(FontFamily.estedadFD),
           primaryColor: AppColors.THEME_ACCENT,
           primaryColorDark: AppColors.THEME_ACCENT,
           primaryColorLight: AppColors.THEME_ACCENT,
-    
+
           scaffoldBackgroundColor: Colors.white,
           dialogBackgroundColor: Colors.white,
           //changes appbar and status bar icon colors to light because it indicates that our
@@ -47,8 +47,6 @@ class _AliKalaAppState extends State<AliKalaApp> {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        locale: const Locale('fa', 'IR'),
-        // locale: const Locale('en', 'US'),
         title: 'AliKala',
         routerDelegate: appRouter.delegate(initialRoutes: [
           const SplashRoute(),

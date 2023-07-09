@@ -10,10 +10,10 @@ class FavoritesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('علاقه‌مندی‌ها', style: TextStyles.dark_18_w700),
+        title: Text('Favorites', style: TextStyles.dark_18_w700),
         elevation: 1,
       ),
-      body: NoScrollGlow(
+      body: NoScrollIndicator(
         child: ListView(
           children: [
             Padding(
@@ -21,9 +21,9 @@ class FavoritesPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('کالا های مورد علاقه شما', style: TextStyles.light_14_w500),
+                  Text('Your favorite items', style: TextStyles.light_14_w500),
                   // ignore: prefer_adjacent_string_concatenation
-                  Text('${fakeProducts.length}' + ' کالا', style: TextStyles.light_14_w500),
+                  Text('${fakeProducts.length}' + ' items', style: TextStyles.light_14_w500),
                 ],
               ),
             ),

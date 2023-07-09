@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (notification) {
-          notification.disallowGlow();
+          notification.disallowIndicator();
           return false;
         },
         child: RemoveFocusOnTouchOutsideFocusedWidget(
@@ -57,7 +57,7 @@ class LoginPage extends StatelessWidget {
                   Row(children: [
                     Expanded(
                       child: Text(
-                        'برای ورود و یا ثبت‌نام در علی‌کالا شماره موبایل و یا ایمیل خود را وارد نمایید.',
+                        'To Login you need to enter email or mobile number',
                         textAlign: TextAlign.start,
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ),
@@ -65,30 +65,30 @@ class LoginPage extends StatelessWidget {
                     SizedBox(width: 60),
                   ]),
                   SizedBox(height: 20),
-                  AppFormField('شماره موبایل یا ایمیل', (input) {}),
+                  AppFormField('Phone number or email', (input) {}),
                   SizedBox(height: 20),
-                  AppFormLongButton('ورود به علی‌کالا', () {}),
+                  AppFormLongButton('Log in to AliKala', () {}),
                   SizedBox(height: 10),
                   Divider(),
                   SizedBox(height: 15),
                   RichText(
                     text: TextSpan(
                       children: [
-                        TextSpan(text: 'با ورود و یا ثبت‌نام در علی‌کالا شما ', style: textSpanStyle),
+                        TextSpan(text: 'By loging in to AliKala', style: textSpanStyle),
                         TextSpan(
-                          text: 'شرایط و قوانین',
+                          text: 'Rules And Agreements',
                           style: linkTextSpanStyle,
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => showAppToastWithAction(context, 'قوانین و مقررات', action: (v) {}),
+                            ..onTap = () => showAppToastWithAction(context, 'Rules And Agreements', action: (v) {}),
                         ),
-                        TextSpan(text: ' استفاده از سرویس علی کالا و ', style: textSpanStyle),
+                        TextSpan(text: 'using AliKala Services', style: textSpanStyle),
                         TextSpan(
-                          text: 'قوانین حریم خصوصی',
+                          text: 'Privacy Policy',
                           style: linkTextSpanStyle,
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => showAppToastWithAction(context, 'قوانین و مقررات', action: (v) {}),
+                            ..onTap = () => showAppToastWithAction(context, 'Rules And Agreements', action: (v) {}),
                         ),
-                        TextSpan(text: ' آن را می‌پذیرید.', style: textSpanStyle),
+                        TextSpan(text: 'Accept it', style: textSpanStyle),
                       ],
                     ),
                   ),

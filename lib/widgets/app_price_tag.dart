@@ -17,7 +17,7 @@ class AppPriceTag extends StatelessWidget {
           price.commaSeparated(),
           style: TextStyle(fontSize: 14 * sizeFactor, color: color, fontWeight: FontWeight.w500),
         ),
-        Text('  تومان', style: TextStyle(fontSize: 8 * sizeFactor, color: color, fontWeight: FontWeight.w500))
+        Text('  \$', style: TextStyle(fontSize: 8 * sizeFactor, color: color, fontWeight: FontWeight.w500))
       ],
     );
   }

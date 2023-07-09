@@ -10,7 +10,7 @@ class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NoScrollGlow(
+      body: NoScrollIndicator(
         child: CustomScrollView(
           slivers: [
             AppSliverSearchBar(context, () {

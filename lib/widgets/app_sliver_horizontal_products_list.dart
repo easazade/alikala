@@ -61,6 +61,7 @@ class AppHorizontalProductsList extends StatelessWidget {
                 children: [
                   Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
                   TextButton(
+                    onPressed: onLinkClicked,
                     child: Row(
                       children: [
                         Text(
@@ -70,7 +71,6 @@ class AppHorizontalProductsList extends StatelessWidget {
                         Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
                       ],
                     ),
-                    onPressed: onLinkClicked,
                   ),
                 ],
               ),
@@ -144,7 +144,7 @@ class AppHorizontalProductsList extends StatelessWidget {
                       Text(product.offPrice.commaSeparated(),
                           style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                       SizedBox(width: 2),
-                      Text('تومان', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
+                      Text('\$', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
                     ],
                   ),
                   Text(

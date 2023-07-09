@@ -63,17 +63,18 @@ class _State extends State<AppSliverAmazingDeals> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          //TODO: rewrite this with RichText
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('پیشنهاد', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w700)),
-              Text('شگفت', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w700)),
-              Text('انگیز', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w700)),
+              Text('Pretty', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w700)),
+              Text('Amazing', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w700)),
+              Text('Offers', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w700)),
             ],
           ),
           Row(
             children: [
-              Text('مشاهده همه', style: TextStyle(color: Colors.white)),
+              Text('View All', style: TextStyle(color: Colors.white)),
               Icon(CupertinoIcons.forward, color: Colors.white)
             ],
           ),

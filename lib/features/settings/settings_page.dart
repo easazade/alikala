@@ -24,12 +24,12 @@ class SettingsPage extends StatelessWidget {
             child: Column(
               children: [
                 createSettingItem(
-                    label: 'پرسش‌های متداول', icon: Icons.question_answer, onTap: () => showInfoToast('QA')),
-                createSettingItem(label: 'تماس با ما', icon: Icons.call, onTap: () => showInfoToast('Call Us')),
+                    label: 'FAQ', icon: Icons.question_answer, onTap: () => showInfoToast('FAQ')),
+                createSettingItem(label: 'Call Us', icon: Icons.call, onTap: () => showInfoToast('Call Us')),
                 createSettingItem(
-                    label: 'امتیاز به اپلیکیشن علی‌کالا', icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),
+                    label: 'Rate AliKala app', icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),
                 createSettingItem(
-                  label: 'خروج از حساب کاربری',
+                  label: 'Logout',
                   labelColor: AppColors.THEME_ACCENT,
                   hasDivider: false,
                   icon: Icons.logout,

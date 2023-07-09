@@ -100,7 +100,7 @@ class ProfilePage extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(text: '5 ', style: TextStyles.dark_12_w500.copyWith(fontFamily: FontFamily.estedadFD)),
-                      TextSpan(text: 'امتیاز', style: TextStyles.light_12.copyWith(fontFamily: FontFamily.estedadFD)),
+                      TextSpan(text: 'points', style: TextStyles.light_12.copyWith(fontFamily: FontFamily.estedadFD)),
                     ],
                   ),
                 ),
@@ -109,20 +109,20 @@ class ProfilePage extends StatelessWidget {
                 SizedBox(height: 15),
                 _createMenuButton(
                   icon: FeatherIcons.heart,
-                  label: 'لیست مورد علاقه‌ها',
+                  label: 'Favorites List',
                   onTap: () {
                     appRouter.navigate(FavoritesRoute());
                   },
                 ),
-                _createMenuButton(icon: Icons.comment_outlined, label: 'نقد و نظرات', onTap: () {}),
+                _createMenuButton(icon: Icons.comment_outlined, label: 'Naghd o nazarat', onTap: () {}),
                 _createMenuButton(
                   icon: Icons.directions_outlined,
-                  label: 'آدرس ها',
+                  label: 'Addresses',
                   onTap: () {
                     appRouter.navigate(AddressRoute());
                   },
                 ),
-                _createMenuButton(icon: Icons.person_outline_outlined, label: 'اطلاعات حساب کاربری', onTap: () {}),
+                _createMenuButton(icon: Icons.person_outline_outlined, label: 'Account Details', onTap: () {}),
               ],
             ),
           ),

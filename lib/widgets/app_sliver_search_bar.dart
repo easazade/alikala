@@ -49,7 +49,7 @@ class AppSliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
                       child: Icon(FeatherIcons.search, size: 22, color: AppColors.TEXT_MED),
                     ),
                     SizedBox(width: 12),
-                    Text('جستجو در',
+                    Text('Search In',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey[500])),
                     SizedBox(width: 6),
                     Text(S.current.app_name,

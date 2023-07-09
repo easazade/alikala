@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
                       child: (shopStore.shopName.hasValue) ? Text(shopStore.shopName.value) : Text('NONE'),
                     ),
             ),
-            body: NoScrollGlow(
+            body: NoScrollIndicator(
               child: CustomScrollView(
                 slivers: [
                   AppSliverSearchBar(context, () => appRouter.navigate(SearchRoute())),
@@ -49,18 +49,18 @@ class HomePage extends StatelessWidget {
                   AppSliverAmazingDeals(amazingDeals: fakeAmazingDeals),
                   AppSliverNineTiles(
                     products: fakeProducts,
-                    title: 'محصولات مورد پسند مشتریان ما',
-                    subtitle: 'بر اساس بازدید های شما',
-                    linkLabel: 'مشاهده همه',
+                    title: 'Most liked by customers',
+                    subtitle: 'Things you might like',
+                    linkLabel: 'View All',
                   ),
                   AppSliverSingleBanner(imageUrl: fakeSale2),
                   SliverSizedBox(height: 30),
-                  AppSliverMostPopulars(products: fakeProducts, title: 'پرفروش‌ترین کالاها'),
+                  AppSliverMostPopulars(products: fakeProducts, title: 'Top Sales'),
                   AppSliverDoubleBanner(imageUrls: fakeSales),
                   AppSliverHorizontalProductsList(
                     products: fakeProducts,
-                    title: 'کالاهای جدید',
-                    linkLabel: 'مشاهده همه',
+                    title: 'New Items',
+                    linkLabel: 'View All',
                     onLinkClicked: () {},
                   ),
                 ],

@@ -23,9 +23,9 @@ class VerifyCodePage extends StatelessWidget {
               SizedBox(height: 120),
               Column(
                 children: [
-                  Text('ارسال مجدد کد تا 180 ثانیه دیگر', style: TextStyle(fontSize: 12, color: AppColors.TEXT_MED)),
+                  Text('Send Again in 180 seconds', style: TextStyle(fontSize: 12, color: AppColors.TEXT_MED)),
                   SizedBox(height: 15),
-                  AppFormLongButton('تایید', () {}, disabled: true),
+                  AppFormLongButton('Verify', () {}, disabled: true),
                 ],
               )
             ],
@@ -40,13 +40,13 @@ class VerifyCodePage extends StatelessWidget {
       children: [
         Align(
           alignment: AlignmentDirectional.centerStart,
-          child: Text('کد تایید را وارد نمایید', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+          child: Text('Enter verification code', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
         ),
         SizedBox(height: 6),
         Align(
           alignment: AlignmentDirectional.centerStart,
           child: Text(
-            'کد تایید برای شماره موبایل 989117158746 ارسال گردید',
+            'Enter verification code for +989785559909',
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ),

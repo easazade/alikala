@@ -20,19 +20,19 @@ class MainPage extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             icon: Icon(FeatherIcons.home),
-            label: 'خانه',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(FeatherIcons.menu),
-            label: 'دسته‌بندی‌ها',
+            label: 'Categories',
           ),
           BottomNavigationBarItem(
             icon: Icon(FeatherIcons.shoppingCart),
-            label: 'سبد خرید',
+            label: 'Shopping Cart',
           ),
           BottomNavigationBarItem(
             icon: Icon(FeatherIcons.user),
-            label: 'پروفایل',
+            label: 'Profile',
           ),
         ],
       ),

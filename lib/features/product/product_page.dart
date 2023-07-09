@@ -74,9 +74,9 @@ class ProductPage extends StatelessWidget {
               padding: pagePadding,
               child: AppProductColorSelector(
                 namesToColors: {
-                  'مشکی': Colors.black,
-                  'آبی': Colors.blue,
-                  'قرمز': Colors.red,
+                  'black': Colors.black,
+                  'blue': Colors.blue,
+                  'red': Colors.red,
                 },
                 onChange: (colorName, color) => showSuccessToast(colorName),
               ),
@@ -90,8 +90,8 @@ class ProductPage extends StatelessWidget {
             SizedBox(height: 10),
             AppHorizontalProductsList(
               products: fakeProducts,
-              title: 'کالاهای مشابه',
-              linkLabel: 'مشاهده همه',
+              title: 'Similar Items',
+              linkLabel: 'View All',
               onLinkClicked: () {},
             ),
             SizedBox(height: 10),
@@ -99,8 +99,8 @@ class ProductPage extends StatelessWidget {
             SizedBox(height: 10),
             AppHorizontalCommentsList(
               comments: fakeComments,
-              title: 'نظرات کاربران',
-              linkLabel: 'مشاهده همه',
+              title: 'Buyers Comments',
+              linkLabel: 'View All',
               onLinkClicked: () {},
             )
           ],
@@ -189,14 +189,14 @@ class ProductPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('ویژگی های محصول', style: TextStyles.dark_16_w500),
+          Text('Acout Product', style: TextStyles.dark_16_w500),
           SizedBox(height: 15),
           divider(context),
           SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('مشخصات فنی', style: TextStyles.dark_16_w500),
+              Text('Product Details', style: TextStyles.dark_16_w500),
               Icon(CupertinoIcons.forward, size: 20, color: Colors.grey),
             ],
           ),

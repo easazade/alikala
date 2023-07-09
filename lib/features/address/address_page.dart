@@ -21,13 +21,13 @@ class AddressPage extends StatelessWidget {
               children: [
                 Icon(Icons.add_location_alt_outlined, color: Colors.blueGrey),
                 SizedBox(width: 10),
-                Expanded(child: Text('اضافه کردن آدرس جدید', style: TextStyles.dark_14_w500)),
+                Expanded(child: Text('Add new Address', style: TextStyles.dark_14_w500)),
                 Icon(CupertinoIcons.forward, size: 19, color: Colors.black54),
               ],
             ),
           ),
           AppSectionSeparator(height: 10),
-          _createAddressItem('رودباری - شهرک مصطفی خمینی - کوچه گلستان اول - پلاک 71', 'رشت', '09117158746')
+          _createAddressItem('Iran - Rasht - My House', 'Rasht', '09117158746')
         ],
       ),
     );
@@ -54,7 +54,7 @@ class AddressPage extends StatelessWidget {
           SizedBox(height: 10),
           Align(
             alignment: AlignmentDirectional.centerStart,
-            child: TextButton(child: Text('ویرایش آدرس'), onPressed: () {}),
+            child: TextButton(child: Text('Edit Address'), onPressed: () {}),
           ),
         ],
       ),

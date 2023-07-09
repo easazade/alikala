@@ -59,6 +59,7 @@ class AppHorizontalCommentsList extends StatelessWidget {
                 children: [
                   Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
                   TextButton(
+                    onPressed: onLinkClicked,
                     child: Row(
                       children: [
                         Text(
@@ -68,7 +69,6 @@ class AppHorizontalCommentsList extends StatelessWidget {
                         Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
                       ],
                     ),
-                    onPressed: onLinkClicked,
                   ),
                 ],
               ),
@@ -110,7 +110,7 @@ class AppHorizontalCommentsList extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(comment.dateTime.jalaliWeekDayRelative, style: TextStyles.light_12),
+              Text(comment.dateTime.toString(), style: TextStyles.light_12),
               SizedBox(width: 5),
               Icon(Icons.circle, size: 5, color: Colors.grey[300]),
               SizedBox(width: 5),

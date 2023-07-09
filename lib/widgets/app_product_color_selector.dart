@@ -27,7 +27,7 @@ class _State extends State<AppProductColorSelector> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('رنگ: ' + _selectedColorName, style: TextStyles.dark_18_w500),
+        Text('color: ' + _selectedColorName, style: TextStyles.dark_18_w500),
         SizedBox(height: 10),
         Row(
           children: List.generate(

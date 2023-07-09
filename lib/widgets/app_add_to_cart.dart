@@ -42,7 +42,7 @@ class _State extends State<AppAddToCart> {
             child: (_count == 0)
                 ? Align(
                     alignment: Alignment.center,
-                    child: Text('خرید', style: TextStyles.white_16_w500, textAlign: TextAlign.center),
+                    child: Text('Buy', style: TextStyles.white_16_w500, textAlign: TextAlign.center),
                   )
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,7 +78,7 @@ class _State extends State<AppAddToCart> {
         if (widget.showSum) ...[
           SizedBox(width: 10),
           Text((widget.product.price * _count).commaSeparated(), style: const TextStyle(fontWeight: FontWeight.w500)),
-          Text('  تومان', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w500))
+          Text('  \$', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w500))
         ],
       ],
     );
