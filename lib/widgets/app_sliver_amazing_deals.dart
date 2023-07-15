@@ -136,7 +136,7 @@ class _State extends State<AppSliverAmazingDeals> {
                           Text(deal.offPrice.commaSeparated(),
                               style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                           SizedBox(width: 2),
-                          Text('تومان', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
+                          Text('\$', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
                         ],
                       ),
                       Text(

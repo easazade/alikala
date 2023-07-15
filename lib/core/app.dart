@@ -26,7 +26,10 @@ class _AliKalaAppState extends State<AliKalaApp> {
           primaryColor: AppColors.THEME_ACCENT,
           primaryColorDark: AppColors.THEME_ACCENT,
           primaryColorLight: AppColors.THEME_ACCENT,
-
+          appBarTheme: AppBarTheme(
+            foregroundColor: AppColors.TEXT_DARK,
+            backgroundColor: AppColors.BG,
+          ),
           scaffoldBackgroundColor: Colors.white,
           dialogBackgroundColor: Colors.white,
           //changes appbar and status bar icon colors to light because it indicates that our

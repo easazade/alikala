@@ -16,7 +16,7 @@ class AppColors {
   static const THEME_ACCENT_2 = Color(0xFF0FAAC6);
   static const HYPER_LINK = Color(0xFF0FAAC6);
 
-  static const GREY_BG = Color(0xFFECEDEF);
+  static const BG = Color(0xFFECEDEF);
   static const GREY_DARK = Color(0xFF6A6E7C);
 
   static const THEME_ACCENT_3 = Color(0xFF00B241);

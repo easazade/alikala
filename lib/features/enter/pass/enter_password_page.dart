@@ -23,7 +23,7 @@ class EnterPasswordPage extends StatelessWidget {
             children: [
               _createPasswordInputArea(context),
               SizedBox(height: 120),
-              AppFormLongButton('تایید', () {}),
+              AppFormLongButton('Accept', () {}),
             ],
           ),
         ),
@@ -36,13 +36,13 @@ class EnterPasswordPage extends StatelessWidget {
       children: [
         Align(
           alignment: AlignmentDirectional.centerStart,
-          child: Text('رمز عبور', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+          child: Text('Password', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
         ),
         SizedBox(height: 6),
         Align(
           alignment: AlignmentDirectional.centerStart,
           child: Text(
-            'رمز عبور مربوط به حساب کابری خود را وارد کنید. '
+            'Please Enter password for your account'
             'easazade@gmail.com',
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
@@ -50,7 +50,7 @@ class EnterPasswordPage extends StatelessWidget {
         SizedBox(height: 20),
         Directionality(
           textDirection: TextDirection.ltr,
-          child: AppFormField('رمز عبور', (pass) {},
+          child: AppFormField('Password', (pass) {},
               keyboardType: TextInputType.visiblePassword, fontFamily: FontFamily.opensans),
         ),
         SizedBox(height: 20),
@@ -60,7 +60,7 @@ class EnterPasswordPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Row(
               children: [
-                Text('بازیابی رمز عبور',
+                Text('Recover your password',
                     style: TextStyle(color: AppColors.THEME_ACCENT_2, fontSize: 12, fontWeight: FontWeight.w500)),
                 Icon(CupertinoIcons.forward, size: 12, color: AppColors.THEME_ACCENT_2),
               ],

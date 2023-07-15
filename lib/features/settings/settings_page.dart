@@ -1,7 +1,6 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/utils/utils_functions.dart';
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,9 +11,9 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('تنظیمات', style: TextStyles.dark_18_w700),
+        title: Text('Settings', style: TextStyles.dark_18_w700),
         actions: [
-          IconButton(icon: Icon(FeatherIcons.x), onPressed: Navigator.of(context).pop),
+          // IconButton(icon: Icon(FeatherIcons.x), onPressed: Navigator.of(context).pop),
         ],
       ),
       body: Stack(
@@ -23,8 +22,7 @@ class SettingsPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               children: [
-                createSettingItem(
-                    label: 'FAQ', icon: Icons.question_answer, onTap: () => showInfoToast('FAQ')),
+                createSettingItem(label: 'FAQ', icon: Icons.question_answer, onTap: () => showInfoToast('FAQ')),
                 createSettingItem(label: 'Call Us', icon: Icons.call, onTap: () => showInfoToast('Call Us')),
                 createSettingItem(
                     label: 'Rate AliKala app', icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),

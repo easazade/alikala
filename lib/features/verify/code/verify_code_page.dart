@@ -56,7 +56,7 @@ class VerifyCodePage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
             decoration: BoxDecoration(
-              color: AppColors.GREY_BG,
+              color: AppColors.BG,
               borderRadius: BorderRadius.circular(8),
             ),
             child: VerificationCodeInput(

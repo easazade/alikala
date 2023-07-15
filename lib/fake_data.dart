@@ -31,7 +31,7 @@ List<AmazingDeal> fakeAmazingDeals = [
       'https://nyazco.com/wp-content/uploads/2019/11/tabriz-men-sport-shoes-anfalos-model-b-600x600.jpg',
       'https://nyazco.com/wp-content/uploads/2019/11/tabriz-men-sport-shoes-anfalos-model-d-600x600.jpg'
     ],
-    'کفش کتانی تبریز',
+    'Nike Shoes',
     250000,
     162000,
     35,
@@ -42,7 +42,7 @@ List<AmazingDeal> fakeAmazingDeals = [
     [
       'https://dkstatics-public.digikala.com/digikala-products/116717967.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_80'
     ],
-    'تی شرت',
+    'T-Shirt',
     55000,
     44000,
     20,
@@ -51,7 +51,7 @@ List<AmazingDeal> fakeAmazingDeals = [
   AmazingDeal(
     1,
     ['https://janebi.com/janebi/9fd2/files/236927.jpg'],
-    'شارژر هواووی',
+    'MI Charger',
     120000,
     90000,
     25,
@@ -63,7 +63,7 @@ List<AmazingDeal> fakeAmazingDeals = [
       'https://memorybazar.com/wp-content/uploads/2020/03/SSD-Samsung-860-Evo-500G.jpg',
       'https://www.pardisstore.com/wp-content/uploads/2018/11/2543146.jpg'
     ],
-    'ssd سامسونگ مدل evo 500 با رید صفر و سرعت بالا',
+    'EVO 500 Samsung SSD',
     1690000,
     1605500,
     5,
@@ -79,20 +79,20 @@ List<Product> fakeProducts = [
       'https://nyazco.com/wp-content/uploads/2019/11/tabriz-men-sport-shoes-anfalos-model-b-600x600.jpg',
       'https://nyazco.com/wp-content/uploads/2019/11/tabriz-men-sport-shoes-anfalos-model-d-600x600.jpg'
     ],
-    'کفش کتانی تبریز',
+    'Rebok Shoes',
     250000,
     162000,
     35,
     DateTime.now().tomorrow,
     const Color(0xFFF152c5),
-    'صورتی',
+    'pink',
   ),
   Product(
     2,
     [
       'https://dkstatics-public.digikala.com/digikala-products/116717967.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_80'
     ],
-    'تی شرت',
+    'T-Shirt',
     55000,
     44000,
     20,
@@ -103,7 +103,7 @@ List<Product> fakeProducts = [
   Product(
     3,
     ['https://janebi.com/janebi/9fd2/files/236927.jpg'],
-    'شارژر هواووی',
+    'MI Charger',
     120000,
     90000,
     25,
@@ -117,13 +117,13 @@ List<Product> fakeProducts = [
       'https://memorybazar.com/wp-content/uploads/2020/03/SSD-Samsung-860-Evo-500G.jpg',
       'https://www.pardisstore.com/wp-content/uploads/2018/11/2543146.jpg'
     ],
-    'ssd سامسونگ مدل evo 500 با رید صفر و سرعت بالا',
+    'EVO 500 Samsung SSD',
     1690000,
     1605500,
     5,
     DateTime.now().tomorrow,
     Color(0xFFF152c5),
-    'صورتی',
+    'pink',
   ),
   Product(
     5,
@@ -132,37 +132,37 @@ List<Product> fakeProducts = [
       'https://nyazco.com/wp-content/uploads/2019/11/tabriz-men-sport-shoes-anfalos-model-b-600x600.jpg',
       'https://nyazco.com/wp-content/uploads/2019/11/tabriz-men-sport-shoes-anfalos-model-d-600x600.jpg'
     ],
-    'کفش کتانی تبریز',
+    'Rebok Shoes',
     250000,
     162000,
     35,
     DateTime.now().tomorrow,
     Color(0xFFF152c5),
-    'صورتی',
+    'pink',
   ),
   Product(
     6,
     [
       'https://dkstatics-public.digikala.com/digikala-products/116717967.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_80'
     ],
-    'تی شرت',
+    'T-Shirt',
     55000,
     44000,
     20,
     DateTime.now().tomorrow,
     Color(0xFFF152c5),
-    'صورتی',
+    'T-Shirt',
   ),
   Product(
     7,
     ['https://janebi.com/janebi/9fd2/files/236927.jpg'],
-    'شارژر هواووی',
+    'MI Charger',
     120000,
     90000,
     25,
     DateTime.now().tomorrow,
     Color(0xFFF152c5),
-    'صورتی',
+    'pink',
   ),
   Product(
     8,
@@ -170,66 +170,41 @@ List<Product> fakeProducts = [
       'https://memorybazar.com/wp-content/uploads/2020/03/SSD-Samsung-860-Evo-500G.jpg',
       'https://www.pardisstore.com/wp-content/uploads/2018/11/2543146.jpg'
     ],
-    'ssd سامسونگ مدل evo 500 با رید صفر و سرعت بالا',
+    'EVO 500 Samsung SSD',
     1690000,
     1605500,
     5,
     DateTime.now().tomorrow,
     Color(0xFFF152c5),
-    'صورتی',
+    'pink',
   ),
   Product(
     9,
     ['https://janebi.com/janebi/9fd2/files/236927.jpg'],
-    'شارژر هواووی',
+    'MI Charger',
     120000,
     90000,
     25,
     DateTime.now().tomorrow,
     Color(0xFFF152c5),
-    'صورتی',
-  ),
-  Product(
-    10,
-    [
-      'https://memorybazar.com/wp-content/uploads/2020/03/SSD-Samsung-860-Evo-500G.jpg',
-      'https://www.pardisstore.com/wp-content/uploads/2018/11/2543146.jpg'
-    ],
-    'ssd سامسونگ مدل evo 500 با رید صفر و سرعت بالا',
-    1690000,
-    1605500,
-    5,
-    DateTime.now().tomorrow,
-    Color(0xFFF152c5),
-    'صورتی',
-  ),
-  Product(
-    11,
-    ['https://janebi.com/janebi/9fd2/files/236927.jpg'],
-    'شارژر هواووی',
-    120000,
-    90000,
-    25,
-    DateTime.now().tomorrow,
-    Color(0xFFF152c5),
-    'صورتی',
+    'pink',
   ),
 ];
 
 List<Category> fakeRootCategories = [
-  Category(1, 0, 'کالای دیجیتال', fakeProduct1, 200),
-  Category(2, 0, 'خودرو، ابزار و تجهیزات صنعتی', fakeProduct1, 3000),
-  Category(3, 0, 'زیبایی و سلامتی', fakeProduct1, 500000),
-  Category(4, 0, 'خانه و آشپزخانه', fakeProduct1, 900),
-  Category(5, 0, 'کتب، لوازم تحریر و هنر', fakeProduct1, 100),
+  Category(1, 0, 'Digital Products', fakeProduct1, 200),
+  Category(2, 0, 'Tools', fakeProduct1, 3000),
+  Category(3, 0, 'Beauty & Health', fakeProduct1, 500000),
+  Category(4, 0, 'Kitchen', fakeProduct1, 900),
+  Category(5, 0, 'Books & Notebooks', fakeProduct1, 100),
 ];
 
 List<Category> fakeSubCategories = [
-  Category(6, 2, 'زیر دسته 1', fakeSale3, 250),
-  Category(7, 3, 'زیر دسته 2', fakeProduct3, 1500),
-  Category(8, 3, 'زیر دسته 3', fakeProduct1, 500000),
-  Category(9, 2, 'زیر دسته 4', fakeSale2, 16000),
-  Category(10, 2, 'زیر دسته 5', fakeSale4, 900),
+  Category(6, 2, 'Sub category 1', fakeSale3, 250),
+  Category(7, 3, 'Sub category 2', fakeProduct3, 1500),
+  Category(8, 3, 'Sub category 3', fakeProduct1, 500000),
+  Category(9, 2, 'Sub category 4', fakeSale2, 16000),
+  Category(10, 2, 'Sub category 5', fakeSale4, 900),
 ];
 
 var fakerFa = Faker(provider: FakerDataProviderFa());

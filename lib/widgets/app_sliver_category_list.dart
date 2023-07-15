@@ -63,7 +63,7 @@ class AppSliverCategoryList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       margin: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: AppColors.GREY_BG,
+        color: AppColors.BG,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(

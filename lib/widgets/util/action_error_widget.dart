@@ -30,12 +30,12 @@ class ActionErrorWidget extends StatelessWidget {
             ],
             Text(msg, style: TextStyle(color: AppColors.TEXT_DARK, fontWeight: FontWeight.bold, fontSize: 20)),
             SizedBox(height: 10),
-//            AppButton(text: actionText ?? 'دوباره تلاش کنید', onClick: action, color: AppColors.ACCENT_GREEN),
+//            AppButton(text: actionText ?? 'Try Again', onClick: action, color: AppColors.ACCENT_GREEN),
             // ignore: deprecated_member_use
 
             TextButton(
               onPressed: action,
-              child: Text(actionText ?? 'دوباره تلاش کنید'),
+              child: Text(actionText ?? 'Try Again'),
               // color: AppColors.THEME_ACCENT,
               // textColor: Colors.white,
             ),
