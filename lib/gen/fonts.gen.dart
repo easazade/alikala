@@ -3,11 +3,13 @@
 ///  FlutterGen
 /// *****************************************************
 
+// coverage:ignore-file
+// ignore_for_file: type=lint
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
+
 class FontFamily {
   FontFamily._();
 
-  static const String canilari = 'Canilari';
-  static const String estedad = 'Estedad';
-  static const String estedadFD = 'Estedad-FD';
-  static const String exo2 = 'Exo2';
+  /// Font family: opensans
+  static const String opensans = 'opensans';
 }

@@ -101,7 +101,7 @@ class SettingsPage extends StatelessWidget {
         Text(
           'AliKala',
           style: TextStyle(
-            fontFamily: FontFamily.exo2,
+            fontFamily: FontFamily.opensans,
             color: AppColors.THEME_ACCENT,
             fontSize: 30,
             fontWeight: FontWeight.w900,
@@ -110,7 +110,7 @@ class SettingsPage extends StatelessWidget {
         SizedBox(height: 5),
         Text(
           'App Version: 1.0.0',
-          style: TextStyle(fontSize: 10, fontFamily: FontFamily.estedad, color: AppColors.TEXT_LIGHT_2),
+          style: TextStyle(fontSize: 10, fontFamily: FontFamily.opensans, color: AppColors.TEXT_LIGHT_2),
         ),
       ],
     );

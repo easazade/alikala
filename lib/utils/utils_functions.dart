@@ -1,16 +1,15 @@
 import 'package:alikala/utils/typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:shamsi_date/shamsi_date.dart';
 
 extension DoubleExt on double {
-  Future<Duration> secondsDelay() async => Future.delayed(seconds());
+  Future secondsDelay() async => Future.delayed(seconds());
 
   Duration seconds() => Duration(milliseconds: (this * 1000).toInt());
 }
 
 extension IntegersExt on int {
-  Future<Duration> secondsDelay() async => Future.delayed(seconds());
+  Future secondsDelay() async => Future.delayed(seconds());
 
   Duration seconds() => Duration(seconds: this);
 

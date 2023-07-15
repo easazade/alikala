@@ -157,7 +157,7 @@ class CartPage extends ConsumerWidget {
               }
             },
             child: Image.asset(
-              Assets.images.emptyCart.assetName,
+              Assets.images.emptyCart.path,
               width: 150,
             ),
           ),

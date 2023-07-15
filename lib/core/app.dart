@@ -22,7 +22,7 @@ class _AliKalaAppState extends State<AliKalaApp> {
       child: MaterialApp.router(
         theme: ThemeData(
           //TODO: UPDATE flutter THEME and make it compatible for dark and light
-          cupertinoOverrideTheme: MaterialAppCupertinoThemeDataOverrides(FontFamily.estedadFD),
+          cupertinoOverrideTheme: MaterialAppCupertinoThemeDataOverrides(FontFamily.opensans),
           primaryColor: AppColors.THEME_ACCENT,
           primaryColorDark: AppColors.THEME_ACCENT,
           primaryColorLight: AppColors.THEME_ACCENT,
@@ -31,11 +31,11 @@ class _AliKalaAppState extends State<AliKalaApp> {
           dialogBackgroundColor: Colors.white,
           //changes appbar and status bar icon colors to light because it indicates that our
           //appbar color we are using is dark
-          fontFamily: FontFamily.estedadFD,
+          fontFamily: FontFamily.opensans,
           textTheme: Theme.of(context).textTheme.apply(
                 displayColor: AppColors.TEXT_DARK, //default color of texts in app
                 bodyColor: AppColors.TEXT_DARK, //default color of texts in app
-                fontFamily: FontFamily.estedadFD,
+                fontFamily: FontFamily.opensans,
               ),
         ),
         // locale: DevicePreview.of(context).locale,

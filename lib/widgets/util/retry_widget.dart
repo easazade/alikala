@@ -22,7 +22,7 @@ class RetryWidget extends StatelessWidget {
           border: Border.all(color: AppColors.GREY_DARK),
         ),
         child: Center(
-          child: Image.asset(Assets.images.retry.assetName, width: 42, height: 42),
+          child: Image.asset(Assets.images.retry.path, width: 42, height: 42),
         ),
       ),
     );

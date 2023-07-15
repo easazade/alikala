@@ -10,11 +10,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  final textSpanStyle = TextStyle(color: AppColors.TEXT_DARK, fontSize: 11, fontFamily: FontFamily.estedadFD);
+  final textSpanStyle = TextStyle(color: AppColors.TEXT_DARK, fontSize: 11, fontFamily: FontFamily.opensans);
   final linkTextSpanStyle = TextStyle(
     color: AppColors.HYPER_LINK,
     fontSize: 11,
-    fontFamily: FontFamily.estedadFD,
+    fontFamily: FontFamily.opensans,
     decoration: TextDecoration.underline,
   );
 
@@ -43,7 +43,7 @@ class LoginPage extends StatelessWidget {
                   Text(
                     'AliKala',
                     style: TextStyle(
-                      fontFamily: FontFamily.exo2,
+                      fontFamily: FontFamily.opensans,
                       color: AppColors.THEME_ACCENT,
                       fontSize: 30,
                       fontWeight: FontWeight.w900,
@@ -51,7 +51,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   FractionallySizedBox(
                     widthFactor: 0.08,
-                    child: Image.asset(Assets.images.splashLogoAccentColor.assetName),
+                    child: Image.asset(Assets.images.splashLogoAccentColor.path),
                   ),
                   SizedBox(height: 64),
                   Row(children: [

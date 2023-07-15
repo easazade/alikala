@@ -28,7 +28,7 @@ class _State extends State<AppSliverSliders> {
               child: CachedNetworkImage(
                 imageUrl: item,
                 fit: BoxFit.cover,
-                placeholder: (_, __) => Image.asset(Assets.images.imagePlaceholder.assetName, fit: BoxFit.cover),
+                placeholder: (_, __) => Image.asset(Assets.images.imagePlaceholder.path, fit: BoxFit.cover),
               ),
             ),
           ),

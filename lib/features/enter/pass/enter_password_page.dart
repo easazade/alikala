@@ -51,7 +51,7 @@ class EnterPasswordPage extends StatelessWidget {
         Directionality(
           textDirection: TextDirection.ltr,
           child: AppFormField('رمز عبور', (pass) {},
-              keyboardType: TextInputType.visiblePassword, fontFamily: FontFamily.estedad),
+              keyboardType: TextInputType.visiblePassword, fontFamily: FontFamily.opensans),
         ),
         SizedBox(height: 20),
         Align(

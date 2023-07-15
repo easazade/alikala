@@ -31,7 +31,8 @@ import '../features/verify/code/verify_code_page.dart' as _i5;
 import '../main_screen.dart' as _i6;
 
 class AppRouter extends _i15.RootStackRouter {
-  AppRouter([_i16.GlobalKey<_i16.NavigatorState>? navigatorKey]) : super(navigatorKey);
+  AppRouter([_i16.GlobalKey<_i16.NavigatorState>? navigatorKey])
+      : super(navigatorKey);
 
   @override
   final Map<String, _i15.PageFactory> pagesMap = {

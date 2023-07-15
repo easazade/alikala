@@ -95,12 +95,12 @@ class ProfilePage extends StatelessWidget {
 
                 Text('09117158746', textAlign: TextAlign.center, style: TextStyles.light_14),
                 SizedBox(height: 15),
-                Image.asset(Assets.images.coinDash.assetName, width: 80),
+                Image.asset(Assets.images.coinDash.path, width: 80),
                 RichText(
                   text: TextSpan(
                     children: [
-                      TextSpan(text: '5 ', style: TextStyles.dark_12_w500.copyWith(fontFamily: FontFamily.estedadFD)),
-                      TextSpan(text: 'points', style: TextStyles.light_12.copyWith(fontFamily: FontFamily.estedadFD)),
+                      TextSpan(text: '5 ', style: TextStyles.dark_12_w500.copyWith(fontFamily: FontFamily.opensans)),
+                      TextSpan(text: 'points', style: TextStyles.light_12.copyWith(fontFamily: FontFamily.opensans)),
                     ],
                   ),
                 ),

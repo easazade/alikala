@@ -24,7 +24,7 @@ class AppNetworkImage extends StatelessWidget {
       fit: fit,
       width: width,
       height: height,
-      placeholder: (_, __) => Image.asset(placeHolderAsset ?? Assets.images.imagePlaceholder.assetName, fit: fit),
+      placeholder: (_, __) => Image.asset(placeHolderAsset ?? Assets.images.imagePlaceholder.path, fit: fit),
     );
   }
 }

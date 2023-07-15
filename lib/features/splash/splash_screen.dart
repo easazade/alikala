@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashPage> {
         children: <Widget>[
           Align(
             alignment: Alignment.center,
-            child: Image.asset(Assets.images.splashLogo.assetName, width: 150),
+            child: Image.asset(Assets.images.splashLogo.path, width: 150),
           ),
           Positioned(
             bottom: 100,
