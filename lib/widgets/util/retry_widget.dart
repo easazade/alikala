@@ -1,6 +1,5 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/assets.gen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RetryWidget extends StatelessWidget {

@@ -1,5 +1,4 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/generated/l10n.dart';

@@ -1,5 +1,4 @@
 import 'package:alikala/core/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppProductColorSelector extends StatefulWidget {
@@ -27,7 +26,7 @@ class _State extends State<AppProductColorSelector> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('color: ' + _selectedColorName, style: TextStyles.dark_18_w500),
+        Text('color: $_selectedColorName', style: TextStyles.dark_18_w500),
         SizedBox(height: 10),
         Row(
           children: List.generate(

@@ -1,6 +1,5 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/data/entities.dart';
-import 'package:alikala/utils/utils_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

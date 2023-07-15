@@ -2,7 +2,6 @@ import 'package:alikala/core/constants.dart';
 import 'package:alikala/widgets/app_search_item.dart';
 import 'package:alikala/widgets/util/no_scroll_glow.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
