@@ -1,5 +1,6 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/widgets/app_form_field.dart';
 import 'package:alikala/widgets/app_form_long_btn.dart';
 import 'package:alikala/widgets/util/unfocus_current_focus_widget.dart';
@@ -23,7 +24,7 @@ class EnterPasswordPage extends StatelessWidget {
             children: [
               _createPasswordInputArea(context),
               SizedBox(height: 120),
-              AppFormLongButton('Accept', () {}),
+              AppFormLongButton(S.of(context).accept, () {}),
             ],
           ),
         ),
@@ -36,21 +37,20 @@ class EnterPasswordPage extends StatelessWidget {
       children: [
         Align(
           alignment: AlignmentDirectional.centerStart,
-          child: Text('Password', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+          child: Text(S.of(context).password, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
         ),
         SizedBox(height: 6),
         Align(
           alignment: AlignmentDirectional.centerStart,
           child: Text(
-            'Please Enter password for your account'
-            'easazade@gmail.com',
+            '${S.of(context).pleaseEnterPasswordForYourAccount} easazade@gmail.com',
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ),
         SizedBox(height: 20),
         Directionality(
           textDirection: TextDirection.ltr,
-          child: AppFormField('Password', (pass) {},
+          child: AppFormField(S.of(context).password, (pass) {},
               keyboardType: TextInputType.visiblePassword, fontFamily: FontFamily.opensans),
         ),
         SizedBox(height: 20),
@@ -60,7 +60,7 @@ class EnterPasswordPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Row(
               children: [
-                Text('Recover your password',
+                Text(S.of(context).recoverYourPassword,
                     style: TextStyle(color: AppColors.THEME_ACCENT_2, fontSize: 12, fontWeight: FontWeight.w500)),
                 Icon(CupertinoIcons.forward, size: 12, color: AppColors.THEME_ACCENT_2),
               ],

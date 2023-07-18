@@ -1,4 +1,5 @@
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/widgets/app_section_separator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class AddressPage extends StatelessWidget {
               children: [
                 Icon(Icons.add_location_alt_outlined, color: Colors.blueGrey),
                 SizedBox(width: 10),
-                Expanded(child: Text('Add new Address', style: TextStyles.dark_14_w500)),
+                Expanded(child: Text(S.of(context).addNewAddress, style: TextStyles.dark_14_w500)),
                 Icon(CupertinoIcons.forward, size: 19, color: Colors.black54),
               ],
             ),
@@ -54,7 +55,7 @@ class AddressPage extends StatelessWidget {
           SizedBox(height: 10),
           Align(
             alignment: AlignmentDirectional.centerStart,
-            child: TextButton(child: Text('Edit Address'), onPressed: () {}),
+            child: TextButton(child: Text(S.current.editAddress), onPressed: () {}),
           ),
         ],
       ),

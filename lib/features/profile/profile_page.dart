@@ -4,6 +4,7 @@ import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/di/di.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/widgets/app_icon_button.dart';
 import 'package:alikala/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -100,7 +101,7 @@ class ProfilePage extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(text: '5 ', style: TextStyles.dark_12_w500.copyWith(fontFamily: FontFamily.opensans)),
-                      TextSpan(text: 'points', style: TextStyles.light_12.copyWith(fontFamily: FontFamily.opensans)),
+                      TextSpan(text: S.of(context).points, style: TextStyles.light_12.copyWith(fontFamily: FontFamily.opensans)),
                     ],
                   ),
                 ),
@@ -109,20 +110,20 @@ class ProfilePage extends StatelessWidget {
                 SizedBox(height: 15),
                 _createMenuButton(
                   icon: FeatherIcons.heart,
-                  label: 'Favorites List',
+                  label: S.of(context).favoritesList,
                   onTap: () {
                     appRouter.navigate(FavoritesRoute());
                   },
                 ),
-                _createMenuButton(icon: Icons.comment_outlined, label: 'Naghd o nazarat', onTap: () {}),
+                _createMenuButton(icon: Icons.comment_outlined, label: S.of(context).comments, onTap: () {}),
                 _createMenuButton(
                   icon: Icons.directions_outlined,
-                  label: 'Addresses',
+                  label: S.of(context).addresses,
                   onTap: () {
                     appRouter.navigate(AddressRoute());
                   },
                 ),
-                _createMenuButton(icon: Icons.person_outline_outlined, label: 'Account Details', onTap: () {}),
+                _createMenuButton(icon: Icons.person_outline_outlined, label: S.of(context).accountDetails, onTap: () {}),
               ],
             ),
           ),

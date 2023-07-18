@@ -1,4 +1,5 @@
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/widgets/app_form_long_btn.dart';
 import 'package:alikala/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:alikala/widgets/util/verification_code_input.dart';
@@ -23,9 +24,9 @@ class VerifyCodePage extends StatelessWidget {
               SizedBox(height: 120),
               Column(
                 children: [
-                  Text('Send Again in 180 seconds', style: TextStyle(fontSize: 12, color: AppColors.TEXT_MED)),
+                  Text(S.of(context).sendAgainInNSeconds(180), style: TextStyle(fontSize: 12, color: AppColors.TEXT_MED)),
                   SizedBox(height: 15),
-                  AppFormLongButton('Verify', () {}, disabled: true),
+                  AppFormLongButton(S.of(context).verify, () {}, disabled: true),
                 ],
               )
             ],
@@ -40,13 +41,13 @@ class VerifyCodePage extends StatelessWidget {
       children: [
         Align(
           alignment: AlignmentDirectional.centerStart,
-          child: Text('Enter verification code', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+          child: Text(S.of(context).enterVerificationCode, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
         ),
         SizedBox(height: 6),
         Align(
           alignment: AlignmentDirectional.centerStart,
           child: Text(
-            'Enter verification code for +989785559909',
+            '${S.of(context).enterVerificationCodeFor} +989785559909',
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ),

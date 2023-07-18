@@ -1,5 +1,6 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('Settings', style: TextStyles.dark_18_w700),
+        title: Text(S.of(context).settings, style: TextStyles.dark_18_w700),
         actions: [
           // IconButton(icon: Icon(FeatherIcons.x), onPressed: Navigator.of(context).pop),
         ],
@@ -22,12 +23,12 @@ class SettingsPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               children: [
-                createSettingItem(label: 'FAQ', icon: Icons.question_answer, onTap: () => showInfoToast('FAQ')),
-                createSettingItem(label: 'Call Us', icon: Icons.call, onTap: () => showInfoToast('Call Us')),
+                createSettingItem(label: S.of(context).faq, icon: Icons.question_answer, onTap: () => showInfoToast('FAQ')),
+                createSettingItem(label: S.of(context).callUs, icon: Icons.call, onTap: () => showInfoToast('Call Us')),
                 createSettingItem(
-                    label: 'Rate AliKala app', icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),
+                    label: S.of(context).rateAlikalaApp, icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),
                 createSettingItem(
-                  label: 'Logout',
+                  label: S.of(context).logout,
                   labelColor: AppColors.THEME_ACCENT,
                   hasDivider: false,
                   icon: Icons.logout,
@@ -38,7 +39,7 @@ class SettingsPage extends StatelessWidget {
           ),
           Align(
             alignment: Alignment(0, 0.95),
-            child: _createLogoAndVersionArea(),
+            child: _createLogoAndVersionArea(context),
           ),
         ],
       ),
@@ -92,12 +93,12 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Widget _createLogoAndVersionArea() {
+  Widget _createLogoAndVersionArea(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'AliKala',
+          S.of(context).alikala,
           style: TextStyle(
             fontFamily: FontFamily.opensans,
             color: AppColors.THEME_ACCENT,
@@ -107,7 +108,7 @@ class SettingsPage extends StatelessWidget {
         ),
         SizedBox(height: 5),
         Text(
-          'App Version: 1.0.0',
+          '${S.of(context).appVersion}: 1.0.0',
           style: TextStyle(fontSize: 10, fontFamily: FontFamily.opensans, color: AppColors.TEXT_LIGHT_2),
         ),
       ],

@@ -28,7 +28,8 @@ class _AliKalaAppState extends State<AliKalaApp> {
           primaryColorLight: AppColors.THEME_ACCENT,
           appBarTheme: AppBarTheme(
             foregroundColor: AppColors.TEXT_DARK,
-            backgroundColor: AppColors.BG,
+            backgroundColor: Colors.white,
+            elevation: 0,
           ),
           scaffoldBackgroundColor: Colors.white,
           dialogBackgroundColor: Colors.white,
@@ -50,7 +51,7 @@ class _AliKalaAppState extends State<AliKalaApp> {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        title: 'AliKala',
+        title: S.current.app_name,
         routerDelegate: appRouter.delegate(initialRoutes: [
           const SplashRoute(),
         ]),

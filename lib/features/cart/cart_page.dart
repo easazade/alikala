@@ -6,6 +6,7 @@ import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/di/di.dart';
 import 'package:alikala/gen/assets.gen.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/stores/cart_store.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_add_to_cart.dart';
@@ -28,7 +29,7 @@ class CartPage extends ConsumerWidget {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(
-          'Shopping Cart',
+          S.of(context).shoppingCart,
           style: TextStyle(
             color: AppColors.THEME_ACCENT,
             fontSize: 16,
@@ -55,9 +56,9 @@ class CartPage extends ConsumerWidget {
                   _createCartItem(product),
                 ],
                 AppSectionSeparator(),
-                _createCartSummary(),
+                _createCartSummary(context),
                 AppSectionSeparator(),
-                _createContinueButton(),
+                _createContinueButton(context),
               ],
             );
           },
@@ -128,8 +129,8 @@ class CartPage extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Login or Sign up', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                      Text('For a better experience in Our Shop please Login'),
+                      Text(S.current.loginOrSignUp, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                      Text(S.current.forABetterExperienceInOurShopPleaseLogin),
                     ],
                   ),
                 ),
@@ -161,14 +162,14 @@ class CartPage extends ConsumerWidget {
               width: 150,
             ),
           ),
-          Text('You\'re shopping cart is empty'),
+          Text(S.current.youreShoppingCartIsEmpty),
           SizedBox(height: 20),
         ],
       ),
     );
   }
 
-  Widget _createCartSummary() {
+  Widget _createCartSummary(BuildContext context) {
     Widget createPriceItem(String label, int value) {
       return Column(
         children: [
@@ -195,20 +196,20 @@ class CartPage extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Summary', style: TextStyle(fontSize: 16)),
+                Text(S.current.summary, style: TextStyle(fontSize: 16)),
                 Text('1 item', style: TextStyle(fontSize: 12, color: AppColors.TEXT_LIGHT_2)),
               ],
             ),
             SizedBox(height: 20),
-            createPriceItem('Total Amount', 623000),
-            createPriceItem('Sum', 623000),
+            createPriceItem(S.of(context).totalAmount, 623000),
+            createPriceItem(S.of(context).sum, 623000),
           ],
         ),
       ),
     );
   }
 
-  Widget _createContinueButton() {
+  Widget _createContinueButton(BuildContext context) {
     return Material(
       child: Container(
         decoration: BoxDecoration(
@@ -218,7 +219,7 @@ class CartPage extends ConsumerWidget {
         padding: const EdgeInsets.all(8),
         child: Row(
           children: [
-            Expanded(child: AppButton('Continue Browsing', () {})),
+            Expanded(child: AppButton(S.of(context).continueBrowsing, () {})),
             SizedBox(width: 60),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -226,7 +227,7 @@ class CartPage extends ConsumerWidget {
                 Row(
                   children: [
                     Icon(Icons.keyboard_arrow_down_rounded, size: 16, color: AppColors.TEXT_LIGHT),
-                    Text('Total', style: TextStyle(color: AppColors.TEXT_LIGHT, fontWeight: FontWeight.w500)),
+                    Text(S.of(context).total, style: TextStyle(color: AppColors.TEXT_LIGHT, fontWeight: FontWeight.w500)),
                   ],
                 ),
                 AppPriceTag(615000, sizeFactor: 1.2, color: AppColors.THEME_ACCENT_3),

@@ -1,4 +1,5 @@
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ActionErrorWidget extends StatelessWidget {
@@ -35,7 +36,7 @@ class ActionErrorWidget extends StatelessWidget {
 
             TextButton(
               onPressed: action,
-              child: Text(actionText ?? 'Try Again'),
+              child: Text(actionText ?? S.of(context).tryAgain),
               // color: AppColors.THEME_ACCENT,
               // textColor: Colors.white,
             ),

@@ -1,3 +1,4 @@
+import 'package:alikala/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class NothingFoundWidget extends StatelessWidget {
@@ -5,7 +6,7 @@ class NothingFoundWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Text('Could not Find anything', style: TextStyle(fontSize: 16)),
+      child: Text(S.of(context).couldNotFindAnything, style: TextStyle(fontSize: 16)),
     );
   }
 }

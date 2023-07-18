@@ -1,6 +1,7 @@
 import 'package:alikala/core/app.dart';
 import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/di/di.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/widgets/app_sliver_amazing_deals.dart';
 import 'package:alikala/widgets/app_sliver_double_banner.dart';
 import 'package:alikala/widgets/app_sliver_horizontal_products_list.dart';
@@ -36,31 +37,31 @@ class HomePage extends StatelessWidget {
               child: CustomScrollView(
                 slivers: [
                   AppSliverSearchBar(context, () => appRouter.navigate(SearchRoute())),
-                  SliverToBoxAdapter(
-                    child: WhenDataBuilder(
-                      data: shopStore.shopName,
-                      onValue: (context, data) => Text('${data.value} &&'),
-                      onCustomOperation: (context, data) => Text('CUSTOM OPERATION RUNNING = ${data.operation.name}'),
-                      onOperate: (context, data) => CircularProgressIndicator(color: Colors.red),
-                    ),
-                  ),
+                  // SliverToBoxAdapter(
+                  //   child: WhenDataBuilder(
+                  //     data: shopStore.shopName,
+                  //     onValue: (context, data) => Text('${data.value} &&'),
+                  //     onCustomOperation: (context, data) => Text('CUSTOM OPERATION RUNNING = ${data.operation.name}'),
+                  //     onOperate: (context, data) => CircularProgressIndicator(color: Colors.red),
+                  //   ),
+                  // ),
                   AppSliverSliders(images: fakeSales),
                   SliverSizedBox(height: 20),
                   AppSliverAmazingDeals(amazingDeals: fakeAmazingDeals),
                   AppSliverNineTiles(
                     products: fakeProducts,
-                    title: 'Most liked by customers',
-                    subtitle: 'Things you might like',
-                    linkLabel: 'View All',
+                    title: S.of(context).mostLikedByCustomers,
+                    subtitle: S.of(context).thingsYouMightLike,
+                    linkLabel: S.of(context).viewAll,
                   ),
                   AppSliverSingleBanner(imageUrl: fakeSale2),
                   SliverSizedBox(height: 30),
-                  AppSliverMostPopulars(products: fakeProducts, title: 'Top Sales'),
+                  AppSliverMostPopulars(products: fakeProducts, title: S.of(context).topSales),
                   AppSliverDoubleBanner(imageUrls: fakeSales),
                   AppSliverHorizontalProductsList(
                     products: fakeProducts,
-                    title: 'New Items',
-                    linkLabel: 'View All',
+                    title: S.of(context).newItems,
+                    linkLabel: S.of(context).viewAll,
                     onLinkClicked: () {},
                   ),
                 ],

@@ -1,6 +1,7 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/assets.gen.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_form_field.dart';
 import 'package:alikala/widgets/app_form_long_btn.dart';
@@ -41,7 +42,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: 32),
                   Text(
-                    'AliKala',
+                    S.of(context).alikala,
                     style: TextStyle(
                       fontFamily: FontFamily.opensans,
                       color: AppColors.THEME_ACCENT,
@@ -57,7 +58,7 @@ class LoginPage extends StatelessWidget {
                   Row(children: [
                     Expanded(
                       child: Text(
-                        'To Login you need to enter email or mobile number',
+                        S.of(context).toLoginYouNeedToEnterEmailOrMobileNumber,
                         textAlign: TextAlign.start,
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ),
@@ -65,30 +66,32 @@ class LoginPage extends StatelessWidget {
                     SizedBox(width: 60),
                   ]),
                   SizedBox(height: 20),
-                  AppFormField('Phone number or email', (input) {}),
+                  AppFormField(S.of(context).phoneNumberOrEmail, (input) {}),
                   SizedBox(height: 20),
-                  AppFormLongButton('Log in to AliKala', () {}),
+                  AppFormLongButton(S.of(context).logInToAlikala, () {}),
                   SizedBox(height: 10),
                   Divider(),
                   SizedBox(height: 15),
                   RichText(
                     text: TextSpan(
                       children: [
-                        TextSpan(text: 'By loging in to AliKala', style: textSpanStyle),
+                        TextSpan(text: S.of(context).byLogingInToAlikala, style: textSpanStyle),
                         TextSpan(
-                          text: 'Rules And Agreements',
+                          text: S.of(context).rulesAndAgreements,
                           style: linkTextSpanStyle,
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => showAppToastWithAction(context, 'Rules And Agreements', action: (v) {}),
+                            ..onTap =
+                                () => showAppToastWithAction(context, S.of(context).rulesAndAgreements, action: (v) {}),
                         ),
-                        TextSpan(text: 'using AliKala Services', style: textSpanStyle),
+                        TextSpan(text: S.of(context).usingAlikalaServices, style: textSpanStyle),
                         TextSpan(
-                          text: 'Privacy Policy',
+                          text: S.of(context).privacyPolicy,
                           style: linkTextSpanStyle,
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => showAppToastWithAction(context, 'Rules And Agreements', action: (v) {}),
+                            ..onTap =
+                                () => showAppToastWithAction(context, S.of(context).rulesAndAgreements, action: (v) {}),
                         ),
-                        TextSpan(text: 'Accept it', style: textSpanStyle),
+                        TextSpan(text: S.of(context).acceptIt, style: textSpanStyle),
                       ],
                     ),
                   ),

@@ -3,6 +3,7 @@ import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
 import 'package:alikala/features/home/home_page.dart';
 import 'package:alikala/features/profile/profile_page.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,19 +21,19 @@ class MainPage extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             icon: Icon(FeatherIcons.home),
-            label: 'Home',
+            label: S.of(context).home,
           ),
           BottomNavigationBarItem(
             icon: Icon(FeatherIcons.menu),
-            label: 'Categories',
+            label: S.of(context).categories,
           ),
           BottomNavigationBarItem(
             icon: Icon(FeatherIcons.shoppingCart),
-            label: 'Shopping Cart',
+            label: S.of(context).shoppingCart,
           ),
           BottomNavigationBarItem(
             icon: Icon(FeatherIcons.user),
-            label: 'Profile',
+            label: S.of(context).profile,
           ),
         ],
       ),

@@ -2,6 +2,7 @@ import 'package:alikala/core/app.dart';
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/gen/assets.gen.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/util/app_progress.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _SplashScreenState extends State<SplashPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('AliKala', style: TextStyle(color: Colors.white, fontSize: 32)),
+                Text(S.of(context).alikala, style: TextStyle(color: Colors.white, fontSize: 32)),
               ],
             ),
           ),

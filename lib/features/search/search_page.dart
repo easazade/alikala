@@ -1,4 +1,5 @@
 import 'package:alikala/core/constants.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/widgets/app_search_item.dart';
 import 'package:alikala/widgets/util/no_scroll_glow.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -31,7 +32,7 @@ class _State extends State<SearchPage> {
             isDense: true,
             contentPadding: const EdgeInsets.symmetric(vertical: 3, horizontal: 12),
             border: InputBorder.none,
-            hintText: 'Search',
+            hintText: S.of(context).search,
             hintStyle: const TextStyle(color: AppColors.TEXT_LIGHT, fontSize: 17, fontWeight: FontWeight.w500),
           ),
         ),

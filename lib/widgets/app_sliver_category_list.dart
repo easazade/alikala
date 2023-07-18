@@ -1,5 +1,6 @@
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/data/entities.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'app_network_image.dart';
@@ -31,7 +32,7 @@ class AppSliverCategoryList extends StatelessWidget {
                     Text(category.name, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
                     Row(
                       children: [
-                        Text('View All',
+                        Text(S.of(context).viewAll,
                             style:
                                 TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500)),
                         Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
@@ -82,7 +83,7 @@ class AppSliverCategoryList extends StatelessWidget {
           ),
           SizedBox(height: 8),
           Text(
-            '+${subCategory.productsEstimate} Items',
+            '+${subCategory.productsEstimate} ${S.current.items}',
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

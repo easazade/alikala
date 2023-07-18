@@ -3,6 +3,7 @@ import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/fake_data.dart';
+import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/utils/utils_classes.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_add_to_cart.dart';
@@ -90,8 +91,8 @@ class ProductPage extends StatelessWidget {
             SizedBox(height: 10),
             AppHorizontalProductsList(
               products: fakeProducts,
-              title: 'Similar Items',
-              linkLabel: 'View All',
+              title: S.of(context).similarItems,
+              linkLabel: S.of(context).viewAll,
               onLinkClicked: () {},
             ),
             SizedBox(height: 10),
@@ -99,8 +100,8 @@ class ProductPage extends StatelessWidget {
             SizedBox(height: 10),
             AppHorizontalCommentsList(
               comments: fakeComments,
-              title: 'Buyers Comments',
-              linkLabel: 'View All',
+              title: S.of(context).buyersComments,
+              linkLabel: S.of(context).viewAll,
               onLinkClicked: () {},
             )
           ],
@@ -189,14 +190,14 @@ class ProductPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Acout Product', style: TextStyles.dark_16_w500),
+          Text(S.of(context).acoutProduct, style: TextStyles.dark_16_w500),
           SizedBox(height: 15),
           divider(context),
           SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Product Details', style: TextStyles.dark_16_w500),
+              Text(S.of(context).productDetails, style: TextStyles.dark_16_w500),
               Icon(CupertinoIcons.forward, size: 20, color: Colors.grey),
             ],
           ),

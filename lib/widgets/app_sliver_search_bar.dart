@@ -48,7 +48,7 @@ class AppSliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
                       child: Icon(FeatherIcons.search, size: 22, color: AppColors.TEXT_MED),
                     ),
                     SizedBox(width: 12),
-                    Text('Search In',
+                    Text(S.of(context).searchIn,
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey[500])),
                     SizedBox(width: 6),
                     Text(S.current.app_name,
@@ -64,10 +64,10 @@ class AppSliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 90;
+  double get maxExtent => 64;
 
   @override
-  double get minExtent => 90;
+  double get minExtent => 64;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
