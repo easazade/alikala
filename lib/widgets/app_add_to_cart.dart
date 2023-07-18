@@ -35,8 +35,8 @@ class _State extends State<AppAddToCart> {
             duration: 0.15.seconds(),
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
             decoration: BoxDecoration(
-              color: (_count == 0) ? AppColors.THEME_ACCENT : Colors.white,
-              border: Border.all(color: (_count == 0) ? AppColors.THEME_ACCENT : Colors.grey[200]!),
+              color: (_count == 0) ? AppColors.primary : Colors.white,
+              border: Border.all(color: (_count == 0) ? AppColors.primary : Colors.grey[200]!),
               borderRadius: BorderRadius.circular(8),
             ),
             child: (_count == 0)
@@ -53,10 +53,10 @@ class _State extends State<AppAddToCart> {
                             _count++;
                           });
                         },
-                        child: Icon(Icons.add, size: 22, color: AppColors.THEME_ACCENT),
+                        child: Icon(Icons.add, size: 22, color: AppColors.primary),
                       ),
                       Text('$_count',
-                          style: TextStyle(color: AppColors.THEME_ACCENT, fontSize: 16, fontWeight: FontWeight.w700)),
+                          style: TextStyle(color: AppColors.primary, fontSize: 16, fontWeight: FontWeight.w700)),
                       GestureDetector(
                         onTap: () {
                           if (_count > 0) {
@@ -68,7 +68,7 @@ class _State extends State<AppAddToCart> {
                         child: Icon(
                           (_count == 1) ? FeatherIcons.trash2 : Icons.remove,
                           size: (_count == 1) ? 20 : 22,
-                          color: AppColors.THEME_ACCENT,
+                          color: AppColors.primary,
                         ),
                       ),
                     ],

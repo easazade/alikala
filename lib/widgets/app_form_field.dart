@@ -36,7 +36,7 @@ class AppFormField extends StatelessWidget {
             contentPadding: const EdgeInsets.symmetric(vertical: 3, horizontal: 12),
             border: InputBorder.none,
             hintText: hint,
-            hintStyle: TextStyle(color: AppColors.TEXT_LIGHT_3, fontSize: 14),
+            hintStyle: TextStyle(color: AppColors.textLight3, fontSize: 14),
           ),
         ),
       ),

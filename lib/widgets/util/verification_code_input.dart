@@ -153,7 +153,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
           Container(
             width: 3,
             height: 1,
-            color: AppColors.TEXT_MED,
+            color: AppColors.textMed,
           ),
       ]);
     }

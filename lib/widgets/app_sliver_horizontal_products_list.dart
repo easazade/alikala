@@ -66,9 +66,9 @@ class AppHorizontalProductsList extends StatelessWidget {
                       children: [
                         Text(
                           linkLabel,
-                          style: TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500),
+                          style: TextStyle(fontSize: 13, color: AppColors.themeAccent2, fontWeight: FontWeight.w500),
                         ),
-                        Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
+                        Icon(CupertinoIcons.forward, color: AppColors.themeAccent2, size: 18),
                       ],
                     ),
                   ),
@@ -131,7 +131,7 @@ class AppHorizontalProductsList extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
                 decoration: BoxDecoration(
-                  color: AppColors.THEME_ACCENT,
+                  color: AppColors.primary,
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: Text('${product.offPercentage.toInt()}%', style: TextStyle(color: Colors.white, fontSize: 11)),
@@ -150,7 +150,7 @@ class AppHorizontalProductsList extends StatelessWidget {
                   Text(
                     product.price.commaSeparated(),
                     style: TextStyle(
-                      color: AppColors.TEXT_LIGHT,
+                      color: AppColors.textLight,
                       fontSize: 11,
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.lineThrough,

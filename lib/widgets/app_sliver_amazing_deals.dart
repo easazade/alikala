@@ -40,7 +40,7 @@ class _State extends State<AppSliverAmazingDeals> {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Container(
-            color: AppColors.THEME_ACCENT,
+            color: AppColors.primary,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Row(
               children: [
@@ -123,7 +123,7 @@ class _State extends State<AppSliverAmazingDeals> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
                     decoration: BoxDecoration(
-                      color: AppColors.THEME_ACCENT,
+                      color: AppColors.primary,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text('${deal.offPercentage.toInt()}%', style: TextStyle(color: Colors.white, fontSize: 11)),
@@ -142,7 +142,7 @@ class _State extends State<AppSliverAmazingDeals> {
                       Text(
                         deal.price.commaSeparated(),
                         style: TextStyle(
-                          color: AppColors.TEXT_LIGHT,
+                          color: AppColors.textLight,
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.lineThrough,
@@ -165,7 +165,7 @@ class _State extends State<AppSliverAmazingDeals> {
               return Text(
                 remaining,
                 textAlign: TextAlign.end,
-                style: TextStyle(fontSize: 11, color: AppColors.TEXT_LIGHT),
+                style: TextStyle(fontSize: 11, color: AppColors.textLight),
               );
             },
           ),

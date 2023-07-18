@@ -26,14 +26,14 @@ class _State extends State<SearchPage> {
           focusNode: _focusNode,
           autofocus: true,
           controller: _textEditingController,
-          style: const TextStyle(color: AppColors.TEXT_DARK, fontSize: 17, fontWeight: FontWeight.w500),
+          style: const TextStyle(color: AppColors.textDark, fontSize: 17, fontWeight: FontWeight.w500),
           textInputAction: TextInputAction.search,
           decoration: InputDecoration(
             isDense: true,
             contentPadding: const EdgeInsets.symmetric(vertical: 3, horizontal: 12),
             border: InputBorder.none,
             hintText: S.of(context).search,
-            hintStyle: const TextStyle(color: AppColors.TEXT_LIGHT, fontSize: 17, fontWeight: FontWeight.w500),
+            hintStyle: const TextStyle(color: AppColors.textLight, fontSize: 17, fontWeight: FontWeight.w500),
           ),
         ),
         actions: [
@@ -54,7 +54,7 @@ class _State extends State<SearchPage> {
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Column(
           children: [
-            Container(width: MediaQuery.of(context).size.width, color: AppColors.THEME_ACCENT_2, height: 1),
+            Container(width: MediaQuery.of(context).size.width, color: AppColors.themeAccent2, height: 1),
             NoScrollIndicator(
               child: Expanded(
                 child: ListView(

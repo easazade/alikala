@@ -20,7 +20,7 @@ class AppToolbar extends StatelessWidget {
                   width: 40,
                   height: 40,
                   margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 15),
-                  decoration: BoxDecoration(color: AppColors.THEME_ACCENT, shape: BoxShape.circle),
+                  decoration: BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
                   child: Icon(CupertinoIcons.back, color: Colors.black),
                 ),
               ),

@@ -73,7 +73,7 @@ class AppSliverMostPopulars extends StatelessWidget {
           SizedBox(width: 15),
           Text(
             '${products.indexOf(product) + 1}',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: AppColors.THEME_ACCENT_2),
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: AppColors.themeAccent2),
           ),
           SizedBox(width: 15),
           Expanded(

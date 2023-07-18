@@ -31,7 +31,7 @@ class CartPage extends ConsumerWidget {
         middle: Text(
           S.of(context).shoppingCart,
           style: TextStyle(
-            color: AppColors.THEME_ACCENT,
+            color: AppColors.primary,
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
@@ -121,7 +121,7 @@ class CartPage extends ConsumerWidget {
             children: [
               Transform.rotate(
                 angle: math.pi,
-                child: Icon(FeatherIcons.logIn, color: AppColors.THEME_ORANGE),
+                child: Icon(FeatherIcons.logIn, color: AppColors.orange),
               ),
               Expanded(
                 child: Padding(
@@ -177,7 +177,7 @@ class CartPage extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(label, style: TextStyle(fontSize: 14, color: AppColors.TEXT_LIGHT_3)),
+              Text(label, style: TextStyle(fontSize: 14, color: AppColors.textLight3)),
               AppPriceTag(value),
             ],
           ),
@@ -197,7 +197,7 @@ class CartPage extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(S.current.summary, style: TextStyle(fontSize: 16)),
-                Text('1 item', style: TextStyle(fontSize: 12, color: AppColors.TEXT_LIGHT_2)),
+                Text('1 item', style: TextStyle(fontSize: 12, color: AppColors.textLight2)),
               ],
             ),
             SizedBox(height: 20),
@@ -226,11 +226,12 @@ class CartPage extends ConsumerWidget {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.keyboard_arrow_down_rounded, size: 16, color: AppColors.TEXT_LIGHT),
-                    Text(S.of(context).total, style: TextStyle(color: AppColors.TEXT_LIGHT, fontWeight: FontWeight.w500)),
+                    Icon(Icons.keyboard_arrow_down_rounded, size: 16, color: AppColors.textLight),
+                    Text(S.of(context).total,
+                        style: TextStyle(color: AppColors.textLight, fontWeight: FontWeight.w500)),
                   ],
                 ),
-                AppPriceTag(615000, sizeFactor: 1.2, color: AppColors.THEME_ACCENT_3),
+                AppPriceTag(615000, sizeFactor: 1.2, color: AppColors.themeAccent3),
               ],
             ),
           ],

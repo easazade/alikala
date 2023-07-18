@@ -13,11 +13,11 @@ class AppFormLongButton extends StatelessWidget {
     return Material(
       child: InkWell(
         onTap: onTap,
-        splashColor: disabled ? AppColors.TRANSPARENT : Colors.white.withOpacity(0.3),
+        splashColor: disabled ? AppColors.transparent : Colors.white.withOpacity(0.3),
         child: Ink(
           height: 54,
           decoration: BoxDecoration(
-            color: disabled ? Colors.white : AppColors.THEME_ACCENT,
+            color: disabled ? Colors.white : AppColors.primary,
             borderRadius: BorderRadius.circular(8),
             border: disabled ? Border.all(color: Color.fromARGB(255, 19, 13, 13)) : null,
           ),
@@ -25,7 +25,7 @@ class AppFormLongButton extends StatelessWidget {
             child: Text(
               label,
               style: TextStyle(
-                color: disabled ? AppColors.TEXT_LIGHT : Colors.white,
+                color: disabled ? AppColors.textLight : Colors.white,
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
               ),

@@ -11,8 +11,8 @@ class VerifyCodePage extends StatelessWidget {
     return RemoveFocusOnTouchOutsideFocusedWidget(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.TRANSPARENT,
-          shadowColor: AppColors.TRANSPARENT,
+          backgroundColor: AppColors.transparent,
+          shadowColor: AppColors.transparent,
         ),
         body: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -24,7 +24,8 @@ class VerifyCodePage extends StatelessWidget {
               SizedBox(height: 120),
               Column(
                 children: [
-                  Text(S.of(context).sendAgainInNSeconds(180), style: TextStyle(fontSize: 12, color: AppColors.TEXT_MED)),
+                  Text(S.of(context).sendAgainInNSeconds(180),
+                      style: TextStyle(fontSize: 12, color: AppColors.textMed)),
                   SizedBox(height: 15),
                   AppFormLongButton(S.of(context).verify, () {}, disabled: true),
                 ],
@@ -57,7 +58,7 @@ class VerifyCodePage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
             decoration: BoxDecoration(
-              color: AppColors.BG,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(8),
             ),
             child: VerificationCodeInput(

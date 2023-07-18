@@ -33,9 +33,8 @@ class AppSliverCategoryList extends StatelessWidget {
                     Row(
                       children: [
                         Text(S.of(context).viewAll,
-                            style:
-                                TextStyle(fontSize: 13, color: AppColors.THEME_ACCENT_2, fontWeight: FontWeight.w500)),
-                        Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT_2, size: 18),
+                            style: TextStyle(fontSize: 13, color: AppColors.themeAccent2, fontWeight: FontWeight.w500)),
+                        Icon(CupertinoIcons.forward, color: AppColors.themeAccent2, size: 18),
                       ],
                     ),
                   ],
@@ -64,7 +63,7 @@ class AppSliverCategoryList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       margin: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: AppColors.BG,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
@@ -79,7 +78,7 @@ class AppSliverCategoryList extends StatelessWidget {
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 12, color: AppColors.TEXT_LIGHT_2, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 12, color: AppColors.textLight2, fontWeight: FontWeight.w500),
           ),
           SizedBox(height: 8),
           Text(
@@ -87,7 +86,7 @@ class AppSliverCategoryList extends StatelessWidget {
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 10, color: AppColors.TEXT_LIGHT, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 10, color: AppColors.textLight, fontWeight: FontWeight.w500),
           ),
         ],
       ),

@@ -26,10 +26,10 @@ class ActionErrorWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             if (icon != null) ...[
-              Icon(icon, color: AppColors.THEME_ACCENT, size: 70),
+              Icon(icon, color: AppColors.primary, size: 70),
               SizedBox(height: 10),
             ],
-            Text(msg, style: TextStyle(color: AppColors.TEXT_DARK, fontWeight: FontWeight.bold, fontSize: 20)),
+            Text(msg, style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold, fontSize: 20)),
             SizedBox(height: 10),
 //            AppButton(text: actionText ?? 'Try Again', onClick: action, color: AppColors.ACCENT_GREEN),
             // ignore: deprecated_member_use

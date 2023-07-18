@@ -49,7 +49,7 @@ class _State extends State<AppSearchField> {
                   contentPadding: const EdgeInsets.symmetric(vertical: 3, horizontal: 12),
                   border: InputBorder.none,
                   hintText: widget.hint,
-                  hintStyle: TextStyle(color: AppColors.TEXT_LIGHT, fontSize: 14),
+                  hintStyle: TextStyle(color: AppColors.textLight, fontSize: 14),
                 ),
               ),
             ),
@@ -68,7 +68,7 @@ class _State extends State<AppSearchField> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 border: Border.all(color: Colors.white, width: 5),
-                color: AppColors.THEME_ACCENT,
+                color: AppColors.primary,
               ),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 2.0, right: 1.0),

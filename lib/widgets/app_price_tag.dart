@@ -7,7 +7,7 @@ class AppPriceTag extends StatelessWidget {
   final double sizeFactor;
   final Color color;
 
-  const AppPriceTag(this.price, {this.sizeFactor = 1, this.color = AppColors.TEXT_DARK});
+  const AppPriceTag(this.price, {this.sizeFactor = 1, this.color = AppColors.textDark});
 
   @override
   Widget build(BuildContext context) {

@@ -9,15 +9,15 @@ class AppProgress extends StatelessWidget {
   double? padding;
   Color color;
 
-  AppProgress(this.size, this.padding, {this.color = AppColors.THEME_ACCENT});
+  AppProgress(this.size, this.padding, {this.color = AppColors.primary});
 
-  AppProgress.large({this.color = AppColors.THEME_ACCENT})
+  AppProgress.large({this.color = AppColors.primary})
       : size = null,
         padding = null {
     isLarge = true;
   }
 
-  AppProgress.small({this.color = AppColors.THEME_ACCENT})
+  AppProgress.small({this.color = AppColors.primary})
       : size = null,
         padding = null {
     isSmall = true;

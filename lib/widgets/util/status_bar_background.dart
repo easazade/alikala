@@ -8,7 +8,7 @@ class StatusBarBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        color: color ?? AppColors.THEME_ACCENT,
+        color: color ?? AppColors.primary,
         height: MediaQuery.of(context).padding.top,
       );
 }

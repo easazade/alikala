@@ -32,7 +32,7 @@ class AppSliverNineTiles extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerRight,
-              child: Text(subtitle, style: TextStyle(color: AppColors.TEXT_LIGHT, fontSize: 13)),
+              child: Text(subtitle, style: TextStyle(color: AppColors.textLight, fontSize: 13)),
             ),
             GridView.count(
               shrinkWrap: true,
@@ -62,8 +62,8 @@ class AppSliverNineTiles extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(linkLabel, style: TextStyle(color: AppColors.THEME_ACCENT, fontWeight: FontWeight.w500)),
-                Icon(CupertinoIcons.forward, color: AppColors.THEME_ACCENT, size: 18),
+                Text(linkLabel, style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.w500)),
+                Icon(CupertinoIcons.forward, color: AppColors.primary, size: 18),
               ],
             ),
           ],

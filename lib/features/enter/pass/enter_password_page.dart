@@ -13,8 +13,8 @@ class EnterPasswordPage extends StatelessWidget {
     return RemoveFocusOnTouchOutsideFocusedWidget(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.TRANSPARENT,
-          shadowColor: AppColors.TRANSPARENT,
+          backgroundColor: AppColors.transparent,
+          shadowColor: AppColors.transparent,
         ),
         body: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -61,8 +61,8 @@ class EnterPasswordPage extends StatelessWidget {
             child: Row(
               children: [
                 Text(S.of(context).recoverYourPassword,
-                    style: TextStyle(color: AppColors.THEME_ACCENT_2, fontSize: 12, fontWeight: FontWeight.w500)),
-                Icon(CupertinoIcons.forward, size: 12, color: AppColors.THEME_ACCENT_2),
+                    style: TextStyle(color: AppColors.themeAccent2, fontSize: 12, fontWeight: FontWeight.w500)),
+                Icon(CupertinoIcons.forward, size: 12, color: AppColors.themeAccent2),
               ],
             ),
           ),

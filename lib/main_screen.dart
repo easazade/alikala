@@ -14,8 +14,8 @@ class MainPage extends StatelessWidget {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
         backgroundColor: Colors.white,
-        activeColor: AppColors.TEXT_DARK,
-        inactiveColor: AppColors.TEXT_LIGHT,
+        activeColor: AppColors.textDark,
+        inactiveColor: AppColors.textLight,
         iconSize: 20,
         border: Border.all(color: Colors.grey[100]!),
         items: [

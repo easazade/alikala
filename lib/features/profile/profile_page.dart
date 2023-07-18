@@ -101,7 +101,9 @@ class ProfilePage extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(text: '5 ', style: TextStyles.dark_12_w500.copyWith(fontFamily: FontFamily.opensans)),
-                      TextSpan(text: S.of(context).points, style: TextStyles.light_12.copyWith(fontFamily: FontFamily.opensans)),
+                      TextSpan(
+                          text: S.of(context).points,
+                          style: TextStyles.light_12.copyWith(fontFamily: FontFamily.opensans)),
                     ],
                   ),
                 ),
@@ -123,7 +125,8 @@ class ProfilePage extends StatelessWidget {
                     appRouter.navigate(AddressRoute());
                   },
                 ),
-                _createMenuButton(icon: Icons.person_outline_outlined, label: S.of(context).accountDetails, onTap: () {}),
+                _createMenuButton(
+                    icon: Icons.person_outline_outlined, label: S.of(context).accountDetails, onTap: () {}),
               ],
             ),
           ),
@@ -139,7 +142,7 @@ class ProfilePage extends StatelessWidget {
     Color? labelColor,
     bool hasDivider = true,
   }) {
-    var color = labelColor ?? AppColors.TEXT_MED;
+    var color = labelColor ?? AppColors.textMed;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: onTap,

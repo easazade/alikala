@@ -150,7 +150,7 @@ class ProductPage extends StatelessWidget {
                 height: 14,
                 width: 14,
                 decoration: BoxDecoration(
-                  color: AppColors.THEME_ACCENT,
+                  color: AppColors.primary,
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Center(

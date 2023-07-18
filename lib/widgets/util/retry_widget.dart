@@ -18,7 +18,7 @@ class RetryWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(60),
           color: Colors.transparent,
-          border: Border.all(color: AppColors.GREY_DARK),
+          border: Border.all(color: AppColors.greyDark),
         ),
         child: Center(
           child: Image.asset(Assets.images.retry.path, width: 42, height: 42),

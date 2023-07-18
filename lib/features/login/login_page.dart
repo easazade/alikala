@@ -11,9 +11,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  final textSpanStyle = TextStyle(color: AppColors.TEXT_DARK, fontSize: 11, fontFamily: FontFamily.opensans);
+  final textSpanStyle = TextStyle(color: AppColors.textDark, fontSize: 11, fontFamily: FontFamily.opensans);
   final linkTextSpanStyle = TextStyle(
-    color: AppColors.HYPER_LINK,
+    color: AppColors.hyperlink,
     fontSize: 11,
     fontFamily: FontFamily.opensans,
     decoration: TextDecoration.underline,
@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
                     S.of(context).alikala,
                     style: TextStyle(
                       fontFamily: FontFamily.opensans,
-                      color: AppColors.THEME_ACCENT,
+                      color: AppColors.primary,
                       fontSize: 30,
                       fontWeight: FontWeight.w900,
                     ),
