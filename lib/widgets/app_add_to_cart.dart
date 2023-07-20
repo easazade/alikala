@@ -19,6 +19,7 @@ class _State extends State<AppAddToCart> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
         GestureDetector(
@@ -42,7 +43,11 @@ class _State extends State<AppAddToCart> {
             child: (_count == 0)
                 ? Align(
                     alignment: Alignment.center,
-                    child: Text('Buy', style: TextStyles.white_16_w500, textAlign: TextAlign.center),
+                    child: Text(
+                      'Buy',
+                      style: theme.textTheme.labelLarge?.copyWith(color: theme.colorScheme.onPrimary),
+                      textAlign: TextAlign.center,
+                    ),
                   )
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

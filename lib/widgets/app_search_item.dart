@@ -10,6 +10,7 @@ class AppSearchItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: SizedBox(
@@ -21,8 +22,8 @@ class AppSearchItem extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(resultTitle, style: TextStyles.dark_14_w500),
-                Text(resultLocation, style: TextStyles.light_12),
+                Text(resultTitle, style: textTheme.labelMedium),
+                Text(resultLocation, style: textTheme.labelSmall?.copyWith(color: AppColors.textLight)),
               ],
             ),
           ],

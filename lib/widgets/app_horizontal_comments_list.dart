@@ -76,7 +76,7 @@ class AppHorizontalCommentsList extends StatelessWidget {
               child: ListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 shrinkWrap: true,
-                itemBuilder: (context, position) => _createCommentItem(comments[position]),
+                itemBuilder: (context, position) => _createCommentItem(context, comments[position]),
                 itemCount: comments.length,
                 scrollDirection: Axis.horizontal,
               ),
@@ -87,7 +87,8 @@ class AppHorizontalCommentsList extends StatelessWidget {
     );
   }
 
-  Widget _createCommentItem(Comment comment) {
+  Widget _createCommentItem(BuildContext context, Comment comment) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       width: 230,
       height: 230,
@@ -101,19 +102,19 @@ class AppHorizontalCommentsList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(comment.title, style: TextStyles.dark_14_w500),
+          Text(comment.title, style: textTheme.labelMedium),
           SizedBox(height: 4),
           Expanded(
-            child: Text(comment.content, style: TextStyles.dark_12, maxLines: 5, overflow: TextOverflow.ellipsis),
+            child: Text(comment.content, style: textTheme.labelSmall, maxLines: 5, overflow: TextOverflow.ellipsis),
           ),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(comment.dateTime.toString(), style: TextStyles.light_12),
+              Text(comment.dateTime.toString(), style: textTheme.labelSmall),
               SizedBox(width: 5),
               Icon(Icons.circle, size: 5, color: Colors.grey[300]),
               SizedBox(width: 5),
-              Text(comment.username, style: TextStyles.light_12),
+              Text(comment.username, style: textTheme.labelSmall),
             ],
           ),
         ],

@@ -8,11 +8,12 @@ import 'package:flutter/material.dart';
 class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+  final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(S.of(context).settings, style: TextStyles.dark_18_w700),
+        title: Text(S.of(context).settings, style: theme.textTheme.bodyLarge),
         actions: [
           // IconButton(icon: Icon(FeatherIcons.x), onPressed: Navigator.of(context).pop),
         ],

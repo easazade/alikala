@@ -1,4 +1,3 @@
-import 'package:alikala/core/constants.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:alikala/widgets/app_network_image.dart';
@@ -36,7 +35,7 @@ class AppFavoriteProductItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(product.title, maxLines: 2, style: TextStyles.dark_14_w500),
+                      Text(product.title, maxLines: 2, style: Theme.of(context).textTheme.labelMedium),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [

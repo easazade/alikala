@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// in flutter 3.10.4 ThemeData.from() is the recommended method to theme our app
@@ -9,22 +12,33 @@ import 'package:flutter/material.dart';
 ThemeData appTheme(Brightness brightness) {
   late ColorScheme colorScheme;
 
-  if (brightness == Brightness.light) {
-    colorScheme = ColorScheme.light(
-      primary: AppColors.primary,
-      //add values
-    );
-  } else {
-    colorScheme = ColorScheme.dark(
-        //add values
+  // if (brightness == Brightness.light) {
+  //   ColorScheme.light();
+  //   colorScheme = ColorScheme.light(
+  //     primary: AppColors.primary,
+  //   );
+  // } else {
+  //   colorScheme = ColorScheme.dark(
+  //       //add values
 
-        );
-  }
+  //       );
+  // }
 
+  colorScheme = ColorScheme.fromSeed(seedColor: AppColors.primary);
   return ThemeData.from(
     colorScheme: colorScheme,
     useMaterial3: true,
-    textTheme: TextTheme().apply(
+    textTheme: TextTheme(
+      titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, height: 1),
+      titleMedium: TextStyle(fontSize: 22, fontWeight: FontWeight.w700, height: 1),
+      titleSmall: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, height: 1),
+      bodyLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+      bodyMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+      bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+      labelLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+      labelMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+      labelSmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+    ).apply(
       fontFamily: FontFamily.opensans,
       bodyColor: AppColors.textDark,
       fontFamilyFallback: ['Roboto'],
@@ -32,15 +46,13 @@ ThemeData appTheme(Brightness brightness) {
     ),
   ).copyWith(
     // add overrides here
+
     appBarTheme: AppBarTheme(
       foregroundColor: AppColors.textDark,
       backgroundColor: AppColors.white,
       elevation: 0,
-      centerTitle: true,
-      //  iconTheme: base.iconTheme.copyWith(color: colorScheme.onPrimary),
-      // actionsIconTheme: base.iconTheme.copyWith(color: colorScheme.onPrimary),
-      // titleTextStyle: texts.h2SemiBold.copyWith(color: colorScheme.onPrimary),
-      // toolbarTextStyle: texts.h2SemiBold.copyWith(color: colorScheme.onPrimary),
+      centerTitle: !kIsWeb && Platform.isIOS,
+      titleTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
     ),
   );
 }

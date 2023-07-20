@@ -27,7 +27,7 @@ class _State extends State<AppProductColorSelector> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('${S.of(context).color}: $_selectedColorName', style: TextStyles.dark_18_w500),
+        Text('${S.of(context).color}: $_selectedColorName', style: Theme.of(context).textTheme.bodyLarge),
         SizedBox(height: 10),
         Row(
           children: List.generate(

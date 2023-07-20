@@ -15,6 +15,8 @@ import 'package:flutter_crystalline/flutter_crystalline.dart';
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overScroll) {
@@ -56,7 +58,7 @@ class ProfilePage extends StatelessWidget {
                   onValue: (context, store) => Text(
                     store.username.value,
                     textAlign: TextAlign.center,
-                    style: TextStyles.dark_20_w700.copyWith(height: 1),
+                    style: theme.textTheme.titleSmall?.copyWith(height: 1),
                   ),
                   onOperate: (_, __) => Text('loading'),
                   onError: (_, store) => Text(store.error.message),
@@ -74,7 +76,7 @@ class ProfilePage extends StatelessWidget {
                       return Text(
                         store.username.value,
                         textAlign: TextAlign.center,
-                        style: TextStyles.dark_20_w700.copyWith(height: 1),
+                        style: theme.textTheme.titleSmall?.copyWith(height: 1),
                       );
                     } else {
                       return Text('what username :(');
@@ -94,16 +96,18 @@ class ProfilePage extends StatelessWidget {
                   },
                 ),
 
-                Text('09117158746', textAlign: TextAlign.center, style: TextStyles.light_14),
+                Text(
+                  '09117158746',
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.labelMedium?.copyWith(color: AppColors.textLight),
+                ),
                 SizedBox(height: 15),
                 Image.asset(Assets.images.coinDash.path, width: 80),
                 RichText(
                   text: TextSpan(
                     children: [
-                      TextSpan(text: '5 ', style: TextStyles.dark_12_w500.copyWith(fontFamily: FontFamily.opensans)),
-                      TextSpan(
-                          text: S.of(context).points,
-                          style: TextStyles.light_12.copyWith(fontFamily: FontFamily.opensans)),
+                      TextSpan(text: '5 ', style: theme.textTheme.labelSmall),
+                      TextSpan(text: S.of(context).points, style: theme.textTheme.labelSmall),
                     ],
                   ),
                 ),

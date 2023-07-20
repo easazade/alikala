@@ -27,9 +27,10 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(product.title, style: TextStyles.dark_16_w500),
+        title: Text(product.title, style: theme.textTheme.bodyMedium),
         titleSpacing: 0,
         leading: GestureDetector(
           onTap: Navigator.of(context).pop,
@@ -38,7 +39,7 @@ class ProductPage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 1,
         actions: [
-          _createCartActionItem(5),
+          _createCartActionItem(context, 5),
           _createAddToFavoriteItem(),
           _createMoreItem(),
         ],
@@ -60,7 +61,7 @@ class ProductPage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               child: Align(
                 alignment: AlignmentDirectional.centerStart,
-                child: Text(product.title, style: TextStyles.dark_18_w700),
+                child: Text(product.title, style: theme.textTheme.titleSmall),
               ),
             ),
             Padding(
@@ -123,7 +124,7 @@ class ProductPage extends StatelessWidget {
     );
   }
 
-  Widget _createCartActionItem(int count) {
+  Widget _createCartActionItem(BuildContext context, int count) {
     return Container(
       width: 48,
       padding: const EdgeInsets.only(top: 5),
@@ -154,7 +155,14 @@ class ProductPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Center(
-                  child: Text('35', style: TextStyles.white_12_w700.copyWith(fontSize: 9)),
+                  child: Text(
+                    '35',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontSize: 9,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -185,19 +193,20 @@ class ProductPage extends StatelessWidget {
   }
 
   Widget _createProductFeatures(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: pagePadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(S.of(context).acoutProduct, style: TextStyles.dark_16_w500),
+          Text(S.of(context).acoutProduct, style: textTheme.bodyMedium),
           SizedBox(height: 15),
           divider(context),
           SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(S.of(context).productDetails, style: TextStyles.dark_16_w500),
+              Text(S.of(context).productDetails, style: textTheme.bodyMedium),
               Icon(CupertinoIcons.forward, size: 20, color: Colors.grey),
             ],
           ),
