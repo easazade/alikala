@@ -11,11 +11,12 @@ import 'package:flutter/material.dart';
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
-        backgroundColor: Colors.white,
-        activeColor: AppColors.textDark,
-        inactiveColor: AppColors.textLight,
+        activeColor: theme.colorScheme.onBackground,
+        inactiveColor: theme.colorScheme.outlineVariant,
         iconSize: 20,
         border: Border.all(color: Colors.grey[100]!),
         items: [

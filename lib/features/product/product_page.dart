@@ -1,5 +1,4 @@
 import 'package:alikala/core/app.dart';
-import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/fake_data.dart';
@@ -28,6 +27,7 @@ class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(product.title, style: theme.textTheme.bodyMedium),
@@ -125,6 +125,8 @@ class ProductPage extends StatelessWidget {
   }
 
   Widget _createCartActionItem(BuildContext context, int count) {
+    final theme = Theme.of(context);
+
     return Container(
       width: 48,
       padding: const EdgeInsets.only(top: 5),
@@ -151,7 +153,7 @@ class ProductPage extends StatelessWidget {
                 height: 14,
                 width: 14,
                 decoration: BoxDecoration(
-                  color: AppColors.primary,
+                  color: theme.primaryColor,
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Center(

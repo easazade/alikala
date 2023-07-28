@@ -82,7 +82,7 @@ class AppHorizontalProductsList extends StatelessWidget {
                   width: 1,
                 ),
                 shrinkWrap: true,
-                itemBuilder: (context, position) => _createProductItem(products[position]),
+                itemBuilder: (context, position) => _createProductItem(context, products[position]),
                 itemCount: products.length,
                 scrollDirection: Axis.horizontal,
               ),
@@ -93,7 +93,9 @@ class AppHorizontalProductsList extends StatelessWidget {
     );
   }
 
-  Widget _createProductItem(Product product) {
+  Widget _createProductItem(BuildContext context, Product product) {
+    final theme = Theme.of(context);
+
     return Container(
       width: 160,
       height: 280,
@@ -131,7 +133,7 @@ class AppHorizontalProductsList extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
                 decoration: BoxDecoration(
-                  color: AppColors.primary,
+                  color: theme.primaryColor,
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: Text('${product.offPercentage.toInt()}%', style: TextStyle(color: Colors.white, fontSize: 11)),

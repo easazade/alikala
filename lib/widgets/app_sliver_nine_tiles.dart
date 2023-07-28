@@ -21,17 +21,19 @@ class AppSliverNineTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: Column(
           children: <Widget>[
             Align(
-              alignment: Alignment.centerRight,
+              alignment: AlignmentDirectional.centerStart,
               child: Text(title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
             ),
             Align(
-              alignment: Alignment.centerRight,
+              alignment: AlignmentDirectional.centerStart,
               child: Text(subtitle, style: TextStyle(color: AppColors.textLight, fontSize: 13)),
             ),
             GridView.count(
@@ -62,8 +64,8 @@ class AppSliverNineTiles extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(linkLabel, style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.w500)),
-                Icon(CupertinoIcons.forward, color: AppColors.primary, size: 18),
+                Text(linkLabel, style: TextStyle(color: theme.primaryColor, fontWeight: FontWeight.w500)),
+                Icon(CupertinoIcons.forward, color: theme.primaryColor, size: 18),
               ],
             ),
           ],

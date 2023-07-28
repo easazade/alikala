@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/fonts.gen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -10,21 +11,12 @@ import 'package:flutter/material.dart';
 /// read code comments on ThemeData.from() method.
 /// then we can use copyWith method to override the other theme like appBarTheme or button theme and so forth
 ThemeData appTheme(Brightness brightness) {
-  late ColorScheme colorScheme;
+  final colorScheme = ColorScheme.fromSeed(
+    seedColor: AppColors.primary,
+    primary: AppColors.primary,
+    brightness: brightness,
+  );
 
-  // if (brightness == Brightness.light) {
-  //   ColorScheme.light();
-  //   colorScheme = ColorScheme.light(
-  //     primary: AppColors.primary,
-  //   );
-  // } else {
-  //   colorScheme = ColorScheme.dark(
-  //       //add values
-
-  //       );
-  // }
-
-  colorScheme = ColorScheme.fromSeed(seedColor: AppColors.primary);
   return ThemeData.from(
     colorScheme: colorScheme,
     useMaterial3: true,
@@ -53,6 +45,12 @@ ThemeData appTheme(Brightness brightness) {
       elevation: 0,
       centerTitle: !kIsWeb && Platform.isIOS,
       titleTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+    ),
+    cupertinoOverrideTheme: NoDefaultCupertinoThemeData(
+      applyThemeToAll: true,
+      barBackgroundColor: colorScheme.background,
+      brightness: brightness,
+      primaryColor: AppColors.primary,
     ),
   );
 }

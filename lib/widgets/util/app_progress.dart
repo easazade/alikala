@@ -3,28 +3,28 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class AppProgress extends StatelessWidget {
-  bool isSmall = false;
-  bool isLarge = false;
-  double? size;
-  double? padding;
-  Color color;
+  final bool isSmall = false;
+  final bool isLarge;
+  final double? size;
+  final double? padding;
+  final Color? color;
 
-  AppProgress(this.size, this.padding, {this.color = AppColors.primary});
+  const AppProgress(this.size, this.padding, {this.color}) : isLarge = false;
 
-  AppProgress.large({this.color = AppColors.primary})
+  const AppProgress.large({this.color})
       : size = null,
-        padding = null {
-    isLarge = true;
-  }
+        padding = null,
+        isLarge = true;
 
-  AppProgress.small({this.color = AppColors.primary})
+  const AppProgress.small({this.color})
       : size = null,
-        padding = null {
-    isSmall = true;
-  }
+        padding = null,
+        isLarge = false;
 
   @override
   Widget build(BuildContext context) {
+    final progressColor = color ?? Theme.of(context).primaryColor;
+
     if (isSmall) {
       return SizedBox(
         height: 20,
@@ -33,7 +33,7 @@ class AppProgress extends StatelessWidget {
           padding: const EdgeInsets.all(2),
           child: CircularProgressIndicator(
             strokeWidth: 2,
-            valueColor: AlwaysStoppedAnimation(color),
+            valueColor: AlwaysStoppedAnimation(progressColor),
           ),
         ),
       );
@@ -45,7 +45,7 @@ class AppProgress extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: CircularProgressIndicator(
             strokeWidth: 1,
-            valueColor: AlwaysStoppedAnimation(color),
+            valueColor: AlwaysStoppedAnimation(progressColor),
           ),
         ),
       );
@@ -57,7 +57,7 @@ class AppProgress extends StatelessWidget {
           padding: (padding != null) ? EdgeInsets.all(padding!) : EdgeInsets.all(0),
           child: CircularProgressIndicator(
             strokeWidth: 3,
-            valueColor: AlwaysStoppedAnimation(color),
+            valueColor: AlwaysStoppedAnimation(progressColor),
           ),
         ),
       );

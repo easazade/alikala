@@ -12,6 +12,8 @@ class ActionErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: Container(
@@ -26,7 +28,7 @@ class ActionErrorWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             if (icon != null) ...[
-              Icon(icon, color: AppColors.primary, size: 70),
+              Icon(icon, color: theme.colorScheme.error, size: 70),
               SizedBox(height: 10),
             ],
             Text(msg, style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold, fontSize: 20)),

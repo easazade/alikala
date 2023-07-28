@@ -8,19 +8,19 @@ class AppSliverSearchBar extends SliverPersistentHeader {
       : super(
           pinned: true,
           floating: false,
-          delegate: AppSliverSearchBarDelegate(context, onTap),
+          delegate: AppSliverSearchBarDelegate(onTap),
         );
 }
 
 class AppSliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
-  BuildContext context;
   final VoidCallback onTap;
 
-  AppSliverSearchBarDelegate(this.context, this.onTap);
+  AppSliverSearchBarDelegate(this.onTap);
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    this.context = context;
+    final theme = Theme.of(context);
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -52,7 +52,7 @@ class AppSliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey[500])),
                     SizedBox(width: 6),
                     Text(S.current.app_name,
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.primary)),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: theme.primaryColor)),
                   ],
                 ),
               ],

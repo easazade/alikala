@@ -25,13 +25,14 @@ class CartPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cartStore = ref.watch(cartStoreProvider);
+    final theme = Theme.of(context);
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(
           S.of(context).shoppingCart,
           style: TextStyle(
-            color: AppColors.primary,
+            color: theme.primaryColor,
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),

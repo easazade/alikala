@@ -20,6 +20,8 @@ class _State extends State<AppSearchField> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Row(
       children: [
         Expanded(
@@ -68,7 +70,7 @@ class _State extends State<AppSearchField> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 border: Border.all(color: Colors.white, width: 5),
-                color: AppColors.primary,
+                color: theme.primaryColor,
               ),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 2.0, right: 1.0),

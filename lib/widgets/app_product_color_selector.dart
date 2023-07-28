@@ -1,4 +1,3 @@
-import 'package:alikala/core/constants.dart';
 import 'package:alikala/generated/l10n.dart';
 import 'package:flutter/material.dart';
 

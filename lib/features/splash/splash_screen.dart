@@ -25,8 +25,10 @@ class _SplashScreenState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Material(
-      color: AppColors.primary,
+      color: theme.primaryColor,
       child: Stack(
         children: <Widget>[
           Align(

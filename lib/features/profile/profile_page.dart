@@ -3,7 +3,6 @@ import 'package:alikala/core/constants.dart';
 import 'package:alikala/core/navigation.gr.dart';
 import 'package:alikala/di/di.dart';
 import 'package:alikala/gen/assets.gen.dart';
-import 'package:alikala/gen/fonts.gen.dart';
 import 'package:alikala/generated/l10n.dart';
 import 'package:alikala/widgets/app_icon_button.dart';
 import 'package:alikala/widgets/app_section_separator.dart';

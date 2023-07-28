@@ -21,6 +21,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (notification) {
@@ -45,7 +47,7 @@ class LoginPage extends StatelessWidget {
                     S.of(context).alikala,
                     style: TextStyle(
                       fontFamily: FontFamily.opensans,
-                      color: AppColors.primary,
+                      color: theme.primaryColor,
                       fontSize: 30,
                       fontWeight: FontWeight.w900,
                     ),

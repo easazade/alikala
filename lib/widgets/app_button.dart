@@ -10,6 +10,8 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Material(
       child: InkWell(
         onTap: onTap,
@@ -17,7 +19,7 @@ class AppButton extends StatelessWidget {
         child: Ink(
           height: 54,
           decoration: BoxDecoration(
-            color: disabled ? Colors.white : AppColors.primary,
+            color: disabled ? Colors.white : theme.primaryColor,
             borderRadius: BorderRadius.circular(8),
             border: disabled ? Border.all(color: Colors.grey[100]!) : null,
           ),

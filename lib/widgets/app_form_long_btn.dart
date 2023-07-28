@@ -10,6 +10,8 @@ class AppFormLongButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Material(
       child: InkWell(
         onTap: onTap,
@@ -17,7 +19,7 @@ class AppFormLongButton extends StatelessWidget {
         child: Ink(
           height: 54,
           decoration: BoxDecoration(
-            color: disabled ? Colors.white : AppColors.primary,
+            color: disabled ? Colors.white : theme.primaryColor,
             borderRadius: BorderRadius.circular(8),
             border: disabled ? Border.all(color: Color.fromARGB(255, 19, 13, 13)) : null,
           ),

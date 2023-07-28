@@ -31,7 +31,7 @@ class SettingsPage extends StatelessWidget {
                     label: S.of(context).rateAlikalaApp, icon: Icons.star_rate, onTap: () => showInfoToast('Rate Us')),
                 createSettingItem(
                   label: S.of(context).logout,
-                  labelColor: AppColors.primary,
+                  labelColor: theme.primaryColor,
                   hasDivider: false,
                   icon: Icons.logout,
                   onTap: () => showInfoToast('Logout'),
@@ -96,6 +96,8 @@ class SettingsPage extends StatelessWidget {
   }
 
   Widget _createLogoAndVersionArea(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -103,7 +105,7 @@ class SettingsPage extends StatelessWidget {
           S.of(context).alikala,
           style: TextStyle(
             fontFamily: FontFamily.opensans,
-            color: AppColors.primary,
+            color: theme.primaryColor,
             fontSize: 30,
             fontWeight: FontWeight.w900,
           ),

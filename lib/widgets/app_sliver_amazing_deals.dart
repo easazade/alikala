@@ -32,6 +32,8 @@ class _State extends State<AppSliverAmazingDeals> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return SliverToBoxAdapter(
       child: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overScroll) {
@@ -40,12 +42,12 @@ class _State extends State<AppSliverAmazingDeals> {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Container(
-            color: AppColors.primary,
+            color: theme.primaryColor,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Row(
               children: [
                 _createSeeAllAmazingDealsWidget(),
-                for (var deal in widget.amazingDeals) _createAmazingDealWidget(deal),
+                for (var deal in widget.amazingDeals) _createAmazingDealWidget(context, deal),
                 SizedBox(width: 10),
               ],
             ),
@@ -83,7 +85,9 @@ class _State extends State<AppSliverAmazingDeals> {
     );
   }
 
-  Widget _createAmazingDealWidget(AmazingDeal deal) {
+  Widget _createAmazingDealWidget(BuildContext context, AmazingDeal deal) {
+    final theme = Theme.of(context);
+
     return Stack(
       children: [
         Container(
@@ -123,7 +127,7 @@ class _State extends State<AppSliverAmazingDeals> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
                     decoration: BoxDecoration(
-                      color: AppColors.primary,
+                      color: theme.primaryColor,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text('${deal.offPercentage.toInt()}%', style: TextStyle(color: Colors.white, fontSize: 11)),

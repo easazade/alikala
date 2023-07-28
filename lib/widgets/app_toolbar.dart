@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:alikala/core/constants.dart';
 
 class AppToolbar extends StatelessWidget {
   final String? title;
@@ -9,6 +8,8 @@ class AppToolbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return SafeArea(
       child: Column(
         children: [
@@ -20,7 +21,7 @@ class AppToolbar extends StatelessWidget {
                   width: 40,
                   height: 40,
                   margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 15),
-                  decoration: BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+                  decoration: BoxDecoration(color: theme.primaryColor, shape: BoxShape.circle),
                   child: Icon(CupertinoIcons.back, color: Colors.black),
                 ),
               ),
