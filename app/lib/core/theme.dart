@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:alikala/core/constants.dart';
 import 'package:alikala/gen/fonts.gen.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// in flutter 3.10.4 ThemeData.from() is the recommended method to theme our app
@@ -39,13 +36,6 @@ ThemeData appTheme(Brightness brightness) {
   ).copyWith(
     // add overrides here
 
-    appBarTheme: AppBarTheme(
-      foregroundColor: AppColors.textDark,
-      backgroundColor: AppColors.white,
-      elevation: 0,
-      centerTitle: !kIsWeb && Platform.isIOS,
-      titleTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-    ),
     cupertinoOverrideTheme: NoDefaultCupertinoThemeData(
       applyThemeToAll: true,
       barBackgroundColor: colorScheme.background,

@@ -1,4 +1,3 @@
-import 'package:alikala/core/constants.dart';
 import 'package:alikala/data/entities.dart';
 import 'package:alikala/utils/utils_functions.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -25,9 +24,7 @@ class _State extends State<AppAddToCart> {
         GestureDetector(
           onTap: () {
             if (_count == 0) {
-              setState(() {
-                _count++;
-              });
+              setState(() => _count++);
             }
           },
           child: AnimatedContainer(

@@ -268,7 +268,7 @@ packages:
   crystalline:
     dependency: "direct overridden"
     description:
-      path: "../crystalline/packages/crystalline"
+      path: "../../crystalline/packages/crystalline"
       relative: true
     source: path
     version: "0.4.0"
@@ -386,7 +386,7 @@ packages:
   flutter_crystalline:
     dependency: "direct main"
     description:
-      path: "../crystalline/packages/flutter_crystalline"
+      path: "../../crystalline/packages/flutter_crystalline"
       relative: true
     source: path
     version: "0.4.0"

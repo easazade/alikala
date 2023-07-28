@@ -30,12 +30,14 @@ dependencies:
   # crystalline:
   # path: ../crystalline/packages/crystalline/
   flutter_crystalline:
-    path: ../crystalline/packages/flutter_crystalline/
+    path: ../../crystalline/packages/flutter_crystalline/
   faker:
     git: https://github.com/easazade/faker.git # TODO: use faker_x
   feather_icons_flutter:
     git: git@github.com:easazade/feather_icons_flutter.git
   cupertino_icons: ^1.0.3
+  alikala_client:
+    path: ../alikala_client
   path_provider:
   path:
 
@@ -50,7 +52,7 @@ dev_dependencies:
 
 dependency_overrides:
   crystalline:
-    path: ../crystalline/packages/crystalline/
+    path: ../../crystalline/packages/crystalline/
 
 flutter_gen:
   output: lib/gen/ # Optional (default: lib/gen/)
