@@ -9,8 +9,8 @@ library protocol; // ignore_for_file: no_leading_underscores_for_library_prefixe
 
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
-import 'example.dart' as _i3;
-export 'example.dart';
+import 'deal.dart' as _i3;
+export 'deal.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
   Protocol._();
@@ -21,8 +21,39 @@ class Protocol extends _i1.SerializationManagerServer {
 
   static final Protocol _instance = Protocol._();
 
-  static final targetDatabaseDefinition = _i2.DatabaseDefinition(
-      tables: [..._i2.Protocol.targetDatabaseDefinition.tables]);
+  static final targetDatabaseDefinition = _i2.DatabaseDefinition(tables: [
+    _i2.TableDefinition(
+      name: 'deals',
+      schema: 'public',
+      columns: [
+        _i2.ColumnDefinition(
+          name: 'id',
+          columnType: _i2.ColumnType.integer,
+          isNullable: false,
+          dartType: 'int?',
+          columnDefault: 'nextval(\'deals_id_seq\'::regclass)',
+        )
+      ],
+      foreignKeys: [],
+      indexes: [
+        _i2.IndexDefinition(
+          indexName: 'deals_pkey',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'id',
+            )
+          ],
+          type: 'btree',
+          isUnique: true,
+          isPrimary: true,
+        )
+      ],
+      managed: true,
+    ),
+    ..._i2.Protocol.targetDatabaseDefinition.tables,
+  ]);
 
   @override
   T deserialize<T>(
@@ -33,11 +64,16 @@ class Protocol extends _i1.SerializationManagerServer {
     if (customConstructors.containsKey(t)) {
       return customConstructors[t]!(data, this) as T;
     }
-    if (t == _i3.Example) {
-      return _i3.Example.fromJson(data, this) as T;
+    if (t == _i3.Deal) {
+      return _i3.Deal.fromJson(data, this) as T;
     }
-    if (t == _i1.getType<_i3.Example?>()) {
-      return (data != null ? _i3.Example.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i3.Deal?>()) {
+      return (data != null ? _i3.Deal.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<List<String>?>()) {
+      return (data != null
+          ? (data as List).map((e) => deserialize<String>(e)).toList()
+          : null) as dynamic;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
@@ -47,16 +83,16 @@ class Protocol extends _i1.SerializationManagerServer {
 
   @override
   String? getClassNameForObject(Object data) {
-    if (data is _i3.Example) {
-      return 'Example';
+    if (data is _i3.Deal) {
+      return 'Deal';
     }
     return super.getClassNameForObject(data);
   }
 
   @override
   dynamic deserializeByClassName(Map<String, dynamic> data) {
-    if (data['className'] == 'Example') {
-      return deserialize<_i3.Example>(data['data']);
+    if (data['className'] == 'Deal') {
+      return deserialize<_i3.Deal>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
@@ -68,6 +104,10 @@ class Protocol extends _i1.SerializationManagerServer {
       if (table != null) {
         return table;
       }
+    }
+    switch (t) {
+      case _i3.Deal:
+        return _i3.Deal.t;
     }
     return null;
   }

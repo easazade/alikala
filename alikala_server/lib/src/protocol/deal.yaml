@@ -1,0 +1,5 @@
+class: Deal
+table: deals
+
+fields: 
+  images: List<String>?, api
