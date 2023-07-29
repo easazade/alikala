@@ -8,31 +8,32 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-class Deal extends _i1.SerializableEntity {
-  Deal({
+class Comment extends _i1.SerializableEntity {
+  Comment({
     this.id,
     required this.title,
-    required this.price,
-    this.offPrice,
-    required this.dueDate,
-    this.image,
+    required this.content,
+    required this.createdAt,
+    required this.username,
+    required this.userId,
   });
 
-  factory Deal.fromJson(
+  factory Comment.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return Deal(
+    return Comment(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
       title:
           serializationManager.deserialize<String>(jsonSerialization['title']),
-      price: serializationManager.deserialize<int>(jsonSerialization['price']),
-      offPrice:
-          serializationManager.deserialize<int?>(jsonSerialization['offPrice']),
-      dueDate: serializationManager
-          .deserialize<DateTime>(jsonSerialization['dueDate']),
-      image:
-          serializationManager.deserialize<String?>(jsonSerialization['image']),
+      content: serializationManager
+          .deserialize<String>(jsonSerialization['content']),
+      createdAt: serializationManager
+          .deserialize<DateTime>(jsonSerialization['createdAt']),
+      username: serializationManager
+          .deserialize<String>(jsonSerialization['username']),
+      userId:
+          serializationManager.deserialize<int>(jsonSerialization['userId']),
     );
   }
 
@@ -43,23 +44,23 @@ class Deal extends _i1.SerializableEntity {
 
   String title;
 
-  int price;
+  String content;
 
-  int? offPrice;
+  DateTime createdAt;
 
-  DateTime dueDate;
+  String username;
 
-  String? image;
+  int userId;
 
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'title': title,
-      'price': price,
-      'offPrice': offPrice,
-      'dueDate': dueDate,
-      'image': image,
+      'content': content,
+      'createdAt': createdAt,
+      'username': username,
+      'userId': userId,
     };
   }
 }

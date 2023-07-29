@@ -8,57 +8,51 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 
-class Deal extends _i1.TableRow {
-  Deal({
+class Category extends _i1.TableRow {
+  Category({
     int? id,
-    required this.title,
-    required this.price,
-    this.offPrice,
-    required this.dueDate,
+    required this.name,
     this.image,
+    this.parentId,
+    required this.productsCount,
   }) : super(id);
 
-  factory Deal.fromJson(
+  factory Category.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return Deal(
+    return Category(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      title:
-          serializationManager.deserialize<String>(jsonSerialization['title']),
-      price: serializationManager.deserialize<int>(jsonSerialization['price']),
-      offPrice:
-          serializationManager.deserialize<int?>(jsonSerialization['offPrice']),
-      dueDate: serializationManager
-          .deserialize<DateTime>(jsonSerialization['dueDate']),
+      name: serializationManager.deserialize<String>(jsonSerialization['name']),
       image:
           serializationManager.deserialize<String?>(jsonSerialization['image']),
+      parentId:
+          serializationManager.deserialize<int?>(jsonSerialization['parentId']),
+      productsCount: serializationManager
+          .deserialize<int>(jsonSerialization['productsCount']),
     );
   }
 
-  static final t = DealTable();
+  static final t = CategoryTable();
 
-  String title;
-
-  int price;
-
-  int? offPrice;
-
-  DateTime dueDate;
+  String name;
 
   String? image;
 
+  int? parentId;
+
+  int productsCount;
+
   @override
-  String get tableName => 'deals';
+  String get tableName => 'categories';
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'title': title,
-      'price': price,
-      'offPrice': offPrice,
-      'dueDate': dueDate,
+      'name': name,
       'image': image,
+      'parentId': parentId,
+      'productsCount': productsCount,
     };
   }
 
@@ -66,10 +60,9 @@ class Deal extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
-      'title': title,
-      'price': price,
-      'offPrice': offPrice,
-      'dueDate': dueDate,
+      'name': name,
+      'parentId': parentId,
+      'productsCount': productsCount,
     };
   }
 
@@ -77,11 +70,10 @@ class Deal extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
-      'title': title,
-      'price': price,
-      'offPrice': offPrice,
-      'dueDate': dueDate,
+      'name': name,
       'image': image,
+      'parentId': parentId,
+      'productsCount': productsCount,
     };
   }
 
@@ -94,26 +86,23 @@ class Deal extends _i1.TableRow {
       case 'id':
         id = value;
         return;
-      case 'title':
-        title = value;
+      case 'name':
+        name = value;
         return;
-      case 'price':
-        price = value;
+      case 'parentId':
+        parentId = value;
         return;
-      case 'offPrice':
-        offPrice = value;
-        return;
-      case 'dueDate':
-        dueDate = value;
+      case 'productsCount':
+        productsCount = value;
         return;
       default:
         throw UnimplementedError();
     }
   }
 
-  static Future<List<Deal>> find(
+  static Future<List<Category>> find(
     _i1.Session session, {
-    DealExpressionBuilder? where,
+    CategoryExpressionBuilder? where,
     int? limit,
     int? offset,
     _i1.Column? orderBy,
@@ -122,8 +111,8 @@ class Deal extends _i1.TableRow {
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.find<Deal>(
-      where: where != null ? where(Deal.t) : null,
+    return session.db.find<Category>(
+      where: where != null ? where(Category.t) : null,
       limit: limit,
       offset: offset,
       orderBy: orderBy,
@@ -134,17 +123,17 @@ class Deal extends _i1.TableRow {
     );
   }
 
-  static Future<Deal?> findSingleRow(
+  static Future<Category?> findSingleRow(
     _i1.Session session, {
-    DealExpressionBuilder? where,
+    CategoryExpressionBuilder? where,
     int? offset,
     _i1.Column? orderBy,
     bool orderDescending = false,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.findSingleRow<Deal>(
-      where: where != null ? where(Deal.t) : null,
+    return session.db.findSingleRow<Category>(
+      where: where != null ? where(Category.t) : null,
       offset: offset,
       orderBy: orderBy,
       orderDescending: orderDescending,
@@ -153,27 +142,27 @@ class Deal extends _i1.TableRow {
     );
   }
 
-  static Future<Deal?> findById(
+  static Future<Category?> findById(
     _i1.Session session,
     int id,
   ) async {
-    return session.db.findById<Deal>(id);
+    return session.db.findById<Category>(id);
   }
 
   static Future<int> delete(
     _i1.Session session, {
-    required DealExpressionBuilder where,
+    required CategoryExpressionBuilder where,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.delete<Deal>(
-      where: where(Deal.t),
+    return session.db.delete<Category>(
+      where: where(Category.t),
       transaction: transaction,
     );
   }
 
   static Future<bool> deleteRow(
     _i1.Session session,
-    Deal row, {
+    Category row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.deleteRow(
@@ -184,7 +173,7 @@ class Deal extends _i1.TableRow {
 
   static Future<bool> update(
     _i1.Session session,
-    Deal row, {
+    Category row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.update(
@@ -195,7 +184,7 @@ class Deal extends _i1.TableRow {
 
   static Future<void> insert(
     _i1.Session session,
-    Deal row, {
+    Category row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.insert(
@@ -206,13 +195,13 @@ class Deal extends _i1.TableRow {
 
   static Future<int> count(
     _i1.Session session, {
-    DealExpressionBuilder? where,
+    CategoryExpressionBuilder? where,
     int? limit,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.count<Deal>(
-      where: where != null ? where(Deal.t) : null,
+    return session.db.count<Category>(
+      where: where != null ? where(Category.t) : null,
       limit: limit,
       useCache: useCache,
       transaction: transaction,
@@ -220,33 +209,30 @@ class Deal extends _i1.TableRow {
   }
 }
 
-typedef DealExpressionBuilder = _i1.Expression Function(DealTable);
+typedef CategoryExpressionBuilder = _i1.Expression Function(CategoryTable);
 
-class DealTable extends _i1.Table {
-  DealTable() : super(tableName: 'deals');
+class CategoryTable extends _i1.Table {
+  CategoryTable() : super(tableName: 'categories');
 
   /// The database id, set if the object has been inserted into the
   /// database or if it has been fetched from the database. Otherwise,
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
-  final title = _i1.ColumnString('title');
+  final name = _i1.ColumnString('name');
 
-  final price = _i1.ColumnInt('price');
+  final parentId = _i1.ColumnInt('parentId');
 
-  final offPrice = _i1.ColumnInt('offPrice');
-
-  final dueDate = _i1.ColumnDateTime('dueDate');
+  final productsCount = _i1.ColumnInt('productsCount');
 
   @override
   List<_i1.Column> get columns => [
         id,
-        title,
-        price,
-        offPrice,
-        dueDate,
+        name,
+        parentId,
+        productsCount,
       ];
 }
 
-@Deprecated('Use DealTable.t instead.')
-DealTable tDeal = DealTable();
+@Deprecated('Use CategoryTable.t instead.')
+CategoryTable tCategory = CategoryTable();

@@ -1,0 +1,9 @@
+class: Comment
+table: comments
+
+fields: 
+  title: String
+  content: String
+  createdAt: DateTime
+  username: String
+  userId: int

@@ -21,7 +21,6 @@ class Product {
   final Color? color;
   final String? colorName;
   final double offPercentage;
-  final DateTime dueDate;
 
   Product(
     this.id,
@@ -30,7 +29,6 @@ class Product {
     this.price,
     this.offPrice,
     this.offPercentage,
-    this.dueDate,
     this.color,
     this.colorName,
   );

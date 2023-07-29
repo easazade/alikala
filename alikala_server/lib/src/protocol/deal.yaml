@@ -2,4 +2,8 @@ class: Deal
 table: deals
 
 fields: 
-  images: List<String>?, api
+  title: String
+  price: int
+  offPrice: int?
+  dueDate: DateTime
+  image: String?, api

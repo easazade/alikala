@@ -8,57 +8,69 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 
-class Deal extends _i1.TableRow {
-  Deal({
+class Product extends _i1.TableRow {
+  Product({
     int? id,
     required this.title,
+    this.images,
     required this.price,
     this.offPrice,
+    this.colorHex,
+    this.colorName,
     required this.dueDate,
-    this.image,
   }) : super(id);
 
-  factory Deal.fromJson(
+  factory Product.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return Deal(
+    return Product(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
       title:
           serializationManager.deserialize<String>(jsonSerialization['title']),
+      images: serializationManager
+          .deserialize<List<String>?>(jsonSerialization['images']),
       price: serializationManager.deserialize<int>(jsonSerialization['price']),
       offPrice:
           serializationManager.deserialize<int?>(jsonSerialization['offPrice']),
+      colorHex:
+          serializationManager.deserialize<int?>(jsonSerialization['colorHex']),
+      colorName: serializationManager
+          .deserialize<String?>(jsonSerialization['colorName']),
       dueDate: serializationManager
           .deserialize<DateTime>(jsonSerialization['dueDate']),
-      image:
-          serializationManager.deserialize<String?>(jsonSerialization['image']),
     );
   }
 
-  static final t = DealTable();
+  static final t = ProductTable();
 
   String title;
+
+  List<String>? images;
 
   int price;
 
   int? offPrice;
 
+  int? colorHex;
+
+  String? colorName;
+
   DateTime dueDate;
 
-  String? image;
-
   @override
-  String get tableName => 'deals';
+  String get tableName => 'products';
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'title': title,
+      'images': images,
       'price': price,
       'offPrice': offPrice,
+      'colorHex': colorHex,
+      'colorName': colorName,
       'dueDate': dueDate,
-      'image': image,
     };
   }
 
@@ -69,6 +81,8 @@ class Deal extends _i1.TableRow {
       'title': title,
       'price': price,
       'offPrice': offPrice,
+      'colorHex': colorHex,
+      'colorName': colorName,
       'dueDate': dueDate,
     };
   }
@@ -78,10 +92,12 @@ class Deal extends _i1.TableRow {
     return {
       'id': id,
       'title': title,
+      'images': images,
       'price': price,
       'offPrice': offPrice,
+      'colorHex': colorHex,
+      'colorName': colorName,
       'dueDate': dueDate,
-      'image': image,
     };
   }
 
@@ -103,6 +119,12 @@ class Deal extends _i1.TableRow {
       case 'offPrice':
         offPrice = value;
         return;
+      case 'colorHex':
+        colorHex = value;
+        return;
+      case 'colorName':
+        colorName = value;
+        return;
       case 'dueDate':
         dueDate = value;
         return;
@@ -111,9 +133,9 @@ class Deal extends _i1.TableRow {
     }
   }
 
-  static Future<List<Deal>> find(
+  static Future<List<Product>> find(
     _i1.Session session, {
-    DealExpressionBuilder? where,
+    ProductExpressionBuilder? where,
     int? limit,
     int? offset,
     _i1.Column? orderBy,
@@ -122,8 +144,8 @@ class Deal extends _i1.TableRow {
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.find<Deal>(
-      where: where != null ? where(Deal.t) : null,
+    return session.db.find<Product>(
+      where: where != null ? where(Product.t) : null,
       limit: limit,
       offset: offset,
       orderBy: orderBy,
@@ -134,17 +156,17 @@ class Deal extends _i1.TableRow {
     );
   }
 
-  static Future<Deal?> findSingleRow(
+  static Future<Product?> findSingleRow(
     _i1.Session session, {
-    DealExpressionBuilder? where,
+    ProductExpressionBuilder? where,
     int? offset,
     _i1.Column? orderBy,
     bool orderDescending = false,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.findSingleRow<Deal>(
-      where: where != null ? where(Deal.t) : null,
+    return session.db.findSingleRow<Product>(
+      where: where != null ? where(Product.t) : null,
       offset: offset,
       orderBy: orderBy,
       orderDescending: orderDescending,
@@ -153,27 +175,27 @@ class Deal extends _i1.TableRow {
     );
   }
 
-  static Future<Deal?> findById(
+  static Future<Product?> findById(
     _i1.Session session,
     int id,
   ) async {
-    return session.db.findById<Deal>(id);
+    return session.db.findById<Product>(id);
   }
 
   static Future<int> delete(
     _i1.Session session, {
-    required DealExpressionBuilder where,
+    required ProductExpressionBuilder where,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.delete<Deal>(
-      where: where(Deal.t),
+    return session.db.delete<Product>(
+      where: where(Product.t),
       transaction: transaction,
     );
   }
 
   static Future<bool> deleteRow(
     _i1.Session session,
-    Deal row, {
+    Product row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.deleteRow(
@@ -184,7 +206,7 @@ class Deal extends _i1.TableRow {
 
   static Future<bool> update(
     _i1.Session session,
-    Deal row, {
+    Product row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.update(
@@ -195,7 +217,7 @@ class Deal extends _i1.TableRow {
 
   static Future<void> insert(
     _i1.Session session,
-    Deal row, {
+    Product row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.insert(
@@ -206,13 +228,13 @@ class Deal extends _i1.TableRow {
 
   static Future<int> count(
     _i1.Session session, {
-    DealExpressionBuilder? where,
+    ProductExpressionBuilder? where,
     int? limit,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.count<Deal>(
-      where: where != null ? where(Deal.t) : null,
+    return session.db.count<Product>(
+      where: where != null ? where(Product.t) : null,
       limit: limit,
       useCache: useCache,
       transaction: transaction,
@@ -220,10 +242,10 @@ class Deal extends _i1.TableRow {
   }
 }
 
-typedef DealExpressionBuilder = _i1.Expression Function(DealTable);
+typedef ProductExpressionBuilder = _i1.Expression Function(ProductTable);
 
-class DealTable extends _i1.Table {
-  DealTable() : super(tableName: 'deals');
+class ProductTable extends _i1.Table {
+  ProductTable() : super(tableName: 'products');
 
   /// The database id, set if the object has been inserted into the
   /// database or if it has been fetched from the database. Otherwise,
@@ -236,6 +258,10 @@ class DealTable extends _i1.Table {
 
   final offPrice = _i1.ColumnInt('offPrice');
 
+  final colorHex = _i1.ColumnInt('colorHex');
+
+  final colorName = _i1.ColumnString('colorName');
+
   final dueDate = _i1.ColumnDateTime('dueDate');
 
   @override
@@ -244,9 +270,11 @@ class DealTable extends _i1.Table {
         title,
         price,
         offPrice,
+        colorHex,
+        colorName,
         dueDate,
       ];
 }
 
-@Deprecated('Use DealTable.t instead.')
-DealTable tDeal = DealTable();
+@Deprecated('Use ProductTable.t instead.')
+ProductTable tProduct = ProductTable();

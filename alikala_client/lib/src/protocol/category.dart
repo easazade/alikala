@@ -8,31 +8,28 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-class Deal extends _i1.SerializableEntity {
-  Deal({
+class Category extends _i1.SerializableEntity {
+  Category({
     this.id,
-    required this.title,
-    required this.price,
-    this.offPrice,
-    required this.dueDate,
+    required this.name,
     this.image,
+    this.parentId,
+    required this.productsCount,
   });
 
-  factory Deal.fromJson(
+  factory Category.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return Deal(
+    return Category(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      title:
-          serializationManager.deserialize<String>(jsonSerialization['title']),
-      price: serializationManager.deserialize<int>(jsonSerialization['price']),
-      offPrice:
-          serializationManager.deserialize<int?>(jsonSerialization['offPrice']),
-      dueDate: serializationManager
-          .deserialize<DateTime>(jsonSerialization['dueDate']),
+      name: serializationManager.deserialize<String>(jsonSerialization['name']),
       image:
           serializationManager.deserialize<String?>(jsonSerialization['image']),
+      parentId:
+          serializationManager.deserialize<int?>(jsonSerialization['parentId']),
+      productsCount: serializationManager
+          .deserialize<int>(jsonSerialization['productsCount']),
     );
   }
 
@@ -41,25 +38,22 @@ class Deal extends _i1.SerializableEntity {
   /// the id will be null.
   int? id;
 
-  String title;
-
-  int price;
-
-  int? offPrice;
-
-  DateTime dueDate;
+  String name;
 
   String? image;
+
+  int? parentId;
+
+  int productsCount;
 
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'title': title,
-      'price': price,
-      'offPrice': offPrice,
-      'dueDate': dueDate,
+      'name': name,
       'image': image,
+      'parentId': parentId,
+      'productsCount': productsCount,
     };
   }
 }

@@ -1,0 +1,8 @@
+class: Category
+table: categories
+
+fields: 
+  name: String
+  image: String?, api
+  parentId: int?
+  productsCount: int
