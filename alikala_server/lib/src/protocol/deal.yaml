@@ -1,9 +1,0 @@
-class: Deal
-table: deals
-
-fields: 
-  title: String
-  price: int
-  offPrice: int?
-  dueDate: DateTime
-  image: String?, api

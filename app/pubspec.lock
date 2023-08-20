@@ -781,6 +781,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.27.7"
+  serverpod_client:
+    dependency: transitive
+    description:
+      name: serverpod_client
+      sha256: "27bf49f7f24c029270623030cd9f120f3be99c36c56cb5dac976e5aa78509f28"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
+  serverpod_serialization:
+    dependency: transitive
+    description:
+      name: serverpod_serialization
+      sha256: f4ccf17387f6a5a251a0234acca77ce1cb22212987987637668876c394929cb7
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -853,6 +869,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  shop_client:
+    dependency: "direct main"
+    description:
+      path: "../shop_client"
+      relative: true
+    source: path
+    version: "0.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -1070,10 +1093,10 @@ packages:
     dependency: transitive
     description:
       name: web_socket_channel
-      sha256: ca49c0bc209c687b887f30527fb6a9d80040b072cc2990f34b9bec3e7663101b
+      sha256: d88238e5eac9a42bb43ca4e721edba3c08c6354d4a53063afaa568516217621b
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.4.0"
   win32:
     dependency: transitive
     description:

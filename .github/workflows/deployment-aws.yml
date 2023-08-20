@@ -36,7 +36,7 @@ jobs:
           aws-region: us-west-2
 
       - name: Create passwords file
-        working-directory: alikala_server
+        working-directory: shop_server
         shell: bash
         env:
           SERVERPOD_PASSWORDS: ${{ secrets.SERVERPOD_PASSWORDS }}
@@ -46,19 +46,19 @@ jobs:
           ls config/
 
       - name: Get Dart packages
-        working-directory: alikala_server
+        working-directory: shop_server
         run: dart pub get
 
       - name: Compile server
-        working-directory: alikala_server
+        working-directory: shop_server
         run: dart compile kernel bin/main.dart
 
       - name: Create CodeDeploy Deployment
         id: deploy
         env:
-          PROJECT_NAME: alikala
-          AWS_NAME: alikala
-          DEPLOYMENT_BUCKET: alikala-deployment-7561929
+          PROJECT_NAME: shop
+          AWS_NAME: shop
+          DEPLOYMENT_BUCKET: shop-deployment-8958759
           TARGET: ${{ github.event.inputs.target }}
         run: |
           # Deploy server to AWS
