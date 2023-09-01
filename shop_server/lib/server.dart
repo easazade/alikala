@@ -53,7 +53,7 @@ void run(List<String> args) async {
 
       // Create an email message with the validation code.
       final message = Message()
-        ..from = Address('pod.project@gmail.com')
+        ..from = Address('hello.shop.com@gmail.com')
         ..recipients.add(email)
         ..subject = 'Verification code for Serverpod'
         ..html = 'Your verification code is: $validationCode';
@@ -85,7 +85,7 @@ void run(List<String> args) async {
 
       // Create an email message with the password reset link.
       final message = Message()
-        ..from = Address('pod.project@gmail.com')
+        ..from = Address('hello.shop.com@gmail.com')
         ..recipients.add(userInfo.email!)
         ..subject = 'Password reset link for Serverpod'
         ..html = 'Here is your password reset code: $validationCode>';

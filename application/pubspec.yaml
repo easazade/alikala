@@ -1,0 +1,108 @@
+name: application
+description: online store application like digikala.com
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+  flutter: ">=3.10.4"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+  intl: ^0.18.0
+  connectivity: ^3.0.6
+  shared_preferences: ^2.0.16
+  fluttertoast: ^8.1.2
+  injectable: ^2.1.0
+  get_it: ^7.2.0
+  url_launcher: ^6.0.9
+  dio: ^4.0.6
+  carousel_slider: ^4.0.0
+  flutter_custom_clippers: ^2.0.0
+  cached_network_image: ^3.2.3
+  auto_route: ^5.0.4
+  equatable: ^2.0.3
+  flutter_riverpod: ^2.3.4
+  # crystalline:
+  # path: ../crystalline/packages/crystalline/
+  flutter_crystalline:
+    path: ../../crystalline/packages/flutter_crystalline/
+  faker:
+    git: https://github.com/easazade/faker.git # TODO: use faker_x
+  feather_icons_flutter:
+    git: git@github.com:easazade/feather_icons_flutter.git
+  cupertino_icons: ^1.0.3
+
+  path_provider:
+  path:
+
+  # serverpod stuff
+  serverpod_flutter: ^1.1.1
+  shop_client:
+    path: ../shop_client
+  serverpod_auth_shared_flutter: ^1.1.1
+  serverpod_auth_email_flutter: ^1.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  intl_utils: ^2.4.0
+  build_runner: ^2.0.6
+  auto_route_generator: ^5.0.3
+  flutter_launcher_icons: ^0.13.1
+  flutter_gen_runner: ^5.3.1
+
+dependency_overrides:
+  crystalline:
+    path: ../../crystalline/packages/crystalline/
+
+flutter_gen:
+  output: lib/gen/ # Optional (default: lib/gen/)
+  lineLength: 120 # Optional (default: 80)
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: opensans
+      fonts:
+        - asset: assets/fonts/OpenSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/OpenSans-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/OpenSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/OpenSans-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/OpenSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/OpenSans-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/OpenSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/OpenSans-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/OpenSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/OpenSans-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/OpenSans-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/OpenSans-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+
+flutter_intl:
+  enabled: true
