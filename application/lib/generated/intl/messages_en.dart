@@ -44,11 +44,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "color": MessageLookupByLibrary.simpleMessage("color"),
         "comments": MessageLookupByLibrary.simpleMessage("Comments"),
+        "confirmAPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm a password"),
         "continueBrowsing":
             MessageLookupByLibrary.simpleMessage("Continue Browsing"),
         "couldNotFindAnything":
             MessageLookupByLibrary.simpleMessage("Could not Find anything"),
         "editAddress": MessageLookupByLibrary.simpleMessage("Edit Address"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "enterAPassword":
+            MessageLookupByLibrary.simpleMessage("Enter a password"),
         "enterVerificationCode":
             MessageLookupByLibrary.simpleMessage("Enter verification code"),
         "enterVerificationCodeFor":
@@ -63,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "items": MessageLookupByLibrary.simpleMessage("items"),
         "logInToAlikala":
             MessageLookupByLibrary.simpleMessage("Log in to AliKala"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginOrSignUp":
             MessageLookupByLibrary.simpleMessage("Login or Sign up"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
@@ -84,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Rate AliKala app"),
         "recoverYourPassword":
             MessageLookupByLibrary.simpleMessage("Recover your password"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
         "rulesAndAgreements":
             MessageLookupByLibrary.simpleMessage("Rules And Agreements"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
@@ -103,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "totalAmount": MessageLookupByLibrary.simpleMessage("Total Amount"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
+        "username": MessageLookupByLibrary.simpleMessage("Username"),
         "usingAlikalaServices":
             MessageLookupByLibrary.simpleMessage("Using AliKala Services"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),

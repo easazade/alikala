@@ -2,6 +2,31 @@ import 'package:application/utils/typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+class SealedResult<T> {
+  final T? _value;
+  final Exception? _exception;
+
+  SealedResult._(this._value, this._exception);
+
+  factory SealedResult.failure(Exception exception) => SealedResult._(null, exception);
+  factory SealedResult.success(T value) => SealedResult._(value, null);
+
+  bool get hasResult => _value != null;
+
+  bool get hasError => _exception != null;
+}
+
+extension FutureX<T> on Future<T> {
+  Future<SealedResult<T>> sealed() async {
+    try {
+      final result = await this;
+      return SealedResult.success(result);
+    } on Exception catch (e) {
+      return SealedResult.failure(e);
+    }
+  }
+}
+
 extension DoubleExt on double {
   Future secondsDelay() async => Future.delayed(seconds());
 

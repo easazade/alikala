@@ -5,6 +5,8 @@ import 'package:application/features/enter/pass/enter_password_page.dart';
 import 'package:application/features/favorites/favorites_page.dart';
 import 'package:application/features/home/home_page.dart';
 import 'package:application/features/login/login_page.dart';
+import 'package:application/features/login/register_page.dart';
+import 'package:application/features/login/verify_email_page.dart';
 import 'package:application/features/product/product_page.dart';
 import 'package:application/features/profile/profile_page.dart';
 import 'package:application/features/search/search_page.dart';
@@ -31,6 +33,8 @@ import 'package:auto_route/annotations.dart';
     AutoRoute(page: AddressPage),
     AutoRoute(page: ProductPage),
     AutoRoute(page: FavoritesPage),
+    AutoRoute(page: RegisterPage),
+    AutoRoute(page: VerifyEmailPage),
   ],
 )
 class $AppRouter {}

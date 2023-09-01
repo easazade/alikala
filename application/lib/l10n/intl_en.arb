@@ -64,5 +64,11 @@
   "color": "color",
   "home": "Home",
   "categories": "Categories",
-  "profile": "Profile"
+  "profile": "Profile",
+  "login": "Login",
+  "email": "Email",
+  "enterAPassword": "Enter a password",
+  "confirmAPassword": "Confirm a password",
+  "register": "Register",
+  "username": "Username"
 }

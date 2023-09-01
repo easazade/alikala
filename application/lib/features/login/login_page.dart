@@ -1,8 +1,11 @@
+import 'package:application/core/app.dart';
 import 'package:application/core/constants.dart';
+import 'package:application/core/navigation.gr.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/gen/fonts.gen.dart';
 import 'package:application/generated/l10n.dart';
 import 'package:application/utils/utils_functions.dart';
+import 'package:application/widgets/app_button.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
 import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
@@ -70,7 +73,13 @@ class LoginPage extends StatelessWidget {
                   SizedBox(height: 20),
                   AppFormField(S.of(context).phoneNumberOrEmail, (input) {}),
                   SizedBox(height: 20),
-                  AppFormLongButton(S.of(context).logInToAlikala, () {}),
+                  AppFormField(S.of(context).pleaseEnterPasswordForYourAccount, (input) {}),
+                  SizedBox(height: 20),
+                  AppFormLongButton(S.of(context).login, () {}),
+                  SizedBox(height: 20),
+                  AppFormLongButton(S.of(context).register, () {
+                    appRouter.push(RegisterRoute());
+                  }),
                   SizedBox(height: 10),
                   Divider(),
                   SizedBox(height: 15),

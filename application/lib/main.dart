@@ -1,12 +1,11 @@
+import 'package:application/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:shop_client/shop_client.dart';
 import 'core/app.dart';
-
-late SessionManager sessionManager;
-late Client client;
+import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart' as auth;
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,12 +33,9 @@ Future main() async {
     caller: client.modules.auth,
   );
   await sessionManager.initialize();
+  emailAuthController = auth.EmailAuthController(sessionManager.caller);
 
   // TODO: we can use a widget (eg: name it DI widget) to inject dependencies, (functional instead of imperative)
   // await setupDependencies();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent, //then set brightness in AppBar widget to light to get dark icons
-    statusBarIconBrightness: Brightness.dark,
-  ));
   runApp(AliKalaApp());
 }
