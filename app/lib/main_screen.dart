@@ -1,4 +1,3 @@
-import 'package:alikala/core/constants.dart';
 import 'package:alikala/features/cart/cart_page.dart';
 import 'package:alikala/features/categories/categories_page.dart';
 import 'package:alikala/features/home/home_page.dart';
