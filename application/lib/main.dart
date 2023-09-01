@@ -1,6 +1,5 @@
 import 'package:application/di/di.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:shop_client/shop_client.dart';

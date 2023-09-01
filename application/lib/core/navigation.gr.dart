@@ -12,6 +12,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i17;
+import 'package:flutter/cupertino.dart' as _i20;
 import 'package:flutter/material.dart' as _i18;
 
 import '../data/entities.dart' as _i19;
@@ -83,7 +84,7 @@ class AppRouter extends _i17.RootStackRouter {
     LoginRoute.name: (routeData) {
       return _i17.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i8.LoginPage(),
+        child: const _i8.LoginPage(),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -126,13 +127,17 @@ class AppRouter extends _i17.RootStackRouter {
     RegisterRoute.name: (routeData) {
       return _i17.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i15.RegisterPage(),
+        child: const _i15.RegisterPage(),
       );
     },
     VerifyEmailRoute.name: (routeData) {
+      final args = routeData.argsAs<VerifyEmailRouteArgs>();
       return _i17.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i16.VerifyEmailPage(),
+        child: _i16.VerifyEmailPage(
+          email: args.email,
+          key: args.key,
+        ),
       );
     },
   };
@@ -400,12 +405,34 @@ class RegisterRoute extends _i17.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i16.VerifyEmailPage]
-class VerifyEmailRoute extends _i17.PageRouteInfo<void> {
-  const VerifyEmailRoute()
-      : super(
+class VerifyEmailRoute extends _i17.PageRouteInfo<VerifyEmailRouteArgs> {
+  VerifyEmailRoute({
+    required String email,
+    _i20.Key? key,
+  }) : super(
           VerifyEmailRoute.name,
           path: '/verify-email-page',
+          args: VerifyEmailRouteArgs(
+            email: email,
+            key: key,
+          ),
         );
 
   static const String name = 'VerifyEmailRoute';
+}
+
+class VerifyEmailRouteArgs {
+  const VerifyEmailRouteArgs({
+    required this.email,
+    this.key,
+  });
+
+  final String email;
+
+  final _i20.Key? key;
+
+  @override
+  String toString() {
+    return 'VerifyEmailRouteArgs{email: $email, key: $key}';
+  }
 }

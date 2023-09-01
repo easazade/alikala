@@ -11,9 +11,23 @@ class SealedResult<T> {
   factory SealedResult.failure(Exception exception) => SealedResult._(null, exception);
   factory SealedResult.success(T value) => SealedResult._(value, null);
 
-  bool get hasResult => _value != null;
+  bool get isSuccessful => _value != null;
 
   bool get hasError => _exception != null;
+
+  T get value {
+    if (_value == null) {
+      throw Exception('Please call isSuccessful to check if SealedResult has a value before calling value');
+    }
+    return _value!;
+  }
+
+  Exception get exception {
+    if (_exception == null) {
+      throw Exception('Please call hasError to check if SealedResult has an exception before calling exception');
+    }
+    return _exception!;
+  }
 }
 
 extension FutureX<T> on Future<T> {
