@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:application/features/splash/splash_screen.dart';
-import 'package:application/main.dart';
+import 'package:application/stores/auth_store.dart';
 import 'package:application/stores/cart_store.dart';
 import 'package:application/stores/profile_store.dart';
 
@@ -27,15 +27,10 @@ final _getIt = GetIt.instance;
 T inject<T extends Object>() => _getIt.get<T>();
 
 Future setupDependencies() async {
-  print('1');
   await _registerHttpClient();
-  print('2');
   await _registerAuthDependencies();
-  print('3');
   await _registerStores();
-  print('4');
   await _registerProviders();
-  print('5');
 }
 
 Future _registerHttpClient() async {
@@ -66,12 +61,14 @@ Future _registerAuthDependencies() async {
 }
 
 Future _registerStores() async {
+  _getIt.registerLazySingleton(() => AuthStore(emailAuthController: inject(), sessionManager: inject()));
   _getIt.registerLazySingleton(() => ShopStore());
   _getIt.registerLazySingleton(() => ProfileStore());
   _getIt.registerLazySingleton(() => CartStore());
 }
 
 Future _registerProviders() async {
+  _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<AuthStore>()));
   _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<ShopStore>()));
   _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<ProfileStore>()));
   _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<CartStore>()));
@@ -100,7 +97,6 @@ class _DIState extends State<DI> {
   void initState() {
     super.initState();
     setupDependencies().then((_) {
-      print('setup completed');
       _dependencyGraphSetup.complete('');
     });
   }
