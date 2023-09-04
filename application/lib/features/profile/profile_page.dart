@@ -40,9 +40,7 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       AppIconButton(
                         icon: Icon(FeatherIcons.settings),
-                        onTap: () {
-                          appRouter.navigate(SettingsRoute());
-                        },
+                        onTap: () => appRouter.navigate(SettingsRoute()),
                       ),
                       AppIconButton(
                         icon: Icon(FeatherIcons.bell),
