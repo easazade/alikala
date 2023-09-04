@@ -2,6 +2,7 @@ import 'package:application/core/app.dart';
 import 'package:application/core/navigation.gr.dart';
 import 'package:application/di/di.dart';
 import 'package:application/generated/l10n.dart';
+import 'package:application/stores/shop_store.dart';
 import 'package:application/widgets/app_sliver_amazing_deals.dart';
 import 'package:application/widgets/app_sliver_double_banner.dart';
 import 'package:application/widgets/app_sliver_horizontal_products_list.dart';
@@ -18,6 +19,8 @@ import 'package:flutter_crystalline/flutter_crystalline.dart';
 import '../../fake_data.dart';
 
 class HomePage extends StatelessWidget {
+  final ShopStore shopStore = inject();
+
   @override
   Widget build(BuildContext context) {
     return DataBuilder(

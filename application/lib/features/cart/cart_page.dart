@@ -20,8 +20,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 
 class CartPage extends ConsumerWidget {
+  final ChangeNotifierProvider<CartStore> cartStoreProvider = inject();
+  final SessionManager sessionManager = inject();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cartStore = ref.watch(cartStoreProvider);

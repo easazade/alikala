@@ -1,9 +1,5 @@
-import 'package:application/core/app.dart';
 import 'package:application/core/constants.dart';
-import 'package:application/core/navigation.gr.dart';
 import 'package:application/gen/assets.gen.dart';
-import 'package:application/generated/l10n.dart';
-import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/util/app_progress.dart';
 import 'package:flutter/material.dart';
 
@@ -16,44 +12,38 @@ class SplashPage extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashPage> {
   @override
-  void initState() {
-    super.initState();
-    Future.delayed(.5.seconds(), () {
-      appRouter.replace(MainRoute());
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
 
-    return Material(
-      color: theme.primaryColor,
-      child: Stack(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.center,
-            child: Image.asset(Assets.images.splashLogo.path, width: 150),
-          ),
-          Positioned(
-            bottom: 100,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(S.of(context).alikala, style: TextStyle(color: Colors.white, fontSize: 32)),
-              ],
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Material(
+        color: AppColors.primary,
+        child: Stack(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset(Assets.images.splashLogo.path, width: 150),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 40),
-              child: AppProgress.small(color: Colors.white),
+            Positioned(
+              bottom: 100,
+              left: 0,
+              right: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('AliKala', style: TextStyle(color: Colors.white, fontSize: 32)),
+                ],
+              ),
             ),
-          ),
-        ],
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 40),
+                child: AppProgress.small(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

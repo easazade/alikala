@@ -4,6 +4,8 @@ import 'package:application/core/navigation.gr.dart';
 import 'package:application/di/di.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/generated/l10n.dart';
+import 'package:application/stores/profile_store.dart';
+import 'package:application/stores/shop_store.dart';
 import 'package:application/widgets/app_icon_button.dart';
 import 'package:application/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -12,6 +14,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 
 class ProfilePage extends StatelessWidget {
+  final ProfileStore profileStore = inject();
+  final ShopStore shopStore = inject();
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
