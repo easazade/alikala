@@ -5,6 +5,7 @@ import 'package:application/di/di.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/gen/fonts.gen.dart';
 import 'package:application/generated/l10n.dart';
+import 'package:application/stores/auth_store.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
@@ -12,16 +13,17 @@ import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends ConsumerState<LoginPage> {
   String? email;
   String? password;
 
@@ -38,6 +40,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authStore = ref.watch(injectStoreProvider<AuthStore>());
+
     final theme = Theme.of(context);
 
     return Scaffold(

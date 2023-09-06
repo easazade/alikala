@@ -26,6 +26,8 @@ final _getIt = GetIt.instance;
 
 T inject<T extends Object>() => _getIt.get<T>();
 
+ChangeNotifierProvider<T> injectStoreProvider<T extends ChangeNotifier>() => inject<ChangeNotifierProvider<T>>();
+
 Future setupDependencies() async {
   await _registerHttpClient();
   await _registerAuthDependencies();
@@ -34,12 +36,6 @@ Future setupDependencies() async {
 }
 
 Future _registerHttpClient() async {
-  // Sets up a singleton client object that can be used to talk to the server from
-  // anywhere in our app. The client is generated from your server code.
-  // The client is set up to connect to a Serverpod running on a local server on
-  // the default port. You will need to modify this to connect to staging or
-  // production servers.
-
   _getIt.registerLazySingleton(
     () => Client(
       'http://$ipAddress:8080/',
@@ -49,9 +45,6 @@ Future _registerHttpClient() async {
 }
 
 Future _registerAuthDependencies() async {
-  // The session manager keeps track of the signed-in state of the user. You
-  // can query it to see if the user is currently signed in and get information
-  // about the user.
   final sessionManager = SessionManager(caller: inject<Client>().modules.auth);
   await sessionManager.initialize();
   final emailAuthController = auth.EmailAuthController(sessionManager.caller);
@@ -73,12 +66,6 @@ Future _registerProviders() async {
   _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<ProfileStore>()));
   _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<CartStore>()));
 }
-
-// Sets up a singleton client object that can be used to talk to the server from
-// anywhere in our app. The client is generated from your server code.
-// The client is set up to connect to a Serverpod running on a local server on
-// the default port. You will need to modify this to connect to staging or
-// production servers.
 
 /// Shows child when dependency setup is completed.
 class DI extends StatefulWidget {

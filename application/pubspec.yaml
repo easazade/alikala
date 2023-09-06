@@ -36,7 +36,7 @@ dependencies:
   feather_icons_flutter:
     git: git@github.com:easazade/feather_icons_flutter.git
   cupertino_icons: ^1.0.3
-
+  email_validator: ^2.1.17
   path_provider:
   path:
 
