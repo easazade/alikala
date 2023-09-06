@@ -15,7 +15,6 @@ import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
