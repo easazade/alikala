@@ -5,8 +5,14 @@ class AppFormLongButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final bool disabled;
+  final bool loading;
 
-  const AppFormLongButton(this.label, this.onTap, {this.disabled = false});
+  const AppFormLongButton(
+    this.label,
+    this.onTap, {
+    this.disabled = false,
+    this.loading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +20,7 @@ class AppFormLongButton extends StatelessWidget {
 
     return Material(
       child: InkWell(
-        onTap: onTap,
+        onTap: (disabled || loading) ? null : onTap,
         splashColor: disabled ? AppColors.transparent : Colors.white.withOpacity(0.3),
         child: Ink(
           height: 54,
@@ -24,14 +30,16 @@ class AppFormLongButton extends StatelessWidget {
             border: disabled ? Border.all(color: Color.fromARGB(255, 19, 13, 13)) : null,
           ),
           child: Center(
-            child: Text(
-              label,
-              style: TextStyle(
-                color: disabled ? AppColors.textLight : Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              ),
-            ),
+            child: loading
+                ? SizedBox(width: 12, height: 12, child: CircularProgressIndicator())
+                : Text(
+                    label,
+                    style: TextStyle(
+                      color: disabled ? AppColors.textLight : Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                  ),
           ),
         ),
       ),

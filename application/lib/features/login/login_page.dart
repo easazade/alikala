@@ -9,6 +9,7 @@ import 'package:application/stores/auth_store.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
+import 'package:application/widgets/util/app_error_widget.dart';
 import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
@@ -88,6 +89,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     ),
                     SizedBox(width: 60),
                   ]),
+                  if (authStore.hasError) AppErrorWidget(failure: authStore.error),
                   SizedBox(height: 20),
                   AppFormField(S.of(context).email, (input) {
                     email = input;
@@ -97,16 +99,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     password = input;
                   }),
                   SizedBox(height: 20),
-                  AppFormLongButton(S.of(context).login, () async {
-                    if (email != null && password != null) {
-                      final result = await emailAuthController.signIn(email!, password!).sealed();
-                      if (result.isSuccessful) {
-                        appRouter.pop();
-                      } else {
-                        showWarningToast('Could not login');
-                      }
-                    }
-                  }),
+                  AppFormLongButton(
+                    S.of(context).login,
+                    () => authStore.login(email, password),
+                    loading: authStore.isOperating,
+                  ),
                   SizedBox(height: 20),
                   AppFormLongButton(S.of(context).register, () {
                     appRouter.push(RegisterRoute());
