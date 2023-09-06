@@ -6,9 +6,11 @@ import 'package:application/gen/assets.gen.dart';
 import 'package:application/gen/fonts.gen.dart';
 import 'package:application/generated/l10n.dart';
 import 'package:application/stores/auth_store.dart';
+import 'package:application/stores/custom_operations.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
+import 'package:application/widgets/util/app_error_widget.dart';
 import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
@@ -78,16 +80,8 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                     child: Image.asset(Assets.images.splashLogoAccentColor.path),
                   ),
                   SizedBox(height: 64),
-                  Row(children: [
-                    Expanded(
-                      child: Text(
-                        S.of(context).toLoginYouNeedToEnterEmailOrMobileNumber,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                    SizedBox(width: 60),
-                  ]),
+                  if (authStore.hasError && authStore.error.cause == Ops.signup)
+                    AppErrorWidget(failure: authStore.error),
                   SizedBox(height: 20),
                   AppFormField(S.of(context).username, (input) {
                     username = input;
@@ -110,6 +104,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                     () async {
                       await authStore.requestToSignUp(email, username, password, confirmPassword);
                       if (authStore.registerRequestEmail != null) {
+                        authStore.error = null;
                         appRouter.push(VerifyEmailRoute());
                       }
                     },

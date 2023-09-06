@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:application/stores/custom_operations.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
@@ -30,11 +31,11 @@ class AuthStore extends Store {
     notifyListeners();
 
     if (email.isNullOrBlank) {
-      error = Failure('Please Enter your email');
+      error = Failure('Please Enter your email', cause: Ops.login);
     } else if (password.isNullOrBlank) {
-      error = Failure('Please Enter your password');
+      error = Failure('Please Enter your password', cause: Ops.login);
     } else {
-      operation = Operation.operating;
+      operation = Ops.login;
       notifyListeners();
       final result = await emailAuthController.signIn(email!, password!).sealed();
       operation = Operation.none;
@@ -44,7 +45,7 @@ class AuthStore extends Store {
         //TODO: for 400 errors we should show error message returned from server
         // it's easy to create Failure object out of exceptions, that extract the message
         // from the exception, if there is none a generic something went wrong will be shown
-        error = Failure('Could not login, please try again');
+        error = Failure('Could not login, please try again', cause: Ops.login);
       }
     }
     notifyListeners();
@@ -62,15 +63,15 @@ class AuthStore extends Store {
     notifyListeners();
 
     if (email == null || !EmailValidator.validate(email)) {
-      error = Failure('Please Enter a valid email address');
+      error = Failure('Please Enter a valid email address', cause: Ops.signup);
     } else if (username == null || username.length < 3) {
-      error = Failure('Please Enter a valid username that has at least 3 characters');
+      error = Failure('Please Enter a valid username that has at least 3 characters', cause: Ops.signup);
     } else if (password == null || password.length < 8) {
-      error = Failure('Please Enter a valid password, at least 8 characters');
+      error = Failure('Please Enter a valid password, at least 8 characters', cause: Ops.signup);
     } else if (password != confirmPassword) {
-      error = Failure('Entered passwords don\'t match');
+      error = Failure('Entered passwords don\'t match', cause: Ops.signup);
     } else {
-      operation = Operation.operating;
+      operation = Ops.signup;
       notifyListeners();
       final result = await emailAuthController.createAccountRequest(username, email, password).sealed();
 
@@ -81,10 +82,10 @@ class AuthStore extends Store {
         if (requestMade) {
           registerRequestEmail = email;
         } else {
-          error = Failure('Cannot register $username, please try again');
+          error = Failure('Cannot register $username, please try again', cause: Ops.signup);
         }
       } else {
-        error = Failure('Cannot register $username, please try again');
+        error = Failure('Cannot register $username, please try again', cause: Ops.signup);
       }
     }
     notifyListeners();
@@ -96,18 +97,19 @@ class AuthStore extends Store {
     notifyListeners();
 
     if (registerRequestEmail == null) {
-      error = Failure('Please Register first');
+      error = Failure('Please Register first', cause: Ops.verify);
     } else if (verificationCode.isNullOrBlank) {
-      error = Failure('Please Enter the verification code sent to you email');
+      error = Failure('Please Enter the verification code sent to you email', cause: Ops.verify);
     } else {
-      operation = Operation.operating;
+      operation = Ops.verify;
       notifyListeners();
       final result = await emailAuthController.validateAccount(registerRequestEmail!, verificationCode!).sealed();
+      operation = Operation.none;
 
       if (result.isSuccessful) {
         userInfo.value = result.value;
       } else {
-        error = Failure('Verification code is incorrect');
+        error = Failure('Verification code is incorrect', cause: Ops.verify);
       }
       notifyListeners();
     }

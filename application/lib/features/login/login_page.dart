@@ -6,6 +6,7 @@ import 'package:application/gen/assets.gen.dart';
 import 'package:application/gen/fonts.gen.dart';
 import 'package:application/generated/l10n.dart';
 import 'package:application/stores/auth_store.dart';
+import 'package:application/stores/custom_operations.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
@@ -86,7 +87,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     ),
                     SizedBox(width: 60),
                   ]),
-                  if (authStore.hasError) AppErrorWidget(failure: authStore.error),
+                  if (authStore.hasError && authStore.error.cause == Ops.login)
+                    AppErrorWidget(failure: authStore.error),
                   SizedBox(height: 20),
                   AppFormField(S.of(context).email, (input) {
                     email = input;
@@ -100,12 +102,14 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     S.of(context).login,
                     () {
                       authStore.login(email, password);
+                      authStore.error = null;
                       appRouter.navigate(MainRoute());
                     },
                     loading: authStore.isOperating,
                   ),
                   SizedBox(height: 20),
                   AppFormLongButton(S.of(context).register, () {
+                    authStore.error = null;
                     appRouter.push(RegisterRoute());
                   }),
                   SizedBox(height: 10),
