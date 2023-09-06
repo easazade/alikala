@@ -6,7 +6,7 @@ import 'package:application/gen/assets.gen.dart';
 import 'package:application/gen/fonts.gen.dart';
 import 'package:application/generated/l10n.dart';
 import 'package:application/stores/auth_store.dart';
-import 'package:application/stores/custom_operations.dart';
+import 'package:application/stores/custom.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
@@ -15,6 +15,7 @@ import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -25,6 +26,8 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
+  final AuthStore _authStore = inject();
+
   String? email;
   String? password;
 
@@ -36,6 +39,27 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     fontFamily: FontFamily.opensans,
     decoration: TextDecoration.underline,
   );
+
+  @override
+  void initState() {
+    super.initState();
+    _authStore.addEventListener(onLoggedIn);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _authStore.removeEventListener(onLoggedIn);
+  }
+
+  bool onLoggedIn(Event event) {
+    if (event == Events.loggedIn) {
+      appRouter.navigate(MainRoute());
+      return true;
+    }
+
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
