@@ -1,4 +1,3 @@
-import 'package:application/di/di.dart';
 import 'package:flutter/material.dart';
 import 'core/app.dart';
 

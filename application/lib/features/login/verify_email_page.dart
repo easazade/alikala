@@ -11,7 +11,6 @@ import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
 import 'package:application/widgets/util/no_scroll_glow.dart';
 import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -90,12 +89,16 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
                     verificationCode = input;
                   }),
                   SizedBox(height: 20),
-                  AppFormLongButton(S.of(context).verify, () async {
-                    await authStore.verifyAndSignUp(verificationCode);
-                    if (authStore.isUserAuthenticated) {
-                      appRouter.navigate(HomeRoute());
-                    }
-                  }),
+                  AppFormLongButton(
+                    S.of(context).verify,
+                    () async {
+                      await authStore.verifyAndSignUp(verificationCode);
+                      if (authStore.isUserAuthenticated) {
+                        appRouter.navigate(HomeRoute());
+                      }
+                    },
+                    loading: authStore.isOperating,
+                  ),
                   SizedBox(height: 10),
                   Divider(),
                   SizedBox(height: 15),

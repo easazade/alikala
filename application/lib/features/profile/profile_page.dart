@@ -24,6 +24,8 @@ class ProfilePage extends ConsumerWidget {
     final profileStore = ref.watch(injectStoreProvider<ProfileStore>());
     final authStore = ref.watch(injectStoreProvider<AuthStore>());
 
+    print('SSSS REBUILDING');
+
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overScroll) {

@@ -113,6 +113,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                         appRouter.push(VerifyEmailRoute());
                       }
                     },
+                    loading: authStore.isOperating,
                   ),
                   SizedBox(height: 10),
                   Divider(),

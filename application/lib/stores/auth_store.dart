@@ -27,6 +27,7 @@ class AuthStore extends Store {
   Future<void> login(String? email, String? password) async {
     error = null;
     operation = Operation.none;
+    notifyListeners();
 
     if (email.isNullOrBlank) {
       error = Failure('Please Enter your email');
@@ -34,6 +35,7 @@ class AuthStore extends Store {
       error = Failure('Please Enter your password');
     } else {
       operation = Operation.operating;
+      notifyListeners();
       final result = await emailAuthController.signIn(email!, password!).sealed();
       operation = Operation.none;
       if (result.isSuccessful) {
@@ -45,6 +47,7 @@ class AuthStore extends Store {
         error = Failure('Could not login, please try again');
       }
     }
+    notifyListeners();
   }
 
   Future<void> requestToSignUp(
@@ -56,6 +59,7 @@ class AuthStore extends Store {
     error = null;
     operation = Operation.none;
     registerRequestEmail = null;
+    notifyListeners();
 
     if (email == null || !EmailValidator.validate(email)) {
       error = Failure('Please Enter a valid email address');
@@ -67,6 +71,7 @@ class AuthStore extends Store {
       error = Failure('Entered passwords don\'t match');
     } else {
       operation = Operation.operating;
+      notifyListeners();
       final result = await emailAuthController.createAccountRequest(username, email, password).sealed();
 
       operation = Operation.none;
@@ -82,17 +87,21 @@ class AuthStore extends Store {
         error = Failure('Cannot register $username, please try again');
       }
     }
+    notifyListeners();
   }
 
   Future<void> verifyAndSignUp(String? verificationCode) async {
     error = null;
     operation = Operation.none;
+    notifyListeners();
 
     if (registerRequestEmail == null) {
       error = Failure('Please Register first');
     } else if (verificationCode.isNullOrBlank) {
       error = Failure('Please Enter the verification code sent to you email');
     } else {
+      operation = Operation.operating;
+      notifyListeners();
       final result = await emailAuthController.validateAccount(registerRequestEmail!, verificationCode!).sealed();
 
       if (result.isSuccessful) {
@@ -100,6 +109,7 @@ class AuthStore extends Store {
       } else {
         error = Failure('Verification code is incorrect');
       }
+      notifyListeners();
     }
   }
 
@@ -107,6 +117,7 @@ class AuthStore extends Store {
     await sessionManager.signOut();
     userInfo.value = null;
     registerRequestEmail = null;
+    notifyListeners();
   }
 
   void onSessionChanges() {
