@@ -4,6 +4,7 @@ import 'package:application/core/navigation.gr.dart';
 import 'package:application/di/di.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/generated/l10n.dart';
+import 'package:application/stores/auth_store.dart';
 import 'package:application/stores/profile_store.dart';
 import 'package:application/stores/shop_store.dart';
 import 'package:application/widgets/app_icon_button.dart';
@@ -21,6 +22,7 @@ class ProfilePage extends ConsumerWidget {
 
     final shopStore = ref.watch(injectStoreProvider<ShopStore>());
     final profileStore = ref.watch(injectStoreProvider<ProfileStore>());
+    final authStore = ref.watch(injectStoreProvider<AuthStore>());
 
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
@@ -121,7 +123,11 @@ class ProfilePage extends ConsumerWidget {
                     appRouter.navigate(FavoritesRoute());
                   },
                 ),
-                _createMenuButton(icon: Icons.comment_outlined, label: S.of(context).comments, onTap: () {}),
+                _createMenuButton(
+                  icon: Icons.comment_outlined,
+                  label: S.of(context).comments,
+                  onTap: () {},
+                ),
                 _createMenuButton(
                   icon: Icons.directions_outlined,
                   label: S.of(context).addresses,
@@ -130,7 +136,16 @@ class ProfilePage extends ConsumerWidget {
                   },
                 ),
                 _createMenuButton(
-                    icon: Icons.person_outline_outlined, label: S.of(context).accountDetails, onTap: () {}),
+                  icon: Icons.person_outline_outlined,
+                  label: S.of(context).accountDetails,
+                  onTap: () {},
+                ),
+                if (authStore.isUserAuthenticated)
+                  _createMenuButton(
+                    icon: Icons.logout,
+                    label: S.of(context).logout,
+                    onTap: () => authStore.logout(),
+                  ),
               ],
             ),
           ),
@@ -142,7 +157,7 @@ class ProfilePage extends ConsumerWidget {
   Widget _createMenuButton({
     required IconData icon,
     required String label,
-    required Null Function() onTap,
+    required void Function() onTap,
     Color? labelColor,
     bool hasDivider = true,
   }) {
