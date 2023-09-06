@@ -12,7 +12,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i17;
-import 'package:flutter/cupertino.dart' as _i20;
 import 'package:flutter/material.dart' as _i18;
 
 import '../data/entities.dart' as _i19;
@@ -94,9 +93,14 @@ class AppRouter extends _i17.RootStackRouter {
       );
     },
     SplashRoute.name: (routeData) {
+      final args = routeData.argsAs<SplashRouteArgs>(
+          orElse: () => const SplashRouteArgs());
       return _i17.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i10.SplashPage(),
+        child: _i10.SplashPage(
+          isLoading: args.isLoading,
+          retry: args.retry,
+        ),
       );
     },
     SearchRoute.name: (routeData) {
@@ -131,13 +135,9 @@ class AppRouter extends _i17.RootStackRouter {
       );
     },
     VerifyEmailRoute.name: (routeData) {
-      final args = routeData.argsAs<VerifyEmailRouteArgs>();
       return _i17.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i16.VerifyEmailPage(
-          email: args.email,
-          key: args.key,
-        ),
+        child: const _i16.VerifyEmailPage(),
       );
     },
   };
@@ -321,14 +321,36 @@ class SettingsRoute extends _i17.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.SplashPage]
-class SplashRoute extends _i17.PageRouteInfo<void> {
-  const SplashRoute()
-      : super(
+class SplashRoute extends _i17.PageRouteInfo<SplashRouteArgs> {
+  SplashRoute({
+    bool isLoading = false,
+    Function? retry,
+  }) : super(
           SplashRoute.name,
           path: '/splash-page',
+          args: SplashRouteArgs(
+            isLoading: isLoading,
+            retry: retry,
+          ),
         );
 
   static const String name = 'SplashRoute';
+}
+
+class SplashRouteArgs {
+  const SplashRouteArgs({
+    this.isLoading = false,
+    this.retry,
+  });
+
+  final bool isLoading;
+
+  final Function? retry;
+
+  @override
+  String toString() {
+    return 'SplashRouteArgs{isLoading: $isLoading, retry: $retry}';
+  }
 }
 
 /// generated route for
@@ -405,34 +427,12 @@ class RegisterRoute extends _i17.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i16.VerifyEmailPage]
-class VerifyEmailRoute extends _i17.PageRouteInfo<VerifyEmailRouteArgs> {
-  VerifyEmailRoute({
-    required String email,
-    _i20.Key? key,
-  }) : super(
+class VerifyEmailRoute extends _i17.PageRouteInfo<void> {
+  const VerifyEmailRoute()
+      : super(
           VerifyEmailRoute.name,
           path: '/verify-email-page',
-          args: VerifyEmailRouteArgs(
-            email: email,
-            key: key,
-          ),
         );
 
   static const String name = 'VerifyEmailRoute';
-}
-
-class VerifyEmailRouteArgs {
-  const VerifyEmailRouteArgs({
-    required this.email,
-    this.key,
-  });
-
-  final String email;
-
-  final _i20.Key? key;
-
-  @override
-  String toString() {
-    return 'VerifyEmailRouteArgs{email: $email, key: $key}';
-  }
 }

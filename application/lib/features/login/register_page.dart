@@ -5,6 +5,7 @@ import 'package:application/di/di.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/gen/fonts.gen.dart';
 import 'package:application/generated/l10n.dart';
+import 'package:application/stores/auth_store.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
@@ -12,22 +13,21 @@ import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RegisterPage extends StatefulWidget {
+class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  ConsumerState<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends ConsumerState<RegisterPage> {
   String? username;
   String? email;
   String? password;
   String? confirmPassword;
-
-  final EmailAuthController emailAuthController = inject();
 
   final textSpanStyle = TextStyle(color: AppColors.textDark, fontSize: 11, fontFamily: FontFamily.opensans);
 
@@ -42,13 +42,15 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final authStore = ref.watch(injectStoreProvider<AuthStore>());
+
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (notification) {
           notification.disallowIndicator();
           return false;
         },
-        child: RemoveFocusOnTouchOutsideFocusedWidget(
+        child: Unfocus(
           child: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
@@ -103,22 +105,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     confirmPassword = input;
                   }),
                   SizedBox(height: 20),
-                  AppFormLongButton(S.of(context).verify, () async {
-                    if (username != null && email != null && password != null) {
-                      final result =
-                          await emailAuthController.createAccountRequest(username!, email!, password!).sealed();
-                      if (result.isSuccessful) {
-                        final sentRequest = result.value;
-                        if (sentRequest) {
-                          appRouter.push(VerifyEmailRoute(email: email!));
-                        } else {
-                          showWarningToast('Could not register a user');
-                        }
-                      } else {
-                        showWarningToast('Could not register user');
+                  AppFormLongButton(
+                    S.of(context).register,
+                    () async {
+                      await authStore.requestToSignUp(email, username, password, confirmPassword);
+                      if (authStore.registerRequestEmail != null) {
+                        appRouter.push(VerifyEmailRoute());
                       }
-                    }
-                  }),
+                    },
+                  ),
                   SizedBox(height: 10),
                   Divider(),
                   SizedBox(height: 15),

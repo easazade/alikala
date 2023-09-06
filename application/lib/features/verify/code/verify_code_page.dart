@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class VerifyCodePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RemoveFocusOnTouchOutsideFocusedWidget(
+    return Unfocus(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.transparent,

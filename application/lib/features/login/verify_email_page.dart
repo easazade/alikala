@@ -1,30 +1,31 @@
+import 'package:application/core/app.dart';
 import 'package:application/core/constants.dart';
+import 'package:application/core/navigation.gr.dart';
 import 'package:application/di/di.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/gen/fonts.gen.dart';
 import 'package:application/generated/l10n.dart';
+import 'package:application/stores/auth_store.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
+import 'package:application/widgets/util/no_scroll_glow.dart';
 import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart';
 
-class VerifyEmailPage extends StatefulWidget {
-  const VerifyEmailPage({
-    required this.email,
-    super.key,
-  });
-
-  final String email;
+class VerifyEmailPage extends ConsumerStatefulWidget {
+  const VerifyEmailPage({super.key});
 
   @override
-  State<VerifyEmailPage> createState() => _VerifyEmailPageState();
+  ConsumerState<VerifyEmailPage> createState() => _VerifyEmailPageState();
 }
 
-class _VerifyEmailPageState extends State<VerifyEmailPage> {
+class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
   String? verificationCode;
 
   final EmailAuthController emailAuthController = inject();
@@ -42,13 +43,11 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final authStore = ref.watch(injectStoreProvider<AuthStore>());
+
     return Scaffold(
-      body: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (notification) {
-          notification.disallowIndicator();
-          return false;
-        },
-        child: RemoveFocusOnTouchOutsideFocusedWidget(
+      body: NoScrollIndicator(
+        child: Unfocus(
           child: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
@@ -92,14 +91,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                   }),
                   SizedBox(height: 20),
                   AppFormLongButton(S.of(context).verify, () async {
-                    if (verificationCode != null) {
-                      final result =
-                          await emailAuthController.validateAccount(widget.email, verificationCode!).sealed();
-                      if (result.isSuccessful) {
-                        showSuccessToast('Verified account');
-                      } else {
-                        showWarningToast('Could not verify account');
-                      }
+                    await authStore.verifyAndSignUp(verificationCode);
+                    if (authStore.isUserAuthenticated) {
+                      appRouter.navigate(HomeRoute());
                     }
                   }),
                   SizedBox(height: 10),

@@ -28,7 +28,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   String? email;
   String? password;
 
-
   final textSpanStyle = TextStyle(color: AppColors.textDark, fontSize: 11, fontFamily: FontFamily.opensans);
 
   final linkTextSpanStyle = TextStyle(
@@ -50,7 +49,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           notification.disallowIndicator();
           return false;
         },
-        child: RemoveFocusOnTouchOutsideFocusedWidget(
+        child: Unfocus(
           child: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 40),

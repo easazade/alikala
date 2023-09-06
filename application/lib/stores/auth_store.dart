@@ -84,7 +84,7 @@ class AuthStore extends Store {
     }
   }
 
-  Future<void> verifyAndSignUp(String verificationCode) async {
+  Future<void> verifyAndSignUp(String? verificationCode) async {
     error = null;
     operation = Operation.none;
 
@@ -93,7 +93,7 @@ class AuthStore extends Store {
     } else if (verificationCode.isNullOrBlank) {
       error = Failure('Please Enter the verification code sent to you email');
     } else {
-      final result = await emailAuthController.validateAccount(registerRequestEmail!, verificationCode).sealed();
+      final result = await emailAuthController.validateAccount(registerRequestEmail!, verificationCode!).sealed();
 
       if (result.isSuccessful) {
         userInfo.value = result.value;
