@@ -12,14 +12,15 @@ import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProfilePage extends StatelessWidget {
-  final ProfileStore profileStore = inject();
-  final ShopStore shopStore = inject();
-
+class ProfilePage extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+
+    final shopStore = ref.watch(injectStoreProvider<ShopStore>());
+    final profileStore = ref.watch(injectStoreProvider<ProfileStore>());
 
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
@@ -56,7 +57,6 @@ class ProfilePage extends StatelessWidget {
                 // building profile store with buildWhen
                 WhenDataBuilder(
                   data: profileStore,
-                  observe: true,
                   onValue: (context, store) => Text(
                     store.username.value,
                     textAlign: TextAlign.center,
@@ -70,7 +70,6 @@ class ProfilePage extends StatelessWidget {
                 /// building profileStore using build
                 DataBuilder(
                   data: profileStore,
-                  observe: true,
                   builder: (context, store) {
                     if (store.isOperating) {
                       return Text(store.operation.name);
@@ -88,7 +87,6 @@ class ProfilePage extends StatelessWidget {
                 //directly using StoreConsumer to build the shopStore
                 DataBuilder(
                   data: shopStore,
-                  observe: true,
                   builder: (context, store) {
                     return WhenDataBuilder(
                       data: shopStore.shopName,

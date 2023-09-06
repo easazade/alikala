@@ -7,6 +7,7 @@ import 'package:application/data/entities.dart';
 import 'package:application/di/di.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/generated/l10n.dart';
+import 'package:application/stores/auth_store.dart';
 import 'package:application/stores/cart_store.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_add_to_cart.dart';
@@ -23,12 +24,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 
 class CartPage extends ConsumerWidget {
-  final ChangeNotifierProvider<CartStore> cartStoreProvider = inject();
-  final SessionManager sessionManager = inject();
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartStore = ref.watch(cartStoreProvider);
+    final cartStore = ref.watch(injectStoreProvider<CartStore>());
+    final authStore = ref.watch(injectStoreProvider<AuthStore>());
     final theme = Theme.of(context);
 
     return CupertinoPageScaffold(
@@ -53,12 +52,10 @@ class CartPage extends ConsumerWidget {
           builder: (context, store) {
             return ListView(
               children: [
-                if (!sessionManager.isSignedIn)
+                if (!authStore.isUserAuthenticated)
                   _createLoginNeededCard()
                 else
-                  AppButton('Logout', () async {
-                    await sessionManager.signOut();
-                  }),
+                  AppButton('Logout', () => authStore.logout()),
                 SizedBox(height: 30),
                 _createCartIsEmptyMessage(cartStore),
                 for (var product in store.products) ...[

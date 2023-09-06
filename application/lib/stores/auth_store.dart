@@ -103,6 +103,12 @@ class AuthStore extends Store {
     }
   }
 
+  Future<void> logout() async {
+    await sessionManager.signOut();
+    userInfo.value = null;
+    registerRequestEmail = null;
+  }
+
   void onSessionChanges() {
     if (userInfo.valueOrNull != sessionManager.signedInUser) {
       userInfo.value = sessionManager.signedInUser;

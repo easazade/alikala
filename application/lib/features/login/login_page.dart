@@ -28,7 +28,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   String? email;
   String? password;
 
-  final EmailAuthController emailAuthController = inject();
 
   final textSpanStyle = TextStyle(color: AppColors.textDark, fontSize: 11, fontFamily: FontFamily.opensans);
 
