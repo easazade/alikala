@@ -52,10 +52,7 @@ class CartPage extends ConsumerWidget {
           builder: (context, store) {
             return ListView(
               children: [
-                if (!authStore.isUserAuthenticated)
-                  _createLoginNeededCard()
-                else
-                  AppButton('Logout', () => authStore.logout()),
+                if (!authStore.isUserAuthenticated) _createLoginNeededCard(),
                 SizedBox(height: 30),
                 _createCartIsEmptyMessage(cartStore),
                 for (var product in store.products) ...[
