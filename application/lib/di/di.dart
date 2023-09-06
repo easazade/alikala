@@ -78,14 +78,12 @@ class DI extends StatefulWidget {
 }
 
 class _DIState extends State<DI> {
-  final _dependencyGraphSetup = Completer<String>();
+  var _dependencyGraphSetup = Completer<bool>();
 
   @override
   void initState() {
     super.initState();
-    setupDependencies().then((_) {
-      _dependencyGraphSetup.complete('');
-    });
+    _runSetup();
   }
 
   @override
@@ -93,11 +91,35 @@ class _DIState extends State<DI> {
     return FutureBuilder(
       future: _dependencyGraphSetup.future,
       builder: (context, snapshot) {
+        final hasSetupDependenciesSuccessfully = snapshot.data == true;
         if (snapshot.hasData) {
-          return widget.child;
+          if (hasSetupDependenciesSuccessfully) {
+            return widget.child;
+          } else {
+            return SplashPage(
+              isLoading: false,
+              retry: () {
+                _dependencyGraphSetup = Completer();
+                setState(() {
+                  _runSetup();
+                });
+              },
+            );
+          }
         } else {
-          return SplashPage();
+          return SplashPage(isLoading: true);
         }
+      },
+    );
+  }
+
+  void _runSetup() {
+    setupDependencies().then(
+      (_) => _dependencyGraphSetup.complete(true),
+      onError: (e, stacktrace) {
+        print(e);
+        print(stacktrace);
+        _dependencyGraphSetup.complete(false);
       },
     );
   }

@@ -3,14 +3,14 @@ import 'package:application/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class RetryWidget extends StatelessWidget {
-  final VoidCallback action;
+  final Function action;
 
   const RetryWidget(this.action);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: action,
+      onTap: () => action(),
       child: Container(
         height: 42,
         width: 42,

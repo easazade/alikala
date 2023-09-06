@@ -1,19 +1,17 @@
 import 'package:application/core/constants.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/widgets/util/app_progress.dart';
+import 'package:application/widgets/util/retry_widget.dart';
 import 'package:flutter/material.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage();
+class SplashPage extends StatelessWidget {
+  const SplashPage({this.isLoading = false, this.retry});
 
-  @override
-  State<SplashPage> createState() => _SplashScreenState();
-}
+  final bool isLoading;
+  final Function? retry;
 
-class _SplashScreenState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Material(
@@ -35,13 +33,15 @@ class _SplashScreenState extends State<SplashPage> {
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 40),
-                child: AppProgress.small(color: Colors.white),
+            if (isLoading)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 40),
+                  child: AppProgress.small(color: Colors.white),
+                ),
               ),
-            ),
+            if (retry != null) RetryWidget(retry!)
           ],
         ),
       ),
