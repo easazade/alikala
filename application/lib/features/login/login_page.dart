@@ -53,7 +53,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   }
 
   bool onLoggedIn(Event event) {
-    if (event == Events.loggedIn) {
+    if (event == AppEvents.loggedIn) {
       appRouter.navigate(MainRoute());
       return true;
     }
@@ -111,7 +111,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     ),
                     SizedBox(width: 60),
                   ]),
-                  if (authStore.hasError && authStore.error.cause == Ops.login)
+                  if (authStore.hasError && authStore.error.cause == AppOperations.login)
                     AppErrorWidget(failure: authStore.error),
                   SizedBox(height: 20),
                   AppFormField(S.of(context).email, (input) {
@@ -126,8 +126,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     S.of(context).login,
                     () {
                       authStore.login(email, password);
-                      authStore.error = null;
-                      appRouter.navigate(MainRoute());
                     },
                     loading: authStore.isOperating,
                   ),

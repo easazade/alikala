@@ -16,6 +16,7 @@ import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart';
 
@@ -27,6 +28,8 @@ class VerifyEmailPage extends ConsumerStatefulWidget {
 }
 
 class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
+  final AuthStore _authStore = inject();
+
   String? verificationCode;
 
   final EmailAuthController emailAuthController = inject();
@@ -39,6 +42,27 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
     fontFamily: FontFamily.opensans,
     decoration: TextDecoration.underline,
   );
+
+  @override
+  void initState() {
+    super.initState();
+    _authStore.addEventListener(onLoggedIn);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _authStore.removeEventListener(onLoggedIn);
+  }
+
+  bool onLoggedIn(Event event) {
+    if (event == AppEvents.loggedIn) {
+      appRouter.navigate(LoginRoute());
+      return true;
+    }
+
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +100,7 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
                     child: Image.asset(Assets.images.splashLogoAccentColor.path),
                   ),
                   SizedBox(height: 64),
-                  if (authStore.hasError && authStore.error.cause == Ops.verify)
+                  if (authStore.hasError && authStore.error.cause == AppOperations.verify)
                     AppErrorWidget(failure: authStore.error),
                   SizedBox(height: 20),
                   AppFormField(S.of(context).enterVerificationCode, (input) {
@@ -87,10 +111,7 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
                     S.of(context).verify,
                     () async {
                       await authStore.verifyAndSignUp(verificationCode);
-                      if (authStore.isUserAuthenticated) {
-                        authStore.error = null;
-                        appRouter.navigate(LoginRoute());
-                      }
+                     
                     },
                     loading: authStore.isOperating,
                   ),

@@ -15,6 +15,7 @@ import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RegisterPage extends ConsumerStatefulWidget {
@@ -25,6 +26,8 @@ class RegisterPage extends ConsumerStatefulWidget {
 }
 
 class _RegisterPageState extends ConsumerState<RegisterPage> {
+  final AuthStore _authStore = inject();
+
   String? username;
   String? email;
   String? password;
@@ -38,6 +41,27 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
     fontFamily: FontFamily.opensans,
     decoration: TextDecoration.underline,
   );
+
+  @override
+  void initState() {
+    super.initState();
+    _authStore.addEventListener(onLoggedIn);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _authStore.removeEventListener(onLoggedIn);
+  }
+
+  bool onLoggedIn(Event event) {
+    if (event == AppEvents.requestedSignUp) {
+      appRouter.push(VerifyEmailRoute());
+      return true;
+    }
+
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +103,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                     child: Image.asset(Assets.images.splashLogoAccentColor.path),
                   ),
                   SizedBox(height: 64),
-                  if (authStore.hasError && authStore.error.cause == Ops.signup)
+                  if (authStore.hasError && authStore.error.cause == AppOperations.signup)
                     AppErrorWidget(failure: authStore.error),
                   SizedBox(height: 20),
                   AppFormField(S.of(context).username, (input) {
@@ -100,13 +124,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                   SizedBox(height: 20),
                   AppFormLongButton(
                     S.of(context).register,
-                    () async {
-                      await authStore.requestToSignUp(email, username, password, confirmPassword);
-                      if (authStore.registerRequestEmail != null) {
-                        authStore.error = null;
-                        appRouter.push(VerifyEmailRoute());
-                      }
-                    },
+                    () => authStore.requestToSignUp(email, username, password, confirmPassword),
                     loading: authStore.isOperating,
                   ),
                   SizedBox(height: 10),

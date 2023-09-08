@@ -31,21 +31,23 @@ class AuthStore extends Store {
     notifyListeners();
 
     if (email.isNullOrBlank) {
-      error = Failure('Please Enter your email', cause: Ops.login);
+      error = Failure('Please Enter your email', cause: AppOperations.login);
     } else if (password.isNullOrBlank) {
-      error = Failure('Please Enter your password', cause: Ops.login);
+      error = Failure('Please Enter your password', cause: AppOperations.login);
     } else {
-      operation = Ops.login;
+      operation = AppOperations.login;
       notifyListeners();
       final result = await emailAuthController.signIn(email!, password!).sealed();
       operation = Operation.none;
       if (result.isSuccessful) {
         userInfo.value = result.value;
+        dispatchEvent(AppEvents.loggedIn);
+        error = null;
       } else {
         //TODO: for 400 errors we should show error message returned from server
         // it's easy to create Failure object out of exceptions, that extract the message
         // from the exception, if there is none a generic something went wrong will be shown
-        error = Failure('Could not login, please try again', cause: Ops.login);
+        error = Failure('Could not login, please try again', cause: AppOperations.login);
       }
     }
     notifyListeners();
@@ -63,15 +65,15 @@ class AuthStore extends Store {
     notifyListeners();
 
     if (email == null || !EmailValidator.validate(email)) {
-      error = Failure('Please Enter a valid email address', cause: Ops.signup);
+      error = Failure('Please Enter a valid email address', cause: AppOperations.signup);
     } else if (username == null || username.length < 3) {
-      error = Failure('Please Enter a valid username that has at least 3 characters', cause: Ops.signup);
+      error = Failure('Please Enter a valid username that has at least 3 characters', cause: AppOperations.signup);
     } else if (password == null || password.length < 8) {
-      error = Failure('Please Enter a valid password, at least 8 characters', cause: Ops.signup);
+      error = Failure('Please Enter a valid password, at least 8 characters', cause: AppOperations.signup);
     } else if (password != confirmPassword) {
-      error = Failure('Entered passwords don\'t match', cause: Ops.signup);
+      error = Failure('Entered passwords don\'t match', cause: AppOperations.signup);
     } else {
-      operation = Ops.signup;
+      operation = AppOperations.signup;
       notifyListeners();
       final result = await emailAuthController.createAccountRequest(username, email, password).sealed();
 
@@ -81,11 +83,13 @@ class AuthStore extends Store {
 
         if (requestMade) {
           registerRequestEmail = email;
+          dispatchEvent(AppEvents.requestedSignUp);
+          error = null;
         } else {
-          error = Failure('Cannot register $username, please try again', cause: Ops.signup);
+          error = Failure('Cannot register $username, please try again', cause: AppOperations.signup);
         }
       } else {
-        error = Failure('Cannot register $username, please try again', cause: Ops.signup);
+        error = Failure('Cannot register $username, please try again', cause: AppOperations.signup);
       }
     }
     notifyListeners();
@@ -97,19 +101,21 @@ class AuthStore extends Store {
     notifyListeners();
 
     if (registerRequestEmail == null) {
-      error = Failure('Please Register first', cause: Ops.verify);
+      error = Failure('Please Register first', cause: AppOperations.verify);
     } else if (verificationCode.isNullOrBlank) {
-      error = Failure('Please Enter the verification code sent to you email', cause: Ops.verify);
+      error = Failure('Please Enter the verification code sent to you email', cause: AppOperations.verify);
     } else {
-      operation = Ops.verify;
+      operation = AppOperations.verify;
       notifyListeners();
       final result = await emailAuthController.validateAccount(registerRequestEmail!, verificationCode!).sealed();
       operation = Operation.none;
 
       if (result.isSuccessful) {
         userInfo.value = result.value;
+        dispatchEvent(AppEvents.loggedIn);
+        error = null;
       } else {
-        error = Failure('Verification code is incorrect', cause: Ops.verify);
+        error = Failure('Verification code is incorrect', cause: AppOperations.verify);
       }
       notifyListeners();
     }
@@ -119,12 +125,20 @@ class AuthStore extends Store {
     await sessionManager.signOut();
     userInfo.value = null;
     registerRequestEmail = null;
+    dispatchEvent(AppEvents.loggedOut);
     notifyListeners();
   }
 
   void onSessionChanges() {
     if (userInfo.valueOrNull != sessionManager.signedInUser) {
       userInfo.value = sessionManager.signedInUser;
+      if (isUserAuthenticated) {
+        dispatchEvent(AppEvents.loggedIn);
+      } else {
+        dispatchEvent(AppEvents.loggedOut);
+      }
+      error = null;
+      notifyListeners();
     }
   }
 
