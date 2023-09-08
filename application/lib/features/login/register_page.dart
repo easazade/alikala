@@ -122,7 +122,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                     confirmPassword = input;
                   }),
                   SizedBox(height: 20),
-                  AppFormLongButton(
+                  AppLongButton(
                     S.of(context).register,
                     () => authStore.requestToSignUp(email, username, password, confirmPassword),
                     loading: authStore.isOperating,

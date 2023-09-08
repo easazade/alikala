@@ -27,7 +27,7 @@ class VerifyCodePage extends StatelessWidget {
                   Text(S.of(context).sendAgainInNSeconds(180),
                       style: TextStyle(fontSize: 12, color: AppColors.textMed)),
                   SizedBox(height: 15),
-                  AppFormLongButton(S.of(context).verify, () {}, disabled: true),
+                  AppLongButton(S.of(context).verify, () {}, disabled: true),
                 ],
               )
             ],

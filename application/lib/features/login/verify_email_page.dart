@@ -107,11 +107,10 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
                     verificationCode = input;
                   }),
                   SizedBox(height: 20),
-                  AppFormLongButton(
+                  AppLongButton(
                     S.of(context).verify,
                     () async {
                       await authStore.verifyAndSignUp(verificationCode);
-                     
                     },
                     loading: authStore.isOperating,
                   ),

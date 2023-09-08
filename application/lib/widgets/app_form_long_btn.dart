@@ -1,13 +1,13 @@
 import 'package:application/core/constants.dart';
 import 'package:flutter/material.dart';
 
-class AppFormLongButton extends StatelessWidget {
+class AppLongButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final bool disabled;
   final bool loading;
 
-  const AppFormLongButton(
+  const AppLongButton(
     this.label,
     this.onTap, {
     this.disabled = false,
@@ -31,7 +31,14 @@ class AppFormLongButton extends StatelessWidget {
           ),
           child: Center(
             child: loading
-                ? SizedBox(width: 12, height: 12, child: CircularProgressIndicator())
+                ? SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(
+                      color: theme.colorScheme.onPrimary,
+                      strokeWidth: 3,
+                    ),
+                  )
                 : Text(
                     label,
                     style: TextStyle(

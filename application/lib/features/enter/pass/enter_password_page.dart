@@ -24,7 +24,7 @@ class EnterPasswordPage extends StatelessWidget {
             children: [
               _createPasswordInputArea(context),
               SizedBox(height: 120),
-              AppFormLongButton(S.of(context).accept, () {}),
+              AppLongButton(S.of(context).accept, () {}),
             ],
           ),
         ),

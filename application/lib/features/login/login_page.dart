@@ -122,7 +122,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     password = input;
                   }),
                   SizedBox(height: 20),
-                  AppFormLongButton(
+                  AppLongButton(
                     S.of(context).login,
                     () {
                       authStore.login(email, password);
@@ -130,7 +130,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     loading: authStore.isOperating,
                   ),
                   SizedBox(height: 20),
-                  AppFormLongButton(S.of(context).register, () {
+                  AppLongButton(S.of(context).register, () {
                     authStore.error = null;
                     appRouter.push(RegisterRoute());
                   }),
