@@ -1,13 +1,16 @@
 --
--- Class User as table users
+-- Class Product as table products
 --
 
-CREATE TABLE "users" (
+CREATE TABLE "products" (
   "id" serial,
-  "username" text NOT NULL
+  "userId" integer NOT NULL,
+  "name" text NOT NULL,
+  "description" text NOT NULL,
+  "images" json
 );
 
-ALTER TABLE ONLY "users"
-  ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY "products"
+  ADD CONSTRAINT products_pkey PRIMARY KEY (id);
 
 

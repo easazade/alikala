@@ -1,4 +1,5 @@
 import 'package:serverpod/serverpod.dart';
+import 'package:serverpod_auth_server/module.dart';
 
 // This is an example endpoint of your server. It's best practice to use the
 // `Endpoint` ending of the class name, but it will be removed when accessing
@@ -16,6 +17,9 @@ class ExampleEndpoint extends Endpoint {
   // supported. The `session` object provides access to the database, logging,
   // passwords, and information about the request being made to the server.
   Future<String> hello(Session session, String name) async {
+    final userId = session.auth.authenticatedUserId;
+    
+    
     return 'Hello $name';
   }
 }

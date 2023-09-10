@@ -10,8 +10,8 @@ library protocol; // ignore_for_file: no_leading_underscores_for_library_prefixe
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
 import 'package:serverpod_auth_server/module.dart' as _i3;
-import 'user.dart' as _i4;
-export 'user.dart';
+import 'product.dart' as _i4;
+export 'product.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
   Protocol._();
@@ -24,7 +24,7 @@ class Protocol extends _i1.SerializationManagerServer {
 
   static final targetDatabaseDefinition = _i2.DatabaseDefinition(tables: [
     _i2.TableDefinition(
-      name: 'users',
+      name: 'products',
       schema: 'public',
       columns: [
         _i2.ColumnDefinition(
@@ -32,19 +32,37 @@ class Protocol extends _i1.SerializationManagerServer {
           columnType: _i2.ColumnType.integer,
           isNullable: false,
           dartType: 'int?',
-          columnDefault: 'nextval(\'users_id_seq\'::regclass)',
+          columnDefault: 'nextval(\'products_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
-          name: 'username',
+          name: 'userId',
+          columnType: _i2.ColumnType.integer,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'name',
           columnType: _i2.ColumnType.text,
           isNullable: false,
           dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'description',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'images',
+          columnType: _i2.ColumnType.json,
+          isNullable: true,
+          dartType: 'List<String>?',
         ),
       ],
       foreignKeys: [],
       indexes: [
         _i2.IndexDefinition(
-          indexName: 'users_pkey',
+          indexName: 'products_pkey',
           tableSpace: null,
           elements: [
             _i2.IndexElementDefinition(
@@ -72,11 +90,16 @@ class Protocol extends _i1.SerializationManagerServer {
     if (customConstructors.containsKey(t)) {
       return customConstructors[t]!(data, this) as T;
     }
-    if (t == _i4.User) {
-      return _i4.User.fromJson(data, this) as T;
+    if (t == _i4.Product) {
+      return _i4.Product.fromJson(data, this) as T;
     }
-    if (t == _i1.getType<_i4.User?>()) {
-      return (data != null ? _i4.User.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i4.Product?>()) {
+      return (data != null ? _i4.Product.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<List<String>?>()) {
+      return (data != null
+          ? (data as List).map((e) => deserialize<String>(e)).toList()
+          : null) as dynamic;
     }
     try {
       return _i3.Protocol().deserialize<T>(data, t);
@@ -94,8 +117,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (className != null) {
       return 'serverpod_auth.$className';
     }
-    if (data is _i4.User) {
-      return 'User';
+    if (data is _i4.Product) {
+      return 'Product';
     }
     return super.getClassNameForObject(data);
   }
@@ -106,8 +129,8 @@ class Protocol extends _i1.SerializationManagerServer {
       data['className'] = data['className'].substring(15);
       return _i3.Protocol().deserializeByClassName(data);
     }
-    if (data['className'] == 'User') {
-      return deserialize<_i4.User>(data['data']);
+    if (data['className'] == 'Product') {
+      return deserialize<_i4.Product>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
@@ -127,8 +150,8 @@ class Protocol extends _i1.SerializationManagerServer {
       }
     }
     switch (t) {
-      case _i4.User:
-        return _i4.User.t;
+      case _i4.Product:
+        return _i4.Product.t;
     }
     return null;
   }

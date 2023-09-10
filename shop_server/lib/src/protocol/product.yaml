@@ -1,0 +1,10 @@
+class: Product
+table: products
+
+fields:
+  userId: int
+  name: String
+  description: String
+  images: List<String>?
+  
+  

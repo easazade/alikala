@@ -8,20 +8,28 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-class User extends _i1.SerializableEntity {
-  User({
+class Product extends _i1.SerializableEntity {
+  Product({
     this.id,
-    required this.username,
+    required this.userId,
+    required this.name,
+    required this.description,
+    this.images,
   });
 
-  factory User.fromJson(
+  factory Product.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return User(
+    return Product(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      username: serializationManager
-          .deserialize<String>(jsonSerialization['username']),
+      userId:
+          serializationManager.deserialize<int>(jsonSerialization['userId']),
+      name: serializationManager.deserialize<String>(jsonSerialization['name']),
+      description: serializationManager
+          .deserialize<String>(jsonSerialization['description']),
+      images: serializationManager
+          .deserialize<List<String>?>(jsonSerialization['images']),
     );
   }
 
@@ -30,13 +38,22 @@ class User extends _i1.SerializableEntity {
   /// the id will be null.
   int? id;
 
-  String username;
+  int userId;
+
+  String name;
+
+  String description;
+
+  List<String>? images;
 
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'username': username,
+      'userId': userId,
+      'name': name,
+      'description': description,
+      'images': images,
     };
   }
 }

@@ -8,34 +8,51 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 
-class User extends _i1.TableRow {
-  User({
+class Product extends _i1.TableRow {
+  Product({
     int? id,
-    required this.username,
+    required this.userId,
+    required this.name,
+    required this.description,
+    this.images,
   }) : super(id);
 
-  factory User.fromJson(
+  factory Product.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return User(
+    return Product(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      username: serializationManager
-          .deserialize<String>(jsonSerialization['username']),
+      userId:
+          serializationManager.deserialize<int>(jsonSerialization['userId']),
+      name: serializationManager.deserialize<String>(jsonSerialization['name']),
+      description: serializationManager
+          .deserialize<String>(jsonSerialization['description']),
+      images: serializationManager
+          .deserialize<List<String>?>(jsonSerialization['images']),
     );
   }
 
-  static final t = UserTable();
+  static final t = ProductTable();
 
-  String username;
+  int userId;
+
+  String name;
+
+  String description;
+
+  List<String>? images;
 
   @override
-  String get tableName => 'users';
+  String get tableName => 'products';
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'username': username,
+      'userId': userId,
+      'name': name,
+      'description': description,
+      'images': images,
     };
   }
 
@@ -43,7 +60,10 @@ class User extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
-      'username': username,
+      'userId': userId,
+      'name': name,
+      'description': description,
+      'images': images,
     };
   }
 
@@ -51,7 +71,10 @@ class User extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
-      'username': username,
+      'userId': userId,
+      'name': name,
+      'description': description,
+      'images': images,
     };
   }
 
@@ -64,17 +87,26 @@ class User extends _i1.TableRow {
       case 'id':
         id = value;
         return;
-      case 'username':
-        username = value;
+      case 'userId':
+        userId = value;
+        return;
+      case 'name':
+        name = value;
+        return;
+      case 'description':
+        description = value;
+        return;
+      case 'images':
+        images = value;
         return;
       default:
         throw UnimplementedError();
     }
   }
 
-  static Future<List<User>> find(
+  static Future<List<Product>> find(
     _i1.Session session, {
-    UserExpressionBuilder? where,
+    ProductExpressionBuilder? where,
     int? limit,
     int? offset,
     _i1.Column? orderBy,
@@ -83,8 +115,8 @@ class User extends _i1.TableRow {
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.find<User>(
-      where: where != null ? where(User.t) : null,
+    return session.db.find<Product>(
+      where: where != null ? where(Product.t) : null,
       limit: limit,
       offset: offset,
       orderBy: orderBy,
@@ -95,17 +127,17 @@ class User extends _i1.TableRow {
     );
   }
 
-  static Future<User?> findSingleRow(
+  static Future<Product?> findSingleRow(
     _i1.Session session, {
-    UserExpressionBuilder? where,
+    ProductExpressionBuilder? where,
     int? offset,
     _i1.Column? orderBy,
     bool orderDescending = false,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.findSingleRow<User>(
-      where: where != null ? where(User.t) : null,
+    return session.db.findSingleRow<Product>(
+      where: where != null ? where(Product.t) : null,
       offset: offset,
       orderBy: orderBy,
       orderDescending: orderDescending,
@@ -114,27 +146,27 @@ class User extends _i1.TableRow {
     );
   }
 
-  static Future<User?> findById(
+  static Future<Product?> findById(
     _i1.Session session,
     int id,
   ) async {
-    return session.db.findById<User>(id);
+    return session.db.findById<Product>(id);
   }
 
   static Future<int> delete(
     _i1.Session session, {
-    required UserExpressionBuilder where,
+    required ProductExpressionBuilder where,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.delete<User>(
-      where: where(User.t),
+    return session.db.delete<Product>(
+      where: where(Product.t),
       transaction: transaction,
     );
   }
 
   static Future<bool> deleteRow(
     _i1.Session session,
-    User row, {
+    Product row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.deleteRow(
@@ -145,7 +177,7 @@ class User extends _i1.TableRow {
 
   static Future<bool> update(
     _i1.Session session,
-    User row, {
+    Product row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.update(
@@ -156,7 +188,7 @@ class User extends _i1.TableRow {
 
   static Future<void> insert(
     _i1.Session session,
-    User row, {
+    Product row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.insert(
@@ -167,13 +199,13 @@ class User extends _i1.TableRow {
 
   static Future<int> count(
     _i1.Session session, {
-    UserExpressionBuilder? where,
+    ProductExpressionBuilder? where,
     int? limit,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.count<User>(
-      where: where != null ? where(User.t) : null,
+    return session.db.count<Product>(
+      where: where != null ? where(Product.t) : null,
       limit: limit,
       useCache: useCache,
       transaction: transaction,
@@ -181,24 +213,33 @@ class User extends _i1.TableRow {
   }
 }
 
-typedef UserExpressionBuilder = _i1.Expression Function(UserTable);
+typedef ProductExpressionBuilder = _i1.Expression Function(ProductTable);
 
-class UserTable extends _i1.Table {
-  UserTable() : super(tableName: 'users');
+class ProductTable extends _i1.Table {
+  ProductTable() : super(tableName: 'products');
 
   /// The database id, set if the object has been inserted into the
   /// database or if it has been fetched from the database. Otherwise,
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
-  final username = _i1.ColumnString('username');
+  final userId = _i1.ColumnInt('userId');
+
+  final name = _i1.ColumnString('name');
+
+  final description = _i1.ColumnString('description');
+
+  final images = _i1.ColumnSerializable('images');
 
   @override
   List<_i1.Column> get columns => [
         id,
-        username,
+        userId,
+        name,
+        description,
+        images,
       ];
 }
 
-@Deprecated('Use UserTable.t instead.')
-UserTable tUser = UserTable();
+@Deprecated('Use ProductTable.t instead.')
+ProductTable tProduct = ProductTable();
