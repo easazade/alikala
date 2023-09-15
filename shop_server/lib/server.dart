@@ -115,5 +115,9 @@ void run(List<String> args) async {
 
   final internalSession = await pod.createSession();
 
-  Seeder.seedProducts(internalSession);
+  print('server running in ${internalSession.serverpod.runMode} mode');
+
+  if (internalSession.serverpod.runMode == 'development') {
+    Seeder.seedProducts(internalSession);
+  }
 }

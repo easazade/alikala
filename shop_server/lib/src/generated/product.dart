@@ -11,7 +11,6 @@ import 'package:serverpod/serverpod.dart' as _i1;
 class Product extends _i1.TableRow {
   Product({
     int? id,
-    required this.userId,
     required this.name,
     required this.description,
     this.images,
@@ -23,8 +22,6 @@ class Product extends _i1.TableRow {
   ) {
     return Product(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      userId:
-          serializationManager.deserialize<int>(jsonSerialization['userId']),
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       description: serializationManager
           .deserialize<String>(jsonSerialization['description']),
@@ -35,8 +32,6 @@ class Product extends _i1.TableRow {
 
   static final t = ProductTable();
 
-  int userId;
-
   String name;
 
   String description;
@@ -44,12 +39,11 @@ class Product extends _i1.TableRow {
   List<String>? images;
 
   @override
-  String get tableName => 'products';
+  String get tableName => 'shop_products';
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'userId': userId,
       'name': name,
       'description': description,
       'images': images,
@@ -60,7 +54,6 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
-      'userId': userId,
       'name': name,
       'description': description,
       'images': images,
@@ -71,7 +64,6 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
-      'userId': userId,
       'name': name,
       'description': description,
       'images': images,
@@ -86,9 +78,6 @@ class Product extends _i1.TableRow {
     switch (columnName) {
       case 'id':
         id = value;
-        return;
-      case 'userId':
-        userId = value;
         return;
       case 'name':
         name = value;
@@ -216,14 +205,12 @@ class Product extends _i1.TableRow {
 typedef ProductExpressionBuilder = _i1.Expression Function(ProductTable);
 
 class ProductTable extends _i1.Table {
-  ProductTable() : super(tableName: 'products');
+  ProductTable() : super(tableName: 'shop_products');
 
   /// The database id, set if the object has been inserted into the
   /// database or if it has been fetched from the database. Otherwise,
   /// the id will be null.
   final id = _i1.ColumnInt('id');
-
-  final userId = _i1.ColumnInt('userId');
 
   final name = _i1.ColumnString('name');
 
@@ -234,7 +221,6 @@ class ProductTable extends _i1.Table {
   @override
   List<_i1.Column> get columns => [
         id,
-        userId,
         name,
         description,
         images,

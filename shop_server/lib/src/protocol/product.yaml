@@ -1,8 +1,7 @@
 class: Product
-table: products
+table: shop_products
 
 fields:
-  userId: int
   name: String
   description: String
   images: List<String>?

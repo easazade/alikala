@@ -9,7 +9,6 @@ class Seeder {
       final products = List.generate(
         20,
         (index) => Product(
-          userId: 1,
           name: FakerX.defaultInstance.lorem.word,
           description: FakerX.defaultInstance.lorem.paragraph(minSentences: 4, maxSentences: 10),
         ),

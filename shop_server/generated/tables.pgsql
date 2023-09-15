@@ -1,16 +1,15 @@
 --
--- Class Product as table products
+-- Class Product as table shop_products
 --
 
-CREATE TABLE "products" (
+CREATE TABLE "shop_products" (
   "id" serial,
-  "userId" integer NOT NULL,
   "name" text NOT NULL,
   "description" text NOT NULL,
   "images" json
 );
 
-ALTER TABLE ONLY "products"
-  ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY "shop_products"
+  ADD CONSTRAINT shop_products_pkey PRIMARY KEY (id);
 
 

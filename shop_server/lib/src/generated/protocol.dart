@@ -24,7 +24,7 @@ class Protocol extends _i1.SerializationManagerServer {
 
   static final targetDatabaseDefinition = _i2.DatabaseDefinition(tables: [
     _i2.TableDefinition(
-      name: 'products',
+      name: 'shop_products',
       schema: 'public',
       columns: [
         _i2.ColumnDefinition(
@@ -32,13 +32,7 @@ class Protocol extends _i1.SerializationManagerServer {
           columnType: _i2.ColumnType.integer,
           isNullable: false,
           dartType: 'int?',
-          columnDefault: 'nextval(\'products_id_seq\'::regclass)',
-        ),
-        _i2.ColumnDefinition(
-          name: 'userId',
-          columnType: _i2.ColumnType.integer,
-          isNullable: false,
-          dartType: 'int',
+          columnDefault: 'nextval(\'shop_products_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
           name: 'name',
@@ -62,7 +56,7 @@ class Protocol extends _i1.SerializationManagerServer {
       foreignKeys: [],
       indexes: [
         _i2.IndexDefinition(
-          indexName: 'products_pkey',
+          indexName: 'shop_products_pkey',
           tableSpace: null,
           elements: [
             _i2.IndexElementDefinition(
