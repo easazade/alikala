@@ -18,8 +18,7 @@ class ExampleEndpoint extends Endpoint {
   // passwords, and information about the request being made to the server.
   Future<String> hello(Session session, String name) async {
     final userId = session.auth.authenticatedUserId;
-    
-    
+
     return 'Hello $name';
   }
 }

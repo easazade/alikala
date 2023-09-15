@@ -1,6 +1,7 @@
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:serverpod/serverpod.dart';
+import 'package:shop_server/src/seeds/seeder.dart';
 
 import 'package:shop_server/src/web/routes/root.dart';
 
@@ -110,4 +111,9 @@ void run(List<String> args) async {
 
   // Start the server.
   await pod.start();
+  print('pod started. !!! MEOW MEOW MEOW');
+
+  final internalSession = await pod.createSession();
+
+  Seeder.seedProducts(internalSession);
 }
