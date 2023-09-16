@@ -1,14 +1,44 @@
 import 'package:faker_x/faker_x.dart';
 import 'package:serverpod/server.dart';
+import 'package:shop_server/src/generated/category.dart';
 import 'package:shop_server/src/generated/product.dart';
 import 'package:shop_server/src/generated/slide_ad.dart';
+import 'package:collection/collection.dart';
 
 class Seeder {
-  static const count = 20;
+  static const _count = 20;
 
   static Future insertSeedData(Session session) async {
+    await _seedCategories(session);
     await _seedProducts(session);
     await _seedSlideAds(session);
+  }
+
+  static Future _seedCategories(Session session) async {
+    final allCategories = await Category.find(session);
+
+    if (allCategories.isEmpty) {
+      final categories = List.generate(
+        _count,
+        (index) => Category(
+          name: 'category$index',
+          description: FakerX.defaultInstance.lorem.paragraph(),
+          image: FakerX.defaultInstance.image.image(width: 40, height: 40, keywords: ['category']),
+          icon: FakerX.defaultInstance.image.image(width: 40, height: 40, keywords: ['icon']),
+        ),
+      );
+
+      final chunks = categories.slices(5);
+      for (var chunk in chunks) {
+        final parent = chunk.first;
+        final subCategories = chunk.sublist(1);
+
+        await Category.insert(session, parent);
+        for (var category in subCategories) {
+          await Category.insert(session, category..parentId = parent.id);
+        }
+      }
+    }
   }
 
   static Future _seedSlideAds(Session session) async {
@@ -16,7 +46,7 @@ class Seeder {
 
     if (allBannerAds.isEmpty) {
       final banners = List.generate(
-        20,
+        _count,
         (index) => BannerAd(
           title: FakerX.defaultInstance.lorem.sentence,
           description: FakerX.defaultInstance.lorem.paragraph(minSentences: 3, maxSentences: 5),
@@ -39,12 +69,15 @@ class Seeder {
   static Future _seedProducts(Session session) async {
     final allProducts = await Product.find(session);
 
+    final categories = await Category.find(session);
+
     if (allProducts.isEmpty) {
       final products = List.generate(
-        20,
+        _count,
         (index) => Product(
           name: FakerX.defaultInstance.lorem.word,
           description: FakerX.defaultInstance.lorem.paragraph(minSentences: 4, maxSentences: 10),
+          category: categories.randomItem!,
         ),
       );
       for (var row in products) {

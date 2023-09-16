@@ -7,33 +7,32 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'protocol.dart' as _i2;
 
-class Product extends _i1.SerializableEntity {
-  Product({
+class Category extends _i1.SerializableEntity {
+  Category({
     this.id,
+    this.parentId,
     required this.name,
     required this.description,
-    this.images,
-    required this.category,
-    this.discount,
+    this.image,
+    this.icon,
   });
 
-  factory Product.fromJson(
+  factory Category.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return Product(
+    return Category(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      parentId:
+          serializationManager.deserialize<int?>(jsonSerialization['parentId']),
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       description: serializationManager
           .deserialize<String>(jsonSerialization['description']),
-      images: serializationManager
-          .deserialize<List<String>?>(jsonSerialization['images']),
-      category: serializationManager
-          .deserialize<_i2.Category>(jsonSerialization['category']),
-      discount: serializationManager
-          .deserialize<_i2.Discount?>(jsonSerialization['discount']),
+      image:
+          serializationManager.deserialize<String?>(jsonSerialization['image']),
+      icon:
+          serializationManager.deserialize<String?>(jsonSerialization['icon']),
     );
   }
 
@@ -42,25 +41,25 @@ class Product extends _i1.SerializableEntity {
   /// the id will be null.
   int? id;
 
+  int? parentId;
+
   String name;
 
   String description;
 
-  List<String>? images;
+  String? image;
 
-  _i2.Category category;
-
-  _i2.Discount? discount;
+  String? icon;
 
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'parentId': parentId,
       'name': name,
       'description': description,
-      'images': images,
-      'category': category,
-      'discount': discount,
+      'image': image,
+      'icon': icon,
     };
   }
 }

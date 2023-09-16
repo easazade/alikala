@@ -1,0 +1,10 @@
+class: Category
+table: shop_categories
+
+fields:
+  parentId: int?
+  name: String
+  description: String
+  image: String?
+  icon: String?
+  

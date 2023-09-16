@@ -14,6 +14,23 @@ ALTER TABLE ONLY "shop_banner_ads"
 
 
 --
+-- Class Category as table shop_categories
+--
+
+CREATE TABLE "shop_categories" (
+  "id" serial,
+  "parentId" integer,
+  "name" text NOT NULL,
+  "description" text NOT NULL,
+  "image" text,
+  "icon" text
+);
+
+ALTER TABLE ONLY "shop_categories"
+  ADD CONSTRAINT shop_categories_pkey PRIMARY KEY (id);
+
+
+--
 -- Class Discount as table shop_discounts
 --
 
@@ -37,7 +54,8 @@ CREATE TABLE "shop_products" (
   "id" serial,
   "name" text NOT NULL,
   "description" text NOT NULL,
-  "images" json
+  "images" json,
+  "category" json NOT NULL
 );
 
 ALTER TABLE ONLY "shop_products"

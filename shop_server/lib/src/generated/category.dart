@@ -7,59 +7,58 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
-import 'protocol.dart' as _i2;
 
-class Product extends _i1.TableRow {
-  Product({
+class Category extends _i1.TableRow {
+  Category({
     int? id,
+    this.parentId,
     required this.name,
     required this.description,
-    this.images,
-    required this.category,
-    this.discount,
+    this.image,
+    this.icon,
   }) : super(id);
 
-  factory Product.fromJson(
+  factory Category.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return Product(
+    return Category(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      parentId:
+          serializationManager.deserialize<int?>(jsonSerialization['parentId']),
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       description: serializationManager
           .deserialize<String>(jsonSerialization['description']),
-      images: serializationManager
-          .deserialize<List<String>?>(jsonSerialization['images']),
-      category: serializationManager
-          .deserialize<_i2.Category>(jsonSerialization['category']),
-      discount: serializationManager
-          .deserialize<_i2.Discount?>(jsonSerialization['discount']),
+      image:
+          serializationManager.deserialize<String?>(jsonSerialization['image']),
+      icon:
+          serializationManager.deserialize<String?>(jsonSerialization['icon']),
     );
   }
 
-  static final t = ProductTable();
+  static final t = CategoryTable();
+
+  int? parentId;
 
   String name;
 
   String description;
 
-  List<String>? images;
+  String? image;
 
-  _i2.Category category;
-
-  _i2.Discount? discount;
+  String? icon;
 
   @override
-  String get tableName => 'shop_products';
+  String get tableName => 'shop_categories';
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'parentId': parentId,
       'name': name,
       'description': description,
-      'images': images,
-      'category': category,
-      'discount': discount,
+      'image': image,
+      'icon': icon,
     };
   }
 
@@ -67,10 +66,11 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
+      'parentId': parentId,
       'name': name,
       'description': description,
-      'images': images,
-      'category': category,
+      'image': image,
+      'icon': icon,
     };
   }
 
@@ -78,11 +78,11 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
+      'parentId': parentId,
       'name': name,
       'description': description,
-      'images': images,
-      'category': category,
-      'discount': discount,
+      'image': image,
+      'icon': icon,
     };
   }
 
@@ -95,26 +95,29 @@ class Product extends _i1.TableRow {
       case 'id':
         id = value;
         return;
+      case 'parentId':
+        parentId = value;
+        return;
       case 'name':
         name = value;
         return;
       case 'description':
         description = value;
         return;
-      case 'images':
-        images = value;
+      case 'image':
+        image = value;
         return;
-      case 'category':
-        category = value;
+      case 'icon':
+        icon = value;
         return;
       default:
         throw UnimplementedError();
     }
   }
 
-  static Future<List<Product>> find(
+  static Future<List<Category>> find(
     _i1.Session session, {
-    ProductExpressionBuilder? where,
+    CategoryExpressionBuilder? where,
     int? limit,
     int? offset,
     _i1.Column? orderBy,
@@ -123,8 +126,8 @@ class Product extends _i1.TableRow {
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.find<Product>(
-      where: where != null ? where(Product.t) : null,
+    return session.db.find<Category>(
+      where: where != null ? where(Category.t) : null,
       limit: limit,
       offset: offset,
       orderBy: orderBy,
@@ -135,17 +138,17 @@ class Product extends _i1.TableRow {
     );
   }
 
-  static Future<Product?> findSingleRow(
+  static Future<Category?> findSingleRow(
     _i1.Session session, {
-    ProductExpressionBuilder? where,
+    CategoryExpressionBuilder? where,
     int? offset,
     _i1.Column? orderBy,
     bool orderDescending = false,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.findSingleRow<Product>(
-      where: where != null ? where(Product.t) : null,
+    return session.db.findSingleRow<Category>(
+      where: where != null ? where(Category.t) : null,
       offset: offset,
       orderBy: orderBy,
       orderDescending: orderDescending,
@@ -154,27 +157,27 @@ class Product extends _i1.TableRow {
     );
   }
 
-  static Future<Product?> findById(
+  static Future<Category?> findById(
     _i1.Session session,
     int id,
   ) async {
-    return session.db.findById<Product>(id);
+    return session.db.findById<Category>(id);
   }
 
   static Future<int> delete(
     _i1.Session session, {
-    required ProductExpressionBuilder where,
+    required CategoryExpressionBuilder where,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.delete<Product>(
-      where: where(Product.t),
+    return session.db.delete<Category>(
+      where: where(Category.t),
       transaction: transaction,
     );
   }
 
   static Future<bool> deleteRow(
     _i1.Session session,
-    Product row, {
+    Category row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.deleteRow(
@@ -185,7 +188,7 @@ class Product extends _i1.TableRow {
 
   static Future<bool> update(
     _i1.Session session,
-    Product row, {
+    Category row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.update(
@@ -196,7 +199,7 @@ class Product extends _i1.TableRow {
 
   static Future<void> insert(
     _i1.Session session,
-    Product row, {
+    Category row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.insert(
@@ -207,13 +210,13 @@ class Product extends _i1.TableRow {
 
   static Future<int> count(
     _i1.Session session, {
-    ProductExpressionBuilder? where,
+    CategoryExpressionBuilder? where,
     int? limit,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.count<Product>(
-      where: where != null ? where(Product.t) : null,
+    return session.db.count<Category>(
+      where: where != null ? where(Category.t) : null,
       limit: limit,
       useCache: useCache,
       transaction: transaction,
@@ -221,33 +224,36 @@ class Product extends _i1.TableRow {
   }
 }
 
-typedef ProductExpressionBuilder = _i1.Expression Function(ProductTable);
+typedef CategoryExpressionBuilder = _i1.Expression Function(CategoryTable);
 
-class ProductTable extends _i1.Table {
-  ProductTable() : super(tableName: 'shop_products');
+class CategoryTable extends _i1.Table {
+  CategoryTable() : super(tableName: 'shop_categories');
 
   /// The database id, set if the object has been inserted into the
   /// database or if it has been fetched from the database. Otherwise,
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
+  final parentId = _i1.ColumnInt('parentId');
+
   final name = _i1.ColumnString('name');
 
   final description = _i1.ColumnString('description');
 
-  final images = _i1.ColumnSerializable('images');
+  final image = _i1.ColumnString('image');
 
-  final category = _i1.ColumnSerializable('category');
+  final icon = _i1.ColumnString('icon');
 
   @override
   List<_i1.Column> get columns => [
         id,
+        parentId,
         name,
         description,
-        images,
-        category,
+        image,
+        icon,
       ];
 }
 
-@Deprecated('Use ProductTable.t instead.')
-ProductTable tProduct = ProductTable();
+@Deprecated('Use CategoryTable.t instead.')
+CategoryTable tCategory = CategoryTable();
