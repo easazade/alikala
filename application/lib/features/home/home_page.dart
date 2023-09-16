@@ -15,14 +15,17 @@ import 'package:application/widgets/util/no_scroll_glow.dart';
 import 'package:application/widgets/util/sliver_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../fake_data.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   final ShopStore shopStore = inject();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ShopStore shopStore = ref.watch(injectStoreProvider());
+
     return DataBuilder(
         data: shopStore,
         observe: true,
@@ -33,7 +36,7 @@ class HomePage extends StatelessWidget {
               child: CustomScrollView(
                 slivers: [
                   AppSliverSearchBar(context, () => appRouter.navigate(SearchRoute())),
-                  AppSliverSliders(images: fakeSales),
+                  AppSliverSliders(banners: shopStore.banners),
                   SliverSizedBox(height: 20),
                   AppSliverAmazingDeals(amazingDeals: fakeAmazingDeals),
                   AppSliverNineTiles(

@@ -2,13 +2,15 @@ import 'package:application/gen/assets.gen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
+import 'package:shop_client/shop_client.dart';
 
 import 'slider/app_slider_dot_indicator.dart';
 
 class AppSliverSliders extends StatefulWidget {
-  final List<String> images;
+  final ListData<BannerAd> banners;
 
-  const AppSliverSliders({required this.images});
+  const AppSliverSliders({required this.banners});
 
   @override
   State<StatefulWidget> createState() => _State();
@@ -17,7 +19,8 @@ class AppSliverSliders extends StatefulWidget {
 class _State extends State<AppSliverSliders> {
   int _selectedPosition = 0;
 
-  List<Widget> imageSliders(BuildContext context) => widget.images
+  List<Widget> imageSliders(BuildContext context) => widget.banners
+      .where((data) => data.hasValue && data.value.image != null)
       .map(
         (item) => Container(
           margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 15),
@@ -26,7 +29,7 @@ class _State extends State<AppSliverSliders> {
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: CachedNetworkImage(
-                imageUrl: item,
+                imageUrl: item.value.image!,
                 fit: BoxFit.cover,
                 placeholder: (_, __) => Image.asset(Assets.images.imagePlaceholder.path, fit: BoxFit.cover),
               ),
@@ -62,7 +65,7 @@ class _State extends State<AppSliverSliders> {
               Positioned(
                 bottom: 15,
                 left: 40,
-                child: AppCarouselDotIndicator(_selectedPosition, widget.images.length),
+                child: AppCarouselDotIndicator(_selectedPosition, widget.banners.length),
               )
             ],
           ),
