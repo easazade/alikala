@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:application/config.dart';
 import 'package:application/features/splash/splash_screen.dart';
 import 'package:application/stores/auth_store.dart';
 import 'package:application/stores/cart_store.dart';
@@ -15,12 +16,6 @@ import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:shop_client/shop_client.dart';
 
 import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart' as auth;
-
-// The android emulator does not have access to the localhost of the machine.
-// const ipAddress = '10.0.2.2'; // Android emulator ip for the host
-
-// On a real device replace the ipAddress with the IP address of your computer.
-const ipAddress = '192.168.1.100';
 
 final _getIt = GetIt.instance;
 
@@ -38,7 +33,7 @@ Future setupDependencies() async {
 Future _registerHttpClient() async {
   _getIt.registerLazySingleton(
     () => Client(
-      'http://$ipAddress:8080/',
+      AppConfig.baseUrl,
       authenticationKeyManager: FlutterAuthenticationKeyManager(),
     )..connectivityMonitor = FlutterConnectivityMonitor(),
   );

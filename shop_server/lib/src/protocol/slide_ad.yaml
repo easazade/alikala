@@ -1,0 +1,7 @@
+class: SlideAd
+table: shop_slide_ads
+
+fields:
+  title: String?
+  description: String?
+  image: String?

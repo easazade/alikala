@@ -6,7 +6,7 @@ import 'package:application/gen/assets.gen.dart';
 import 'package:application/gen/fonts.gen.dart';
 import 'package:application/generated/l10n.dart';
 import 'package:application/stores/auth_store.dart';
-import 'package:application/stores/custom.dart';
+import 'package:application/stores/events_operations.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';

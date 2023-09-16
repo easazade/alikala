@@ -1,0 +1,4 @@
+class AppConfig {
+  static const ipAddress = '192.168.1.100';
+  static const baseUrl = 'http://$ipAddress:8080/';
+}

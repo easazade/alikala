@@ -1,6 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:application/stores/custom.dart';
+import 'package:application/stores/events_operations.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';

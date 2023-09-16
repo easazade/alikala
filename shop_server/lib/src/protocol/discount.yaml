@@ -1,0 +1,8 @@
+class: Discount
+table: shop_discounts
+
+fields:
+  discountPrice: double
+  startDate: DateTime
+  dueDate: DateTime
+  message: String
