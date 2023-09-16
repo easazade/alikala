@@ -6,7 +6,6 @@ import 'package:application/gen/assets.gen.dart';
 import 'package:application/generated/l10n.dart';
 import 'package:application/stores/business_logic/auth_store.dart';
 import 'package:application/stores/business_logic/profile_store.dart';
-import 'package:application/stores/business_logic/shop_store.dart';
 import 'package:application/widgets/app_icon_button.dart';
 import 'package:application/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -20,11 +19,8 @@ class ProfilePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
 
-    final shopStore = ref.watch(injectStoreProvider<ShopStore>());
     final profileStore = ref.watch(injectStoreProvider<ProfileStore>());
     final authStore = ref.watch(injectStoreProvider<AuthStore>());
-
-    print('SSSS REBUILDING');
 
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(

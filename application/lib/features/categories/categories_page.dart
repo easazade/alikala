@@ -28,9 +28,7 @@ class CategoriesPage extends ConsumerWidget {
 
             return CustomScrollView(
               slivers: [
-                AppSliverSearchBar(context, () {
-                  appRouter.navigate(SearchRoute());
-                }),
+                AppSliverSearchBar(context, () => appRouter.navigate(SearchRoute())),
                 for (var category in categories) AppSliverCategoryList(subCategories: categories, category: category),
               ],
             );
