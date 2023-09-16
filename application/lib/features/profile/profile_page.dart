@@ -4,9 +4,9 @@ import 'package:application/core/navigation.gr.dart';
 import 'package:application/di/di.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/generated/l10n.dart';
-import 'package:application/stores/auth_store.dart';
-import 'package:application/stores/profile_store.dart';
-import 'package:application/stores/shop_store.dart';
+import 'package:application/stores/business_logic/auth_store.dart';
+import 'package:application/stores/business_logic/profile_store.dart';
+import 'package:application/stores/business_logic/shop_store.dart';
 import 'package:application/widgets/app_icon_button.dart';
 import 'package:application/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -89,16 +89,16 @@ class ProfilePage extends ConsumerWidget {
                   },
                 ),
                 //directly using StoreConsumer to build the shopStore
-                DataBuilder(
-                  data: shopStore,
-                  builder: (context, store) {
-                    return WhenDataBuilder(
-                      data: shopStore.shopName,
-                      onValue: (context, data) => Text('${data.value} &&'),
-                      onOperate: (context, data) => CircularProgressIndicator(color: Colors.red),
-                    );
-                  },
-                ),
+                // DataBuilder(
+                //   data: shopStore,
+                //   builder: (context, store) {
+                //     return WhenDataBuilder(
+                //       data: shopStore.shopName,
+                //       onValue: (context, data) => Text('${data.value} &&'),
+                //       onOperate: (context, data) => CircularProgressIndicator(color: Colors.red),
+                //     );
+                //   },
+                // ),
 
                 Text(
                   '09117158746',

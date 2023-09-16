@@ -13,6 +13,7 @@ import 'package:serverpod_auth_server/module.dart' as _i3;
 import 'discount.dart' as _i4;
 import 'product.dart' as _i5;
 import 'slide_ad.dart' as _i6;
+import 'package:shop_server/src/generated/slide_ad.dart' as _i7;
 export 'discount.dart';
 export 'product.dart';
 export 'slide_ad.dart';
@@ -130,7 +131,7 @@ class Protocol extends _i1.SerializationManagerServer {
       managed: true,
     ),
     _i2.TableDefinition(
-      name: 'shop_slide_ads',
+      name: 'shop_banner_ads',
       schema: 'public',
       columns: [
         _i2.ColumnDefinition(
@@ -138,7 +139,7 @@ class Protocol extends _i1.SerializationManagerServer {
           columnType: _i2.ColumnType.integer,
           isNullable: false,
           dartType: 'int?',
-          columnDefault: 'nextval(\'shop_slide_ads_id_seq\'::regclass)',
+          columnDefault: 'nextval(\'shop_banner_ads_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
           name: 'title',
@@ -162,7 +163,7 @@ class Protocol extends _i1.SerializationManagerServer {
       foreignKeys: [],
       indexes: [
         _i2.IndexDefinition(
-          indexName: 'shop_slide_ads_pkey',
+          indexName: 'shop_banner_ads_pkey',
           tableSpace: null,
           elements: [
             _i2.IndexElementDefinition(
@@ -196,8 +197,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i5.Product) {
       return _i5.Product.fromJson(data, this) as T;
     }
-    if (t == _i6.SlideAd) {
-      return _i6.SlideAd.fromJson(data, this) as T;
+    if (t == _i6.BannerAd) {
+      return _i6.BannerAd.fromJson(data, this) as T;
     }
     if (t == _i1.getType<_i4.Discount?>()) {
       return (data != null ? _i4.Discount.fromJson(data, this) : null) as T;
@@ -205,13 +206,17 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i5.Product?>()) {
       return (data != null ? _i5.Product.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i6.SlideAd?>()) {
-      return (data != null ? _i6.SlideAd.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i6.BannerAd?>()) {
+      return (data != null ? _i6.BannerAd.fromJson(data, this) : null) as T;
     }
     if (t == _i1.getType<List<String>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<String>(e)).toList()
           : null) as dynamic;
+    }
+    if (t == List<_i7.BannerAd>) {
+      return (data as List).map((e) => deserialize<_i7.BannerAd>(e)).toList()
+          as dynamic;
     }
     try {
       return _i3.Protocol().deserialize<T>(data, t);
@@ -235,8 +240,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i5.Product) {
       return 'Product';
     }
-    if (data is _i6.SlideAd) {
-      return 'SlideAd';
+    if (data is _i6.BannerAd) {
+      return 'BannerAd';
     }
     return super.getClassNameForObject(data);
   }
@@ -253,8 +258,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data['className'] == 'Product') {
       return deserialize<_i5.Product>(data['data']);
     }
-    if (data['className'] == 'SlideAd') {
-      return deserialize<_i6.SlideAd>(data['data']);
+    if (data['className'] == 'BannerAd') {
+      return deserialize<_i6.BannerAd>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
@@ -278,8 +283,8 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i4.Discount.t;
       case _i5.Product:
         return _i5.Product.t;
-      case _i6.SlideAd:
-        return _i6.SlideAd.t;
+      case _i6.BannerAd:
+        return _i6.BannerAd.t;
     }
     return null;
   }

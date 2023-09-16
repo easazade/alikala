@@ -2,11 +2,7 @@ import 'dart:async';
 
 import 'package:application/config.dart';
 import 'package:application/features/splash/splash_screen.dart';
-import 'package:application/stores/auth_store.dart';
-import 'package:application/stores/cart_store.dart';
-import 'package:application/stores/profile_store.dart';
-
-import 'package:application/stores/shop_store.dart';
+import 'package:application/stores/stores.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -50,7 +46,7 @@ Future _registerAuthDependencies() async {
 
 Future _registerStores() async {
   _getIt.registerLazySingleton(() => AuthStore(emailAuthController: inject(), sessionManager: inject()));
-  _getIt.registerLazySingleton(() => ShopStore());
+  _getIt.registerLazySingleton(() => ShopStore(client: inject()));
   _getIt.registerLazySingleton(() => ProfileStore());
   _getIt.registerLazySingleton(() => CartStore());
 }

@@ -70,5 +70,6 @@
   "enterAPassword": "Enter a password",
   "confirmAPassword": "Confirm a password",
   "register": "Register",
-  "username": "Username"
+  "username": "Username",
+  "shop":"Shop"
 }

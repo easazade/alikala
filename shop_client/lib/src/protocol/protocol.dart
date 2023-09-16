@@ -11,7 +11,8 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'discount.dart' as _i2;
 import 'product.dart' as _i3;
 import 'slide_ad.dart' as _i4;
-import 'package:serverpod_auth_client/module.dart' as _i5;
+import 'package:shop_client/src/protocol/slide_ad.dart' as _i5;
+import 'package:serverpod_auth_client/module.dart' as _i6;
 export 'discount.dart';
 export 'product.dart';
 export 'slide_ad.dart';
@@ -41,8 +42,8 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i3.Product) {
       return _i3.Product.fromJson(data, this) as T;
     }
-    if (t == _i4.SlideAd) {
-      return _i4.SlideAd.fromJson(data, this) as T;
+    if (t == _i4.BannerAd) {
+      return _i4.BannerAd.fromJson(data, this) as T;
     }
     if (t == _i1.getType<_i2.Discount?>()) {
       return (data != null ? _i2.Discount.fromJson(data, this) : null) as T;
@@ -50,16 +51,20 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<_i3.Product?>()) {
       return (data != null ? _i3.Product.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i4.SlideAd?>()) {
-      return (data != null ? _i4.SlideAd.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i4.BannerAd?>()) {
+      return (data != null ? _i4.BannerAd.fromJson(data, this) : null) as T;
     }
     if (t == _i1.getType<List<String>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<String>(e)).toList()
           : null) as dynamic;
     }
+    if (t == List<_i5.BannerAd>) {
+      return (data as List).map((e) => deserialize<_i5.BannerAd>(e)).toList()
+          as dynamic;
+    }
     try {
-      return _i5.Protocol().deserialize<T>(data, t);
+      return _i6.Protocol().deserialize<T>(data, t);
     } catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -67,7 +72,7 @@ class Protocol extends _i1.SerializationManager {
   @override
   String? getClassNameForObject(Object data) {
     String? className;
-    className = _i5.Protocol().getClassNameForObject(data);
+    className = _i6.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -77,8 +82,8 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i3.Product) {
       return 'Product';
     }
-    if (data is _i4.SlideAd) {
-      return 'SlideAd';
+    if (data is _i4.BannerAd) {
+      return 'BannerAd';
     }
     return super.getClassNameForObject(data);
   }
@@ -87,7 +92,7 @@ class Protocol extends _i1.SerializationManager {
   dynamic deserializeByClassName(Map<String, dynamic> data) {
     if (data['className'].startsWith('serverpod_auth.')) {
       data['className'] = data['className'].substring(15);
-      return _i5.Protocol().deserializeByClassName(data);
+      return _i6.Protocol().deserializeByClassName(data);
     }
     if (data['className'] == 'Discount') {
       return deserialize<_i2.Discount>(data['data']);
@@ -95,8 +100,8 @@ class Protocol extends _i1.SerializationManager {
     if (data['className'] == 'Product') {
       return deserialize<_i3.Product>(data['data']);
     }
-    if (data['className'] == 'SlideAd') {
-      return deserialize<_i4.SlideAd>(data['data']);
+    if (data['className'] == 'BannerAd') {
+      return deserialize<_i4.BannerAd>(data['data']);
     }
     return super.deserializeByClassName(data);
   }

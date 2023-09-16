@@ -8,19 +8,19 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 
-class SlideAd extends _i1.TableRow {
-  SlideAd({
+class BannerAd extends _i1.TableRow {
+  BannerAd({
     int? id,
     this.title,
     this.description,
     this.image,
   }) : super(id);
 
-  factory SlideAd.fromJson(
+  factory BannerAd.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return SlideAd(
+    return BannerAd(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
       title:
           serializationManager.deserialize<String?>(jsonSerialization['title']),
@@ -31,7 +31,7 @@ class SlideAd extends _i1.TableRow {
     );
   }
 
-  static final t = SlideAdTable();
+  static final t = BannerAdTable();
 
   String? title;
 
@@ -40,7 +40,7 @@ class SlideAd extends _i1.TableRow {
   String? image;
 
   @override
-  String get tableName => 'shop_slide_ads';
+  String get tableName => 'shop_banner_ads';
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -94,9 +94,9 @@ class SlideAd extends _i1.TableRow {
     }
   }
 
-  static Future<List<SlideAd>> find(
+  static Future<List<BannerAd>> find(
     _i1.Session session, {
-    SlideAdExpressionBuilder? where,
+    BannerAdExpressionBuilder? where,
     int? limit,
     int? offset,
     _i1.Column? orderBy,
@@ -105,8 +105,8 @@ class SlideAd extends _i1.TableRow {
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.find<SlideAd>(
-      where: where != null ? where(SlideAd.t) : null,
+    return session.db.find<BannerAd>(
+      where: where != null ? where(BannerAd.t) : null,
       limit: limit,
       offset: offset,
       orderBy: orderBy,
@@ -117,17 +117,17 @@ class SlideAd extends _i1.TableRow {
     );
   }
 
-  static Future<SlideAd?> findSingleRow(
+  static Future<BannerAd?> findSingleRow(
     _i1.Session session, {
-    SlideAdExpressionBuilder? where,
+    BannerAdExpressionBuilder? where,
     int? offset,
     _i1.Column? orderBy,
     bool orderDescending = false,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.findSingleRow<SlideAd>(
-      where: where != null ? where(SlideAd.t) : null,
+    return session.db.findSingleRow<BannerAd>(
+      where: where != null ? where(BannerAd.t) : null,
       offset: offset,
       orderBy: orderBy,
       orderDescending: orderDescending,
@@ -136,27 +136,27 @@ class SlideAd extends _i1.TableRow {
     );
   }
 
-  static Future<SlideAd?> findById(
+  static Future<BannerAd?> findById(
     _i1.Session session,
     int id,
   ) async {
-    return session.db.findById<SlideAd>(id);
+    return session.db.findById<BannerAd>(id);
   }
 
   static Future<int> delete(
     _i1.Session session, {
-    required SlideAdExpressionBuilder where,
+    required BannerAdExpressionBuilder where,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.delete<SlideAd>(
-      where: where(SlideAd.t),
+    return session.db.delete<BannerAd>(
+      where: where(BannerAd.t),
       transaction: transaction,
     );
   }
 
   static Future<bool> deleteRow(
     _i1.Session session,
-    SlideAd row, {
+    BannerAd row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.deleteRow(
@@ -167,7 +167,7 @@ class SlideAd extends _i1.TableRow {
 
   static Future<bool> update(
     _i1.Session session,
-    SlideAd row, {
+    BannerAd row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.update(
@@ -178,7 +178,7 @@ class SlideAd extends _i1.TableRow {
 
   static Future<void> insert(
     _i1.Session session,
-    SlideAd row, {
+    BannerAd row, {
     _i1.Transaction? transaction,
   }) async {
     return session.db.insert(
@@ -189,13 +189,13 @@ class SlideAd extends _i1.TableRow {
 
   static Future<int> count(
     _i1.Session session, {
-    SlideAdExpressionBuilder? where,
+    BannerAdExpressionBuilder? where,
     int? limit,
     bool useCache = true,
     _i1.Transaction? transaction,
   }) async {
-    return session.db.count<SlideAd>(
-      where: where != null ? where(SlideAd.t) : null,
+    return session.db.count<BannerAd>(
+      where: where != null ? where(BannerAd.t) : null,
       limit: limit,
       useCache: useCache,
       transaction: transaction,
@@ -203,10 +203,10 @@ class SlideAd extends _i1.TableRow {
   }
 }
 
-typedef SlideAdExpressionBuilder = _i1.Expression Function(SlideAdTable);
+typedef BannerAdExpressionBuilder = _i1.Expression Function(BannerAdTable);
 
-class SlideAdTable extends _i1.Table {
-  SlideAdTable() : super(tableName: 'shop_slide_ads');
+class BannerAdTable extends _i1.Table {
+  BannerAdTable() : super(tableName: 'shop_banner_ads');
 
   /// The database id, set if the object has been inserted into the
   /// database or if it has been fetched from the database. Otherwise,
@@ -228,5 +228,5 @@ class SlideAdTable extends _i1.Table {
       ];
 }
 
-@Deprecated('Use SlideAdTable.t instead.')
-SlideAdTable tSlideAd = SlideAdTable();
+@Deprecated('Use BannerAdTable.t instead.')
+BannerAdTable tBannerAd = BannerAdTable();

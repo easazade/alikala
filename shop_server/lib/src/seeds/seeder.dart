@@ -12,12 +12,12 @@ class Seeder {
   }
 
   static Future _seedSlideAds(Session session) async {
-    final allSlideAds = await SlideAd.find(session);
+    final allBannerAds = await BannerAd.find(session);
 
-    if (allSlideAds.isEmpty) {
-      final slides = List.generate(
+    if (allBannerAds.isEmpty) {
+      final banners = List.generate(
         20,
-        (index) => SlideAd(
+        (index) => BannerAd(
           title: FakerX.defaultInstance.lorem.sentence,
           description: FakerX.defaultInstance.lorem.paragraph(minSentences: 3, maxSentences: 5),
           image: FakerX.defaultInstance.image.image(
@@ -28,11 +28,11 @@ class Seeder {
         ),
       );
 
-      for (var row in slides) {
-        await SlideAd.insert(session, row);
+      for (var row in banners) {
+        await BannerAd.insert(session, row);
       }
 
-      print('inserted seed products into ${SlideAd.t.tableName} table');
+      print('inserted seed products into ${BannerAd.t.tableName} table');
     }
   }
 

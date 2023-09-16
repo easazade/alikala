@@ -6,12 +6,12 @@ import 'package:application/widgets/app_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AppSliverMostPopulars extends StatelessWidget {
+class AppSliverMostPopular extends StatelessWidget {
   final List<Product> products;
   final String title;
   final List<List<Product>> _productTuples = [];
 
-  AppSliverMostPopulars({required this.products, required this.title}) {
+  AppSliverMostPopular({required this.products, required this.title}) {
     var stack = utils.StackCollection<Product>();
     // ignore: avoid_function_literals_in_foreach_calls
     products.reversed.forEach((element) => stack.push(element));

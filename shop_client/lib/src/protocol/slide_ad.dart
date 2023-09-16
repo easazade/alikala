@@ -8,19 +8,19 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-class SlideAd extends _i1.SerializableEntity {
-  SlideAd({
+class BannerAd extends _i1.SerializableEntity {
+  BannerAd({
     this.id,
     this.title,
     this.description,
     this.image,
   });
 
-  factory SlideAd.fromJson(
+  factory BannerAd.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return SlideAd(
+    return BannerAd(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
       title:
           serializationManager.deserialize<String?>(jsonSerialization['title']),

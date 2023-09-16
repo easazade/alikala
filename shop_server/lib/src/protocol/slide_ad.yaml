@@ -1,5 +1,5 @@
-class: SlideAd
-table: shop_slide_ads
+class: BannerAd
+table: shop_banner_ads
 
 fields:
   title: String?

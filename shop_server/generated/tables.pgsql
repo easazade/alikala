@@ -1,4 +1,19 @@
 --
+-- Class BannerAd as table shop_banner_ads
+--
+
+CREATE TABLE "shop_banner_ads" (
+  "id" serial,
+  "title" text,
+  "description" text,
+  "image" text
+);
+
+ALTER TABLE ONLY "shop_banner_ads"
+  ADD CONSTRAINT shop_banner_ads_pkey PRIMARY KEY (id);
+
+
+--
 -- Class Discount as table shop_discounts
 --
 
@@ -27,20 +42,5 @@ CREATE TABLE "shop_products" (
 
 ALTER TABLE ONLY "shop_products"
   ADD CONSTRAINT shop_products_pkey PRIMARY KEY (id);
-
-
---
--- Class SlideAd as table shop_slide_ads
---
-
-CREATE TABLE "shop_slide_ads" (
-  "id" serial,
-  "title" text,
-  "description" text,
-  "image" text
-);
-
-ALTER TABLE ONLY "shop_slide_ads"
-  ADD CONSTRAINT shop_slide_ads_pkey PRIMARY KEY (id);
 
 

@@ -97,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "searchIn": MessageLookupByLibrary.simpleMessage("Search In"),
         "sendAgainInNSeconds": m0,
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "shop": MessageLookupByLibrary.simpleMessage("Shop"),
         "shoppingCart": MessageLookupByLibrary.simpleMessage("Shopping Cart"),
         "similarItems": MessageLookupByLibrary.simpleMessage("Similar Items"),
         "sum": MessageLookupByLibrary.simpleMessage("Sum"),
