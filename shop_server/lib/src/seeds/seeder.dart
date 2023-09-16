@@ -1,10 +1,42 @@
 import 'package:faker_x/faker_x.dart';
 import 'package:serverpod/server.dart';
 import 'package:shop_server/src/generated/product.dart';
+import 'package:shop_server/src/generated/slide_ad.dart';
 
 class Seeder {
-  static Future seedProducts(Session session) async {
+  static const count = 20;
+
+  static Future insertSeedData(Session session) async {
+    await _seedProducts(session);
+    await _seedSlideAds(session);
+  }
+
+  static Future _seedSlideAds(Session session) async {
+    final allSlideAds = await SlideAd.find(session);
+
+    if (allSlideAds.isEmpty) {
+      final slides = List.generate(
+        20,
+        (index) => SlideAd(
+          title: FakerX.defaultInstance.lorem.sentence,
+          description: FakerX.defaultInstance.lorem.paragraph(minSentences: 3, maxSentences: 5),
+          image: FakerX.defaultInstance.image.image(
+            width: 640,
+            height: 360,
+            keywords: ['shoes', 't-shirt', 'laptop', 'ssd', 'watch', 'xbox', 'tea pot', 'book'],
+          ),
+        ),
+      );
+
+      for (var row in slides) {
+        await SlideAd.insert(session, row);
+      }
+    }
+  }
+
+  static Future _seedProducts(Session session) async {
     final allProducts = await Product.find(session);
+
     if (allProducts.isEmpty) {
       final products = List.generate(
         20,

@@ -118,6 +118,6 @@ void run(List<String> args) async {
   print('server running in ${internalSession.serverpod.runMode} mode');
 
   if (internalSession.serverpod.runMode == 'development') {
-    Seeder.seedProducts(internalSession);
+    await Seeder.insertSeedData(internalSession);
   }
 }

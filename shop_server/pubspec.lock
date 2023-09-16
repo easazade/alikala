@@ -149,10 +149,10 @@ packages:
     dependency: "direct main"
     description:
       name: faker_x
-      sha256: "6722e097ec6014ed3859dbaa30e224798e9a0df6919ea5d74b61b3b8b0f08785"
+      sha256: c09cd37a163b2d260446c40b8da5c4e1d1a271d9fa0e7011f60bfbbe635ebaca
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.15"
+    version: "0.6.16"
   firebase_admin:
     dependency: transitive
     description:
