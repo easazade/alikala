@@ -7,6 +7,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import 'protocol.dart' as _i2;
 
 class Product extends _i1.SerializableEntity {
   Product({
@@ -14,6 +15,7 @@ class Product extends _i1.SerializableEntity {
     required this.name,
     required this.description,
     this.images,
+    this.discount,
   });
 
   factory Product.fromJson(
@@ -27,6 +29,8 @@ class Product extends _i1.SerializableEntity {
           .deserialize<String>(jsonSerialization['description']),
       images: serializationManager
           .deserialize<List<String>?>(jsonSerialization['images']),
+      discount: serializationManager
+          .deserialize<_i2.Discount?>(jsonSerialization['discount']),
     );
   }
 
@@ -41,6 +45,8 @@ class Product extends _i1.SerializableEntity {
 
   List<String>? images;
 
+  _i2.Discount? discount;
+
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -48,6 +54,7 @@ class Product extends _i1.SerializableEntity {
       'name': name,
       'description': description,
       'images': images,
+      'discount': discount,
     };
   }
 }

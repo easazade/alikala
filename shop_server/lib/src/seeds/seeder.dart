@@ -31,6 +31,8 @@ class Seeder {
       for (var row in slides) {
         await SlideAd.insert(session, row);
       }
+
+      print('inserted seed products into ${SlideAd.t.tableName} table');
     }
   }
 
@@ -48,6 +50,8 @@ class Seeder {
       for (var row in products) {
         await Product.insert(session, row);
       }
+
+      print('inserted seed products into ${Product.t.tableName} table');
     }
   }
 }

@@ -5,3 +5,4 @@ fields:
   name: String
   description: String
   images: List<String>?
+  discount: Discount?, api

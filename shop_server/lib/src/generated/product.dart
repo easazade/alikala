@@ -7,6 +7,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
+import 'protocol.dart' as _i2;
 
 class Product extends _i1.TableRow {
   Product({
@@ -14,6 +15,7 @@ class Product extends _i1.TableRow {
     required this.name,
     required this.description,
     this.images,
+    this.discount,
   }) : super(id);
 
   factory Product.fromJson(
@@ -27,6 +29,8 @@ class Product extends _i1.TableRow {
           .deserialize<String>(jsonSerialization['description']),
       images: serializationManager
           .deserialize<List<String>?>(jsonSerialization['images']),
+      discount: serializationManager
+          .deserialize<_i2.Discount?>(jsonSerialization['discount']),
     );
   }
 
@@ -38,6 +42,8 @@ class Product extends _i1.TableRow {
 
   List<String>? images;
 
+  _i2.Discount? discount;
+
   @override
   String get tableName => 'shop_products';
   @override
@@ -47,6 +53,7 @@ class Product extends _i1.TableRow {
       'name': name,
       'description': description,
       'images': images,
+      'discount': discount,
     };
   }
 
@@ -67,6 +74,7 @@ class Product extends _i1.TableRow {
       'name': name,
       'description': description,
       'images': images,
+      'discount': discount,
     };
   }
 
