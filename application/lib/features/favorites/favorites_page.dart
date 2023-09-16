@@ -18,19 +18,20 @@ class FavoritesPage extends StatelessWidget {
       body: NoScrollIndicator(
         child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(S.of(context).yourFavoriteItems, style: theme.textTheme.labelSmall),
-                  Text('${fakeProducts.length} ${S.of(context).items}', style: theme.textTheme.labelSmall),
-                ],
-              ),
-            ),
-            SizedBox(height: 15),
-            ...fakeProducts.map((item) => AppFavoriteProductItem(item)).toList(),
-            SizedBox(height: 30),
+            //TODO: uncomment and refactor 
+            // Padding(
+            //   padding: const EdgeInsets.all(10),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Text(S.of(context).yourFavoriteItems, style: theme.textTheme.labelSmall),
+            //       Text('${fakeProducts.length} ${S.of(context).items}', style: theme.textTheme.labelSmall),
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(height: 15),
+            // ...fakeProducts.map((item) => AppFavoriteProductItem(item)).toList(),
+            // SizedBox(height: 30),
           ],
         ),
       ),

@@ -16,9 +16,10 @@ import 'product.dart' as _i6;
 import 'profile.dart' as _i7;
 import 'slide_ad.dart' as _i8;
 import 'protocol.dart' as _i9;
-import 'package:shop_client/src/protocol/category.dart' as _i10;
-import 'package:shop_client/src/protocol/slide_ad.dart' as _i11;
-import 'package:serverpod_auth_client/module.dart' as _i12;
+import 'package:shop_client/src/protocol/cart.dart' as _i10;
+import 'package:shop_client/src/protocol/category.dart' as _i11;
+import 'package:shop_client/src/protocol/slide_ad.dart' as _i12;
+import 'package:serverpod_auth_client/module.dart' as _i13;
 export 'cart.dart';
 export 'cart_item.dart';
 export 'category.dart';
@@ -101,16 +102,20 @@ class Protocol extends _i1.SerializationManager {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
     }
-    if (t == List<_i10.Category>) {
-      return (data as List).map((e) => deserialize<_i10.Category>(e)).toList()
+    if (t == List<_i10.Cart>) {
+      return (data as List).map((e) => deserialize<_i10.Cart>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i11.BannerAd>) {
-      return (data as List).map((e) => deserialize<_i11.BannerAd>(e)).toList()
+    if (t == List<_i11.Category>) {
+      return (data as List).map((e) => deserialize<_i11.Category>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i12.BannerAd>) {
+      return (data as List).map((e) => deserialize<_i12.BannerAd>(e)).toList()
           as dynamic;
     }
     try {
-      return _i12.Protocol().deserialize<T>(data, t);
+      return _i13.Protocol().deserialize<T>(data, t);
     } catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -118,7 +123,7 @@ class Protocol extends _i1.SerializationManager {
   @override
   String? getClassNameForObject(Object data) {
     String? className;
-    className = _i12.Protocol().getClassNameForObject(data);
+    className = _i13.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -150,7 +155,7 @@ class Protocol extends _i1.SerializationManager {
   dynamic deserializeByClassName(Map<String, dynamic> data) {
     if (data['className'].startsWith('serverpod_auth.')) {
       data['className'] = data['className'].substring(15);
-      return _i12.Protocol().deserializeByClassName(data);
+      return _i13.Protocol().deserializeByClassName(data);
     }
     if (data['className'] == 'Cart') {
       return deserialize<_i2.Cart>(data['data']);

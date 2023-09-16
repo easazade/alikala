@@ -1,24 +1,35 @@
-import 'package:application/data/entities.dart';
-import 'package:application/fake_data.dart';
+import 'package:application/utils/utils_functions.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
+import 'package:shop_client/shop_client.dart';
 
 class CartStore extends Store {
-  final products = ListData<Product>(fakeProducts.map((e) => Data(value: e)).toList());
+  CartStore({required this.client});
 
-  void addProduct() {
-    products.insert(0, Data(value: fakeProducts.first));
+  final Client client;
+
+  final carts = ListData<Cart>([]);
+
+  Future init() async {
+    operation = Operation.fetch;
+    error = null;
+    notifyListeners();
+
+    final result = await client.carts.getCarts().sealed();
+    if (result.isSuccessful) {
+      final allCarts = result.value;
+      carts.addAll(allCarts.mapToData);
+    } else {
+      error = Failure('Could not fetch carts', exception: result.exception, cause: Operation.fetch);
+    }
+
+    operation = Operation.none;
     notifyListeners();
   }
 
-  Future removeProduct() async {
-    products[0].operation = Operation.delete;
-    notifyListeners();
+  void addProduct(Product product) {}
 
-    await Future.delayed(const Duration(seconds: 1));
-    products.removeAt(0);
-    notifyListeners();
-  }
+  Future removeProduct(Product product) async {}
 
   @override
-  List<Data<Object?>> get items => [products];
+  List<Data<Object?>> get items => [carts];
 }

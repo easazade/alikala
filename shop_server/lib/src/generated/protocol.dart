@@ -18,8 +18,9 @@ import 'product.dart' as _i8;
 import 'profile.dart' as _i9;
 import 'slide_ad.dart' as _i10;
 import 'protocol.dart' as _i11;
-import 'package:shop_server/src/generated/category.dart' as _i12;
-import 'package:shop_server/src/generated/slide_ad.dart' as _i13;
+import 'package:shop_server/src/generated/cart.dart' as _i12;
+import 'package:shop_server/src/generated/category.dart' as _i13;
+import 'package:shop_server/src/generated/slide_ad.dart' as _i14;
 export 'cart.dart';
 export 'cart_item.dart';
 export 'category.dart';
@@ -476,12 +477,16 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
     }
-    if (t == List<_i12.Category>) {
-      return (data as List).map((e) => deserialize<_i12.Category>(e)).toList()
+    if (t == List<_i12.Cart>) {
+      return (data as List).map((e) => deserialize<_i12.Cart>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i13.BannerAd>) {
-      return (data as List).map((e) => deserialize<_i13.BannerAd>(e)).toList()
+    if (t == List<_i13.Category>) {
+      return (data as List).map((e) => deserialize<_i13.Category>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i14.BannerAd>) {
+      return (data as List).map((e) => deserialize<_i14.BannerAd>(e)).toList()
           as dynamic;
     }
     try {

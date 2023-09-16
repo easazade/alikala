@@ -90,12 +90,13 @@ class ProductPage extends StatelessWidget {
             SizedBox(height: 10),
             AppSectionSeparator(),
             SizedBox(height: 10),
-            AppHorizontalProductsList(
-              products: fakeProducts,
-              title: S.of(context).similarItems,
-              linkLabel: S.of(context).viewAll,
-              onLinkClicked: () {},
-            ),
+            //TODO: uncomment and refactor
+            // AppHorizontalProductsList(
+            //   products: fakeProducts,
+            //   title: S.of(context).similarItems,
+            //   linkLabel: S.of(context).viewAll,
+            //   onLinkClicked: () {},
+            // ),
             SizedBox(height: 10),
             AppSectionSeparator(),
             SizedBox(height: 10),

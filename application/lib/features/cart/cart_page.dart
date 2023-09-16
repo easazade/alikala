@@ -54,10 +54,11 @@ class CartPage extends ConsumerWidget {
                 if (!authStore.isUserAuthenticated) _createLoginNeededCard(),
                 SizedBox(height: 30),
                 _createCartIsEmptyMessage(cartStore),
-                for (var product in store.products) ...[
-                  AppSectionSeparator(height: 5),
-                  _createCartItem(product),
-                ],
+                //TODO: uncomment and refactor
+                // for (var product in store.carts) ...[
+                //   AppSectionSeparator(height: 5),
+                //   _createCartItem(product),
+                // ],
                 AppSectionSeparator(),
                 _createCartSummary(context),
                 AppSectionSeparator(),
@@ -154,11 +155,12 @@ class CartPage extends ConsumerWidget {
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () {
-              if (cartStore.products.isNotEmpty) {
-                cartStore.removeProduct();
-              } else {
-                cartStore.addProduct();
-              }
+              //TODO: uncomment and refactor
+              // if (cartStore.carts.isNotEmpty) {
+              //   cartStore.removeProduct();
+              // } else {
+              //   cartStore.addProduct();
+              // }
             },
             child: Image.asset(
               Assets.images.emptyCart.path,

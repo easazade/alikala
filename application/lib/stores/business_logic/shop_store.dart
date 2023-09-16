@@ -8,10 +8,10 @@ class ShopStore extends Store {
   final banners = ListData<BannerAd>([]);
 
   ShopStore({required this.client}) {
-    _initialize();
+    init();
   }
 
-  Future _initialize() async {
+  Future init() async {
     operation = Operation.fetch;
     error = null;
     notifyListeners();
@@ -21,7 +21,7 @@ class ShopStore extends Store {
       final bannerAds = result.value;
       banners.addAll(bannerAds.mapToData);
     } else {
-      error = Failure('Could not fetch categories', exception: result.exception, cause: Operation.fetch);
+      error = Failure('Could not fetch banners', exception: result.exception, cause: Operation.fetch);
     }
 
     operation = Operation.none;
