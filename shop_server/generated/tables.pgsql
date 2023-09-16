@@ -23,7 +23,8 @@ CREATE TABLE "shop_categories" (
   "name" text NOT NULL,
   "description" text NOT NULL,
   "image" text,
-  "icon" text
+  "icon" text,
+  "productsCount" integer
 );
 
 ALTER TABLE ONLY "shop_categories"

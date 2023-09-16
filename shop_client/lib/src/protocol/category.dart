@@ -16,6 +16,7 @@ class Category extends _i1.SerializableEntity {
     required this.description,
     this.image,
     this.icon,
+    this.productsCount,
   });
 
   factory Category.fromJson(
@@ -33,6 +34,8 @@ class Category extends _i1.SerializableEntity {
           serializationManager.deserialize<String?>(jsonSerialization['image']),
       icon:
           serializationManager.deserialize<String?>(jsonSerialization['icon']),
+      productsCount: serializationManager
+          .deserialize<int?>(jsonSerialization['productsCount']),
     );
   }
 
@@ -51,6 +54,8 @@ class Category extends _i1.SerializableEntity {
 
   String? icon;
 
+  int? productsCount;
+
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -60,6 +65,7 @@ class Category extends _i1.SerializableEntity {
       'description': description,
       'image': image,
       'icon': icon,
+      'productsCount': productsCount,
     };
   }
 }

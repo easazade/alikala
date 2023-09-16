@@ -1,7 +1,7 @@
 import 'package:application/core/constants.dart';
-import 'package:application/data/entities.dart';
 import 'package:application/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shop_client/shop_client.dart';
 
 import 'app_network_image.dart';
 
@@ -82,7 +82,7 @@ class AppSliverCategoryList extends StatelessWidget {
           ),
           SizedBox(height: 8),
           Text(
-            '+${subCategory.productsEstimate} ${S.current.items}',
+            '+${subCategory.productsCount} ${S.current.items}',
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

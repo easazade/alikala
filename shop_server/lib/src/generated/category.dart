@@ -16,6 +16,7 @@ class Category extends _i1.TableRow {
     required this.description,
     this.image,
     this.icon,
+    this.productsCount,
   }) : super(id);
 
   factory Category.fromJson(
@@ -33,6 +34,8 @@ class Category extends _i1.TableRow {
           serializationManager.deserialize<String?>(jsonSerialization['image']),
       icon:
           serializationManager.deserialize<String?>(jsonSerialization['icon']),
+      productsCount: serializationManager
+          .deserialize<int?>(jsonSerialization['productsCount']),
     );
   }
 
@@ -48,6 +51,8 @@ class Category extends _i1.TableRow {
 
   String? icon;
 
+  int? productsCount;
+
   @override
   String get tableName => 'shop_categories';
   @override
@@ -59,6 +64,7 @@ class Category extends _i1.TableRow {
       'description': description,
       'image': image,
       'icon': icon,
+      'productsCount': productsCount,
     };
   }
 
@@ -71,6 +77,7 @@ class Category extends _i1.TableRow {
       'description': description,
       'image': image,
       'icon': icon,
+      'productsCount': productsCount,
     };
   }
 
@@ -83,6 +90,7 @@ class Category extends _i1.TableRow {
       'description': description,
       'image': image,
       'icon': icon,
+      'productsCount': productsCount,
     };
   }
 
@@ -109,6 +117,9 @@ class Category extends _i1.TableRow {
         return;
       case 'icon':
         icon = value;
+        return;
+      case 'productsCount':
+        productsCount = value;
         return;
       default:
         throw UnimplementedError();
@@ -244,6 +255,8 @@ class CategoryTable extends _i1.Table {
 
   final icon = _i1.ColumnString('icon');
 
+  final productsCount = _i1.ColumnInt('productsCount');
+
   @override
   List<_i1.Column> get columns => [
         id,
@@ -252,6 +265,7 @@ class CategoryTable extends _i1.Table {
         description,
         image,
         icon,
+        productsCount,
       ];
 }
 

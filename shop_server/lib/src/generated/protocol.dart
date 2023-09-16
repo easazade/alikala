@@ -14,7 +14,8 @@ import 'category.dart' as _i4;
 import 'discount.dart' as _i5;
 import 'product.dart' as _i6;
 import 'slide_ad.dart' as _i7;
-import 'package:shop_server/src/generated/slide_ad.dart' as _i8;
+import 'package:shop_server/src/generated/category.dart' as _i8;
+import 'package:shop_server/src/generated/slide_ad.dart' as _i9;
 export 'category.dart';
 export 'discount.dart';
 export 'product.dart';
@@ -70,6 +71,12 @@ class Protocol extends _i1.SerializationManagerServer {
           columnType: _i2.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'productsCount',
+          columnType: _i2.ColumnType.integer,
+          isNullable: true,
+          dartType: 'int?',
         ),
       ],
       foreignKeys: [],
@@ -288,8 +295,12 @@ class Protocol extends _i1.SerializationManagerServer {
           ? (data as List).map((e) => deserialize<String>(e)).toList()
           : null) as dynamic;
     }
-    if (t == List<_i8.BannerAd>) {
-      return (data as List).map((e) => deserialize<_i8.BannerAd>(e)).toList()
+    if (t == List<_i8.Category>) {
+      return (data as List).map((e) => deserialize<_i8.Category>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i9.BannerAd>) {
+      return (data as List).map((e) => deserialize<_i9.BannerAd>(e)).toList()
           as dynamic;
     }
     try {

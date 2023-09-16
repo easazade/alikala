@@ -25,6 +25,7 @@ class Seeder {
           description: FakerX.defaultInstance.lorem.paragraph(),
           image: FakerX.defaultInstance.image.image(width: 40, height: 40, keywords: ['category']),
           icon: FakerX.defaultInstance.image.image(width: 40, height: 40, keywords: ['icon']),
+          productsCount: FakerX.defaultInstance.number.randomInt(100000),
         ),
       );
 

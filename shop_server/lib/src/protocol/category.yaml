@@ -7,4 +7,5 @@ fields:
   description: String
   image: String?
   icon: String?
+  productsCount: int?
   

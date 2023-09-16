@@ -2,24 +2,24 @@ import 'package:application/utils/utils_functions.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:shop_client/shop_client.dart';
 
-class ShopStore extends Store {
-  final Client client;
-
-  final banners = ListData<BannerAd>([]);
-
-  ShopStore({required this.client}) {
+class CategoryStore extends Store {
+  CategoryStore({required this.client}) {
     _initialize();
   }
+
+  final Client client;
+
+  final categories = ListData<Category>([]);
 
   Future _initialize() async {
     operation = Operation.fetch;
     error = null;
     notifyListeners();
 
-    final result = await client.bannerAds.getSlides().sealed();
+    final result = await client.categories.getCategories().sealed();
     if (result.isSuccessful) {
       final bannerAds = result.value;
-      banners.addAll(bannerAds.mapToData);
+      categories.addAll(bannerAds.mapToData);
     } else {
       error = Failure('Could not fetch categories', exception: result.exception, cause: Operation.fetch);
     }
@@ -29,5 +29,5 @@ class ShopStore extends Store {
   }
 
   @override
-  List<Data<Object?>> get items => [banners];
+  List<Data<Object?>> get items => [categories];
 }

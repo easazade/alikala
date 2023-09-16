@@ -34,16 +34,6 @@ class Product {
   );
 }
 
-class Category {
-  final int id;
-  final int parentId;
-  final String name;
-  final String image;
-  final int productsEstimate;
-
-  Category(this.id, this.parentId, this.name, this.image, this.productsEstimate);
-}
-
 class Comment {
   final int id;
   final String title;
