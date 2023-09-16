@@ -1,0 +1,7 @@
+class: CartItem
+table: shop_cart_items
+
+fields:
+  tableId: int, parent=shop_carts
+  product: Product?, api
+  addedCount: int

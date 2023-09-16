@@ -14,6 +14,38 @@ ALTER TABLE ONLY "shop_banner_ads"
 
 
 --
+-- Class Cart as table shop_carts
+--
+
+CREATE TABLE "shop_carts" (
+  "id" serial,
+  "dateCreated" timestamp without time zone NOT NULL
+);
+
+ALTER TABLE ONLY "shop_carts"
+  ADD CONSTRAINT shop_carts_pkey PRIMARY KEY (id);
+
+
+--
+-- Class CartItem as table shop_cart_items
+--
+
+CREATE TABLE "shop_cart_items" (
+  "id" serial,
+  "tableId" integer NOT NULL,
+  "addedCount" integer NOT NULL
+);
+
+ALTER TABLE ONLY "shop_cart_items"
+  ADD CONSTRAINT shop_cart_items_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY "shop_cart_items"
+  ADD CONSTRAINT shop_cart_items_fk_0
+    FOREIGN KEY("tableId")
+      REFERENCES shop_carts(id)
+        ON DELETE CASCADE;
+
+--
 -- Class Category as table shop_categories
 --
 
