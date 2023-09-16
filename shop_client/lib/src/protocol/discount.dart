@@ -11,6 +11,7 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 class Discount extends _i1.SerializableEntity {
   Discount({
     this.id,
+    required this.productId,
     required this.discountPrice,
     required this.startDate,
     required this.dueDate,
@@ -23,6 +24,8 @@ class Discount extends _i1.SerializableEntity {
   ) {
     return Discount(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      productId:
+          serializationManager.deserialize<int>(jsonSerialization['productId']),
       discountPrice: serializationManager
           .deserialize<double>(jsonSerialization['discountPrice']),
       startDate: serializationManager
@@ -39,6 +42,8 @@ class Discount extends _i1.SerializableEntity {
   /// the id will be null.
   int? id;
 
+  int productId;
+
   double discountPrice;
 
   DateTime startDate;
@@ -51,6 +56,7 @@ class Discount extends _i1.SerializableEntity {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'productId': productId,
       'discountPrice': discountPrice,
       'startDate': startDate,
       'dueDate': dueDate,

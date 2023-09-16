@@ -13,12 +13,14 @@ import 'package:serverpod_auth_server/module.dart' as _i3;
 import 'category.dart' as _i4;
 import 'discount.dart' as _i5;
 import 'product.dart' as _i6;
-import 'slide_ad.dart' as _i7;
-import 'package:shop_server/src/generated/category.dart' as _i8;
-import 'package:shop_server/src/generated/slide_ad.dart' as _i9;
+import 'profile.dart' as _i7;
+import 'slide_ad.dart' as _i8;
+import 'package:shop_server/src/generated/category.dart' as _i9;
+import 'package:shop_server/src/generated/slide_ad.dart' as _i10;
 export 'category.dart';
 export 'discount.dart';
 export 'product.dart';
+export 'profile.dart';
 export 'slide_ad.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
@@ -109,6 +111,12 @@ class Protocol extends _i1.SerializationManagerServer {
           columnDefault: 'nextval(\'shop_discounts_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
+          name: 'productId',
+          columnType: _i2.ColumnType.integer,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
           name: 'discountPrice',
           columnType: _i2.ColumnType.doublePrecision,
           isNullable: false,
@@ -133,7 +141,18 @@ class Protocol extends _i1.SerializationManagerServer {
           dartType: 'String',
         ),
       ],
-      foreignKeys: [],
+      foreignKeys: [
+        _i2.ForeignKeyDefinition(
+          constraintName: 'shop_discounts_fk_0',
+          columns: ['productId'],
+          referenceTable: 'shop_products',
+          referenceTableSchema: 'public',
+          referenceColumns: ['id'],
+          onUpdate: null,
+          onDelete: _i2.ForeignKeyAction.cascade,
+          matchType: null,
+        )
+      ],
       indexes: [
         _i2.IndexDefinition(
           indexName: 'shop_discounts_pkey',
@@ -191,6 +210,48 @@ class Protocol extends _i1.SerializationManagerServer {
       indexes: [
         _i2.IndexDefinition(
           indexName: 'shop_products_pkey',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'id',
+            )
+          ],
+          type: 'btree',
+          isUnique: true,
+          isPrimary: true,
+        )
+      ],
+      managed: true,
+    ),
+    _i2.TableDefinition(
+      name: 'shop_profiles',
+      schema: 'public',
+      columns: [
+        _i2.ColumnDefinition(
+          name: 'id',
+          columnType: _i2.ColumnType.integer,
+          isNullable: false,
+          dartType: 'int?',
+          columnDefault: 'nextval(\'shop_profiles_id_seq\'::regclass)',
+        ),
+        _i2.ColumnDefinition(
+          name: 'userId',
+          columnType: _i2.ColumnType.integer,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'favorites',
+          columnType: _i2.ColumnType.json,
+          isNullable: false,
+          dartType: 'List<int>',
+        ),
+      ],
+      foreignKeys: [],
+      indexes: [
+        _i2.IndexDefinition(
+          indexName: 'shop_profiles_pkey',
           tableSpace: null,
           elements: [
             _i2.IndexElementDefinition(
@@ -275,8 +336,11 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i6.Product) {
       return _i6.Product.fromJson(data, this) as T;
     }
-    if (t == _i7.BannerAd) {
-      return _i7.BannerAd.fromJson(data, this) as T;
+    if (t == _i7.Profile) {
+      return _i7.Profile.fromJson(data, this) as T;
+    }
+    if (t == _i8.BannerAd) {
+      return _i8.BannerAd.fromJson(data, this) as T;
     }
     if (t == _i1.getType<_i4.Category?>()) {
       return (data != null ? _i4.Category.fromJson(data, this) : null) as T;
@@ -287,20 +351,26 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i6.Product?>()) {
       return (data != null ? _i6.Product.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i7.BannerAd?>()) {
-      return (data != null ? _i7.BannerAd.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i7.Profile?>()) {
+      return (data != null ? _i7.Profile.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i8.BannerAd?>()) {
+      return (data != null ? _i8.BannerAd.fromJson(data, this) : null) as T;
     }
     if (t == _i1.getType<List<String>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<String>(e)).toList()
           : null) as dynamic;
     }
-    if (t == List<_i8.Category>) {
-      return (data as List).map((e) => deserialize<_i8.Category>(e)).toList()
+    if (t == List<int>) {
+      return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
+    }
+    if (t == List<_i9.Category>) {
+      return (data as List).map((e) => deserialize<_i9.Category>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i9.BannerAd>) {
-      return (data as List).map((e) => deserialize<_i9.BannerAd>(e)).toList()
+    if (t == List<_i10.BannerAd>) {
+      return (data as List).map((e) => deserialize<_i10.BannerAd>(e)).toList()
           as dynamic;
     }
     try {
@@ -328,7 +398,10 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i6.Product) {
       return 'Product';
     }
-    if (data is _i7.BannerAd) {
+    if (data is _i7.Profile) {
+      return 'Profile';
+    }
+    if (data is _i8.BannerAd) {
       return 'BannerAd';
     }
     return super.getClassNameForObject(data);
@@ -349,8 +422,11 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data['className'] == 'Product') {
       return deserialize<_i6.Product>(data['data']);
     }
+    if (data['className'] == 'Profile') {
+      return deserialize<_i7.Profile>(data['data']);
+    }
     if (data['className'] == 'BannerAd') {
-      return deserialize<_i7.BannerAd>(data['data']);
+      return deserialize<_i8.BannerAd>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
@@ -376,8 +452,10 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i5.Discount.t;
       case _i6.Product:
         return _i6.Product.t;
-      case _i7.BannerAd:
-        return _i7.BannerAd.t;
+      case _i7.Profile:
+        return _i7.Profile.t;
+      case _i8.BannerAd:
+        return _i8.BannerAd.t;
     }
     return null;
   }

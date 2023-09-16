@@ -1,0 +1,6 @@
+class: Profile
+table: shop_profiles
+
+fields:
+  userId: int
+  favorites: List<int>

@@ -2,6 +2,7 @@ class: Discount
 table: shop_discounts
 
 fields:
+  productId: int, parent=shop_products
   discountPrice: double
   startDate: DateTime
   dueDate: DateTime

@@ -32,22 +32,6 @@ ALTER TABLE ONLY "shop_categories"
 
 
 --
--- Class Discount as table shop_discounts
---
-
-CREATE TABLE "shop_discounts" (
-  "id" serial,
-  "discountPrice" double precision NOT NULL,
-  "startDate" timestamp without time zone NOT NULL,
-  "dueDate" timestamp without time zone NOT NULL,
-  "message" text NOT NULL
-);
-
-ALTER TABLE ONLY "shop_discounts"
-  ADD CONSTRAINT shop_discounts_pkey PRIMARY KEY (id);
-
-
---
 -- Class Product as table shop_products
 --
 
@@ -61,5 +45,41 @@ CREATE TABLE "shop_products" (
 
 ALTER TABLE ONLY "shop_products"
   ADD CONSTRAINT shop_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Class Discount as table shop_discounts
+--
+
+CREATE TABLE "shop_discounts" (
+  "id" serial,
+  "productId" integer NOT NULL,
+  "discountPrice" double precision NOT NULL,
+  "startDate" timestamp without time zone NOT NULL,
+  "dueDate" timestamp without time zone NOT NULL,
+  "message" text NOT NULL
+);
+
+ALTER TABLE ONLY "shop_discounts"
+  ADD CONSTRAINT shop_discounts_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY "shop_discounts"
+  ADD CONSTRAINT shop_discounts_fk_0
+    FOREIGN KEY("productId")
+      REFERENCES shop_products(id)
+        ON DELETE CASCADE;
+
+--
+-- Class Profile as table shop_profiles
+--
+
+CREATE TABLE "shop_profiles" (
+  "id" serial,
+  "userId" integer NOT NULL,
+  "favorites" json NOT NULL
+);
+
+ALTER TABLE ONLY "shop_profiles"
+  ADD CONSTRAINT shop_profiles_pkey PRIMARY KEY (id);
 
 

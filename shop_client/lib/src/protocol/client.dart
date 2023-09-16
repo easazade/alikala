@@ -40,6 +40,13 @@ class _EndpointBannerAds extends _i1.EndpointRef {
         'getSlides',
         {},
       );
+
+  _i2.Future<List<_i4.BannerAd>> ssssssss() =>
+      caller.callServerEndpoint<List<_i4.BannerAd>>(
+        'bannerAds',
+        'ssssssss',
+        {},
+      );
 }
 
 class _Modules {

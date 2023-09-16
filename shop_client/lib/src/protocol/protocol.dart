@@ -11,13 +11,15 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'category.dart' as _i2;
 import 'discount.dart' as _i3;
 import 'product.dart' as _i4;
-import 'slide_ad.dart' as _i5;
-import 'package:shop_client/src/protocol/category.dart' as _i6;
-import 'package:shop_client/src/protocol/slide_ad.dart' as _i7;
-import 'package:serverpod_auth_client/module.dart' as _i8;
+import 'profile.dart' as _i5;
+import 'slide_ad.dart' as _i6;
+import 'package:shop_client/src/protocol/category.dart' as _i7;
+import 'package:shop_client/src/protocol/slide_ad.dart' as _i8;
+import 'package:serverpod_auth_client/module.dart' as _i9;
 export 'category.dart';
 export 'discount.dart';
 export 'product.dart';
+export 'profile.dart';
 export 'slide_ad.dart';
 export 'client.dart';
 
@@ -48,8 +50,11 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i4.Product) {
       return _i4.Product.fromJson(data, this) as T;
     }
-    if (t == _i5.BannerAd) {
-      return _i5.BannerAd.fromJson(data, this) as T;
+    if (t == _i5.Profile) {
+      return _i5.Profile.fromJson(data, this) as T;
+    }
+    if (t == _i6.BannerAd) {
+      return _i6.BannerAd.fromJson(data, this) as T;
     }
     if (t == _i1.getType<_i2.Category?>()) {
       return (data != null ? _i2.Category.fromJson(data, this) : null) as T;
@@ -60,24 +65,30 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<_i4.Product?>()) {
       return (data != null ? _i4.Product.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i5.BannerAd?>()) {
-      return (data != null ? _i5.BannerAd.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i5.Profile?>()) {
+      return (data != null ? _i5.Profile.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i6.BannerAd?>()) {
+      return (data != null ? _i6.BannerAd.fromJson(data, this) : null) as T;
     }
     if (t == _i1.getType<List<String>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<String>(e)).toList()
           : null) as dynamic;
     }
-    if (t == List<_i6.Category>) {
-      return (data as List).map((e) => deserialize<_i6.Category>(e)).toList()
+    if (t == List<int>) {
+      return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
+    }
+    if (t == List<_i7.Category>) {
+      return (data as List).map((e) => deserialize<_i7.Category>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i7.BannerAd>) {
-      return (data as List).map((e) => deserialize<_i7.BannerAd>(e)).toList()
+    if (t == List<_i8.BannerAd>) {
+      return (data as List).map((e) => deserialize<_i8.BannerAd>(e)).toList()
           as dynamic;
     }
     try {
-      return _i8.Protocol().deserialize<T>(data, t);
+      return _i9.Protocol().deserialize<T>(data, t);
     } catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -85,7 +96,7 @@ class Protocol extends _i1.SerializationManager {
   @override
   String? getClassNameForObject(Object data) {
     String? className;
-    className = _i8.Protocol().getClassNameForObject(data);
+    className = _i9.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -98,7 +109,10 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i4.Product) {
       return 'Product';
     }
-    if (data is _i5.BannerAd) {
+    if (data is _i5.Profile) {
+      return 'Profile';
+    }
+    if (data is _i6.BannerAd) {
       return 'BannerAd';
     }
     return super.getClassNameForObject(data);
@@ -108,7 +122,7 @@ class Protocol extends _i1.SerializationManager {
   dynamic deserializeByClassName(Map<String, dynamic> data) {
     if (data['className'].startsWith('serverpod_auth.')) {
       data['className'] = data['className'].substring(15);
-      return _i8.Protocol().deserializeByClassName(data);
+      return _i9.Protocol().deserializeByClassName(data);
     }
     if (data['className'] == 'Category') {
       return deserialize<_i2.Category>(data['data']);
@@ -119,8 +133,11 @@ class Protocol extends _i1.SerializationManager {
     if (data['className'] == 'Product') {
       return deserialize<_i4.Product>(data['data']);
     }
+    if (data['className'] == 'Profile') {
+      return deserialize<_i5.Profile>(data['data']);
+    }
     if (data['className'] == 'BannerAd') {
-      return deserialize<_i5.BannerAd>(data['data']);
+      return deserialize<_i6.BannerAd>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
