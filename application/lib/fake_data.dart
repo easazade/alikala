@@ -182,22 +182,6 @@ List<Product> fakeProducts = [
   ),
 ];
 
-List<Category> fakeRootCategories = [
-  Category(1, 0, 'Digital Products', fakeProduct1, 200),
-  Category(2, 0, 'Tools', fakeProduct1, 3000),
-  Category(3, 0, 'Beauty & Health', fakeProduct1, 500000),
-  Category(4, 0, 'Kitchen', fakeProduct1, 900),
-  Category(5, 0, 'Books & Notebooks', fakeProduct1, 100),
-];
-
-List<Category> fakeSubCategories = [
-  Category(6, 2, 'Sub category 1', fakeSale3, 250),
-  Category(7, 3, 'Sub category 2', fakeProduct3, 1500),
-  Category(8, 3, 'Sub category 3', fakeProduct1, 500000),
-  Category(9, 2, 'Sub category 4', fakeSale2, 16000),
-  Category(10, 2, 'Sub category 5', fakeSale4, 900),
-];
-
 var fakerFa = Faker(provider: FakerDataProviderFa());
 
 List<Comment> fakeComments = List.generate(

@@ -4,19 +4,20 @@ import 'package:shop_client/shop_client.dart';
 
 class CategoryStore extends Store {
   CategoryStore({required this.client}) {
-    _initialize();
+    init();
   }
 
   final Client client;
 
   final categories = ListData<Category>([]);
 
-  Future _initialize() async {
+  Future init() async {
     operation = Operation.fetch;
     error = null;
     notifyListeners();
 
     final result = await client.categories.getCategories().sealed();
+
     if (result.isSuccessful) {
       final bannerAds = result.value;
       categories.addAll(bannerAds.mapToData);
