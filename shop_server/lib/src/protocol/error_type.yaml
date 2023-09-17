@@ -1,0 +1,6 @@
+enum: ErrorType
+values:
+  - server
+  - client
+  - wtf
+  - oops

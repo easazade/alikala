@@ -12,6 +12,7 @@ import 'protocol.dart' as _i2;
 class Cart extends _i1.SerializableEntity {
   Cart({
     this.id,
+    required this.userId,
     required this.dateCreated,
     this.items,
   });
@@ -22,6 +23,8 @@ class Cart extends _i1.SerializableEntity {
   ) {
     return Cart(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      userId:
+          serializationManager.deserialize<int>(jsonSerialization['userId']),
       dateCreated: serializationManager
           .deserialize<DateTime>(jsonSerialization['dateCreated']),
       items: serializationManager
@@ -34,6 +37,8 @@ class Cart extends _i1.SerializableEntity {
   /// the id will be null.
   int? id;
 
+  int userId;
+
   DateTime dateCreated;
 
   List<_i2.CartItem>? items;
@@ -42,6 +47,7 @@ class Cart extends _i1.SerializableEntity {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'userId': userId,
       'dateCreated': dateCreated,
       'items': items,
     };

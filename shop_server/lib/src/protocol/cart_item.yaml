@@ -2,6 +2,7 @@ class: CartItem
 table: shop_cart_items
 
 fields:
-  tableId: int, parent=shop_carts
+  cartId: int, parent=shop_carts
+  productId: int
   product: Product?, api
   addedCount: int

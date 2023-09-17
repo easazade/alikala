@@ -19,6 +19,7 @@ ALTER TABLE ONLY "shop_banner_ads"
 
 CREATE TABLE "shop_carts" (
   "id" serial,
+  "userId" integer NOT NULL,
   "dateCreated" timestamp without time zone NOT NULL
 );
 
@@ -32,7 +33,8 @@ ALTER TABLE ONLY "shop_carts"
 
 CREATE TABLE "shop_cart_items" (
   "id" serial,
-  "tableId" integer NOT NULL,
+  "cartId" integer NOT NULL,
+  "productId" integer NOT NULL,
   "addedCount" integer NOT NULL
 );
 
@@ -41,7 +43,7 @@ ALTER TABLE ONLY "shop_cart_items"
 
 ALTER TABLE ONLY "shop_cart_items"
   ADD CONSTRAINT shop_cart_items_fk_0
-    FOREIGN KEY("tableId")
+    FOREIGN KEY("cartId")
       REFERENCES shop_carts(id)
         ON DELETE CASCADE;
 

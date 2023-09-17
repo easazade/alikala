@@ -12,6 +12,7 @@ import 'protocol.dart' as _i2;
 class Cart extends _i1.TableRow {
   Cart({
     int? id,
+    required this.userId,
     required this.dateCreated,
     this.items,
   }) : super(id);
@@ -22,6 +23,8 @@ class Cart extends _i1.TableRow {
   ) {
     return Cart(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      userId:
+          serializationManager.deserialize<int>(jsonSerialization['userId']),
       dateCreated: serializationManager
           .deserialize<DateTime>(jsonSerialization['dateCreated']),
       items: serializationManager
@@ -30,6 +33,8 @@ class Cart extends _i1.TableRow {
   }
 
   static final t = CartTable();
+
+  int userId;
 
   DateTime dateCreated;
 
@@ -41,6 +46,7 @@ class Cart extends _i1.TableRow {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'userId': userId,
       'dateCreated': dateCreated,
       'items': items,
     };
@@ -50,6 +56,7 @@ class Cart extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
+      'userId': userId,
       'dateCreated': dateCreated,
     };
   }
@@ -58,6 +65,7 @@ class Cart extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
+      'userId': userId,
       'dateCreated': dateCreated,
       'items': items,
     };
@@ -71,6 +79,9 @@ class Cart extends _i1.TableRow {
     switch (columnName) {
       case 'id':
         id = value;
+        return;
+      case 'userId':
+        userId = value;
         return;
       case 'dateCreated':
         dateCreated = value;
@@ -199,11 +210,14 @@ class CartTable extends _i1.Table {
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
+  final userId = _i1.ColumnInt('userId');
+
   final dateCreated = _i1.ColumnDateTime('dateCreated');
 
   @override
   List<_i1.Column> get columns => [
         id,
+        userId,
         dateCreated,
       ];
 }

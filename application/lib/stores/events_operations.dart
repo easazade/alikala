@@ -4,10 +4,11 @@ class AppOperations {
   static const login = Operation('login');
   static const signup = Operation('signup');
   static const verify = Operation('verify');
+  static const reloadingCart = Operation('reloading-cart');
 }
 
 class AppEvents {
-  static const loggedIn = Event('loggedIn');
-  static const loggedOut = Event('loggedOut');
-  static const requestedSignUp = Event('sentRegisterRequest');
+  static const loggedIn = Event('logged-in');
+  static const loggedOut = Event('logged-out');
+  static const requestedSignUp = Event('sent-register-request');
 }

@@ -2,5 +2,6 @@ class: Cart
 table: shop_carts
 
 fields: 
+  userId: int
   dateCreated: DateTime
   items: List<CartItem>?, api # list of cart items

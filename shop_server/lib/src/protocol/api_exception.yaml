@@ -1,0 +1,8 @@
+exception: ApiException
+
+fields:
+  message: String
+  status: int
+  type: ErrorType
+  stacktrace: String?
+  exception: String?
