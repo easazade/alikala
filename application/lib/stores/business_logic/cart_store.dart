@@ -4,8 +4,9 @@ import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:shop_client/shop_client.dart';
 import 'package:collection/collection.dart';
 
-class UpdateCartItemCountOperation extends Operation {
-  UpdateCartItemCountOperation(CartItem cartItem) : super('add-to-cart');
+class UpdateCartItemOperation extends Operation {
+  final int productId;
+  UpdateCartItemOperation(this.productId) : super('add-to-cart');
 }
 
 class CartStore extends Store {
@@ -31,34 +32,21 @@ class CartStore extends Store {
     notifyListeners();
   }
 
-  Future addProduct(Product product) async {
+  Future updateCartItem(int productId, {int count = 1}) async {
     error = null;
-    var cartItem = cart.value.items?.firstWhereOrNull((item) => item.productId == product.id) ??
-        CartItem(cartId: cart.value.id!, productId: product.id!, addedCount: 0);
-
-    cartItem.addedCount = cartItem.addedCount + 1;
-    operation = UpdateCartItemCountOperation(cartItem);
+    operation = UpdateCartItemOperation(productId);
     notifyListeners();
 
-    final result = await client.carts.addOrUpdateCartItem(cartItem).sealed();
-    if (result.hasError) {
-      return;
-    }
-
-    operation = AppOperations.reloadingCart;
-    final fetchCartResult = await client.carts.getCart().sealed();
-
-    if (fetchCartResult.isSuccessful) {
-      cart.value = fetchCartResult.value;
+    final result = await client.carts.updateCartItems(productId, count).sealed();
+    if (result.isSuccessful) {
+      cart.value = result.value;
     } else {
-      error = Failure('Cannot show cart, please try again', exception: fetchCartResult.exception);
+      error = Failure('Cannot show cart, please try again', exception: result.exception);
     }
 
     operation = Operation.none;
     notifyListeners();
   }
-
-  Future removeProduct(Product product) async {}
 
   @override
   List<Data<Object?>> get items => [cart];

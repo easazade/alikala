@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:serverpod/serverpod.dart';
 import 'package:shop_server/src/exceptions.dart';
 import 'package:shop_server/src/extensions.dart';
@@ -47,12 +48,21 @@ class Carts extends Endpoint {
   }
 
   /// updates [cartItem] if cart item has id if not creates a new instance in database
-  /// and returns the result.
-  Future<CartItem> addOrUpdateCartItem(Session session, CartItem cartItem) async {
-    await session.db.insertOrUpdate(cartItem);
+  /// and returns the updated [Cart] object
+  Future<Cart> updateCartItems(Session session, int productId, int count) async {
+    final cart = await getCart(session);
 
-    //TODO: remove later - just for testing a theory
-    assert(cartItem.id != null);
-    return cartItem;
+    final cartItem = cart.items?.firstWhereOrNull((item) => item.productId == productId) ??
+        CartItem(cartId: cart.id!, productId: productId, addedCount: 0);
+
+    cartItem.addedCount = cartItem.addedCount + count;
+
+    if (cartItem.addedCount >= 1) {
+      await session.db.insertOrUpdate(cartItem);
+    } else {
+      await CartItem.delete(session, where: (t) => t.id.equals(cartItem.id));
+    }
+
+    return getCart(session);
   }
 }

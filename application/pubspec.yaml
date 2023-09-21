@@ -4,7 +4,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: ">=3.1.0 <4.0.0"
   flutter: ">=3.10.4"
 
 dependencies:
@@ -37,6 +37,7 @@ dependencies:
     git: git@github.com:easazade/feather_icons_flutter.git
   cupertino_icons: ^1.0.3
   email_validator: ^2.1.17
+  collection: ^1.17.2
   path_provider:
   path:
 

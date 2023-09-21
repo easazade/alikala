@@ -9,12 +9,11 @@
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'dart:async' as _i2;
 import 'package:shop_client/src/protocol/cart.dart' as _i3;
-import 'package:shop_client/src/protocol/cart_item.dart' as _i4;
-import 'package:shop_client/src/protocol/category.dart' as _i5;
-import 'package:shop_client/src/protocol/slide_ad.dart' as _i6;
-import 'package:serverpod_auth_client/module.dart' as _i7;
-import 'dart:io' as _i8;
-import 'protocol.dart' as _i9;
+import 'package:shop_client/src/protocol/category.dart' as _i4;
+import 'package:shop_client/src/protocol/slide_ad.dart' as _i5;
+import 'package:serverpod_auth_client/module.dart' as _i6;
+import 'dart:io' as _i7;
+import 'protocol.dart' as _i8;
 
 class _EndpointCarts extends _i1.EndpointRef {
   _EndpointCarts(_i1.EndpointCaller caller) : super(caller);
@@ -29,12 +28,18 @@ class _EndpointCarts extends _i1.EndpointRef {
       );
 
   /// updates [cartItem] if cart item has id if not creates a new instance in database
-  /// and returns the result.
-  _i2.Future<_i4.CartItem> addOrUpdateCartItem(_i4.CartItem cartItem) =>
-      caller.callServerEndpoint<_i4.CartItem>(
+  /// and returns the updated [Cart] object
+  _i2.Future<_i3.Cart> updateCartItems(
+    int productId,
+    int count,
+  ) =>
+      caller.callServerEndpoint<_i3.Cart>(
         'carts',
-        'addOrUpdateCartItem',
-        {'cartItem': cartItem},
+        'updateCartItems',
+        {
+          'productId': productId,
+          'count': count,
+        },
       );
 }
 
@@ -44,8 +49,8 @@ class _EndpointCategories extends _i1.EndpointRef {
   @override
   String get name => 'categories';
 
-  _i2.Future<List<_i5.Category>> getCategories() =>
-      caller.callServerEndpoint<List<_i5.Category>>(
+  _i2.Future<List<_i4.Category>> getCategories() =>
+      caller.callServerEndpoint<List<_i4.Category>>(
         'categories',
         'getCategories',
         {},
@@ -58,15 +63,15 @@ class _EndpointBannerAds extends _i1.EndpointRef {
   @override
   String get name => 'bannerAds';
 
-  _i2.Future<List<_i6.BannerAd>> getSlides() =>
-      caller.callServerEndpoint<List<_i6.BannerAd>>(
+  _i2.Future<List<_i5.BannerAd>> getSlides() =>
+      caller.callServerEndpoint<List<_i5.BannerAd>>(
         'bannerAds',
         'getSlides',
         {},
       );
 
-  _i2.Future<List<_i6.BannerAd>> ssssssss() =>
-      caller.callServerEndpoint<List<_i6.BannerAd>>(
+  _i2.Future<List<_i5.BannerAd>> ssssssss() =>
+      caller.callServerEndpoint<List<_i5.BannerAd>>(
         'bannerAds',
         'ssssssss',
         {},
@@ -75,20 +80,20 @@ class _EndpointBannerAds extends _i1.EndpointRef {
 
 class _Modules {
   _Modules(Client client) {
-    auth = _i7.Caller(client);
+    auth = _i6.Caller(client);
   }
 
-  late final _i7.Caller auth;
+  late final _i6.Caller auth;
 }
 
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
-    _i8.SecurityContext? context,
+    _i7.SecurityContext? context,
     _i1.AuthenticationKeyManager? authenticationKeyManager,
   }) : super(
           host,
-          _i9.Protocol(),
+          _i8.Protocol(),
           context: context,
           authenticationKeyManager: authenticationKeyManager,
         ) {

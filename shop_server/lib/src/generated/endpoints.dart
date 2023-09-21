@@ -10,8 +10,7 @@ import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/carts_endpoint.dart' as _i2;
 import '../endpoints/categories_endpoint.dart' as _i3;
 import '../endpoints/slide_ads_endpoint.dart' as _i4;
-import 'package:shop_server/src/generated/cart_item.dart' as _i5;
-import 'package:serverpod_auth_server/module.dart' as _i6;
+import 'package:serverpod_auth_server/module.dart' as _i5;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -49,22 +48,28 @@ class Endpoints extends _i1.EndpointDispatch {
           ) async =>
               (endpoints['carts'] as _i2.Carts).getCart(session),
         ),
-        'addOrUpdateCartItem': _i1.MethodConnector(
-          name: 'addOrUpdateCartItem',
+        'updateCartItems': _i1.MethodConnector(
+          name: 'updateCartItems',
           params: {
-            'cartItem': _i1.ParameterDescription(
-              name: 'cartItem',
-              type: _i1.getType<_i5.CartItem>(),
+            'productId': _i1.ParameterDescription(
+              name: 'productId',
+              type: _i1.getType<int>(),
               nullable: false,
-            )
+            ),
+            'count': _i1.ParameterDescription(
+              name: 'count',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
           },
           call: (
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['carts'] as _i2.Carts).addOrUpdateCartItem(
+              (endpoints['carts'] as _i2.Carts).updateCartItems(
             session,
-            params['cartItem'],
+            params['productId'],
+            params['count'],
           ),
         ),
       },
@@ -109,6 +114,6 @@ class Endpoints extends _i1.EndpointDispatch {
         ),
       },
     );
-    modules['serverpod_auth'] = _i6.Endpoints()..initializeEndpoints(server);
+    modules['serverpod_auth'] = _i5.Endpoints()..initializeEndpoints(server);
   }
 }
