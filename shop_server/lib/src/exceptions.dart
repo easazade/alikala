@@ -14,7 +14,7 @@ class UnAuthorizedException extends ApiException {
 class AccessDeniedException extends ApiException {
   AccessDeniedException([Exception? e, StackTrace? stackTrace])
       : super(
-          message: 'User needs to be logged in first',
+          message: 'User does not have access',
           type: ErrorType.client,
           status: 403,
           exception: e?.toString(),

@@ -43,7 +43,7 @@ class Carts extends Endpoint {
 
       return currentCart..items = cartItemsWithProducts;
     } else {
-      throw AccessDeniedException();
+      throw UnAuthorizedException();
     }
   }
 
@@ -66,7 +66,7 @@ class Carts extends Endpoint {
 
       return getCart(session);
     } else {
-      throw AccessDeniedException();
+      throw UnAuthorizedException();
     }
   }
 }
