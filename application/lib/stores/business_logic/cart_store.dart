@@ -1,8 +1,6 @@
-import 'package:application/stores/events_operations.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:shop_client/shop_client.dart';
-import 'package:collection/collection.dart';
 
 class UpdateCartItemOperation extends Operation {
   final int productId;

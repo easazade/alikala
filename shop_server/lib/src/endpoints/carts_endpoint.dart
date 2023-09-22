@@ -43,26 +43,30 @@ class Carts extends Endpoint {
 
       return currentCart..items = cartItemsWithProducts;
     } else {
-      throw UnAuthorizedException();
+      throw AccessDeniedException();
     }
   }
 
   /// updates [cartItem] if cart item has id if not creates a new instance in database
   /// and returns the updated [Cart] object
   Future<Cart> updateCartItems(Session session, int productId, int count) async {
-    final cart = await getCart(session);
+    if (await session.isUserSignedIn) {
+      final cart = await getCart(session);
 
-    final cartItem = cart.items?.firstWhereOrNull((item) => item.productId == productId) ??
-        CartItem(cartId: cart.id!, productId: productId, addedCount: 0);
+      final cartItem = cart.items?.firstWhereOrNull((item) => item.productId == productId) ??
+          CartItem(cartId: cart.id!, productId: productId, addedCount: 0);
 
-    cartItem.addedCount = cartItem.addedCount + count;
+      cartItem.addedCount = cartItem.addedCount + count;
 
-    if (cartItem.addedCount >= 1) {
-      await session.db.insertOrUpdate(cartItem);
+      if (cartItem.addedCount >= 1) {
+        await session.db.insertOrUpdate(cartItem);
+      } else {
+        await CartItem.delete(session, where: (t) => t.id.equals(cartItem.id));
+      }
+
+      return getCart(session);
     } else {
-      await CartItem.delete(session, where: (t) => t.id.equals(cartItem.id));
+      throw AccessDeniedException();
     }
-
-    return getCart(session);
   }
 }
