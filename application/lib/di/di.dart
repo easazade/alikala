@@ -45,10 +45,11 @@ Future _registerAuthDependencies() async {
 }
 
 Future _registerStores() async {
-  _getIt.registerLazySingleton(() => AuthStore(emailAuthController: inject(), sessionManager: inject()));
+  final authStore = AuthStore(emailAuthController: inject(), sessionManager: inject());
+  _getIt.registerLazySingleton(() => authStore);
   _getIt.registerLazySingleton(() => ShopStore(client: inject()));
   _getIt.registerLazySingleton(() => ProfileStore());
-  _getIt.registerLazySingleton(() => CartStore(client: inject()));
+  _getIt.registerLazySingleton(() => CartStore(client: inject(), loggedInUser: authStore.loggedInUser));
 }
 
 Future _registerProviders() async {

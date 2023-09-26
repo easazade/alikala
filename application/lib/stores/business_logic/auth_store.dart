@@ -13,17 +13,17 @@ class AuthStore extends Store {
     required this.emailAuthController,
     required this.sessionManager,
   }) {
-    userInfo.value = sessionManager.signedInUser;
+    loggedInUser.value = sessionManager.signedInUser;
     sessionManager.addListener(onSessionChanges);
   }
 
   final EmailAuthController emailAuthController;
   final SessionManager sessionManager;
 
-  final userInfo = Data<UserInfo>();
+  final loggedInUser = Data<UserInfo>();
   String? registerRequestEmail;
 
-  bool get isUserAuthenticated => userInfo.hasValue;
+  bool get isUserAuthenticated => loggedInUser.hasValue;
 
   Future<void> login(String? email, String? password) async {
     failure = null;
@@ -40,7 +40,7 @@ class AuthStore extends Store {
       final result = await emailAuthController.signIn(email!, password!).sealed();
       operation = Operation.none;
       if (result.isSuccessful) {
-        userInfo.value = result.value;
+        loggedInUser.value = result.value;
         dispatchEvent(AppEvents.loggedIn);
         failure = null;
       } else {
@@ -111,7 +111,7 @@ class AuthStore extends Store {
       operation = Operation.none;
 
       if (result.isSuccessful) {
-        userInfo.value = result.value;
+        loggedInUser.value = result.value;
         dispatchEvent(AppEvents.loggedIn);
         failure = null;
       } else {
@@ -123,15 +123,15 @@ class AuthStore extends Store {
 
   Future<void> logout() async {
     await sessionManager.signOut();
-    userInfo.value = null;
+    loggedInUser.value = null;
     registerRequestEmail = null;
     dispatchEvent(AppEvents.loggedOut);
     notifyListeners();
   }
 
   void onSessionChanges() {
-    if (userInfo.valueOrNull != sessionManager.signedInUser) {
-      userInfo.value = sessionManager.signedInUser;
+    if (loggedInUser.valueOrNull != sessionManager.signedInUser) {
+      loggedInUser.value = sessionManager.signedInUser;
       if (isUserAuthenticated) {
         dispatchEvent(AppEvents.loggedIn);
       } else {
@@ -143,7 +143,7 @@ class AuthStore extends Store {
   }
 
   @override
-  List<Data<Object?>> get items => [userInfo];
+  List<Data<Object?>> get items => [loggedInUser];
 
   @override
   void dispose() {
