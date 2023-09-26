@@ -7,7 +7,7 @@ class ProfileStore extends ChangeNotifierData {
 
   Future init() async {
     operation = Operation.fetch;
-    error = null;
+    failure = null;
     notifyListeners();
 
     await Future.delayed(const Duration(seconds: 2));
@@ -17,7 +17,7 @@ class ProfileStore extends ChangeNotifierData {
     notifyListeners();
 
     await Future.delayed(const Duration(seconds: 1));
-    error = Failure('oops!');
+    failure = Failure('oops!');
     notifyListeners();
   }
 

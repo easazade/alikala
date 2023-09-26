@@ -1,7 +1,6 @@
 import 'package:application/core/app.dart';
 import 'package:application/core/navigation.gr.dart';
 import 'package:application/di/di.dart';
-import 'package:application/fake_data.dart';
 import 'package:application/stores/business_logic/category_store.dart';
 import 'package:application/widgets/app_sliver_category_list.dart';
 import 'package:application/widgets/app_sliver_search_bar.dart';
@@ -35,7 +34,7 @@ class CategoriesPage extends ConsumerWidget {
           },
           onOperate: (context, store) => AppProgress.large(),
           onNoValue: (context, store) => retryWidget,
-          onError: (context, store) => retryWidget,
+          onFailure: (context, store) => retryWidget,
         ),
       ),
     );

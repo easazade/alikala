@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 
-class AppErrorWidget extends StatelessWidget {
-  const AppErrorWidget({super.key, required this.failure});
+class AppFailureWidget extends StatelessWidget {
+  const AppFailureWidget({super.key, required this.failure});
 
   final Failure failure;
 

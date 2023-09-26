@@ -10,7 +10,7 @@ import 'package:application/stores/events_operations.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
-import 'package:application/widgets/util/app_error_widget.dart';
+import 'package:application/widgets/util/app_failure_widget.dart';
 import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/gestures.dart';
@@ -111,8 +111,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     ),
                     SizedBox(width: 60),
                   ]),
-                  if (authStore.hasError && authStore.error.cause == AppOperations.login)
-                    AppErrorWidget(failure: authStore.error),
+                  if (authStore.hasFailure && authStore.failure.cause == AppOperations.login)
+                    AppFailureWidget(failure: authStore.failure),
                   SizedBox(height: 20),
                   AppFormField(S.of(context).email, (input) {
                     email = input;
@@ -131,7 +131,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   ),
                   SizedBox(height: 20),
                   AppLongButton(S.of(context).register, () {
-                    authStore.error = null;
+                    authStore.failure = null;
                     appRouter.push(RegisterRoute());
                   }),
                   SizedBox(height: 10),

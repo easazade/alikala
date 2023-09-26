@@ -10,7 +10,7 @@ import 'package:application/stores/events_operations.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_form_field.dart';
 import 'package:application/widgets/app_form_long_btn.dart';
-import 'package:application/widgets/util/app_error_widget.dart';
+import 'package:application/widgets/util/app_failure_widget.dart';
 import 'package:application/widgets/util/no_scroll_glow.dart';
 import 'package:application/widgets/util/unfocus_current_focus_widget.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
@@ -100,8 +100,8 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
                     child: Image.asset(Assets.images.splashLogoAccentColor.path),
                   ),
                   SizedBox(height: 64),
-                  if (authStore.hasError && authStore.error.cause == AppOperations.verify)
-                    AppErrorWidget(failure: authStore.error),
+                  if (authStore.hasFailure && authStore.failure.cause == AppOperations.verify)
+                    AppFailureWidget(failure: authStore.failure),
                   SizedBox(height: 20),
                   AppFormField(S.of(context).enterVerificationCode, (input) {
                     verificationCode = input;

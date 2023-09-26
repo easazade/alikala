@@ -13,7 +13,7 @@ class CategoryStore extends Store {
 
   Future init() async {
     operation = Operation.fetch;
-    error = null;
+    failure = null;
     notifyListeners();
 
     final result = await client.categories.getCategories().sealed();
@@ -22,7 +22,7 @@ class CategoryStore extends Store {
       final bannerAds = result.value;
       categories.addAll(bannerAds.mapToData);
     } else {
-      error = Failure('Could not fetch categories', exception: result.exception, cause: Operation.fetch);
+      failure = Failure('Could not fetch categories', exception: result.exception, cause: Operation.fetch);
     }
 
     operation = Operation.none;

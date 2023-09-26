@@ -63,7 +63,7 @@ class ProfilePage extends ConsumerWidget {
                     style: theme.textTheme.titleSmall?.copyWith(height: 1),
                   ),
                   onOperate: (_, __) => Text('loading'),
-                  onError: (_, store) => Text(store.error.message),
+                  onFailure: (_, store) => Text(store.failure.message),
                   orElse: (_, __) => Text('else clause'),
                 ),
 

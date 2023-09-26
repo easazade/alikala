@@ -26,14 +26,14 @@ class AuthStore extends Store {
   bool get isUserAuthenticated => userInfo.hasValue;
 
   Future<void> login(String? email, String? password) async {
-    error = null;
+    failure = null;
     operation = Operation.none;
     notifyListeners();
 
     if (email.isNullOrBlank) {
-      error = Failure('Please Enter your email', cause: AppOperations.login);
+      failure = Failure('Please Enter your email', cause: AppOperations.login);
     } else if (password.isNullOrBlank) {
-      error = Failure('Please Enter your password', cause: AppOperations.login);
+      failure = Failure('Please Enter your password', cause: AppOperations.login);
     } else {
       operation = AppOperations.login;
       notifyListeners();
@@ -42,12 +42,12 @@ class AuthStore extends Store {
       if (result.isSuccessful) {
         userInfo.value = result.value;
         dispatchEvent(AppEvents.loggedIn);
-        error = null;
+        failure = null;
       } else {
-        //TODO: for 400 errors we should show error message returned from server
+        //TODO: for 400 failures we should show failure message returned from server
         // it's easy to create Failure object out of exceptions, that extract the message
         // from the exception, if there is none a generic something went wrong will be shown
-        error = Failure('Could not login, please try again', cause: AppOperations.login);
+        failure = Failure('Could not login, please try again', cause: AppOperations.login);
       }
     }
     notifyListeners();
@@ -59,19 +59,19 @@ class AuthStore extends Store {
     String? password,
     String? confirmPassword,
   ) async {
-    error = null;
+    failure = null;
     operation = Operation.none;
     registerRequestEmail = null;
     notifyListeners();
 
     if (email == null || !EmailValidator.validate(email)) {
-      error = Failure('Please Enter a valid email address', cause: AppOperations.signup);
+      failure = Failure('Please Enter a valid email address', cause: AppOperations.signup);
     } else if (username == null || username.length < 3) {
-      error = Failure('Please Enter a valid username that has at least 3 characters', cause: AppOperations.signup);
+      failure = Failure('Please Enter a valid username that has at least 3 characters', cause: AppOperations.signup);
     } else if (password == null || password.length < 8) {
-      error = Failure('Please Enter a valid password, at least 8 characters', cause: AppOperations.signup);
+      failure = Failure('Please Enter a valid password, at least 8 characters', cause: AppOperations.signup);
     } else if (password != confirmPassword) {
-      error = Failure('Entered passwords don\'t match', cause: AppOperations.signup);
+      failure = Failure('Entered passwords don\'t match', cause: AppOperations.signup);
     } else {
       operation = AppOperations.signup;
       notifyListeners();
@@ -84,26 +84,26 @@ class AuthStore extends Store {
         if (requestMade) {
           registerRequestEmail = email;
           dispatchEvent(AppEvents.requestedSignUp);
-          error = null;
+          failure = null;
         } else {
-          error = Failure('Cannot register $username, please try again', cause: AppOperations.signup);
+          failure = Failure('Cannot register $username, please try again', cause: AppOperations.signup);
         }
       } else {
-        error = Failure('Cannot register $username, please try again', cause: AppOperations.signup);
+        failure = Failure('Cannot register $username, please try again', cause: AppOperations.signup);
       }
     }
     notifyListeners();
   }
 
   Future<void> verifyAndSignUp(String? verificationCode) async {
-    error = null;
+    failure = null;
     operation = Operation.none;
     notifyListeners();
 
     if (registerRequestEmail == null) {
-      error = Failure('Please Register first', cause: AppOperations.verify);
+      failure = Failure('Please Register first', cause: AppOperations.verify);
     } else if (verificationCode.isNullOrBlank) {
-      error = Failure('Please Enter the verification code sent to you email', cause: AppOperations.verify);
+      failure = Failure('Please Enter the verification code sent to you email', cause: AppOperations.verify);
     } else {
       operation = AppOperations.verify;
       notifyListeners();
@@ -113,9 +113,9 @@ class AuthStore extends Store {
       if (result.isSuccessful) {
         userInfo.value = result.value;
         dispatchEvent(AppEvents.loggedIn);
-        error = null;
+        failure = null;
       } else {
-        error = Failure('Verification code is incorrect', cause: AppOperations.verify);
+        failure = Failure('Verification code is incorrect', cause: AppOperations.verify);
       }
       notifyListeners();
     }
@@ -137,7 +137,7 @@ class AuthStore extends Store {
       } else {
         dispatchEvent(AppEvents.loggedOut);
       }
-      error = null;
+      failure = null;
       notifyListeners();
     }
   }

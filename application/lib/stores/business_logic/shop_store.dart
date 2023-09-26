@@ -13,7 +13,7 @@ class ShopStore extends Store {
 
   Future init() async {
     operation = Operation.fetch;
-    error = null;
+    failure = null;
     notifyListeners();
 
     final result = await client.bannerAds.getSlides().sealed();
@@ -21,7 +21,7 @@ class ShopStore extends Store {
       final bannerAds = result.value;
       banners.addAll(bannerAds.mapToData);
     } else {
-      error = Failure('Could not fetch banners', exception: result.exception, cause: Operation.fetch);
+      failure = Failure('Could not fetch banners', exception: result.exception, cause: Operation.fetch);
     }
 
     operation = Operation.none;
