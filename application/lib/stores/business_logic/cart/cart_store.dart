@@ -1,13 +1,9 @@
+import 'package:application/stores/business_logic/cart/event.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:shop_client/shop_client.dart';
 // ignore: depend_on_referenced_packages
 import 'package:serverpod_auth_client/module.dart';
-
-class UpdateCartItemOperation extends Operation {
-  final int productId;
-  UpdateCartItemOperation(this.productId) : super('add-to-cart');
-}
 
 class CartStore extends Store {
   CartStore({required this.client, required this.loggedInUser}) {
@@ -42,9 +38,13 @@ class CartStore extends Store {
     }
   }
 
-  Future updateCartItem(int productId, {int count = 1}) async {
+  Future updateCartItem({required int productId, required int count}) async {
     failure = null;
-    operation = UpdateCartItemOperation(productId);
+    if (count > 0) {
+      operation = RemoveFromCartOperation(productId);
+    } else if (count < 0) {
+      operation = AddToCartOperation(productId);
+    }
     notifyListeners();
 
     final result = await client.carts.updateCartItems(productId, count).sealed();

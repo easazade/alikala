@@ -1,8 +1,8 @@
 import 'package:application/core/constants.dart';
-import 'package:application/data/entities.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_client/shop_client.dart';
 
 import 'app_network_image.dart';
 
@@ -107,7 +107,7 @@ class AppHorizontalProductsList extends StatelessWidget {
       ),
       child: Column(
         children: [
-          AppNetworkImage(imageUrl: product.images.firstOrNull, width: 120, height: 80),
+          AppNetworkImage(imageUrl: product.images?.firstOrNull, width: 120, height: 80),
           SizedBox(height: 20),
           SizedBox(
             width: double.infinity,
@@ -115,7 +115,7 @@ class AppHorizontalProductsList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product.title,
+                  product.name,
                   maxLines: 2,
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
@@ -136,19 +136,25 @@ class AppHorizontalProductsList extends StatelessWidget {
                   color: theme.primaryColor,
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: Text('${product.offPercentage.toInt()}%', style: TextStyle(color: Colors.white, fontSize: 11)),
+                child: Text(
+                  '${product.price ~/ product.discount!.discountPrice}%',
+                  style: TextStyle(color: Colors.white, fontSize: 11),
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Text(product.offPrice.commaSeparated(),
-                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
-                      SizedBox(width: 2),
-                      Text('\$', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
-                    ],
-                  ),
+                  if (product.discount?.discountPrice != null)
+                    Row(
+                      children: [
+                        Text(
+                          product.discount!.discountPrice.commaSeparated(),
+                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(width: 2),
+                        Text('\$', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
+                      ],
+                    ),
                   Text(
                     product.price.commaSeparated(),
                     style: TextStyle(

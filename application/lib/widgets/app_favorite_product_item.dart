@@ -1,8 +1,7 @@
-import 'package:application/data/entities.dart';
-import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_network_image.dart';
 import 'package:application/widgets/app_price_tag.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_client/shop_client.dart';
 
 class AppFavoriteProductItem extends StatelessWidget {
   final Product product;
@@ -22,7 +21,7 @@ class AppFavoriteProductItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppNetworkImage(
-                imageUrl: product.images.firstOrNull ?? '',
+                imageUrl: product.images?.firstOrNull,
                 width: size.width * 0.35,
                 height: 80,
               ),
@@ -35,7 +34,7 @@ class AppFavoriteProductItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(product.title, maxLines: 2, style: Theme.of(context).textTheme.labelMedium),
+                      Text(product.name, maxLines: 2, style: Theme.of(context).textTheme.labelMedium),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [

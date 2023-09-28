@@ -4,6 +4,7 @@ table: shop_products
 fields:
   name: String
   description: String
+  price: int
   images: List<String>?
   category: Category
   discount: Discount?, api

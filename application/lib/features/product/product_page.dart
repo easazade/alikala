@@ -1,6 +1,5 @@
 import 'package:application/core/app.dart';
 import 'package:application/core/navigation.gr.dart';
-import 'package:application/data/entities.dart';
 import 'package:application/fake_data.dart';
 import 'package:application/generated/l10n.dart';
 import 'package:application/utils/utils_classes.dart';
@@ -12,11 +11,11 @@ import 'package:application/widgets/app_price_tag.dart';
 import 'package:application/widgets/app_product_color_selector.dart';
 import 'package:application/widgets/app_rating.dart';
 import 'package:application/widgets/app_section_separator.dart';
-import 'package:application/widgets/app_sliver_horizontal_products_list.dart';
 import 'package:application/widgets/slider/app_image_slider.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_client/shop_client.dart';
 
 class ProductPage extends StatelessWidget {
   final Product product;
@@ -30,7 +29,7 @@ class ProductPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(product.title, style: theme.textTheme.bodyMedium),
+        title: Text(product.name, style: theme.textTheme.bodyMedium),
         titleSpacing: 0,
         leading: GestureDetector(
           onTap: Navigator.of(context).pop,
@@ -61,7 +60,7 @@ class ProductPage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               child: Align(
                 alignment: AlignmentDirectional.centerStart,
-                child: Text(product.title, style: theme.textTheme.titleSmall),
+                child: Text(product.name, style: theme.textTheme.titleSmall),
               ),
             ),
             Padding(

@@ -14,6 +14,7 @@ class Product extends _i1.TableRow {
     int? id,
     required this.name,
     required this.description,
+    required this.price,
     this.images,
     required this.category,
     this.discount,
@@ -28,6 +29,7 @@ class Product extends _i1.TableRow {
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       description: serializationManager
           .deserialize<String>(jsonSerialization['description']),
+      price: serializationManager.deserialize<int>(jsonSerialization['price']),
       images: serializationManager
           .deserialize<List<String>?>(jsonSerialization['images']),
       category: serializationManager
@@ -43,6 +45,8 @@ class Product extends _i1.TableRow {
 
   String description;
 
+  int price;
+
   List<String>? images;
 
   _i2.Category category;
@@ -57,6 +61,7 @@ class Product extends _i1.TableRow {
       'id': id,
       'name': name,
       'description': description,
+      'price': price,
       'images': images,
       'category': category,
       'discount': discount,
@@ -69,6 +74,7 @@ class Product extends _i1.TableRow {
       'id': id,
       'name': name,
       'description': description,
+      'price': price,
       'images': images,
       'category': category,
     };
@@ -80,6 +86,7 @@ class Product extends _i1.TableRow {
       'id': id,
       'name': name,
       'description': description,
+      'price': price,
       'images': images,
       'category': category,
       'discount': discount,
@@ -100,6 +107,9 @@ class Product extends _i1.TableRow {
         return;
       case 'description':
         description = value;
+        return;
+      case 'price':
+        price = value;
         return;
       case 'images':
         images = value;
@@ -235,6 +245,8 @@ class ProductTable extends _i1.Table {
 
   final description = _i1.ColumnString('description');
 
+  final price = _i1.ColumnInt('price');
+
   final images = _i1.ColumnSerializable('images');
 
   final category = _i1.ColumnSerializable('category');
@@ -244,6 +256,7 @@ class ProductTable extends _i1.Table {
         id,
         name,
         description,
+        price,
         images,
         category,
       ];

@@ -27,7 +27,7 @@ class Discount extends _i1.SerializableEntity {
       productId:
           serializationManager.deserialize<int>(jsonSerialization['productId']),
       discountPrice: serializationManager
-          .deserialize<double>(jsonSerialization['discountPrice']),
+          .deserialize<int>(jsonSerialization['discountPrice']),
       startDate: serializationManager
           .deserialize<DateTime>(jsonSerialization['startDate']),
       dueDate: serializationManager
@@ -44,7 +44,7 @@ class Discount extends _i1.SerializableEntity {
 
   int productId;
 
-  double discountPrice;
+  int discountPrice;
 
   DateTime startDate;
 

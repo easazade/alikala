@@ -1,7 +1,7 @@
-import 'package:application/data/entities.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_client/shop_client.dart';
 
 class AppAddToCart extends StatefulWidget {
   final Product product;

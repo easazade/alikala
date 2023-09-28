@@ -73,6 +73,7 @@ CREATE TABLE "shop_products" (
   "id" serial,
   "name" text NOT NULL,
   "description" text NOT NULL,
+  "price" integer NOT NULL,
   "images" json,
   "category" json NOT NULL
 );
@@ -88,7 +89,7 @@ ALTER TABLE ONLY "shop_products"
 CREATE TABLE "shop_discounts" (
   "id" serial,
   "productId" integer NOT NULL,
-  "discountPrice" double precision NOT NULL,
+  "discountPrice" integer NOT NULL,
   "startDate" timestamp without time zone NOT NULL,
   "dueDate" timestamp without time zone NOT NULL,
   "message" text NOT NULL

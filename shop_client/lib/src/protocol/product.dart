@@ -14,6 +14,7 @@ class Product extends _i1.SerializableEntity {
     this.id,
     required this.name,
     required this.description,
+    required this.price,
     this.images,
     required this.category,
     this.discount,
@@ -28,6 +29,7 @@ class Product extends _i1.SerializableEntity {
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       description: serializationManager
           .deserialize<String>(jsonSerialization['description']),
+      price: serializationManager.deserialize<int>(jsonSerialization['price']),
       images: serializationManager
           .deserialize<List<String>?>(jsonSerialization['images']),
       category: serializationManager
@@ -46,6 +48,8 @@ class Product extends _i1.SerializableEntity {
 
   String description;
 
+  int price;
+
   List<String>? images;
 
   _i2.Category category;
@@ -58,6 +62,7 @@ class Product extends _i1.SerializableEntity {
       'id': id,
       'name': name,
       'description': description,
+      'price': price,
       'images': images,
       'category': category,
       'discount': discount,

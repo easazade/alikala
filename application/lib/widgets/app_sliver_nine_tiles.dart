@@ -1,10 +1,10 @@
 import 'package:application/core/app.dart';
 import 'package:application/core/constants.dart';
 import 'package:application/core/navigation.gr.dart';
-import 'package:application/data/entities.dart';
 import 'package:application/widgets/app_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_client/shop_client.dart';
 
 class AppSliverNineTiles extends StatelessWidget {
   final List<Product> products;
@@ -53,7 +53,7 @@ class AppSliverNineTiles extends StatelessWidget {
                           border: Border.all(color: Colors.grey[100]!, width: 0.5),
                         ),
                         padding: const EdgeInsets.all(12.0),
-                        child: AppNetworkImage(imageUrl: product.images.first, width: 80),
+                        child: AppNetworkImage(imageUrl: product.images?.firstOrNull, width: 80),
                       ),
                     ),
                   ),

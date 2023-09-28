@@ -13,8 +13,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i17;
 import 'package:flutter/material.dart' as _i18;
+import 'package:shop_client/shop_client.dart' as _i19;
 
-import '../data/entities.dart' as _i19;
 import '../features/address/address_page.dart' as _i12;
 import '../features/cart/cart_page.dart' as _i3;
 import '../features/categories/categories_page.dart' as _i2;

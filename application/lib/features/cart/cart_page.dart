@@ -3,24 +3,25 @@ import 'dart:math' as math;
 import 'package:application/core/app.dart';
 import 'package:application/core/constants.dart';
 import 'package:application/core/navigation.gr.dart';
-import 'package:application/data/entities.dart';
 import 'package:application/di/di.dart';
 import 'package:application/gen/assets.gen.dart';
 import 'package:application/generated/l10n.dart';
 import 'package:application/stores/business_logic/auth_store.dart';
-import 'package:application/stores/business_logic/cart_store.dart';
+import 'package:application/stores/business_logic/cart/cart_store.dart';
+import 'package:application/stores/business_logic/cart/event.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_add_to_cart.dart';
 import 'package:application/widgets/app_button.dart';
 import 'package:application/widgets/app_network_image.dart';
 import 'package:application/widgets/app_price_tag.dart';
-import 'package:application/widgets/app_product_color.dart';
 import 'package:application/widgets/app_section_separator.dart';
+import 'package:application/widgets/util/no_scroll_glow.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shop_client/shop_client.dart';
 
 class CartPage extends ConsumerWidget {
   @override
@@ -40,38 +41,41 @@ class CartPage extends ConsumerWidget {
           ),
         ),
       ),
-      child: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (overScroll) {
-          overScroll.disallowIndicator();
-          return false;
-        },
+      child: NoScrollIndicator(
         child: DataBuilder(
-          data: cartStore,
-          observe: true,
-          builder: (context, store) {
-            return ListView(
-              children: [
-                if (!authStore.isUserAuthenticated) _createLoginNeededCard(),
-                SizedBox(height: 30),
-                _createCartIsEmptyMessage(cartStore),
-                //TODO: uncomment and refactor
-                // for (var product in store.carts) ...[
-                //   AppSectionSeparator(height: 5),
-                //   _createCartItem(product),
-                // ],
-                AppSectionSeparator(),
-                _createCartSummary(context),
-                AppSectionSeparator(),
-                _createContinueButton(context),
-              ],
-            );
-          },
-        ),
+            data: cartStore.cart,
+            builder: (context, cart) {
+              return ListView(
+                children: [
+                  if (!authStore.isUserAuthenticated) _createLoginNeededCard(),
+                  SizedBox(height: 30),
+                  _createCartIsEmptyMessage(cartStore),
+                  if (cart.hasValue && cart.value.items != null)
+                    for (var cartItem in cart.value.items!) ...[
+                      AppSectionSeparator(height: 5),
+                      _createCartItem(
+                        cartItem,
+                        cart.operation is CartItemOperation ? cart.operation as CartItemOperation : null,
+                      ),
+                    ],
+                  AppSectionSeparator(),
+                  _createCartSummary(context),
+                  AppSectionSeparator(),
+                  _createContinueButton(context),
+                ],
+              );
+            }),
       ),
     );
   }
 
-  Widget _createCartItem(Data<Product> product) {
+  Widget _createCartItem(CartItem cartItem, CartItemOperation? cartItemOperation) {
+    final isRemovingFromCart =
+        cartItemOperation is RemoveFromCartOperation && cartItemOperation.productId == cartItem.productId;
+
+    final isAddingToCart =
+        cartItemOperation is RemoveFromCartOperation && cartItemOperation.productId == cartItem.productId;
+
     return Material(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -79,19 +83,19 @@ class CartPage extends ConsumerWidget {
         child: Column(
           children: [
             SizedBox(height: 20),
-            if (product.isDeleting) Text('Deleting'),
+            if (isRemovingFromCart) Text('Deleting'),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(width: 30),
-                AppNetworkImage(imageUrl: product.value.images.firstOrNull, width: 100),
+                AppNetworkImage(imageUrl: cartItem.product?.images?.firstOrNull, width: 100),
                 SizedBox(width: 30),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(product.value.title),
-                      if (product.value.color != null) AppProductColor(product.value),
+                      Text(cartItem.product!.name),
+                      // if (cartItem.value.color != null) AppProductColor(cartItem.value),
                     ],
                   ),
                 ),
@@ -101,7 +105,7 @@ class CartPage extends ConsumerWidget {
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: AppAddToCart(product: product.value),
+              child: AppAddToCart(product: cartItem.product!),
             ),
           ],
         ),
@@ -154,14 +158,7 @@ class CartPage extends ConsumerWidget {
         children: [
           GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onTap: () {
-              //TODO: uncomment and refactor
-              // if (cartStore.carts.isNotEmpty) {
-              //   cartStore.removeProduct();
-              // } else {
-              //   cartStore.addProduct();
-              // }
-            },
+            onTap: () {},
             child: Image.asset(
               Assets.images.emptyCart.path,
               width: 150,

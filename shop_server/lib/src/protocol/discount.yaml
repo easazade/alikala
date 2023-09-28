@@ -3,7 +3,7 @@ table: shop_discounts
 
 fields:
   productId: int, parent=shop_products
-  discountPrice: double
+  discountPrice: int
   startDate: DateTime
   dueDate: DateTime
   message: String

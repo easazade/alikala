@@ -27,7 +27,7 @@ class Discount extends _i1.TableRow {
       productId:
           serializationManager.deserialize<int>(jsonSerialization['productId']),
       discountPrice: serializationManager
-          .deserialize<double>(jsonSerialization['discountPrice']),
+          .deserialize<int>(jsonSerialization['discountPrice']),
       startDate: serializationManager
           .deserialize<DateTime>(jsonSerialization['startDate']),
       dueDate: serializationManager
@@ -41,7 +41,7 @@ class Discount extends _i1.TableRow {
 
   int productId;
 
-  double discountPrice;
+  int discountPrice;
 
   DateTime startDate;
 
@@ -237,7 +237,7 @@ class DiscountTable extends _i1.Table {
 
   final productId = _i1.ColumnInt('productId');
 
-  final discountPrice = _i1.ColumnDouble('discountPrice');
+  final discountPrice = _i1.ColumnInt('discountPrice');
 
   final startDate = _i1.ColumnDateTime('startDate');
 

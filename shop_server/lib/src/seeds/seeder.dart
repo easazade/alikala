@@ -79,6 +79,7 @@ class Seeder {
           name: FakerX.defaultInstance.lorem.word,
           description: FakerX.defaultInstance.lorem.paragraph(minSentences: 4, maxSentences: 10),
           category: categories.randomItem!,
+          price: FakerX.defaultInstance.number.randomInt(1000, min: 30),
         ),
       );
       for (var row in products) {

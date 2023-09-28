@@ -1,5 +1,5 @@
-import 'package:application/data/entities.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_client/shop_client.dart';
 
 class AppProductColor extends StatelessWidget {
   final Product product;
@@ -14,12 +14,12 @@ class AppProductColor extends StatelessWidget {
           height: 6,
           width: 6,
           decoration: BoxDecoration(
-            color: product.color,
+            color: Colors.red,
             borderRadius: BorderRadius.circular(50),
           ),
         ),
         SizedBox(width: 6),
-        Text(product.colorName ?? '', style: TextStyle(fontSize: 11)),
+        Text('red', style: TextStyle(fontSize: 11)),
       ],
     );
   }

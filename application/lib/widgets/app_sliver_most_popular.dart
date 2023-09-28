@@ -1,10 +1,9 @@
 import 'package:application/core/constants.dart';
-import 'package:application/data/entities.dart';
 import 'package:application/utils/utils_classes.dart' as utils;
-import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_client/shop_client.dart';
 
 class AppSliverMostPopular extends StatelessWidget {
   final List<Product> products;
@@ -69,7 +68,7 @@ class AppSliverMostPopular extends StatelessWidget {
       width: 270,
       child: Row(
         children: [
-          AppNetworkImage(imageUrl: product.images.firstOrNull, width: 100),
+          AppNetworkImage(imageUrl: product.images?.firstOrNull, width: 100),
           SizedBox(width: 15),
           Text(
             '${products.indexOf(product) + 1}',
@@ -78,7 +77,7 @@ class AppSliverMostPopular extends StatelessWidget {
           SizedBox(width: 15),
           Expanded(
             child: Text(
-              product.title,
+              product.name,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
             ),

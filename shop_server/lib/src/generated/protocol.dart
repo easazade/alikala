@@ -228,9 +228,9 @@ class Protocol extends _i1.SerializationManagerServer {
         ),
         _i2.ColumnDefinition(
           name: 'discountPrice',
-          columnType: _i2.ColumnType.doublePrecision,
+          columnType: _i2.ColumnType.integer,
           isNullable: false,
-          dartType: 'double',
+          dartType: 'int',
         ),
         _i2.ColumnDefinition(
           name: 'startDate',
@@ -302,6 +302,12 @@ class Protocol extends _i1.SerializationManagerServer {
           columnType: _i2.ColumnType.text,
           isNullable: false,
           dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'price',
+          columnType: _i2.ColumnType.integer,
+          isNullable: false,
+          dartType: 'int',
         ),
         _i2.ColumnDefinition(
           name: 'images',
