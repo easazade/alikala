@@ -21,3 +21,14 @@ class AccessDeniedException extends ApiException {
           stacktrace: stackTrace?.toString(),
         );
 }
+
+class ClientException extends ApiException {
+  ClientException({required String message, int status = 400, Exception? e, StackTrace? stackTrace})
+      : super(
+          message: message,
+          type: ErrorType.client,
+          status: status,
+          exception: e?.toString(),
+          stacktrace: stackTrace?.toString(),
+        );
+}

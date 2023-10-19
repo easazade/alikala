@@ -5,20 +5,29 @@ import 'package:shop_server/src/extensions.dart';
 import 'package:shop_server/src/generated/protocol.dart';
 
 class Carts extends Endpoint {
-  // always returns one carts. if there isn't none. it will create a new cart and returns
+  /// always returns one carts. if there isn't none. it will create a new cart and returns
   Future<Cart> getCart(Session session) async {
     if (await session.isUserSignedIn) {
       final userId = await session.auth.authenticatedUserId;
-      final carts = await Cart.find(session, where: (table) => table.userId.equals(userId));
-      // delete carts if there are more than one
-      if (carts.length > 1) {
-        for (var cart in carts.sublist(1)) {
+
+      var allCarts = await Cart.find(session, where: (table) => table.userId.equals(userId));
+      Cart currentCart;
+
+      // get current cart object
+      if (allCarts.isEmpty) {
+        currentCart = Cart(userId: userId!, dateCreated: DateTime.now());
+        await Cart.insert(session, currentCart);
+      } else {
+        currentCart = allCarts.first;
+      }
+
+      // if there are multiple carts, we delete the rest. only one cart must be available for user in database
+      if (allCarts.length > 1) {
+        for (var cart in allCarts.sublist(1)) {
           await CartItem.delete(session, where: (t) => t.cartId.equals(cart.id));
           await Cart.deleteRow(session, cart);
         }
       }
-
-      var currentCart = carts.first;
 
       // if cart is older than a day delete and return a new one
       if (currentCart.dateCreated.difference(DateTime.now()).inHours > 24) {
@@ -29,6 +38,7 @@ class Carts extends Endpoint {
         await Cart.insert(session, currentCart);
       }
 
+      // need to get cart items manually from CartItems table and return them.
       final cartItems = await CartItem.find(session, where: (t) => t.cartId.equals(currentCart.id));
       final cartItemsWithProducts = await Future.wait(
         cartItems.map((e) async {
@@ -51,12 +61,18 @@ class Carts extends Endpoint {
   /// and returns the updated [Cart] object
   Future<Cart> updateCartItems(Session session, int productId, int count) async {
     if (await session.isUserSignedIn) {
+      final product = await Product.findById(session, productId);
+
+      if (product == null) {
+        ClientException(message: 'There is not product defined for with id $productId');
+      }
+
       final cart = await getCart(session);
 
       final cartItem = cart.items?.firstWhereOrNull((item) => item.productId == productId) ??
           CartItem(cartId: cart.id!, productId: productId, addedCount: 0);
 
-      cartItem.addedCount = cartItem.addedCount + count;
+      cartItem.addedCount = count;
 
       if (cartItem.addedCount >= 1) {
         await session.db.insertOrUpdate(cartItem);
