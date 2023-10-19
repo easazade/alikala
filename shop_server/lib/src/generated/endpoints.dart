@@ -102,16 +102,7 @@ class Endpoints extends _i1.EndpointDispatch {
             Map<String, dynamic> params,
           ) async =>
               (endpoints['bannerAds'] as _i4.BannerAds).getSlides(session),
-        ),
-        'ssssssss': _i1.MethodConnector(
-          name: 'ssssssss',
-          params: {},
-          call: (
-            _i1.Session session,
-            Map<String, dynamic> params,
-          ) async =>
-              (endpoints['bannerAds'] as _i4.BannerAds).ssssssss(session),
-        ),
+        )
       },
     );
     modules['serverpod_auth'] = _i5.Endpoints()..initializeEndpoints(server);

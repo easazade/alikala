@@ -40,11 +40,7 @@ class CartStore extends Store {
 
   Future updateCartItem({required int productId, required int count}) async {
     failure = null;
-    if (count > 0) {
-      operation = RemoveFromCartOperation(productId);
-    } else if (count < 0) {
-      operation = AddToCartOperation(productId);
-    }
+    operation = UpdateCartItemOperation(productId: productId, count: count);
     notifyListeners();
 
     final result = await client.carts.updateCartItems(productId, count).sealed();

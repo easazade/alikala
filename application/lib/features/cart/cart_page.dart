@@ -43,39 +43,39 @@ class CartPage extends ConsumerWidget {
       ),
       child: NoScrollIndicator(
         child: DataBuilder(
-            data: cartStore.cart,
-            builder: (context, cart) {
-              return ListView(
-                children: [
-                  if (!authStore.isUserAuthenticated) _createLoginNeededCard(),
-                  SizedBox(height: 30),
-                  _createCartIsEmptyMessage(cartStore),
-                  if (cart.hasValue && cart.value.items != null)
-                    for (var cartItem in cart.value.items!) ...[
-                      AppSectionSeparator(height: 5),
-                      _createCartItem(
-                        cartItem,
-                        cart.operation is CartItemOperation ? cart.operation as CartItemOperation : null,
-                      ),
-                    ],
+          data: cartStore.cart,
+          builder: (context, cart) {
+            return ListView(
+              children: [
+                if (!authStore.isUserAuthenticated) _createLoginNeededCard(),
+                SizedBox(height: 30),
+                _createCartIsEmptyMessage(cartStore),
+                if (cart.hasValue && cart.value.items != null)
+                  for (var cartItem in cart.value.items!) ...[
+                    AppSectionSeparator(height: 5),
+                    _createCartItem(
+                      cartItem,
+                      (cart.operation is UpdateCartItemOperation &&
+                              (cart.operation as UpdateCartItemOperation).productId == cartItem.productId)
+                          ? cart.operation as UpdateCartItemOperation
+                          : null,
+                    ),
+                  ],
+                if (cart.hasValue && cart.value.items?.isNotEmpty == true) ...[
                   AppSectionSeparator(),
-                  _createCartSummary(context),
+                  _createCartSummary(context, cart.value),
                   AppSectionSeparator(),
-                  _createContinueButton(context),
+                  _createContinueButton(context, cart.value),
                 ],
-              );
-            }),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
 
-  Widget _createCartItem(CartItem cartItem, CartItemOperation? cartItemOperation) {
-    final isRemovingFromCart =
-        cartItemOperation is RemoveFromCartOperation && cartItemOperation.productId == cartItem.productId;
-
-    final isAddingToCart =
-        cartItemOperation is RemoveFromCartOperation && cartItemOperation.productId == cartItem.productId;
-
+  Widget _createCartItem(CartItem cartItem, UpdateCartItemOperation? cartItemOperation) {
     return Material(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -83,7 +83,7 @@ class CartPage extends ConsumerWidget {
         child: Column(
           children: [
             SizedBox(height: 20),
-            if (isRemovingFromCart) Text('Deleting'),
+            if (cartItemOperation != null) Text('Updating'),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -171,7 +171,7 @@ class CartPage extends ConsumerWidget {
     );
   }
 
-  Widget _createCartSummary(BuildContext context) {
+  Widget _createCartSummary(BuildContext context, Cart cart) {
     Widget createPriceItem(String label, int value) {
       return Column(
         children: [
@@ -189,29 +189,42 @@ class CartPage extends ConsumerWidget {
       );
     }
 
-    return Material(
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        color: Colors.white,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(S.current.summary, style: TextStyle(fontSize: 16)),
-                Text('1 item', style: TextStyle(fontSize: 12, color: AppColors.textLight2)),
-              ],
-            ),
-            SizedBox(height: 20),
-            createPriceItem(S.of(context).totalAmount, 623000),
-            createPriceItem(S.of(context).sum, 623000),
-          ],
+    final totalAmount = cart.items?.fold(0, (sum, item) => sum + (item.product?.price ?? 0)) ?? 0;
+
+    if (cart.items?.isNotEmpty == true) {
+      return Material(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          color: Colors.white,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(S.current.summary, style: TextStyle(fontSize: 16)),
+                  Text('${cart.items!.length} ${S.current.items}',
+                      style: TextStyle(fontSize: 12, color: AppColors.textLight2)),
+                ],
+              ),
+              SizedBox(height: 20),
+              for (var cartItem in cart.items!)
+                if (cartItem.product != null)
+                  createPriceItem(cartItem.product!.name, cartItem.product!.price)
+                else
+                  Text('Error, cannot show cart item price'),
+              createPriceItem(S.of(context).totalAmount, totalAmount),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return const SizedBox();
+    }
   }
 
-  Widget _createContinueButton(BuildContext context) {
+  Widget _createContinueButton(BuildContext context, Cart cart) {
+    final totalAmount = cart.items?.fold(0, (sum, item) => sum + (item.product?.price ?? 0)) ?? 0;
+
     return Material(
       child: Container(
         decoration: BoxDecoration(
@@ -233,7 +246,7 @@ class CartPage extends ConsumerWidget {
                         style: TextStyle(color: AppColors.textLight, fontWeight: FontWeight.w500)),
                   ],
                 ),
-                AppPriceTag(615000, sizeFactor: 1.2, color: AppColors.themeAccent3),
+                AppPriceTag(totalAmount, sizeFactor: 1.2, color: AppColors.themeAccent3),
               ],
             ),
           ],

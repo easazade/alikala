@@ -120,10 +120,10 @@ class S {
     );
   }
 
-  /// `You\'re shopping cart is empty`
+  /// `You're shopping cart is empty`
   String get youreShoppingCartIsEmpty {
     return Intl.message(
-      'You\\\'re shopping cart is empty',
+      'You\'re shopping cart is empty',
       name: 'youreShoppingCartIsEmpty',
       desc: '',
       args: [],

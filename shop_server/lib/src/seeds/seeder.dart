@@ -80,6 +80,14 @@ class Seeder {
           description: FakerX.defaultInstance.lorem.paragraph(minSentences: 4, maxSentences: 10),
           category: categories.randomItem!,
           price: FakerX.defaultInstance.number.randomInt(1000, min: 30),
+          images: List.generate(
+            FakerX.defaultInstance.number.randomInt(10, min: 3),
+            (index) => FakerX.defaultInstance.image.image(
+              width: 640,
+              height: 360,
+              keywords: ['shoes', 't-shirt', 'laptop', 'ssd', 'watch', 'xbox', 'tea pot', 'book'],
+            ),
+          ),
         ),
       );
       for (var row in products) {

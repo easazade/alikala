@@ -119,6 +119,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "yourFavoriteItems":
             MessageLookupByLibrary.simpleMessage("Your favorite items"),
         "youreShoppingCartIsEmpty": MessageLookupByLibrary.simpleMessage(
-            "You\\\'re shopping cart is empty")
+            "You\'re shopping cart is empty")
       };
 }

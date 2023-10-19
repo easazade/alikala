@@ -21,6 +21,7 @@ class _EndpointCarts extends _i1.EndpointRef {
   @override
   String get name => 'carts';
 
+  /// always returns one carts. if there isn't none. it will create a new cart and returns
   _i2.Future<_i3.Cart> getCart() => caller.callServerEndpoint<_i3.Cart>(
         'carts',
         'getCart',
@@ -67,13 +68,6 @@ class _EndpointBannerAds extends _i1.EndpointRef {
       caller.callServerEndpoint<List<_i5.BannerAd>>(
         'bannerAds',
         'getSlides',
-        {},
-      );
-
-  _i2.Future<List<_i5.BannerAd>> ssssssss() =>
-      caller.callServerEndpoint<List<_i5.BannerAd>>(
-        'bannerAds',
-        'ssssssss',
         {},
       );
 }

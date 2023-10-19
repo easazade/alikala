@@ -18,12 +18,4 @@ class BannerAds extends Endpoint {
   // supported. The `session` object provides access to the database, logging,
   // passwords, and information about the request being made to the server.
   Future<List<BannerAd>> getSlides(Session session) => BannerAd.find(session);
-
-  Future<List<BannerAd>> ssssssss(Session session) async {
-    final authenticatedUserId = await session.auth.authenticatedUserId;
-    if (authenticatedUserId != null) {
-      final userInfo = await UserInfo.findById(session, authenticatedUserId);
-    }
-    return BannerAd.find(session);
-  }
 }
