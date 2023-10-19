@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:application/config.dart';
 import 'package:application/features/splash/splash_screen.dart';
+import 'package:application/stores/business_logic/category_store.dart';
 import 'package:application/stores/stores.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,7 @@ Future _registerStores() async {
   _getIt.registerLazySingleton(() => ShopStore(client: inject()));
   _getIt.registerLazySingleton(() => ProfileStore());
   _getIt.registerLazySingleton(() => CartStore(client: inject(), loggedInUser: authStore.loggedInUser));
+  _getIt.registerLazySingleton(() => CategoryStore(client: inject()));
 }
 
 Future _registerProviders() async {
@@ -57,6 +59,7 @@ Future _registerProviders() async {
   _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<ShopStore>()));
   _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<ProfileStore>()));
   _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<CartStore>()));
+  _getIt.registerLazySingleton(() => ChangeNotifierProvider((ref) => inject<CategoryStore>()));
 }
 
 /// Shows child when dependency setup is completed.

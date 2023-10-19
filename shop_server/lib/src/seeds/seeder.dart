@@ -21,7 +21,7 @@ class Seeder {
       final categories = List.generate(
         _count,
         (index) => Category(
-          name: 'category$index',
+          name: 'Category ${index + 1}',
           description: FakerX.defaultInstance.lorem.paragraph(),
           image: FakerX.defaultInstance.image.image(width: 40, height: 40, keywords: ['category']),
           icon: FakerX.defaultInstance.image.image(width: 40, height: 40, keywords: ['icon']),
