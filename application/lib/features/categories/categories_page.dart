@@ -16,7 +16,7 @@ class CategoriesPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final CategoriesStore store = ref.watch(injectStoreProvider());
 
-    final retryWidget = RetryWidget(() => store.init());
+    final retryWidget = Center(child: RetryWidget(() => store.init()));
 
     return Scaffold(
       body: NoScrollIndicator(
