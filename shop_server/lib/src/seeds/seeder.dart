@@ -23,8 +23,8 @@ class Seeder {
         (index) => Category(
           name: 'Category ${index + 1}',
           description: FakerX.defaultInstance.lorem.paragraph(),
-          image: FakerX.defaultInstance.image.image(width: 40, height: 40, keywords: ['category']),
-          icon: FakerX.defaultInstance.image.image(width: 40, height: 40, keywords: ['icon']),
+          image: FakerX.defaultInstance.image.image(width: 150, height: 150, keywords: ['category']),
+          icon: FakerX.defaultInstance.image.image(width: 150, height: 150, keywords: ['icon']),
           productsCount: FakerX.defaultInstance.number.randomInt(100000),
         ),
       );

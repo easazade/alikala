@@ -2,8 +2,8 @@ import 'package:application/utils/utils_functions.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:shop_client/shop_client.dart';
 
-class CategoryStore extends Store {
-  CategoryStore({required this.client}) {
+class CategoriesStore extends Store {
+  CategoriesStore({required this.client}) {
     init();
   }
 
