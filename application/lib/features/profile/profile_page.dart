@@ -11,7 +11,6 @@ import 'package:application/widgets/app_section_separator.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProfilePage extends ConsumerWidget {
@@ -47,7 +46,7 @@ class ProfilePage extends ConsumerWidget {
                         icon: Icon(FeatherIcons.bell),
                         onTap: () {
                           //TODO: remove this later
-                          profileStore.init();
+                          profileStore.getFavoriteItems();
                         },
                       ),
                     ],

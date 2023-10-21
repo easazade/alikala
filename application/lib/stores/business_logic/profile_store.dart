@@ -12,27 +12,29 @@ class ProfileStore extends Store {
   final Data<UserInfo> loggedInUser;
   final Client client;
 
-  Future<void> init() async {
+  Future<void> getFavoriteItems() async {
     if (loggedInUser.hasValue) {
-      operation = Operation.fetch;
-      failure = null;
+      favoriteItems.operation = Operation.fetch;
+      favoriteItems.failure = null;
       notifyListeners();
 
       final result = await client.users.getFavoriteItems().sealed();
 
+      favoriteItems.operation = Operation.none;
+
       if (result.isSuccessful) {
         favoriteItems.addAll(result.value.mapToData);
       } else {
-        failure = Failure(
+        favoriteItems.failure = Failure(
           result.exception.getMessage() ?? 'Could not fetch favorite items',
           cause: Operation.fetch,
           exception: result.exception,
         );
       }
-      operation = Operation.none;
     } else {
-      failure = Failure('Please Login first');
+      favoriteItems.failure = Failure('Please Login first');
     }
+    notifyListeners();
   }
 
   @override

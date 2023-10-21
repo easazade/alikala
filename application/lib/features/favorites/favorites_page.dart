@@ -8,11 +8,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FavoritesPage extends ConsumerWidget {
+class FavoritesPage extends ConsumerStatefulWidget {
   const FavoritesPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<FavoritesPage> createState() => _FavoritesPageState();
+}
+
+class _FavoritesPageState extends ConsumerState<FavoritesPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      inject<ProfileStore>().getFavoriteItems();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     final profileStore = ref.watch(injectStoreProvider<ProfileStore>());
@@ -46,7 +59,7 @@ class FavoritesPage extends ConsumerWidget {
         },
         onOperate: (context, _) => Center(child: AppProgress.large()),
         onFailure: (context, data) => Center(
-          child: ActionErrorWidget(data.failure.message, profileStore.init),
+          child: ActionErrorWidget(data.failure.message, profileStore.getFavoriteItems),
         ),
       ),
     );
