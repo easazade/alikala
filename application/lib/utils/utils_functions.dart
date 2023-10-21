@@ -1,6 +1,7 @@
 import 'package:application/utils/typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shop_client/shop_client.dart';
 
 class SealedResult<T> {
   final T? _value;
@@ -38,6 +39,16 @@ extension FutureX<T> on Future<T> {
     } on Exception catch (e) {
       return SealedResult.failure(e);
     }
+  }
+}
+
+extension ExceptionX on Exception {
+  String? getMessage() {
+    if (this is ApiException) {
+      return (this as ApiException).message;
+    }
+
+    return null;
   }
 }
 

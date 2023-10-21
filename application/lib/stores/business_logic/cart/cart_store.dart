@@ -26,7 +26,11 @@ class CartStore extends Store {
       if (result.isSuccessful) {
         cart.value = result.value;
       } else {
-        failure = Failure('Could not fetch carts', exception: result.exception, cause: Operation.fetch);
+        failure = Failure(
+          result.exception.getMessage() ?? 'Could not fetch carts',
+          exception: result.exception,
+          cause: Operation.fetch,
+        );
       }
 
       operation = Operation.none;
@@ -47,7 +51,10 @@ class CartStore extends Store {
     if (result.isSuccessful) {
       cart.value = result.value;
     } else {
-      failure = Failure('Cannot show cart, please try again', exception: result.exception);
+      failure = Failure(
+        result.exception.getMessage() ?? 'Cannot show cart, please try again',
+        exception: result.exception,
+      );
     }
 
     operation = Operation.none;

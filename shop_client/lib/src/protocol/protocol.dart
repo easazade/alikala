@@ -20,7 +20,8 @@ import 'slide_ad.dart' as _i10;
 import 'protocol.dart' as _i11;
 import 'package:shop_client/src/protocol/category.dart' as _i12;
 import 'package:shop_client/src/protocol/slide_ad.dart' as _i13;
-import 'package:serverpod_auth_client/module.dart' as _i14;
+import 'package:shop_client/src/protocol/product.dart' as _i14;
+import 'package:serverpod_auth_client/module.dart' as _i15;
 export 'api_exception.dart';
 export 'cart.dart';
 export 'cart_item.dart';
@@ -125,8 +126,12 @@ class Protocol extends _i1.SerializationManager {
       return (data as List).map((e) => deserialize<_i13.BannerAd>(e)).toList()
           as dynamic;
     }
+    if (t == List<_i14.Product>) {
+      return (data as List).map((e) => deserialize<_i14.Product>(e)).toList()
+          as dynamic;
+    }
     try {
-      return _i14.Protocol().deserialize<T>(data, t);
+      return _i15.Protocol().deserialize<T>(data, t);
     } catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -134,7 +139,7 @@ class Protocol extends _i1.SerializationManager {
   @override
   String? getClassNameForObject(Object data) {
     String? className;
-    className = _i14.Protocol().getClassNameForObject(data);
+    className = _i15.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -172,7 +177,7 @@ class Protocol extends _i1.SerializationManager {
   dynamic deserializeByClassName(Map<String, dynamic> data) {
     if (data['className'].startsWith('serverpod_auth.')) {
       data['className'] = data['className'].substring(15);
-      return _i14.Protocol().deserializeByClassName(data);
+      return _i15.Protocol().deserializeByClassName(data);
     }
     if (data['className'] == 'ApiException') {
       return deserialize<_i2.ApiException>(data['data']);

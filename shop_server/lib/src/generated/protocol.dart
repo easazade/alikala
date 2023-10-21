@@ -22,6 +22,7 @@ import 'slide_ad.dart' as _i12;
 import 'protocol.dart' as _i13;
 import 'package:shop_server/src/generated/category.dart' as _i14;
 import 'package:shop_server/src/generated/slide_ad.dart' as _i15;
+import 'package:shop_server/src/generated/product.dart' as _i16;
 export 'api_exception.dart';
 export 'cart.dart';
 export 'cart_item.dart';
@@ -516,6 +517,10 @@ class Protocol extends _i1.SerializationManagerServer {
     }
     if (t == List<_i15.BannerAd>) {
       return (data as List).map((e) => deserialize<_i15.BannerAd>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i16.Product>) {
+      return (data as List).map((e) => deserialize<_i16.Product>(e)).toList()
           as dynamic;
     }
     try {

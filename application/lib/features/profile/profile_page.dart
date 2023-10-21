@@ -55,47 +55,6 @@ class ProfilePage extends ConsumerWidget {
                 ),
                 SizedBox(height: 40),
                 // building profile store with buildWhen
-                WhenDataBuilder(
-                  data: profileStore,
-                  onValue: (context, store) => Text(
-                    store.username.value,
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.titleSmall?.copyWith(height: 1),
-                  ),
-                  onOperate: (_, __) => Text('loading'),
-                  onFailure: (_, store) => Text(store.failure.message),
-                  orElse: (_, __) => Text('else clause'),
-                ),
-
-                /// building profileStore using build
-                DataBuilder(
-                  data: profileStore,
-                  builder: (context, store) {
-                    if (store.isOperating) {
-                      return Text(store.operation.name);
-                    } else if (store.hasValue) {
-                      return Text(
-                        store.username.value,
-                        textAlign: TextAlign.center,
-                        style: theme.textTheme.titleSmall?.copyWith(height: 1),
-                      );
-                    } else {
-                      return Text('what username :(');
-                    }
-                  },
-                ),
-                //directly using StoreConsumer to build the shopStore
-                // DataBuilder(
-                //   data: shopStore,
-                //   builder: (context, store) {
-                //     return WhenDataBuilder(
-                //       data: shopStore.shopName,
-                //       onValue: (context, data) => Text('${data.value} &&'),
-                //       onOperate: (context, data) => CircularProgressIndicator(color: Colors.red),
-                //     );
-                //   },
-                // ),
-
                 Text(
                   '09117158746',
                   textAlign: TextAlign.center,

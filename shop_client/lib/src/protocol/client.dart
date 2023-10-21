@@ -11,9 +11,10 @@ import 'dart:async' as _i2;
 import 'package:shop_client/src/protocol/cart.dart' as _i3;
 import 'package:shop_client/src/protocol/category.dart' as _i4;
 import 'package:shop_client/src/protocol/slide_ad.dart' as _i5;
-import 'package:serverpod_auth_client/module.dart' as _i6;
-import 'dart:io' as _i7;
-import 'protocol.dart' as _i8;
+import 'package:shop_client/src/protocol/product.dart' as _i6;
+import 'package:serverpod_auth_client/module.dart' as _i7;
+import 'dart:io' as _i8;
+import 'protocol.dart' as _i9;
 
 class _EndpointCarts extends _i1.EndpointRef {
   _EndpointCarts(_i1.EndpointCaller caller) : super(caller);
@@ -72,28 +73,43 @@ class _EndpointBannerAds extends _i1.EndpointRef {
       );
 }
 
+class _EndpointUsers extends _i1.EndpointRef {
+  _EndpointUsers(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'users';
+
+  _i2.Future<List<_i6.Product>> getFavoriteItems() =>
+      caller.callServerEndpoint<List<_i6.Product>>(
+        'users',
+        'getFavoriteItems',
+        {},
+      );
+}
+
 class _Modules {
   _Modules(Client client) {
-    auth = _i6.Caller(client);
+    auth = _i7.Caller(client);
   }
 
-  late final _i6.Caller auth;
+  late final _i7.Caller auth;
 }
 
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
-    _i7.SecurityContext? context,
+    _i8.SecurityContext? context,
     _i1.AuthenticationKeyManager? authenticationKeyManager,
   }) : super(
           host,
-          _i8.Protocol(),
+          _i9.Protocol(),
           context: context,
           authenticationKeyManager: authenticationKeyManager,
         ) {
     carts = _EndpointCarts(this);
     categories = _EndpointCategories(this);
     bannerAds = _EndpointBannerAds(this);
+    users = _EndpointUsers(this);
     modules = _Modules(this);
   }
 
@@ -103,6 +119,8 @@ class Client extends _i1.ServerpodClient {
 
   late final _EndpointBannerAds bannerAds;
 
+  late final _EndpointUsers users;
+
   late final _Modules modules;
 
   @override
@@ -110,6 +128,7 @@ class Client extends _i1.ServerpodClient {
         'carts': carts,
         'categories': categories,
         'bannerAds': bannerAds,
+        'users': users,
       };
   @override
   Map<String, _i1.ModuleEndpointCaller> get moduleLookup =>
