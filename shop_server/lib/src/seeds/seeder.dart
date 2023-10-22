@@ -2,19 +2,21 @@ import 'package:faker_x/faker_x.dart';
 import 'package:serverpod/server.dart';
 import 'package:shop_server/src/generated/category.dart';
 import 'package:shop_server/src/generated/product.dart';
+import 'package:shop_server/src/generated/protocol.dart';
 import 'package:shop_server/src/generated/slide_ad.dart';
 import 'package:collection/collection.dart';
 
 class Seeder {
   static const _count = 20;
 
-  static Future insertSeedData(Session session) async {
+  static Future<void> insertSeedData(Session session) async {
     await _seedCategories(session);
     await _seedProducts(session);
     await _seedSlideAds(session);
+    await _seedOffers(session);
   }
 
-  static Future _seedCategories(Session session) async {
+  static Future<void> _seedCategories(Session session) async {
     final allCategories = await Category.find(session);
 
     if (allCategories.isEmpty) {
@@ -42,7 +44,7 @@ class Seeder {
     }
   }
 
-  static Future _seedSlideAds(Session session) async {
+  static Future<void> _seedSlideAds(Session session) async {
     final allBannerAds = await BannerAd.find(session);
 
     if (allBannerAds.isEmpty) {
@@ -67,7 +69,7 @@ class Seeder {
     }
   }
 
-  static Future _seedProducts(Session session) async {
+  static Future<void> _seedProducts(Session session) async {
     final allProducts = await Product.find(session);
 
     final categories = await Category.find(session);
@@ -95,6 +97,33 @@ class Seeder {
       }
 
       print('inserted seed products into ${Product.t.tableName} table');
+    }
+  }
+
+  static Future<void> _seedOffers(Session session) async {
+    final products = await Product.find(session);
+    final offerItems = products.take(6).toList();
+
+    for (var item in offerItems) {
+      final discount = Discount(
+        productId: item.id!,
+        discountPrice: (item.price * FakerX.defaultInstance.number.randomDouble(min: 0.05, range: 0.5)).toInt().abs(),
+        startDate: DateTime.now(),
+        dueDate: DateTime.now().add(const Duration(days: 3)),
+        message: 'An Amazing offer',
+      );
+
+      await Discount.insert(session, discount);
+
+      await Offer.insert(
+        session,
+        Offer(
+          productId: item.id!,
+          discountId: discount.id!,
+          expireAt: discount.dueDate,
+          startedAt: discount.dueDate,
+        ),
+      );
     }
   }
 }
