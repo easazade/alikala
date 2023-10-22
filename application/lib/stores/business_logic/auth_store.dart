@@ -15,12 +15,16 @@ class AuthStore extends Store {
   }) {
     loggedInUser.value = sessionManager.signedInUser;
     sessionManager.addListener(onSessionChanges);
+    isLoggedIn = loggedInUser.mapTo<Data<bool>>(Data<bool>(), (origin, mutated) {
+      mutated.value = origin.hasValue;
+    });
   }
 
   final EmailAuthController emailAuthController;
   final SessionManager sessionManager;
 
   final loggedInUser = Data<UserInfo>();
+  late Data<bool> isLoggedIn;
   String? registerRequestEmail;
 
   bool get isUserAuthenticated => loggedInUser.hasValue;

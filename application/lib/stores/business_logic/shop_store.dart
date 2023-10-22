@@ -6,14 +6,23 @@ class ShopStore extends Store {
   final Client client;
 
   final banners = ListData<BannerAd>([]);
+  final offers = ListData<Offer>([]);
 
   ShopStore({required this.client}) {
     init();
   }
 
-  Future init() async {
-    operation = Operation.fetch;
-    failure = null;
+  void init() {
+    _getBanners();
+    _getOffers();
+  }
+
+  @override
+  List<Data<Object?>> get items => [banners];
+
+  Future<void> _getBanners() async {
+    banners.operation = Operation.fetch;
+    banners.failure = null;
     notifyListeners();
 
     final result = await client.bannerAds.getSlides().sealed();
@@ -21,13 +30,34 @@ class ShopStore extends Store {
       final bannerAds = result.value;
       banners.addAll(bannerAds.mapToData);
     } else {
-      failure = Failure('Could not fetch banners', exception: result.exception, cause: Operation.fetch);
+      banners.failure = Failure(
+        result.exception.getMessage() ?? 'Could not load banners',
+        exception: result.exception,
+        cause: Operation.fetch,
+      );
     }
 
-    operation = Operation.none;
+    banners.operation = Operation.none;
     notifyListeners();
   }
 
-  @override
-  List<Data<Object?>> get items => [banners];
+  Future<void> _getOffers() async {
+    offers.operation = Operation.fetch;
+    offers.failure = null;
+    notifyListeners();
+
+    final result = await client.offers.getOffers().sealed();
+    if (result.isSuccessful) {
+      offers.addAll(result.value.mapToData);
+    } else {
+      offers.failure = Failure(
+        result.exception.getMessage() ?? 'Could not load offers',
+        exception: result.exception,
+        cause: Operation.fetch,
+      );
+    }
+
+    offers.operation = Operation.none;
+    notifyListeners();
+  }
 }

@@ -1,0 +1,10 @@
+class: Offer
+table: shop_offers
+
+fields:
+  productId: int
+  product: Product?, api
+  discountId: int,
+  discount: Discount?, api
+  expireAt: DateTime
+  startedAt: DateTime

@@ -9,9 +9,10 @@
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/carts_endpoint.dart' as _i2;
 import '../endpoints/categories_endpoint.dart' as _i3;
-import '../endpoints/slide_ads_endpoint.dart' as _i4;
-import '../endpoints/users_endpoint.dart' as _i5;
-import 'package:serverpod_auth_server/module.dart' as _i6;
+import '../endpoints/offers_endpoint.dart' as _i4;
+import '../endpoints/slide_ads_endpoint.dart' as _i5;
+import '../endpoints/users_endpoint.dart' as _i6;
+import 'package:serverpod_auth_server/module.dart' as _i7;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -29,13 +30,19 @@ class Endpoints extends _i1.EndpointDispatch {
           'categories',
           null,
         ),
-      'bannerAds': _i4.BannerAds()
+      'offers': _i4.Offers()
+        ..initialize(
+          server,
+          'offers',
+          null,
+        ),
+      'bannerAds': _i5.BannerAds()
         ..initialize(
           server,
           'bannerAds',
           null,
         ),
-      'users': _i5.Users()
+      'users': _i6.Users()
         ..initialize(
           server,
           'users',
@@ -97,6 +104,21 @@ class Endpoints extends _i1.EndpointDispatch {
         )
       },
     );
+    connectors['offers'] = _i1.EndpointConnector(
+      name: 'offers',
+      endpoint: endpoints['offers']!,
+      methodConnectors: {
+        'getOffers': _i1.MethodConnector(
+          name: 'getOffers',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['offers'] as _i4.Offers).getOffers(session),
+        )
+      },
+    );
     connectors['bannerAds'] = _i1.EndpointConnector(
       name: 'bannerAds',
       endpoint: endpoints['bannerAds']!,
@@ -108,7 +130,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['bannerAds'] as _i4.BannerAds).getSlides(session),
+              (endpoints['bannerAds'] as _i5.BannerAds).getSlides(session),
         )
       },
     );
@@ -123,10 +145,10 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['users'] as _i5.Users).getFavoriteItems(session),
+              (endpoints['users'] as _i6.Users).getFavoriteItems(session),
         )
       },
     );
-    modules['serverpod_auth'] = _i6.Endpoints()..initializeEndpoints(server);
+    modules['serverpod_auth'] = _i7.Endpoints()..initializeEndpoints(server);
   }
 }

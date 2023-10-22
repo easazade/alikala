@@ -66,6 +66,22 @@ ALTER TABLE ONLY "shop_categories"
 
 
 --
+-- Class Offer as table shop_offers
+--
+
+CREATE TABLE "shop_offers" (
+  "id" serial,
+  "productId" integer NOT NULL,
+  "discountId" integer NOT NULL,
+  "expireAt" timestamp without time zone NOT NULL,
+  "startedAt" timestamp without time zone NOT NULL
+);
+
+ALTER TABLE ONLY "shop_offers"
+  ADD CONSTRAINT shop_offers_pkey PRIMARY KEY (id);
+
+
+--
 -- Class Product as table shop_products
 --
 

@@ -16,19 +16,22 @@ import 'cart_item.dart' as _i6;
 import 'category.dart' as _i7;
 import 'discount.dart' as _i8;
 import 'error_type.dart' as _i9;
-import 'product.dart' as _i10;
-import 'profile.dart' as _i11;
-import 'slide_ad.dart' as _i12;
-import 'protocol.dart' as _i13;
-import 'package:shop_server/src/generated/category.dart' as _i14;
-import 'package:shop_server/src/generated/slide_ad.dart' as _i15;
-import 'package:shop_server/src/generated/product.dart' as _i16;
+import 'offers.dart' as _i10;
+import 'product.dart' as _i11;
+import 'profile.dart' as _i12;
+import 'slide_ad.dart' as _i13;
+import 'protocol.dart' as _i14;
+import 'package:shop_server/src/generated/category.dart' as _i15;
+import 'package:shop_server/src/generated/offers.dart' as _i16;
+import 'package:shop_server/src/generated/slide_ad.dart' as _i17;
+import 'package:shop_server/src/generated/product.dart' as _i18;
 export 'api_exception.dart';
 export 'cart.dart';
 export 'cart_item.dart';
 export 'category.dart';
 export 'discount.dart';
 export 'error_type.dart';
+export 'offers.dart';
 export 'product.dart';
 export 'profile.dart';
 export 'slide_ad.dart';
@@ -282,6 +285,60 @@ class Protocol extends _i1.SerializationManagerServer {
       managed: true,
     ),
     _i2.TableDefinition(
+      name: 'shop_offers',
+      schema: 'public',
+      columns: [
+        _i2.ColumnDefinition(
+          name: 'id',
+          columnType: _i2.ColumnType.integer,
+          isNullable: false,
+          dartType: 'int?',
+          columnDefault: 'nextval(\'shop_offers_id_seq\'::regclass)',
+        ),
+        _i2.ColumnDefinition(
+          name: 'productId',
+          columnType: _i2.ColumnType.integer,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'discountId',
+          columnType: _i2.ColumnType.integer,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'expireAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+        ),
+        _i2.ColumnDefinition(
+          name: 'startedAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+        ),
+      ],
+      foreignKeys: [],
+      indexes: [
+        _i2.IndexDefinition(
+          indexName: 'shop_offers_pkey',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'id',
+            )
+          ],
+          type: 'btree',
+          isUnique: true,
+          isPrimary: true,
+        )
+      ],
+      managed: true,
+    ),
+    _i2.TableDefinition(
       name: 'shop_products',
       schema: 'public',
       columns: [
@@ -462,14 +519,17 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i9.ErrorType) {
       return _i9.ErrorType.fromJson(data) as T;
     }
-    if (t == _i10.Product) {
-      return _i10.Product.fromJson(data, this) as T;
+    if (t == _i10.Offer) {
+      return _i10.Offer.fromJson(data, this) as T;
     }
-    if (t == _i11.Profile) {
-      return _i11.Profile.fromJson(data, this) as T;
+    if (t == _i11.Product) {
+      return _i11.Product.fromJson(data, this) as T;
     }
-    if (t == _i12.BannerAd) {
-      return _i12.BannerAd.fromJson(data, this) as T;
+    if (t == _i12.Profile) {
+      return _i12.Profile.fromJson(data, this) as T;
+    }
+    if (t == _i13.BannerAd) {
+      return _i13.BannerAd.fromJson(data, this) as T;
     }
     if (t == _i1.getType<_i4.ApiException?>()) {
       return (data != null ? _i4.ApiException.fromJson(data, this) : null) as T;
@@ -489,18 +549,21 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i9.ErrorType?>()) {
       return (data != null ? _i9.ErrorType.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i10.Product?>()) {
-      return (data != null ? _i10.Product.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i10.Offer?>()) {
+      return (data != null ? _i10.Offer.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i11.Profile?>()) {
-      return (data != null ? _i11.Profile.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i11.Product?>()) {
+      return (data != null ? _i11.Product.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i12.BannerAd?>()) {
-      return (data != null ? _i12.BannerAd.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i12.Profile?>()) {
+      return (data != null ? _i12.Profile.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<List<_i13.CartItem>?>()) {
+    if (t == _i1.getType<_i13.BannerAd?>()) {
+      return (data != null ? _i13.BannerAd.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<List<_i14.CartItem>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i13.CartItem>(e)).toList()
+          ? (data as List).map((e) => deserialize<_i14.CartItem>(e)).toList()
           : null) as dynamic;
     }
     if (t == _i1.getType<List<String>?>()) {
@@ -511,16 +574,20 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
     }
-    if (t == List<_i14.Category>) {
-      return (data as List).map((e) => deserialize<_i14.Category>(e)).toList()
+    if (t == List<_i15.Category>) {
+      return (data as List).map((e) => deserialize<_i15.Category>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i15.BannerAd>) {
-      return (data as List).map((e) => deserialize<_i15.BannerAd>(e)).toList()
+    if (t == List<_i16.Offer>) {
+      return (data as List).map((e) => deserialize<_i16.Offer>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i16.Product>) {
-      return (data as List).map((e) => deserialize<_i16.Product>(e)).toList()
+    if (t == List<_i17.BannerAd>) {
+      return (data as List).map((e) => deserialize<_i17.BannerAd>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i18.Product>) {
+      return (data as List).map((e) => deserialize<_i18.Product>(e)).toList()
           as dynamic;
     }
     try {
@@ -557,13 +624,16 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i9.ErrorType) {
       return 'ErrorType';
     }
-    if (data is _i10.Product) {
+    if (data is _i10.Offer) {
+      return 'Offer';
+    }
+    if (data is _i11.Product) {
       return 'Product';
     }
-    if (data is _i11.Profile) {
+    if (data is _i12.Profile) {
       return 'Profile';
     }
-    if (data is _i12.BannerAd) {
+    if (data is _i13.BannerAd) {
       return 'BannerAd';
     }
     return super.getClassNameForObject(data);
@@ -593,14 +663,17 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data['className'] == 'ErrorType') {
       return deserialize<_i9.ErrorType>(data['data']);
     }
+    if (data['className'] == 'Offer') {
+      return deserialize<_i10.Offer>(data['data']);
+    }
     if (data['className'] == 'Product') {
-      return deserialize<_i10.Product>(data['data']);
+      return deserialize<_i11.Product>(data['data']);
     }
     if (data['className'] == 'Profile') {
-      return deserialize<_i11.Profile>(data['data']);
+      return deserialize<_i12.Profile>(data['data']);
     }
     if (data['className'] == 'BannerAd') {
-      return deserialize<_i12.BannerAd>(data['data']);
+      return deserialize<_i13.BannerAd>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
@@ -628,12 +701,14 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i7.Category.t;
       case _i8.Discount:
         return _i8.Discount.t;
-      case _i10.Product:
-        return _i10.Product.t;
-      case _i11.Profile:
-        return _i11.Profile.t;
-      case _i12.BannerAd:
-        return _i12.BannerAd.t;
+      case _i10.Offer:
+        return _i10.Offer.t;
+      case _i11.Product:
+        return _i11.Product.t;
+      case _i12.Profile:
+        return _i12.Profile.t;
+      case _i13.BannerAd:
+        return _i13.BannerAd.t;
     }
     return null;
   }

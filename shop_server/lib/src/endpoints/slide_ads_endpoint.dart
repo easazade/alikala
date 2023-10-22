@@ -1,5 +1,4 @@
 import 'package:serverpod/serverpod.dart';
-import 'package:serverpod_auth_server/module.dart';
 import 'package:shop_server/src/generated/protocol.dart';
 
 // This is an example endpoint of your server. It's best practice to use the

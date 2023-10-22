@@ -17,8 +17,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crystalline/flutter_crystalline.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../fake_data.dart';
-
 class HomePage extends ConsumerWidget {
   final ShopStore shopStore = inject();
 
@@ -28,7 +26,6 @@ class HomePage extends ConsumerWidget {
 
     return DataBuilder(
         data: shopStore,
-        observe: true,
         builder: (context, _) {
           return Scaffold(
             appBar: AppBar(title: Text(S.of(context).shop)),
@@ -38,7 +35,7 @@ class HomePage extends ConsumerWidget {
                   AppSliverSearchBar(context, () => appRouter.navigate(SearchRoute())),
                   AppSliverSliders(banners: shopStore.banners),
                   SliverSizedBox(height: 20),
-                  AppSliverAmazingDeals(amazingDeals: fakeAmazingDeals),
+                  if (shopStore.offers.hasValue) AppSliverAmazingOffers(),
                   //TODO: uncomment and refactor
                   // AppSliverNineTiles(
                   //   products: fakeProducts,

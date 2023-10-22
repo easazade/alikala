@@ -1,63 +1,58 @@
 import 'package:application/core/constants.dart';
-import 'package:application/data/entities.dart';
+import 'package:application/di/di.dart';
+import 'package:application/stores/business_logic/shop_store.dart';
+import 'package:application/utils/extensions.dart';
 import 'package:application/utils/utils_functions.dart';
 import 'package:application/widgets/app_network_image.dart';
+import 'package:application/widgets/util/timer_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crystalline/flutter_crystalline.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shop_client/shop_client.dart';
 
-class AppSliverAmazingDeals extends StatefulWidget {
-  final List<AmazingDeal> amazingDeals;
-
-  const AppSliverAmazingDeals({required this.amazingDeals});
+class AppSliverAmazingOffers extends ConsumerStatefulWidget {
+  const AppSliverAmazingOffers();
 
   @override
-  State<StatefulWidget> createState() => _State();
+  ConsumerState<ConsumerStatefulWidget> createState() => _State();
 }
 
-class _State extends State<AppSliverAmazingDeals> {
-  DateTime now = DateTime.now();
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(1.seconds(), () async {
-      while (true) {
-        await 1.secondsDelay();
-        setState(() {
-          now = DateTime.now();
-        });
-      }
-    });
-  }
-
+class _State extends ConsumerState<AppSliverAmazingOffers> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final shopStore = ref.watch(injectStoreProvider<ShopStore>());
 
     return SliverToBoxAdapter(
       child: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overScroll) {
           return true;
         },
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Container(
-            color: theme.primaryColor,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: Row(
-              children: [
-                _createSeeAllAmazingDealsWidget(),
-                for (var deal in widget.amazingDeals) _createAmazingDealWidget(context, deal),
-                SizedBox(width: 10),
-              ],
-            ),
-          ),
-        ),
+        child: WhenDataBuilder(
+            data: shopStore.offers,
+            onValue: (context, offers) {
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  color: theme.primaryColor,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: Row(
+                    children: [
+                      _createSeeAllAmazingOfferWidget(),
+                      for (var offer in offers)
+                        if (offer.value.product != null) _createAmazingOfferWidget(context, offer.value),
+                      SizedBox(width: 10),
+                    ],
+                  ),
+                ),
+              );
+            }),
       ),
     );
   }
 
-  Widget _createSeeAllAmazingDealsWidget() {
+  Widget _createSeeAllAmazingOfferWidget() {
     return SizedBox(
       width: 130,
       height: 260,
@@ -85,7 +80,7 @@ class _State extends State<AppSliverAmazingDeals> {
     );
   }
 
-  Widget _createAmazingDealWidget(BuildContext context, AmazingDeal deal) {
+  Widget _createAmazingOfferWidget(BuildContext context, Offer offer) {
     final theme = Theme.of(context);
 
     return Stack(
@@ -101,7 +96,7 @@ class _State extends State<AppSliverAmazingDeals> {
           ),
           child: Column(
             children: [
-              AppNetworkImage(imageUrl: deal.images.firstOrNull, width: 120, height: 80),
+              AppNetworkImage(imageUrl: offer.product!.images?.firstOrNull, width: 120, height: 80),
               SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
@@ -109,7 +104,7 @@ class _State extends State<AppSliverAmazingDeals> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      deal.title,
+                      offer.product!.name,
                       maxLines: 2,
                       textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis,
@@ -130,21 +125,22 @@ class _State extends State<AppSliverAmazingDeals> {
                       color: theme.primaryColor,
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    child: Text('${deal.offPercentage.toInt()}%', style: TextStyle(color: Colors.white, fontSize: 11)),
+                    child:
+                        Text('${offer.offPercentage?.toInt()}%', style: TextStyle(color: Colors.white, fontSize: 11)),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Text(deal.offPrice.commaSeparated(),
+                          Text(offer.discount!.discountPrice.toInt().commaSeparated(),
                               style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                           SizedBox(width: 2),
                           Text('\$', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500))
                         ],
                       ),
                       Text(
-                        deal.price.commaSeparated(),
+                        offer.product!.price.commaSeparated(),
                         style: TextStyle(
                           color: AppColors.textLight,
                           fontSize: 11,
@@ -162,9 +158,10 @@ class _State extends State<AppSliverAmazingDeals> {
         Positioned(
           bottom: 5,
           left: 15,
-          child: Builder(
+          child: TimerBuilder(
+            period: const Duration(seconds: 1),
             builder: (context) {
-              Duration difference = deal.dueDate.difference(now);
+              Duration difference = offer.expireAt.difference(DateTime.now());
               String remaining = difference.toString().split('.')[0];
               return Text(
                 remaining,
