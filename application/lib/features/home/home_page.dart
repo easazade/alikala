@@ -25,38 +25,39 @@ class HomePage extends ConsumerWidget {
     final ShopStore shopStore = ref.watch(injectStoreProvider());
 
     return DataBuilder(
-        data: shopStore,
-        builder: (context, _) {
-          return Scaffold(
-            appBar: AppBar(title: Text(S.of(context).shop)),
-            body: NoScrollIndicator(
-              child: CustomScrollView(
-                slivers: [
-                  AppSliverSearchBar(context, () => appRouter.navigate(SearchRoute())),
-                  AppSliverSliders(banners: shopStore.banners),
-                  SliverSizedBox(height: 20),
-                  if (shopStore.offers.hasValue) AppSliverAmazingOffers(),
-                  //TODO: uncomment and refactor
-                  // AppSliverNineTiles(
-                  //   products: fakeProducts,
-                  //   title: S.of(context).mostLikedByCustomers,
-                  //   subtitle: S.of(context).thingsYouMightLike,
-                  //   linkLabel: S.of(context).viewAll,
-                  // ),
-                  // AppSliverSingleBanner(imageUrl: fakeSale2),
-                  // SliverSizedBox(height: 30),
-                  // AppSliverMostPopular(products: fakeProducts, title: S.of(context).topSales),
-                  // AppSliverDoubleBanner(imageUrls: fakeSales),
-                  // AppSliverHorizontalProductsList(
-                  //   products: fakeProducts,
-                  //   title: S.of(context).newItems,
-                  //   linkLabel: S.of(context).viewAll,
-                  //   onLinkClicked: () {},
-                  // ),
-                ],
-              ),
+      data: shopStore,
+      builder: (context, _) {
+        return Scaffold(
+          appBar: AppBar(title: Text(S.of(context).shop)),
+          body: NoScrollIndicator(
+            child: CustomScrollView(
+              slivers: [
+                AppSliverSearchBar(context, () => appRouter.navigate(SearchRoute())),
+                AppSliverSliders(banners: shopStore.banners),
+                SliverSizedBox(height: 20),
+                if (shopStore.offers.hasValue) AppSliverAmazingOffers(),
+                //TODO: uncomment and refactor
+                // AppSliverNineTiles(
+                //   products: fakeProducts,
+                //   title: S.of(context).mostLikedByCustomers,
+                //   subtitle: S.of(context).thingsYouMightLike,
+                //   linkLabel: S.of(context).viewAll,
+                // ),
+                // AppSliverSingleBanner(imageUrl: fakeSale2),
+                // SliverSizedBox(height: 30),
+                // AppSliverMostPopular(products: fakeProducts, title: S.of(context).topSales),
+                // AppSliverDoubleBanner(imageUrls: fakeSales),
+                // AppSliverHorizontalProductsList(
+                //   products: fakeProducts,
+                //   title: S.of(context).newItems,
+                //   linkLabel: S.of(context).viewAll,
+                //   onLinkClicked: () {},
+                // ),
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

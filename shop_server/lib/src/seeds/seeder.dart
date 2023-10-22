@@ -105,12 +105,13 @@ class Seeder {
     final offerItems = products.take(6).toList();
 
     for (var item in offerItems) {
+      final discountPercentage = FakerX.defaultInstance.number.randomDouble(min: 0.05, range: 0.5);
       final discount = Discount(
         productId: item.id!,
-        discountPrice: (item.price * FakerX.defaultInstance.number.randomDouble(min: 0.05, range: 0.5)).toInt().abs(),
+        discountPrice: (item.price * (1 - discountPercentage)).toInt().abs(),
         startDate: DateTime.now(),
         dueDate: DateTime.now().add(const Duration(days: 3)),
-        message: 'An Amazing offer',
+        message: 'An amazing offer',
       );
 
       await Discount.insert(session, discount);

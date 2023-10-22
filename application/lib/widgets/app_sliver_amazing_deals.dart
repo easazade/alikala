@@ -119,15 +119,16 @@ class _State extends ConsumerState<AppSliverAmazingOffers> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //off percentage
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-                    decoration: BoxDecoration(
-                      color: theme.primaryColor,
-                      borderRadius: BorderRadius.circular(50),
+                  if (offer.offPercentage != null)
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                      decoration: BoxDecoration(
+                        color: theme.primaryColor,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Text('${(offer.offPercentage! * 100).toStringAsFixed(0)}%',
+                          style: TextStyle(color: Colors.white, fontSize: 11)),
                     ),
-                    child:
-                        Text('${offer.offPercentage?.toInt()}%', style: TextStyle(color: Colors.white, fontSize: 11)),
-                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
